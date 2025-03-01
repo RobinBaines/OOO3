@@ -1,0 +1,277 @@
+Init {
+Time = 2025-01-01 12:00:00.000
+
+	Me : Person {
+			Gender = Male
+			Emotion
+			Feel
+	}	
+	
+	Place {
+	Distance
+	}
+
+Time 2025-01-01 13:00:00.000
+	Event {
+	Place
+	Weather
+	End
+	}
+
+Time 2025-01-01 14:00:00.000
+Init : Event			//INHERIT_SENSUALOBJECT
+
+	Animal {
+		Brain
+		LeftEar
+		RightEar
+		Gender
+	}
+	
+	Colour {
+	Primary
+	Secondary
+	}
+	
+	White : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+	Black : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+	Red : Colour {
+	Primary = True
+	Secondary = False
+	}
+	Yellow : Colour {
+	Primary = True
+	Secondary = False
+	}
+	Blue : Colour {
+	Primary = True
+	Secondary = False
+	}
+	
+	Orange : Colour {
+	Primary = False
+	Secondary = True
+	}
+	Green : Colour {
+	Primary = False
+	Secondary = True
+	}
+	Purple : Colour {
+	Primary = False
+	Secondary = True
+	}
+	Brown : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+	
+	
+Time 2025-01-01 15:00:00.000	
+	Dino Bos : Place {
+		
+		Deer : Animal
+		Hare : Animal
+	}
+	
+Time 2025-01-01 16:00:00.000		
+	Person : Animal {
+		LeftLeg
+		RightLeg
+		LeftArm
+		RightArm
+	}
+
+Time 2025-01-01 17:00:00.000		
+	Home : Place {
+			Distance = 0
+			WoodFire
+			Kitchen
+	}
+	
+Time = 2025-01-01 18:00:00.000		
+	M : Person {
+			Gender = Female
+	}	
+}
+	
+	
+Time 2025-02-02 14:00:00.000			
+MeetNida : Event {
+		Weather = Cold
+		Busy
+		
+		Bakkeveen : Place {
+		Birch Trees
+		Sand dunes
+		}
+		
+		Place = Bakkeveen
+		
+		M {	
+		}
+
+		
+		Nida {
+		FrontLeftLeg
+		BackLeftLeg
+		FrontRightLeg
+		BackRightLeg
+		Tail = Short
+		Bark
+		LeftEar
+		RightEar
+		Colour = Black
+		
+		//this does not work because of self-reference
+		Name = Nida
+		Name = Nidaatje
+		}
+		
+		//An existing or new SO.SQ is set to a Value in the Event.
+		Me.Feel = Cold
+		
+		End = Went Home
+}
+	
+Time 2025-02-03 14:00:00.000				
+MeetSiena : Event {
+		Weather = Cold
+		Place = Dino Bos
+		
+		Siena {
+		FrontLeftLeg
+		BackLeftLeg
+		FrontRightLeg
+		BackRightLeg
+		Tail
+		Bark = Noisy
+		LeftEar
+		RightEar
+		Name = Siena
+		Colour = Black
+		Colour = White
+		}
+		
+		//Nida {	
+		//}
+		
+		Nida = faster Siena
+		Nida = playing Siena
+		Nida = sleeping
+		Siena = playing Nida
+		Siena = sleeping
+}
+	
+Time 2025-02-04 14:00:00.000					
+DogsAreDogs	: Event {
+		Place = Home
+		Dog : Animal {    //At home I realise that Nida and Siena are a type of Animal called a Dog.
+		Breed
+		Size
+		}
+		
+		Nida : Dog	{	//Because Nida already exists the True qualities are moved to Dog
+		Breed = None
+		Size = Medium
+		}
+		
+		Siena : Dog	{	//The True qualitites of Dog are removed from Siena.
+		Breed = None
+		Size = Large
+		}
+		
+}
+
+Time 2025-02-04 15:00:00.000	
+MeetBakkeveen : Event {
+		Weather = Cold
+		Weather = Snow
+		Place = Bakkeveen
+		Siena {	
+		}
+		Nida = faster Siena
+
+Time 2025-02-04 16:00:00.000			
+		Nida = playing Siena
+		Siena = playing Nida
+		Nida = faster Siena
+		Nida {
+		faster = Siena
+		Colour = Black
+		}
+
+Time 2025-02-04 16:10:00.000		
+		BlackDog : Dog	{
+			Size = Small
+			Breed = Terrier
+			Name = None
+			Colour = Black
+		}
+		
+		Nida = playing BlackDog
+		Siena = running
+Time 2025-02-04 16:30:00.000		
+		Me = call Nida
+Time 2025-02-04 16:30:30.000
+		Me = come Nida
+		Time 2025-02-04 16:30:45.000
+		Nida = coming
+Time 2025-02-04 16:31:00.000		
+		Me = sit Nida
+Time 2025-02-04 16:31:10.000				
+		Nida = sitting
+Time 2025-02-04 16:32:00.000				
+		Nida = eating
+		Siena = eating
+
+Time 2025-02-04 16:30:00.000		
+
+		BlackDog {
+		Name = Henry
+		}
+		
+Time 2025-02-04 16:45:00.000
+		Nida = swimming
+		
+Time 2025-02-04 17:00:00.000			
+		Nida = sleeping
+		Siena = sleeping
+		Me.Feel = Cold
+Time 2025-02-04 17:30:00.000		
+		End = Went Home
+Time 2025-02-04 17:40:00.000				
+		Nida = eating
+		Siena = eating
+		
+}
+
+
+
+T2 : Event {
+Place = Home
+Word {
+}
+
+Verb : Word {
+Root = True
+}
+AdVerb : Word {
+}
+
+
+faster : AdVerb {
+}
+Cold : AdVerb {
+}
+
+}
+
