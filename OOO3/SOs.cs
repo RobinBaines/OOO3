@@ -23,22 +23,15 @@ namespace OOO3
         }
 
         public static int count = 0;
-        public static void PrintSOs(int Verbose)
-        {
-            Console.WriteLine("SOs");
-            foreach (SensualObject SO in BuildSOs.TheSOs)
-            {
-                Console.WriteLine("//////////////////////////////////////" + SO.Name + "//////////////////////////////////////");
-                Console.WriteLine(SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + " " + SO.Name);
-                count = 0;
-                SO.PrintQualities("", null);
-            }
-        }
 
-        public static void PrintEvents(string Parent)
+
+        /// <summary>
+        /// Print the SOs with SQs filtering on Parent.
+        /// </summary>
+        /// <param name="Parent"></param>
+        public static void PrintSOs(string Parent)
         {
-            Console.WriteLine("Event SOs. Selection from " + BuildSOs.TheSOs.Count.ToString() + " SOs.");
+            Console.WriteLine("Print SOs. Selection from " + BuildSOs.TheSOs.Count.ToString() + " SOs " + "filtered on " + Parent);
             int index = 1;
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
@@ -211,6 +204,10 @@ namespace OOO3
                 BuildSOs.ProcessFile(theFile);
             }
         }
+
+        /// <summary>
+        ///
+        /// </summary>
         public static void PrintInput()
         {
            
@@ -282,43 +279,46 @@ namespace OOO3
 
 
         /// <summary>
+        ///  Print a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO which has not been printed yet.
+        ///  When there are no more SQs meeting the above criterion switch to another SO which is referenced by the last SO.
+        /// Typical output:
         /// SOs RandomSQs based on 272 qualitites and starting with index = 204
-	//2025-02-04 17:40:00.000 T2 : Event
-	//2025-02-04 17:40:00.011 Quality Place = Home
-	//	2025-01-01 17:00:00.000 SO Reference Home : Place
-	//2025-01-01 13:00:00.000 Event
-	//2025-01-01 13:00:00.011 Init => Place = True
-	//2025-02-02 14:00:00.000 MeetNida : Event
-	//2025-02-02 14:00:00.011 Quality Place = Bakkeveen
-	//	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
-	//2025-02-03 14:00:00.000 MeetSiena : Event
-	//2025-02-03 14:00:00.011 Quality Place = Dino Bos
-	//	2025-01-01 15:00:00.000 SO Reference Dino Bos : Place
-	//2025-02-04 14:00:00.000 DogsAreDogs : Event
-	//2025-02-04 14:00:00.011 Quality Place = Home
-	//	2025-01-01 17:00:00.000 SO Reference Home : Place
-	//2025-02-04 15:00:00.000 MeetBakkeveen : Event
-	//2025-02-04 15:00:00.011 Quality Place = Bakkeveen
-	//	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+        //2025-02-04 17:40:00.000 T2 : Event
+        //2025-02-04 17:40:00.011 Quality Place = Home
+        //	2025-01-01 17:00:00.000 SO Reference Home : Place
+        //2025-01-01 13:00:00.000 Event
+        //2025-01-01 13:00:00.011 Init => Place = True
+        //2025-02-02 14:00:00.000 MeetNida : Event
+        //2025-02-02 14:00:00.011 Quality Place = Bakkeveen
+        //	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+        //2025-02-03 14:00:00.000 MeetSiena : Event
+        //2025-02-03 14:00:00.011 Quality Place = Dino Bos
+        //	2025-01-01 15:00:00.000 SO Reference Dino Bos : Place
+        //2025-02-04 14:00:00.000 DogsAreDogs : Event
+        //2025-02-04 14:00:00.011 Quality Place = Home
+        //	2025-01-01 17:00:00.000 SO Reference Home : Place
+        //2025-02-04 15:00:00.000 MeetBakkeveen : Event
+        //2025-02-04 15:00:00.011 Quality Place = Bakkeveen
+        //	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
 
- //   Switch from MeetBakkeveen.Place to BlackDog.Size
-	//2025-02-04 16:10:00.000 BlackDog : Dog
-	//2025-02-04 16:10:00.011 MeetBakkeveen => Size = Small
-	//2025-02-02 14:00:00.000 Nida : Dog
-	//2025-02-04 14:00:00.011 DogsAreDogs => Size = Medium
-	//2025-02-03 14:00:00.000 Siena : Dog
-	//2025-02-04 14:00:00.011 DogsAreDogs => Size = Large
-	//2025-02-04 14:00:00.000 Dog : Animal
-	//2025-02-04 14:00:00.011 DogsAreDogs => Size = True
+        //   Switch from MeetBakkeveen.Place to BlackDog.Size
+        //2025-02-04 16:10:00.000 BlackDog : Dog
+        //2025-02-04 16:10:00.011 MeetBakkeveen => Size = Small
+        //2025-02-02 14:00:00.000 Nida : Dog
+        //2025-02-04 14:00:00.011 DogsAreDogs => Size = Medium
+        //2025-02-03 14:00:00.000 Siena : Dog
+        //2025-02-04 14:00:00.011 DogsAreDogs => Size = Large
+        //2025-02-04 14:00:00.000 Dog : Animal
+        //2025-02-04 14:00:00.011 DogsAreDogs => Size = True
 
 
- //   Switch from Dog.Size to Colour.Secondary
-	//2025-01-01 14:00:00.000 Colour
-	//2025-01-01 14:00:00.011 Init => Secondary = True
-	//2025-01-01 14:00:00.000 White : Colour
-	//2025-01-01 14:00:00.011 Init => Secondary = False
-	//2025-01-01 14:00:00.000 Black : Colour
-	//2025-01-01 14:00:00.011 Init => Secondary = False
+        //   Switch from Dog.Size to Colour.Secondary
+        //2025-01-01 14:00:00.000 Colour
+        //2025-01-01 14:00:00.011 Init => Secondary = True
+        //2025-01-01 14:00:00.000 White : Colour
+        //2025-01-01 14:00:00.011 Init => Secondary = False
+        //2025-01-01 14:00:00.000 Black : Colour
+        //2025-01-01 14:00:00.011 Init => Secondary = False
 
 
         /// </summary>

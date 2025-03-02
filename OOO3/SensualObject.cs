@@ -139,7 +139,7 @@ namespace OOO3
         {
             SOs.count += 1;
 
-            //avoid endless loop.
+            //avoid endless loop if PrintQualities is used recursively.
             if (SOs.count > 100)
                 return;
 
