@@ -85,12 +85,12 @@ SO Me has qualities.
 	2025-01-01 12:00:00.011 Init => Gender = Male
 	2025-01-01 12:00:00.011 Init => Emotion = True
 	2025-01-01 12:00:00.011 Init => Feel = True
-	2025-03-02 10:39:01.208 Generated => Cold = True
-	2025-03-02 10:39:01.208 Generated => call = Nida
+	2025-03-05 09:48:48.069 Generated => Cold = True
+	2025-03-05 09:48:48.069 Generated => call = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.208 Generated => come = Nida
+	2025-03-05 09:48:48.069 Generated => come = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.208 Generated => sit = Nida
+	2025-03-05 09:48:48.069 Generated => sit = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
 
 SO Me has references.
@@ -285,17 +285,17 @@ SO Nida has qualities.
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-02-04 16:00:00.011 MeetBakkeveen => Colour = Black
 		2025-01-01 14:00:00.000 SO Reference Black : Colour
-	2025-03-02 10:39:01.208 Generated => faster = Siena
+	2025-03-05 09:48:48.069 Generated => faster = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Siena
+	2025-03-05 09:48:48.069 Generated => playing = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-	2025-03-02 10:39:01.208 Generated => playing = BlackDog
+	2025-03-05 09:48:48.069 Generated => sleeping = True
+	2025-03-05 09:48:48.069 Generated => playing = BlackDog
 		2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
-	2025-03-02 10:39:01.208 Generated => coming = True
-	2025-03-02 10:39:01.208 Generated => sitting = True
-	2025-03-02 10:39:01.208 Generated => eating = True
-	2025-03-02 10:39:01.208 Generated => swimming = True
+	2025-03-05 09:48:48.069 Generated => coming = True
+	2025-03-05 09:48:48.069 Generated => sitting = True
+	2025-03-05 09:48:48.069 Generated => eating = True
+	2025-03-05 09:48:48.069 Generated => swimming = True
 
 SO Nida has references.
 	2025-01-01 14:00:00.000 SO Reference Colour
@@ -303,7 +303,7 @@ SO Nida has references.
 	2025-02-02 14:00:00.000 SO Reference Nida : Dog
 	2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-02-04 17:40:00.000 SO Reference faster : AdVerb
-	2025-03-02 10:39:01.197 SO Reference playing : Verb
+	2025-03-05 09:48:48.058 SO Reference playing : Verb
 	2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
 
 //////////////////////////////////////MeetSiena 23 //////////////////////////////////////
@@ -350,21 +350,21 @@ SO Siena has qualities.
 	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
 	2025-02-04 14:00:00.011 DogsAreDogs => Breed = None
 	2025-02-04 14:00:00.011 DogsAreDogs => Size = Large
-	2025-03-02 10:39:01.208 Generated => playing = Nida
+	2025-03-05 09:48:48.069 Generated => playing = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-	2025-03-02 10:39:01.208 Generated => running = True
-	2025-03-02 10:39:01.208 Generated => eating = True
+	2025-03-05 09:48:48.069 Generated => sleeping = True
+	2025-03-05 09:48:48.069 Generated => running = True
+	2025-03-05 09:48:48.069 Generated => eating = True
 
 SO Siena has references.
 	2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-01-01 14:00:00.000 SO Reference Colour
 	2025-01-01 14:00:00.000 SO Reference Black : Colour
 	2025-01-01 14:00:00.000 SO Reference White : Colour
-	2025-03-02 10:39:01.197 SO Reference playing : Verb
+	2025-03-05 09:48:48.058 SO Reference playing : Verb
 	2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.197 SO Reference sleeping : Verb
-	2025-03-02 10:39:01.197 SO Reference eating : Verb
+	2025-03-05 09:48:48.058 SO Reference sleeping : Verb
+	2025-03-05 09:48:48.058 SO Reference eating : Verb
 
 //////////////////////////////////////DogsAreDogs 25 //////////////////////////////////////
 2025-02-04 14:00:00.000 DogsAreDogs : Event
@@ -437,7 +437,7 @@ SO MeetBakkeveen has qualities.
 	2025-02-04 16:31:10.011 Quality Nida = sitting
 	2025-02-04 16:32:00.011 Quality Nida = eating
 	2025-02-04 16:32:00.011 Quality Siena = eating
-	2025-02-04 16:30:00.011 => BlackDog Name = Henry
+	2025-02-04 16:30:00.011 => BlackDog Name = Donald
 	2025-02-04 16:45:00.011 Quality Nida = swimming
 	2025-02-04 17:00:00.011 Quality Nida = sleeping
 	2025-02-04 17:00:00.011 Quality Siena = sleeping
@@ -464,7 +464,7 @@ SO BlackDog has qualities.
 	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
 	2025-02-04 16:10:00.011 MeetBakkeveen => Colour = Black
 		2025-01-01 14:00:00.000 SO Reference Black : Colour
-	2025-02-04 16:30:00.011 MeetBakkeveen => Name = Henry
+	2025-02-04 16:30:00.011 MeetBakkeveen => Name = Donald
 
 SO BlackDog has references.
 	2025-01-01 14:00:00.000 SO Reference Colour
@@ -516,134 +516,134 @@ SO Cold has qualities.
 	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
 
 //////////////////////////////////////Generated 35 //////////////////////////////////////
-2025-03-02 10:39:01.197 Generated : Event
+2025-03-05 09:48:48.058 Generated : Event
 SO Generated has qualities.
-	2025-03-02 10:39:01.211 Quality INHERIT_SENSUALOBJECT Event = True
-	2025-03-02 10:39:01.208 => Me Cold = True
-	2025-03-02 10:39:01.208 => Nida faster = Siena
-	2025-03-02 10:39:01.208 => Nida playing = Siena
-	2025-03-02 10:39:01.211 => playing INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => playing Root = play
-	2025-03-02 10:39:01.208 => Nida sleeping = True
-	2025-03-02 10:39:01.211 => sleeping INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => sleeping Root = sleep
-	2025-03-02 10:39:01.208 => Siena playing = Nida
-	2025-03-02 10:39:01.208 => Siena sleeping = True
-	2025-03-02 10:39:01.208 => Nida playing = BlackDog
-	2025-03-02 10:39:01.208 => Siena running = True
-	2025-03-02 10:39:01.211 => running INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => running Root = runn
-	2025-03-02 10:39:01.208 => Me call = Nida
-	2025-03-02 10:39:01.211 => call INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => call Root = call
-	2025-03-02 10:39:01.208 => Me come = Nida
-	2025-03-02 10:39:01.211 => come INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => come Root = come
-	2025-03-02 10:39:01.208 => Nida coming = True
-	2025-03-02 10:39:01.211 => coming INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => coming Root = com
-	2025-03-02 10:39:01.208 => Me sit = Nida
-	2025-03-02 10:39:01.211 => sit INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => sit Root = sit
-	2025-03-02 10:39:01.208 => Nida sitting = True
-	2025-03-02 10:39:01.211 => sitting INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => sitting Root = sitt
-	2025-03-02 10:39:01.208 => Nida eating = True
-	2025-03-02 10:39:01.211 => eating INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => eating Root = eat
-	2025-03-02 10:39:01.208 => Siena eating = True
-	2025-03-02 10:39:01.208 => Nida swimming = True
-	2025-03-02 10:39:01.211 => swimming INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 => swimming Root = swimm
+	2025-03-05 09:48:48.072 Quality INHERIT_SENSUALOBJECT Event = True
+	2025-03-05 09:48:48.069 => Me Cold = True
+	2025-03-05 09:48:48.069 => Nida faster = Siena
+	2025-03-05 09:48:48.069 => Nida playing = Siena
+	2025-03-05 09:48:48.072 => playing INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => playing Root = play
+	2025-03-05 09:48:48.069 => Nida sleeping = True
+	2025-03-05 09:48:48.072 => sleeping INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => sleeping Root = sleep
+	2025-03-05 09:48:48.069 => Siena playing = Nida
+	2025-03-05 09:48:48.069 => Siena sleeping = True
+	2025-03-05 09:48:48.069 => Nida playing = BlackDog
+	2025-03-05 09:48:48.069 => Siena running = True
+	2025-03-05 09:48:48.072 => running INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => running Root = runn
+	2025-03-05 09:48:48.069 => Me call = Nida
+	2025-03-05 09:48:48.072 => call INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => call Root = call
+	2025-03-05 09:48:48.069 => Me come = Nida
+	2025-03-05 09:48:48.072 => come INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => come Root = come
+	2025-03-05 09:48:48.069 => Nida coming = True
+	2025-03-05 09:48:48.072 => coming INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => coming Root = com
+	2025-03-05 09:48:48.069 => Me sit = Nida
+	2025-03-05 09:48:48.072 => sit INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => sit Root = sit
+	2025-03-05 09:48:48.069 => Nida sitting = True
+	2025-03-05 09:48:48.072 => sitting INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => sitting Root = sitt
+	2025-03-05 09:48:48.069 => Nida eating = True
+	2025-03-05 09:48:48.072 => eating INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => eating Root = eat
+	2025-03-05 09:48:48.069 => Siena eating = True
+	2025-03-05 09:48:48.069 => Nida swimming = True
+	2025-03-05 09:48:48.072 => swimming INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 => swimming Root = swimm
 
 SO Generated has references.
 	2025-01-01 12:00:00.000 SO Reference Me
 	2025-02-04 17:40:00.000 SO Reference Cold : AdVerb
 	2025-02-02 14:00:00.000 SO Reference Nida : Dog
 	2025-02-04 17:40:00.000 SO Reference faster : AdVerb
-	2025-03-02 10:39:01.197 SO Reference playing : Verb
-	2025-03-02 10:39:01.197 SO Reference sleeping : Verb
+	2025-03-05 09:48:48.058 SO Reference playing : Verb
+	2025-03-05 09:48:48.058 SO Reference sleeping : Verb
 	2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-03-02 10:39:01.197 SO Reference running : Verb
-	2025-03-02 10:39:01.197 SO Reference call : Verb
-	2025-03-02 10:39:01.197 SO Reference come : Verb
-	2025-03-02 10:39:01.197 SO Reference coming : Verb
-	2025-03-02 10:39:01.197 SO Reference sit : Verb
-	2025-03-02 10:39:01.197 SO Reference sitting : Verb
-	2025-03-02 10:39:01.197 SO Reference eating : Verb
-	2025-03-02 10:39:01.197 SO Reference swimming : Verb
+	2025-03-05 09:48:48.058 SO Reference running : Verb
+	2025-03-05 09:48:48.058 SO Reference call : Verb
+	2025-03-05 09:48:48.058 SO Reference come : Verb
+	2025-03-05 09:48:48.058 SO Reference coming : Verb
+	2025-03-05 09:48:48.058 SO Reference sit : Verb
+	2025-03-05 09:48:48.058 SO Reference sitting : Verb
+	2025-03-05 09:48:48.058 SO Reference eating : Verb
+	2025-03-05 09:48:48.058 SO Reference swimming : Verb
 
 //////////////////////////////////////playing 36 //////////////////////////////////////
-2025-03-02 10:39:01.197 playing : Verb
+2025-03-05 09:48:48.058 playing : Verb
 SO playing has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = play
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = play
 
 //////////////////////////////////////sleeping 37 //////////////////////////////////////
-2025-03-02 10:39:01.197 sleeping : Verb
+2025-03-05 09:48:48.058 sleeping : Verb
 SO sleeping has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = sleep
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = sleep
 
 //////////////////////////////////////running 38 //////////////////////////////////////
-2025-03-02 10:39:01.197 running : Verb
+2025-03-05 09:48:48.058 running : Verb
 SO running has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = runn
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = runn
 
 //////////////////////////////////////call 39 //////////////////////////////////////
-2025-03-02 10:39:01.197 call : Verb
+2025-03-05 09:48:48.058 call : Verb
 SO call has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = call
-		2025-03-02 10:39:01.197 SO Reference call : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = call
+		2025-03-05 09:48:48.058 SO Reference call : Verb
 
 SO call has references.
-	2025-03-02 10:39:01.197 SO Reference call : Verb
+	2025-03-05 09:48:48.058 SO Reference call : Verb
 
 //////////////////////////////////////come 40 //////////////////////////////////////
-2025-03-02 10:39:01.197 come : Verb
+2025-03-05 09:48:48.058 come : Verb
 SO come has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = come
-		2025-03-02 10:39:01.197 SO Reference come : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = come
+		2025-03-05 09:48:48.058 SO Reference come : Verb
 
 SO come has references.
-	2025-03-02 10:39:01.197 SO Reference come : Verb
+	2025-03-05 09:48:48.058 SO Reference come : Verb
 
 //////////////////////////////////////coming 41 //////////////////////////////////////
-2025-03-02 10:39:01.197 coming : Verb
+2025-03-05 09:48:48.058 coming : Verb
 SO coming has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = com
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = com
 
 //////////////////////////////////////sit 42 //////////////////////////////////////
-2025-03-02 10:39:01.197 sit : Verb
+2025-03-05 09:48:48.058 sit : Verb
 SO sit has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = sit
-		2025-03-02 10:39:01.197 SO Reference sit : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = sit
+		2025-03-05 09:48:48.058 SO Reference sit : Verb
 
 SO sit has references.
-	2025-03-02 10:39:01.197 SO Reference sit : Verb
+	2025-03-05 09:48:48.058 SO Reference sit : Verb
 
 //////////////////////////////////////sitting 43 //////////////////////////////////////
-2025-03-02 10:39:01.197 sitting : Verb
+2025-03-05 09:48:48.058 sitting : Verb
 SO sitting has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = sitt
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = sitt
 
 //////////////////////////////////////eating 44 //////////////////////////////////////
-2025-03-02 10:39:01.197 eating : Verb
+2025-03-05 09:48:48.058 eating : Verb
 SO eating has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = eat
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = eat
 
 //////////////////////////////////////swimming 45 //////////////////////////////////////
-2025-03-02 10:39:01.197 swimming : Verb
+2025-03-05 09:48:48.058 swimming : Verb
 SO swimming has qualities.
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.208 Generated => Root = swimm
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.069 Generated => Root = swimm
 
 Print SOs. Selection from 45 SOs filtered on Dog
 //////////////////////////////////////Nida 22 //////////////////////////////////////
@@ -662,17 +662,17 @@ SO Nida has qualities.
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-02-04 16:00:00.011 MeetBakkeveen => Colour = Black
 		2025-01-01 14:00:00.000 SO Reference Black : Colour
-	2025-03-02 10:39:01.208 Generated => faster = Siena
+	2025-03-05 09:48:48.069 Generated => faster = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Siena
+	2025-03-05 09:48:48.069 Generated => playing = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-	2025-03-02 10:39:01.208 Generated => playing = BlackDog
+	2025-03-05 09:48:48.069 Generated => sleeping = True
+	2025-03-05 09:48:48.069 Generated => playing = BlackDog
 		2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
-	2025-03-02 10:39:01.208 Generated => coming = True
-	2025-03-02 10:39:01.208 Generated => sitting = True
-	2025-03-02 10:39:01.208 Generated => eating = True
-	2025-03-02 10:39:01.208 Generated => swimming = True
+	2025-03-05 09:48:48.069 Generated => coming = True
+	2025-03-05 09:48:48.069 Generated => sitting = True
+	2025-03-05 09:48:48.069 Generated => eating = True
+	2025-03-05 09:48:48.069 Generated => swimming = True
 
 SO Nida has references.
 	2025-01-01 14:00:00.000 SO Reference Colour
@@ -680,7 +680,7 @@ SO Nida has references.
 	2025-02-02 14:00:00.000 SO Reference Nida : Dog
 	2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-02-04 17:40:00.000 SO Reference faster : AdVerb
-	2025-03-02 10:39:01.197 SO Reference playing : Verb
+	2025-03-05 09:48:48.058 SO Reference playing : Verb
 	2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
 
 //////////////////////////////////////Siena 24 //////////////////////////////////////
@@ -696,21 +696,21 @@ SO Siena has qualities.
 	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
 	2025-02-04 14:00:00.011 DogsAreDogs => Breed = None
 	2025-02-04 14:00:00.011 DogsAreDogs => Size = Large
-	2025-03-02 10:39:01.208 Generated => playing = Nida
+	2025-03-05 09:48:48.069 Generated => playing = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-	2025-03-02 10:39:01.208 Generated => running = True
-	2025-03-02 10:39:01.208 Generated => eating = True
+	2025-03-05 09:48:48.069 Generated => sleeping = True
+	2025-03-05 09:48:48.069 Generated => running = True
+	2025-03-05 09:48:48.069 Generated => eating = True
 
 SO Siena has references.
 	2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	2025-01-01 14:00:00.000 SO Reference Colour
 	2025-01-01 14:00:00.000 SO Reference Black : Colour
 	2025-01-01 14:00:00.000 SO Reference White : Colour
-	2025-03-02 10:39:01.197 SO Reference playing : Verb
+	2025-03-05 09:48:48.058 SO Reference playing : Verb
 	2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-03-02 10:39:01.197 SO Reference sleeping : Verb
-	2025-03-02 10:39:01.197 SO Reference eating : Verb
+	2025-03-05 09:48:48.058 SO Reference sleeping : Verb
+	2025-03-05 09:48:48.058 SO Reference eating : Verb
 
 //////////////////////////////////////Dog 26 //////////////////////////////////////
 2025-02-04 14:00:00.000 Dog : Animal
@@ -741,7 +741,7 @@ SO BlackDog has qualities.
 	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
 	2025-02-04 16:10:00.011 MeetBakkeveen => Colour = Black
 		2025-01-01 14:00:00.000 SO Reference Black : Colour
-	2025-02-04 16:30:00.011 MeetBakkeveen => Name = Henry
+	2025-02-04 16:30:00.011 MeetBakkeveen => Name = Donald
 
 SO BlackDog has references.
 	2025-01-01 14:00:00.000 SO Reference Colour
@@ -758,133 +758,73 @@ Query Parent: 'Event' for Child: 'Dog'
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 BlackDog
- Parent: 2025-03-02 10:39:01.197 Generated Child: 2025-02-02 14:00:00.000 Nida
- Parent: 2025-03-02 10:39:01.197 Generated Child: 2025-02-03 14:00:00.000 Siena
+ Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-03 14:00:00.000 Siena
 
-SOs RandomSQs based on 314 qualitites and starting with index = 200
+SOs RandomSQs based on 314 qualitites and starting with index = 8
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 156
+	2025-02-03 14:00:00.000 Siena : Dog
+	2025-02-03 14:00:00.011 MeetSiena => FrontLeftLeg = True
+	2025-02-02 14:00:00.000 Nida : Dog
+	2025-02-02 14:00:00.011 MeetNida => FrontLeftLeg = True
 	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => BackRightLeg = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => BackRightLeg = True
+	2025-02-04 14:00:00.014 MeetNida => FrontLeftLeg = True
+
+	Switch from Dog.FrontLeftLeg to Colour.Primary
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 173
 	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => BackRightLeg = True
-
-	Switch from Siena.BackRightLeg to Black.Secondary
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 253
-	2025-02-04 17:40:00.000 Verb : Word
-	2025-02-04 17:40:00.011 T2 => Root = True
-	2025-03-02 10:39:01.197 playing : Verb
-	2025-03-02 10:39:01.208 Generated => Root = play
-	2025-03-02 10:39:01.197 sleeping : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sleep
-	2025-03-02 10:39:01.197 running : Verb
-	2025-03-02 10:39:01.208 Generated => Root = runn
-	2025-03-02 10:39:01.197 call : Verb
-	2025-03-02 10:39:01.208 Generated => Root = call
-	2025-03-02 10:39:01.197 come : Verb
-	2025-03-02 10:39:01.208 Generated => Root = come
-	2025-03-02 10:39:01.197 coming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = com
-	2025-03-02 10:39:01.197 sit : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sit
-	2025-03-02 10:39:01.197 sitting : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sitt
-	2025-03-02 10:39:01.197 eating : Verb
-	2025-03-02 10:39:01.208 Generated => Root = eat
-	2025-03-02 10:39:01.197 swimming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = swimm
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 48
-	2025-01-01 18:00:00.000 M : Person
-	2025-01-01 18:00:00.011 Init => Gender = Female
-	2025-01-01 12:00:00.000 Me
-	2025-01-01 12:00:00.011 Init => Gender = Male
-	2025-01-01 14:00:00.000 Animal
-	2025-01-01 14:00:00.011 Init => Gender = True
-	2025-01-01 13:00:00.000 Event
-	2025-01-01 14:00:00.014 Init => Gender = True
-
-	Switch from Event.Gender to Place.Distance
-	2025-01-01 12:00:00.000 Place
-	2025-01-01 12:00:00.011 Init => Distance = True
-	2025-01-01 17:00:00.000 Home : Place
-	2025-01-01 17:00:00.011 Init => Distance = 0
-	2025-01-01 13:00:00.000 Event
-	2025-01-01 14:00:00.014 Init => Distance = True
-
-	Switch from Event.Distance to Place.Distance
-	2025-01-01 12:00:00.000 Place
-	2025-01-01 12:00:00.011 Init => Distance = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 98
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 132
-	2025-02-02 14:00:00.000 MeetNida : Event
-	2025-02-02 14:00:00.011 Quality End = Went Home
-	2025-01-01 13:00:00.000 Event
-	2025-01-01 13:00:00.011 Init => End = True
-	2025-02-04 15:00:00.000 MeetBakkeveen : Event
-	2025-02-04 17:30:00.011 Quality End = Went Home
-
-	Switch from MeetBakkeveen.End to Bakkeveen.Sand dunes
-	2025-02-02 14:00:00.000 Bakkeveen : Place
-	2025-02-02 14:00:00.011 MeetNida => Sand dunes = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 198
+	2025-02-03 14:00:00.011 MeetSiena => Name = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-02 14:00:00.000 Nida : Dog
+	2025-02-02 14:00:00.011 MeetNida => Name = Nida
 	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => BackLeftLeg = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => BackLeftLeg = True
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => BackLeftLeg = True
+	2025-02-04 14:00:00.014 MeetNida => Name = True
+	2025-02-04 16:10:00.000 BlackDog : Dog
+	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
 
-	Switch from Siena.BackLeftLeg to Black.Secondary
+	Switch from BlackDog.Name to Black.Secondary
 	2025-01-01 14:00:00.000 Black : Colour
 	2025-01-01 14:00:00.011 Init => Secondary = False
 	2025-01-01 14:00:00.000 Colour
@@ -905,186 +845,6 @@ SOs RandomSQs based on 314 qualitites and starting with index = 198
 	2025-01-01 14:00:00.011 Init => Secondary = True
 	2025-01-01 14:00:00.000 Brown : Colour
 	2025-01-01 14:00:00.011 Init => Secondary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 255
-	2025-02-04 17:40:00.000 faster : AdVerb
-	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
-	2025-02-04 17:40:00.000 Cold : AdVerb
-	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 217
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.014 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
-
-	Switch from Siena.INHERIT_SENSUALOBJECT Dog to sleeping.INHERIT_SENSUALOBJECT Verb
-	2025-03-02 10:39:01.197 sleeping : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 playing : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 running : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 call : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 come : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 coming : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 sit : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 sitting : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 eating : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 swimming : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 107
-	2025-01-01 17:00:00.000 Home : Place
-	2025-01-01 17:00:00.014 Init => INHERIT_SENSUALOBJECT Place = True
-	2025-01-01 15:00:00.000 Dino Bos : Place
-	2025-01-01 15:00:00.014 Init => INHERIT_SENSUALOBJECT Place = True
-	2025-02-02 14:00:00.000 Bakkeveen : Place
-	2025-02-02 14:00:00.014 MeetNida => INHERIT_SENSUALOBJECT Place = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 176
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.014 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
-
-	Switch from BlackDog.INHERIT_SENSUALOBJECT Dog to Black.Secondary
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 234
-	2025-02-04 15:00:00.000 MeetBakkeveen : Event
-	2025-02-04 17:00:00.011 Quality Siena = sleeping
-	2025-02-03 14:00:00.000 MeetSiena : Event
-	2025-02-03 14:00:00.011 Quality Siena = playing Nida
-
-	Switch from MeetSiena.Siena to Siena.sleeping
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => sleeping = True
-
-	Switch from Nida.sleeping to faster.INHERIT_SENSUALOBJECT AdVerb
-	2025-02-04 17:40:00.000 faster : AdVerb
-	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
-	2025-02-04 17:40:00.000 Cold : AdVerb
-	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 128
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => Colour = Black
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => Colour = Black
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => Colour = True
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.011 MeetBakkeveen => Colour = Black
-
-	Switch from BlackDog.Colour to Black.INHERIT_SENSUALOBJECT Colour
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 151
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => eating = True
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => eating = True
-
-	Switch from Siena.eating to sleeping.INHERIT_SENSUALOBJECT Verb
-	2025-03-02 10:39:01.197 sleeping : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 playing : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 running : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 call : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 come : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 coming : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 sit : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 sitting : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 eating : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-	2025-03-02 10:39:01.197 swimming : Verb
-	2025-03-02 10:39:01.211 Generated => INHERIT_SENSUALOBJECT Verb = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 73
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
 
 
 SOs RandomSQs based on 314 qualitites and starting with index = 106
@@ -1092,26 +852,9 @@ SOs RandomSQs based on 314 qualitites and starting with index = 106
 	2025-01-01 16:00:00.011 Init => RightArm = True
 
 
-SOs RandomSQs based on 314 qualitites and starting with index = 246
-	2025-02-04 17:40:00.000 T2 : Event
-	2025-02-04 17:40:00.011 Quality Place = Home
-		2025-01-01 17:00:00.000 SO Reference Home : Place
-	2025-01-01 13:00:00.000 Event
-	2025-01-01 13:00:00.011 Init => Place = True
-	2025-02-02 14:00:00.000 MeetNida : Event
-	2025-02-02 14:00:00.011 Quality Place = Bakkeveen
-		2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
-	2025-02-03 14:00:00.000 MeetSiena : Event
-	2025-02-03 14:00:00.011 Quality Place = Dino Bos
-		2025-01-01 15:00:00.000 SO Reference Dino Bos : Place
-	2025-02-04 14:00:00.000 DogsAreDogs : Event
-	2025-02-04 14:00:00.011 Quality Place = Home
-		2025-01-01 17:00:00.000 SO Reference Home : Place
-	2025-02-04 15:00:00.000 MeetBakkeveen : Event
-	2025-02-04 15:00:00.011 Quality Place = Bakkeveen
-		2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
-
-	Switch from MeetBakkeveen.Place to Colour.Primary
+SOs RandomSQs based on 314 qualitites and starting with index = 24
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
 	2025-01-01 14:00:00.000 Colour
 	2025-01-01 14:00:00.011 Init => Primary = True
 	2025-01-01 14:00:00.000 White : Colour
@@ -1124,8 +867,6 @@ SOs RandomSQs based on 314 qualitites and starting with index = 246
 	2025-01-01 14:00:00.011 Init => Primary = True
 	2025-01-01 14:00:00.000 Blue : Colour
 	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
 	2025-01-01 14:00:00.000 Green : Colour
 	2025-01-01 14:00:00.011 Init => Primary = False
 	2025-01-01 14:00:00.000 Purple : Colour
@@ -1134,320 +875,38 @@ SOs RandomSQs based on 314 qualitites and starting with index = 246
 	2025-01-01 14:00:00.011 Init => Primary = False
 
 
-SOs RandomSQs based on 314 qualitites and starting with index = 117
-	2025-02-02 14:00:00.000 Bakkeveen : Place
-	2025-02-02 14:00:00.011 MeetNida => Birch Trees = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 219
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.011 MeetBakkeveen => Breed = Terrier
+SOs RandomSQs based on 314 qualitites and starting with index = 147
 	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-04 14:00:00.011 DogsAreDogs => Breed = None
+	2025-03-05 09:48:48.069 Generated => sleeping = True
 	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-04 14:00:00.011 DogsAreDogs => Breed = None
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.011 DogsAreDogs => Breed = True
+	2025-03-05 09:48:48.069 Generated => sleeping = True
 
-	Switch from Dog.Breed to Colour.Primary
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 61
-	2025-01-01 13:00:00.000 Event
-	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
-	2025-01-01 18:00:00.000 M : Person
-	2025-01-01 18:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
-	2025-01-01 12:00:00.000 Me
-	2025-01-01 12:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
-
-	Switch from Me.INHERIT_SENSUALOBJECT Person to Nida.eating
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => eating = True
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => eating = True
-
-	Switch from Siena.eating to Nida.faster
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => faster = Siena
-		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-
-	Switch from Nida.faster to Colour.Primary
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 150
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => sitting = True
-
-	Switch from Nida.sitting to Siena.Colour
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => Colour = Black
-		2025-01-01 14:00:00.000 SO Reference Black : Colour
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => Colour = Black
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => Colour = True
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.011 MeetBakkeveen => Colour = Black
-
-	Switch from BlackDog.Colour to Black.Secondary
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 79
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 259
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => faster = Siena
-
-	Switch from Nida.faster to Siena.playing
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Nida
-		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Siena
-		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-
-	Switch from Nida.playing to playing.Root
-	2025-03-02 10:39:01.197 playing : Verb
-	2025-03-02 10:39:01.208 Generated => Root = play
+	Switch from Siena.sleeping to sleeping.Root
+	2025-03-05 09:48:48.058 sleeping : Verb
+	2025-03-05 09:48:48.069 Generated => Root = sleep
 	2025-02-04 17:40:00.000 Verb : Word
 	2025-02-04 17:40:00.011 T2 => Root = True
-	2025-03-02 10:39:01.197 sleeping : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sleep
-	2025-03-02 10:39:01.197 running : Verb
-	2025-03-02 10:39:01.208 Generated => Root = runn
-	2025-03-02 10:39:01.197 call : Verb
-	2025-03-02 10:39:01.208 Generated => Root = call
-	2025-03-02 10:39:01.197 come : Verb
-	2025-03-02 10:39:01.208 Generated => Root = come
-	2025-03-02 10:39:01.197 coming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = com
-	2025-03-02 10:39:01.197 sit : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sit
-	2025-03-02 10:39:01.197 sitting : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sitt
-	2025-03-02 10:39:01.197 eating : Verb
-	2025-03-02 10:39:01.208 Generated => Root = eat
-	2025-03-02 10:39:01.197 swimming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = swimm
+	2025-03-05 09:48:48.058 playing : Verb
+	2025-03-05 09:48:48.069 Generated => Root = play
+	2025-03-05 09:48:48.058 running : Verb
+	2025-03-05 09:48:48.069 Generated => Root = runn
+	2025-03-05 09:48:48.058 call : Verb
+	2025-03-05 09:48:48.069 Generated => Root = call
+	2025-03-05 09:48:48.058 come : Verb
+	2025-03-05 09:48:48.069 Generated => Root = come
+	2025-03-05 09:48:48.058 coming : Verb
+	2025-03-05 09:48:48.069 Generated => Root = com
+	2025-03-05 09:48:48.058 sit : Verb
+	2025-03-05 09:48:48.069 Generated => Root = sit
+	2025-03-05 09:48:48.058 sitting : Verb
+	2025-03-05 09:48:48.069 Generated => Root = sitt
+	2025-03-05 09:48:48.058 eating : Verb
+	2025-03-05 09:48:48.069 Generated => Root = eat
+	2025-03-05 09:48:48.058 swimming : Verb
+	2025-03-05 09:48:48.069 Generated => Root = swimm
 
 
-SOs RandomSQs based on 314 qualitites and starting with index = 198
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => BackLeftLeg = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => BackLeftLeg = True
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => BackLeftLeg = True
-
-	Switch from Siena.BackLeftLeg to Black.Primary
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 206
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => Name = True
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => Name = Nida
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => Name = Siena
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
-
-	Switch from BlackDog.Name to Colour.Primary
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Primary = True
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Primary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 103
-	2025-01-01 16:00:00.000 Person : Animal
-	2025-01-01 16:00:00.011 Init => LeftLeg = True
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 242
-	2025-02-04 16:10:00.000 BlackDog : Dog
-	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-02-02 14:00:00.011 MeetNida => Name = Nida
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-02-03 14:00:00.011 MeetSiena => Name = Siena
-	2025-02-04 14:00:00.000 Dog : Animal
-	2025-02-04 14:00:00.014 MeetNida => Name = True
-
-	Switch from Dog.Name to Colour.Secondary
-	2025-01-01 14:00:00.000 Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 White : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Black : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Red : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Yellow : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Blue : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-	2025-01-01 14:00:00.000 Orange : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Green : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Purple : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = True
-	2025-01-01 14:00:00.000 Brown : Colour
-	2025-01-01 14:00:00.011 Init => Secondary = False
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 146
-	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Siena
-		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => playing = Nida
-		2025-02-02 14:00:00.000 SO Reference Nida : Dog
-
-	Switch from Siena.playing to sleeping.Root
-	2025-03-02 10:39:01.197 sleeping : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sleep
-	2025-02-04 17:40:00.000 Verb : Word
-	2025-02-04 17:40:00.011 T2 => Root = True
-	2025-03-02 10:39:01.197 playing : Verb
-	2025-03-02 10:39:01.208 Generated => Root = play
-	2025-03-02 10:39:01.197 running : Verb
-	2025-03-02 10:39:01.208 Generated => Root = runn
-	2025-03-02 10:39:01.197 call : Verb
-	2025-03-02 10:39:01.208 Generated => Root = call
-	2025-03-02 10:39:01.197 come : Verb
-	2025-03-02 10:39:01.208 Generated => Root = come
-	2025-03-02 10:39:01.197 coming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = com
-	2025-03-02 10:39:01.197 sit : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sit
-	2025-03-02 10:39:01.197 sitting : Verb
-	2025-03-02 10:39:01.208 Generated => Root = sitt
-	2025-03-02 10:39:01.197 eating : Verb
-	2025-03-02 10:39:01.208 Generated => Root = eat
-	2025-03-02 10:39:01.197 swimming : Verb
-	2025-03-02 10:39:01.208 Generated => Root = swimm
-
-
-SOs RandomSQs based on 314 qualitites and starting with index = 172
+SOs RandomSQs based on 314 qualitites and starting with index = 161
 	2025-02-03 14:00:00.000 Siena : Dog
 	2025-02-03 14:00:00.011 MeetSiena => Bark = Noisy
 	2025-02-02 14:00:00.000 Nida : Dog
@@ -1478,23 +937,459 @@ SOs RandomSQs based on 314 qualitites and starting with index = 172
 	2025-01-01 14:00:00.011 Init => Primary = False
 
 
-SOs RandomSQs based on 314 qualitites and starting with index = 181
-	2025-02-03 14:00:00.000 Siena : Dog
-	2025-03-02 10:39:01.208 Generated => running = True
+SOs RandomSQs based on 314 qualitites and starting with index = 8
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
 
-	Switch from Siena.running to Nida.faster
+
+SOs RandomSQs based on 314 qualitites and starting with index = 228
+	2025-02-04 15:00:00.000 MeetBakkeveen : Event
+	2025-02-04 16:31:10.011 Quality Nida = sitting
+	2025-02-03 14:00:00.000 MeetSiena : Event
+	2025-02-03 14:00:00.011 Quality Nida = faster Siena
+
+	Switch from MeetSiena.Nida to Dino Bos.Hare
+	2025-01-01 15:00:00.000 Dino Bos : Place
+	2025-01-01 15:00:00.011 Init => Hare = Animal
+		2025-01-01 14:00:00.000 SO Reference Animal
+
+	Switch from Dino Bos.Hare to Animal.Gender
+	2025-01-01 14:00:00.000 Animal
+	2025-01-01 14:00:00.011 Init => Gender = True
+	2025-01-01 12:00:00.000 Me
+	2025-01-01 12:00:00.011 Init => Gender = Male
+	2025-01-01 18:00:00.000 M : Person
+	2025-01-01 18:00:00.011 Init => Gender = Female
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Gender = True
+
+	Switch from Event.Gender to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+	2025-01-01 17:00:00.000 Home : Place
+	2025-01-01 17:00:00.011 Init => Distance = 0
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Distance = True
+
+	Switch from Event.Distance to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 100
+	2025-01-01 15:00:00.000 Dino Bos : Place
+	2025-01-01 15:00:00.011 Init => Deer = Animal
+		2025-01-01 14:00:00.000 SO Reference Animal
+
+	Switch from Dino Bos.Deer to Animal.RightEar
+	2025-01-01 14:00:00.000 Animal
+	2025-01-01 14:00:00.011 Init => RightEar = True
 	2025-02-02 14:00:00.000 Nida : Dog
-	2025-03-02 10:39:01.208 Generated => faster = Siena
-		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-02 14:00:00.011 MeetNida => RightEar = True
+	2025-02-03 14:00:00.000 Siena : Dog
+	2025-02-03 14:00:00.011 MeetSiena => RightEar = True
+	2025-02-04 14:00:00.000 Dog : Animal
+	2025-02-04 14:00:00.014 MeetNida => RightEar = True
 
-	Switch from Nida.faster to faster.INHERIT_SENSUALOBJECT AdVerb
-	2025-02-04 17:40:00.000 faster : AdVerb
-	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+	Switch from Dog.RightEar to Colour.Secondary
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 5
+	2025-01-01 14:00:00.000 Animal
+	2025-01-01 14:00:00.011 Init => Gender = True
+	2025-01-01 12:00:00.000 Me
+	2025-01-01 12:00:00.011 Init => Gender = Male
+	2025-01-01 18:00:00.000 M : Person
+	2025-01-01 18:00:00.011 Init => Gender = Female
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Gender = True
+
+	Switch from Event.Gender to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+	2025-01-01 17:00:00.000 Home : Place
+	2025-01-01 17:00:00.011 Init => Distance = 0
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Distance = True
+
+	Switch from Event.Distance to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 52
+	2025-01-01 12:00:00.000 Me
+	2025-01-01 12:00:00.011 Init => Feel = True
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Feel = True
+	2025-02-02 14:00:00.000 MeetNida : Event
+	2025-02-02 14:00:00.012 Quality Me.Feel = Cold
+	2025-02-04 15:00:00.000 MeetBakkeveen : Event
+	2025-02-04 17:00:00.012 Quality Me.Feel = Cold
+
+	Switch from MeetBakkeveen.Feel to Me.Cold
+	2025-01-01 12:00:00.000 Me
+	2025-03-05 09:48:48.069 Generated => Cold = True
+
+	Switch from Me.Cold to Cold.INHERIT_SENSUALOBJECT AdVerb
 	2025-02-04 17:40:00.000 Cold : AdVerb
 	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+	2025-02-04 17:40:00.000 faster : AdVerb
+	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
 
 
-SOs RandomSQs based on 314 qualitites and starting with index = 82
+SOs RandomSQs based on 314 qualitites and starting with index = 115
+	2025-02-02 14:00:00.000 MeetNida : Event
+	2025-02-02 14:00:00.011 Quality Busy = True
+
+	Switch from MeetNida.Busy to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+	2025-01-01 17:00:00.000 Home : Place
+	2025-01-01 17:00:00.011 Init => Distance = 0
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Distance = True
+
+	Switch from Event.Distance to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 78
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 285
+	2025-03-05 09:48:48.058 sitting : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 playing : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sleeping : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 running : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 call : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 come : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 coming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sit : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 eating : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 swimming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 76
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 143
+	2025-02-02 14:00:00.000 Nida : Dog
+	2025-02-04 16:00:00.011 MeetBakkeveen => faster = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+
+	Switch from Nida.faster to playing.INHERIT_SENSUALOBJECT Verb
+	2025-03-05 09:48:48.058 playing : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sleeping : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 running : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 call : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 come : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 coming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sit : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sitting : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 eating : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 swimming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 249
+	2025-02-04 17:40:00.000 AdVerb : Word
+	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT Word = True
+	2025-02-04 17:40:00.000 Verb : Word
+	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT Word = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 185
+	2025-02-04 14:00:00.000 Dog : Animal
+	2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Animal = True
+	2025-01-01 16:00:00.000 Person : Animal
+	2025-01-01 16:00:00.014 Init => INHERIT_SENSUALOBJECT Animal = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 111
+	2025-01-01 18:00:00.000 M : Person
+	2025-01-01 18:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
+	2025-01-01 12:00:00.000 Me
+	2025-01-01 12:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Person = True
+
+	Switch from Event.INHERIT_SENSUALOBJECT Person to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+	2025-01-01 17:00:00.000 Home : Place
+	2025-01-01 17:00:00.011 Init => Distance = 0
+	2025-01-01 13:00:00.000 Event
+	2025-01-01 14:00:00.014 Init => Distance = True
+
+	Switch from Event.Distance to Place.Distance
+	2025-01-01 12:00:00.000 Place
+	2025-01-01 12:00:00.011 Init => Distance = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 70
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 106
+	2025-01-01 16:00:00.000 Person : Animal
+	2025-01-01 16:00:00.011 Init => RightArm = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 205
+	2025-02-04 14:00:00.000 Dog : Animal
+	2025-02-04 14:00:00.014 MeetNida => Colour = True
+	2025-02-02 14:00:00.000 Nida : Dog
+	2025-02-02 14:00:00.011 MeetNida => Colour = Black
+	2025-02-03 14:00:00.000 Siena : Dog
+	2025-02-03 14:00:00.011 MeetSiena => Colour = Black
+	2025-02-04 16:10:00.000 BlackDog : Dog
+	2025-02-04 16:10:00.011 MeetBakkeveen => Colour = Black
+
+	Switch from BlackDog.Colour to Colour.Primary
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 83
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Secondary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 100
+	2025-01-01 15:00:00.000 Dino Bos : Place
+	2025-01-01 15:00:00.011 Init => Deer = Animal
+		2025-01-01 14:00:00.000 SO Reference Animal
+
+	Switch from Dino Bos.Deer to Animal.Brain
+	2025-01-01 14:00:00.000 Animal
+	2025-01-01 14:00:00.011 Init => Brain = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 281
+	2025-01-01 12:00:00.000 Me
+	2025-03-05 09:48:48.069 Generated => sit = Nida
+
+	Switch from Me.sit to Cold.INHERIT_SENSUALOBJECT AdVerb
+	2025-02-04 17:40:00.000 Cold : AdVerb
+	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+	2025-02-04 17:40:00.000 faster : AdVerb
+	2025-02-04 17:40:00.014 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 171
+	2025-02-03 14:00:00.000 MeetSiena : Event
+	2025-02-03 14:00:00.011 Quality Siena = sleeping
+	2025-02-04 15:00:00.000 MeetBakkeveen : Event
+	2025-02-04 16:00:00.011 Quality Siena = playing Nida
+
+	Switch from MeetBakkeveen.Siena to Siena.Name
+	2025-02-03 14:00:00.000 Siena : Dog
+	2025-02-03 14:00:00.011 MeetSiena => Name = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-02 14:00:00.000 Nida : Dog
+	2025-02-02 14:00:00.011 MeetNida => Name = Nida
+	2025-02-04 14:00:00.000 Dog : Animal
+	2025-02-04 14:00:00.014 MeetNida => Name = True
+	2025-02-04 16:10:00.000 BlackDog : Dog
+	2025-02-04 16:10:00.011 MeetBakkeveen => Name = None
+
+	Switch from BlackDog.Name to Colour.Primary
+	2025-01-01 14:00:00.000 Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.011 Init => Primary = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 273
+	2025-03-05 09:48:48.058 call : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 playing : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sleeping : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 running : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 come : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 coming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sit : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 sitting : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 eating : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-05 09:48:48.058 swimming : Verb
+	2025-03-05 09:48:48.072 Generated => INHERIT_SENSUALOBJECT Verb = True
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 18
 	2025-01-01 14:00:00.000 Yellow : Colour
 	2025-01-01 14:00:00.011 Init => Primary = True
 	2025-01-01 14:00:00.000 Colour
@@ -1515,4 +1410,25 @@ SOs RandomSQs based on 314 qualitites and starting with index = 82
 	2025-01-01 14:00:00.011 Init => Primary = False
 	2025-01-01 14:00:00.000 Brown : Colour
 	2025-01-01 14:00:00.011 Init => Primary = False
+
+
+SOs RandomSQs based on 314 qualitites and starting with index = 84
+	2025-01-01 14:00:00.000 Blue : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 White : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Black : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Red : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Yellow : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Orange : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Green : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Purple : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
+	2025-01-01 14:00:00.000 Brown : Colour
+	2025-01-01 14:00:00.014 Init => INHERIT_SENSUALOBJECT Colour = True
 

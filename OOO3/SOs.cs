@@ -26,10 +26,10 @@ namespace OOO3
 
 
         /// <summary>
-        /// Print the SOs with SQs filtering on Parent.
+        /// Display the SOs with SQs filtering on Parent.
         /// </summary>
         /// <param name="Parent"></param>
-        public static void PrintSOs(string Parent)
+        public static void DisplaySOs(string Parent)
         {
             Console.WriteLine("Print SOs. Selection from " + BuildSOs.TheSOs.Count.ToString() + " SOs " + "filtered on " + Parent);
             int index = 1;
