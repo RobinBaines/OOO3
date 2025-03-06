@@ -339,7 +339,7 @@ The result is the following showing how default properties are now in Dog and th
 NOTE: There is an SO called Black but how a colour is perceived depends on the object. Nida.Black is different from the SO Black.
 
 b. Analysing Events looking for characteristics of other SOs.
-A stream of data is extracted from the SOs and is written to a separate script in an Event called Generated.scr.
+A stream of data is extracted from the SOs and is written to a separate script in an Event called Generated.txt.
 The subroutine QuerySOSQ() looks for 'SOFrom' pointers in the SQ of Events and 
 creates a script to add the quality to the subject.
 For example:

@@ -170,7 +170,10 @@ namespace OOO3
             if (qualities.Count > 0)
             {
                 List<string> verbs = new List<string>();
-                string theFile = ".\\OOO3\\GeneratedScripts\\Generated.scr";
+                //if (!Directory.Exists(Path.GetDirectoryName(".\\OOO3\\GeneratedScripts\\")))
+                //    Directory.CreateDirectory(Path.GetDirectoryName(Logfile));
+
+                string theFile = "Generated.txt";
                 using (StreamWriter sw = new StreamWriter(theFile))
                 {
                     sw.WriteLine("Time " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff",
