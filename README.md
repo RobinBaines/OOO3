@@ -1,5 +1,5 @@
 Having got the program OOO3.exe program working I tried to make some notes. While doing that I realised how few of the OOO ideas are implemented
-and of those implmented how difficult it is to decide if they match OOO ideas and terminology.
+and of those implemented how difficult it is to decide if they match OOO ideas and terminology.
 I did notice how developing the program and using it forced me to think hard!
 Here are those notes.
 
