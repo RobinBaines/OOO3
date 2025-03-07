@@ -12,73 +12,81 @@ namespace OOO3
 {
     internal class SensualQuality : BaseClass
     {
-        public string? Value;
-        public SensualObject? SOFrom; //as in AnEvent { Me.Feel = Cold }
-        public SensualObject? SOTo;
-        public SensualObject? SOParent; //is the owner of this SQ.
-        public SensualObject? SOEvent;
+        public string Value ="";
+        public SensualObject? SOFrom; //= new SensualObject(""); //as in AnEvent { Me.Feel = Cold }
+        public SensualObject? SOTo; // = new SensualObject("");
+        public SensualObject? SOParent; // = new SensualObject(""); //is the owner of this SQ.
+        public SensualObject? SOEvent; // = new SensualObject("");
         public virtual void PrintQuality(string prefix, string _SOName)
         {
-            string from = "";
-            if (this.SOFrom != null)
+            if (SOParent != null && SOEvent != null)
             {
-                if (SOFrom.Name != this.Name)
-                    from = this.SOFrom.Name + ".";
-            }
 
-            string strEvent;
-            if (SOParent.Name != SOEvent.Name)
-            {
-                //SO MeetNida has qualities.
-                //2025 - 02 - 02 14:00:00.005 => Nida Tail = Short
-                if (SOEvent.Name == _SOName)
-                    strEvent = " => " + SOParent.Name + " ";  //SOParent.Name + " ";  //+ " defined by " + SOEvent.Name + " ";
-
-                //SO Nida has qualities.
-                //2025 - 02 - 02 14:00:00.005 MeetNida => Tail = Short
-                else strEvent = " " + SOEvent.Name + " => ";  //SOParent.Name + " ";  //+ " defined by " + SOEvent.Name + " ";
-            }
-            else
-            {
-                strEvent =  " Quality ";
-            }
-             
-
-            if (this.SOFrom != null && this.SOTo == null)
-            {
-                Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                CultureInfo.InvariantCulture) + strEvent + from + this.Name + " = " + this.Value);
-            }
-            else
-            {
-                if (this.SOTo != null)
+                string from = "";
+                if (this.SOFrom != null)
                 {
-                    Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                    CultureInfo.InvariantCulture) + strEvent + from + this.Name + " = " + this.Value + " SO To " + SOTo.Name);
+                    if (SOFrom.Name != this.Name)
+                        from = this.SOFrom.Name + ".";
+                }
+
+                string strEvent;
+                if (SOParent.Name != SOEvent.Name)
+                {
+                    //SO MeetNida has qualities.
+                    //2025 - 02 - 02 14:00:00.005 => Nida Tail = Short
+                    if (SOEvent.Name == _SOName)
+                        strEvent = " => " + SOParent.Name + " ";  //SOParent.Name + " ";  //+ " defined by " + SOEvent.Name + " ";
+
+                    //SO Nida has qualities.
+                    //2025 - 02 - 02 14:00:00.005 MeetNida => Tail = Short
+                    else strEvent = " " + SOEvent.Name + " => ";  //SOParent.Name + " ";  //+ " defined by " + SOEvent.Name + " ";
                 }
                 else
                 {
-                    Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                    CultureInfo.InvariantCulture) + strEvent + this.Name + " = " + this.Value);
+                    strEvent = " Quality ";
                 }
-            }
 
-            if (references.Count > 0)
-            {
-                //Console.WriteLine("\t" + prefix + "SO Reference of a quality: ");
-                foreach (SensualObject SO in references)
+
+                if (this.SOFrom != null && this.SOTo == null)
                 {
-                    SO.PrintSO("\t" + "\t" + prefix, " SO Reference ");
+                    if (this.SOFrom.Name != "")
+                        Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                    CultureInfo.InvariantCulture) + strEvent + from + this.Name + " = " + this.Value);
+                }
+                else
+                {
+                    if (this.SOTo != null)
+                    {
+                        if (this.SOTo.Name != "")
+                            Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                        CultureInfo.InvariantCulture) + strEvent + from + this.Name + " = " + this.Value + " SO To " + SOTo.Name);
+                    }
+                    else
+                    {
+                        Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                        CultureInfo.InvariantCulture) + strEvent + this.Name + " = " + this.Value);
+                    }
+                }
+
+                if (references.Count > 0)
+                {
+                    //Console.WriteLine("\t" + prefix + "SO Reference of a quality: ");
+                    foreach (SensualObject SO in references)
+                    {
+                        SO.PrintSO("\t" + "\t" + prefix, " SO Reference ");
+                    }
                 }
             }
         }
-        private void SensualQualityInit(SensualObject _SOEvent, SensualObject _SOparent, SensualObject? _SOFrom, string _name, string? _value, SensualObject? _SOTo, string _description, DateTime _dt)
+        private void SensualQualityInit(SensualObject _SOEvent, SensualObject _SOparent, SensualObject? _SOFrom, string _name, string _value, SensualObject? _SOTo, string _description, DateTime _dt)
         {
-            SOFrom = _SOFrom;
+            if(_SOFrom != null)
+                SOFrom = _SOFrom;
             Name = _name;
             Value = _value;
             Description = _description;
-            SOTo = _SOTo;
+            if (_SOTo != null)
+                SOTo = _SOTo;
             this.created = _dt;
             SOParent = _SOparent;
             SOEvent = _SOEvent;
@@ -109,7 +117,8 @@ namespace OOO3
 
         public SensualQuality(SensualQuality SQ)
         {
-            SensualQualityInit(SQ.SOEvent, SQ.SOParent, SQ.SOFrom, SQ.Name, SQ.Value, SQ.SOTo, SQ.Description, SQ.created);
+            if (SQ.SOEvent != null && SQ.SOParent != null)
+                SensualQualityInit(SQ.SOEvent, SQ.SOParent, SQ.SOFrom, SQ.Name, SQ.Value, SQ.SOTo, SQ.Description, SQ.created);
         }
         protected virtual void MovePropertyToReference()
         {
@@ -135,7 +144,7 @@ namespace OOO3
                 str = str + " : " + this.ptrDerivedFrom.Name;
             Console.WriteLine(str);
         }
-        public virtual void PrintQualities(string prefix, List<SensualQuality> qualitiesofchildren)
+        public virtual void PrintQualities(string prefix, List<SensualQuality>? qualitiesofchildren)
         {
             SOs.count += 1;
 
@@ -199,25 +208,28 @@ namespace OOO3
 
         void AddQuality(SensualQuality SQ, bool recurse)
         {
-            SensualObject? SOFrom = BuildSOs.GetSO(SQ.Name);
-            if (SOFrom != null)
-            {
-                //SQ.SOFrom = SOFrom;
-                AddReference(SOFrom);
-            }
-            //Add a quality to this SO.
-            qualities.Add(SQ);
+            if (SQ.SOEvent != null)
+            { 
+                SensualObject? SOFrom = BuildSOs.GetSO(SQ.Name);
+                if (SOFrom != null)
+                {
+                    //SQ.SOFrom = SOFrom;
+                    AddReference(SOFrom);
+                }
+                //Add a quality to this SO.
+                qualities.Add(SQ);
 
-            //make a copy of the SQ in the Event if this not the Event.
-            //SO Nida has qualities.
-            //2025 - 02 - 02 14:00:00.005 => MeetNida Tail = Short
-            // but also
-            //SO MeetNida has qualities.
-            //2025 - 02 - 02 14:00:00.005 => Nida Tail = Short
-            if (this != SQ.SOEvent && recurse == true)
-            {
-                SensualQuality? SQNew = new(SQ);
-                SQ.SOEvent.AddQuality(SQNew, false);
+                //make a copy of the SQ in the Event if this not the Event.
+                //SO Nida has qualities.
+                //2025 - 02 - 02 14:00:00.005 => MeetNida Tail = Short
+                // but also
+                //SO MeetNida has qualities.
+                //2025 - 02 - 02 14:00:00.005 => Nida Tail = Short
+                if (this != SQ.SOEvent && recurse == true)
+                {
+                    SensualQuality? SQNew = new(SQ);
+                    SQ.SOEvent.AddQuality(SQNew, false);
+                }
             }
         }
         public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, DateTime _dt, bool recurse)
@@ -255,10 +267,10 @@ namespace OOO3
 
         public virtual void MoveQualities(SensualObject Dest, DateTime _dt)
         {
-            foreach (SensualQuality SQ in qualities)
+        foreach (SensualQuality SQ in qualities)
             {
                 int index = Dest.qualities.IndexOf(SQ);
-                if (index < 0)
+                if (index < 0 && SQ.SOEvent != null)
                 {
                     Dest.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false);
                 }
@@ -271,7 +283,6 @@ namespace OOO3
             Name = _name;
             this.created = _dt;
         }
-
     }
 
 }

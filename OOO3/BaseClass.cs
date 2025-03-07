@@ -17,10 +17,12 @@ namespace OOO3
         {
             return Name;
         }
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             if (obj == null) return false;
-            BaseClass objAsPart = obj as BaseClass;
+            
+            BaseClass? objAsPart = obj as BaseClass;
+                 
             if (objAsPart == null) return false;
             else return Equals(objAsPart);
         }
@@ -28,14 +30,14 @@ namespace OOO3
         {
             return Name.GetHashCode();
         }
-        public bool Equals(BaseClass other)
+        public bool Equals(BaseClass? other)
         {
             if (other == null) return false;
             return (this.Name.Equals(other.Name));
         }
 
         // Default comparer for Part type.
-        public int CompareTo(BaseClass comparePart)
+        public int CompareTo(BaseClass? comparePart)
         {
             // A null value means that this object is greater.
             if (comparePart == null)
@@ -47,10 +49,10 @@ namespace OOO3
 
         public string Name { get; set; } = "BaseObject";
 
-        public string? Description;
+        public string Description ="";
         //this may be the time of instantiation for an SO but is much less likely for an RO for example publication date of a text..
         public DateTime created = DateTime.Now;
-        public DateTime? ended;
+        //public DateTime? ended;
         public List<SensualObject> references = new List<SensualObject>();
     }
 }

@@ -181,25 +181,29 @@ namespace OOO3
                     sw.WriteLine("Generated : Event {");
                     foreach (SensualQuality SQ in qualities)
                     {
-                        int index = SQ.Value.IndexOf(" ");
-                        string value = SQ.Value;
-                        string value2 = "True";
-                        if (index > -1)
+                        if (SQ.SOFrom != null)
                         {
-                            value = SQ.Value.Substring(0, index);
-                            value2= SQ.Value.Substring(index + 1);
-                        }
-                        sw.WriteLine(SQ.SOFrom.Name + " {");
-                        sw.WriteLine(value + " = " + value2);
-                        sw.WriteLine("}");
-                        sw.WriteLine("");
-                        if (!verbs.Contains(value) && BuildSOs.GetSO(value) == null)
-                        {
-                            verbs.Add(value);
-                            sw.WriteLine(value + " : Verb {");
-                            value = value.Replace("ing", "");
-                            sw.WriteLine(" Root = " + value);
+                            int index = SQ.Value.IndexOf(" ");
+                            string value = SQ.Value;
+                            string value2 = "True";
+                            if (index > -1)
+                            {
+                                value = SQ.Value.Substring(0, index);
+                                value2 = SQ.Value.Substring(index + 1);
+                            }
+
+                            sw.WriteLine(SQ.SOFrom.Name + " {");
+                            sw.WriteLine(value + " = " + value2);
                             sw.WriteLine("}");
+                            sw.WriteLine("");
+                            if (!verbs.Contains(value) && BuildSOs.GetSO(value) == null)
+                            {
+                                verbs.Add(value);
+                                sw.WriteLine(value + " : Verb {");
+                                value = value.Replace("ing", "");
+                                sw.WriteLine(" Root = " + value);
+                                sw.WriteLine("}");
+                            }
                         }
                     }
                     sw.WriteLine("}");
@@ -243,7 +247,8 @@ namespace OOO3
 
             foreach (SensualQuality SQ in qualities)
             {
-                SQ.PrintQuality("", SQ.SOParent.Name);
+                if (SQ.SOParent != null)
+                    SQ.PrintQuality("", SQ.SOParent.Name);
             }
         }
         public static int RandomInt(int maxbase)
@@ -254,29 +259,35 @@ namespace OOO3
 
         public static bool CheckSQ(SensualQuality ASQ, string SQName)
         {
-            if (ASQ.SOParent.Name != SQName)
+            if (ASQ.SOParent != null)
             {
-                if (ASQ.SOParent.ptrDerivedFrom != null)
+                if (ASQ.SOParent.Name != SQName)
                 {
-                    if (ASQ.SOParent.ptrDerivedFrom.Name != SQName)
+                    if (ASQ.SOParent.ptrDerivedFrom != null)
+                    {
+                        if (ASQ.SOParent.ptrDerivedFrom.Name != SQName)
+                            return false;
+                    }
+                    else
                         return false;
                 }
-                else
-                    return false;
             }
             return true;
         }
         public static bool CheckSQContains(SensualQuality ASQ, string SQName)
         {
-            if (ASQ.SOParent.Name.Contains(SQName))
+            if (ASQ.SOParent != null)
             {
-                return true;
-            }
-           if (ASQ.SOParent.ptrDerivedFrom != null)
+                if (ASQ.SOParent.Name.Contains(SQName))
+                {
+                    return true;
+                }
+                if (ASQ.SOParent.ptrDerivedFrom != null)
                 {
                     if (ASQ.SOParent.ptrDerivedFrom.Name.Contains(SQName))
                         return true;
                 }
+            }
             return false;
         }
 
@@ -350,33 +361,42 @@ namespace OOO3
 
             SensualQuality SQ = qualities[index];
             SensualObject? SO;
-            SensualQuality SQ2= null;
+            SensualQuality? SQ2= null;
             while (count > 0)
             {
                 count--;
-                SQ.SOParent.PrintSO("\t", " ");
-                SQ.PrintQuality("", SQ.SOParent.Name);
-                printedqualities.Add(SQ);
-                SQ2 = null;
-
-                //find a SQ with the same Name but other SO which has not been printed yet.
-                foreach (SensualQuality ASQ in qualities)
+                if (SQ.SOParent != null)
                 {
-                    if (ASQ.Name == SQ.Name && ASQ.SOParent.Name != SQ.SOParent.Name)
+                    SQ.SOParent.PrintSO("\t", " ");
+                    SQ.PrintQuality("", SQ.SOParent.Name);
+                    printedqualities.Add(SQ);
+                    SQ2 = null;
+
+                    //find a SQ with the same Name but other SO which has not been printed yet.
+                    foreach (SensualQuality ASQ in qualities)
                     {
-                        SQ2 = ASQ;
-                        foreach (SensualQuality pSQ in printedqualities)
-                        {
-                            if (pSQ.Name == ASQ.Name && pSQ.SOParent.Name == ASQ.SOParent.Name)
+                        if (ASQ.SOParent != null)
+                        { 
+                            if (ASQ.Name == SQ.Name && ASQ.SOParent.Name != SQ.SOParent.Name)
                             {
-                                SQ2 = null;
-                                break;
+                                SQ2 = ASQ;
+                                foreach (SensualQuality pSQ in printedqualities)
+                                {
+                                    if (pSQ.SOParent!= null)
+                                    {
+                                        if (pSQ.Name == ASQ.Name && pSQ.SOParent.Name == ASQ.SOParent.Name)
+                                        {
+                                            SQ2 = null;
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                //stay in loop to select SQ where the SO has max references?
+                                if (SQ2 != null)
+                                    break;
                             }
                         }
-
-                        //stay in loop to select SQ where the SO has max references?
-                        if (SQ2 != null)                      
-                            break;
                     }
                 }
 
@@ -384,19 +404,23 @@ namespace OOO3
                 if (SQ2 == null)
                 {
                     SO = SQ.SOParent;
-                    if (SO.references.Count == 0)
-                        break;
-                    index = RandomInt(SO.references.Count);
-                    SO = SO.references[index];
-                    if (SO.qualities.Count == 0)
-                        break;
+                    if (SO != null)
+                    {
+                        if (SO.references.Count == 0)
+                            break;
+                        index = RandomInt(SO.references.Count);
+                        SO = SO.references[index];
+                        if (SO.qualities.Count == 0)
+                            break;
 
-                    index = RandomInt(SO.qualities.Count);
-                    SQ2 = SO.qualities[index];
-                    Console.WriteLine("");
-                    Console.WriteLine("\t" + "Switch from " + SQ.SOParent.Name + "." + SQ.Name + " to " + SQ2.SOParent.Name + "." + SQ2.Name);
+                        index = RandomInt(SO.qualities.Count);
+                        SQ2 = SO.qualities[index];
+                        Console.WriteLine("");
+                        if (SQ.SOParent != null && SQ2.SOParent != null)
+                            Console.WriteLine("\t" + "Switch from " + SQ.SOParent.Name + "." + SQ.Name + " to " + SQ2.SOParent.Name + "." + SQ2.Name);
+                    }
                 }
-                
+                if (SQ2 != null)
                     SQ = SQ2;
             }
 
