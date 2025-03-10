@@ -40,9 +40,7 @@ namespace OOO3
             ///
             // SOs.PrintSOs(2);
             SOs.DisplaySOs("*");
-            SOs.DisplaySOs("Dog");
-
-
+            //SOs.DisplaySOs("Dog");
 
             ////Query Person present at an Event.
             //SOs.QuerySOs("Event", "Person");
@@ -53,7 +51,7 @@ namespace OOO3
                 SOs.RandomSQs();
                 Console.WriteLine("");
             }
-                 
+
 
             //SOs.QuerySOs("Event", "Animal");
             //SOs.PrintInput();

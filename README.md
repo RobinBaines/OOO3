@@ -23,7 +23,7 @@ The 'Event' SO which is like a theatre with sub-events describing SO changes and
 
 This software is an attempt to simulate creation of SOs and SQs using a stream of data in a script file.
 It uses object oriented software ideas such as inheritance, overriding and properties.
-I have chosen to illustrate this by describing several Events using 2 dogs we own and local places for dogs to roam and play.
+I have chosen to illustrate this by describing several Events starring 2 dogs we own and local places for dogs to roam and play.
 These Events are in a script file called script.tx. It is possible to describe other Events in other script files.
 
 In my experience the stream of data in a (subject-object) script may have different sources: spoken language, written language, thoughts, actions,
@@ -38,7 +38,7 @@ I have not spent time on using sophisticated streams of data from different sour
 The stream in a script must conform to a simple syntax which is explained in the file Program.cs.
 The example script in the file called script.txt is annotated and is probably more than enough information to allow writing of other scripts 
 which conform to the syntax.
-It is clear that this is an extreme simplification and the question arises as to whether it is such a simplification that the idea of this program 
+The script as a 'reality' simulator is an extreme simplification and it may be such a simplification that the idea of this program 
 has no point at all.
 On the other hand some of the results and conclusions look interesting; see below.
 
@@ -51,7 +51,7 @@ The program interprets the script.txt and writes the output to the console or to
 
 SOME OOO IDEAS:
 A flat ontology implies that interaction between inanimate objects without an observer is valid. 
-The example script implies Events with myself as observer; subject-object dualism.
+The example script implies Events with myself as observer.
 There is no reason not to create a script with combinations of animate and inanimate objects with no observer. For example a script describing a Dogs 
 interaction with food and may be one with 2 or more inanimate objects with no observer. 
 
@@ -59,7 +59,7 @@ Vicarious causation: OOO requires an SO to facilitate interaction between (inani
 Writing a script with only inanimate object immediately raises questions about the nature of the Event. Does is have qualities: a Place, datetime...?
 
 Undermining means that objects can't be reduced to their parts. The Nida and Siena dogs in the script are only sketched out with a limited number of SQs. 
-By using names and derivation from Dog the objects are clearly more than their parts (SQs).
+By using names and derivation from Dog the objects are clearly more than their parts/more than their SQs.
 Overmining means that objects can't be reduced to their effects. To a certain extent the script is a list of effects. The conversion of the script into
 objects introduces a structure in objects which records the effects described in the script and more besides.
  
@@ -84,11 +84,7 @@ simulated using pointers in the BaseClass.
 For example Nida is an SO. Nida is a Dog, and Dog is an SO. Dog is an Animal and Animal is an SO.
 These inheritance relationships are captured using a pointer from Nida to Dog and from Dog to Animal.
 
-From a software point of view every object is derived from the SensualObject and BaseClass classes.
-	Nida : SensualObject : BaseClass
-	Dog : SensualObject : BaseClass 
-
-2. Overriding in c# means replacement of a function or property value in a derived object.
+2. Overriding in c# means replacement or enhancement of a function or property value in a derived object.
 Here overriding is supported by allowing an SQ defined in an SO to be overridden in a derived SO. 
 For example a Dog may have an SQ called Bark = True, implying that (nearly) all dogs bark.
 Nida who is derived from Dog may have SQ Bark = Loud; and may also have a 2nd SQ Bark = High.
@@ -125,16 +121,16 @@ The time stamp looks like this in the script:
 
     Time 2025-02-04 16:30:00.000
 
-This time will be recorded with every following state change of SOs or SQs until the following Time occurs.
+This time will be recorded with every following state change of SOs or SQs until the following Time value occurs in the script.
 
 OOO proposes a flat ontology and interaction between inanimate objects is as valid as the Events used in the example script. 
 The Event object used in this program could be used to coordinating this sort of interaction.
 While distinct events may occur in these types of Event, processes are also common.
 The script language does not support descriptions of processes except approximately by using time stamps. For example growth of a crystal
 could be described by 
-    Crystal.size=5
+    Crystal = size 5
     Time 2000-02-04 06:30:00.000
-    Crystal.size=6
+    Crystal = size 6
     Time 2025-02-04 20:30:00.000
 
 6. No forward referencing. The program processes the script step by step without forward references.
@@ -156,7 +152,7 @@ Init : Event			//INHERIT_SENSUALOBJECT
 Initial Conclusions.
 One idea of the experiment is to look at the data structure, sub-routines and functions needed to turn the list of input data into 
 objects and to assess whether this overhead is reasonable. The BuildSOs class processes input data and builds the SOs in a List array 
-called theSOs in a predefined class called SOs. These 2 classes can be thought of as 'Me' as it includes all the SOs and
+called theSOs in a predefined class called SOs. The BuildSOs and SOs classes can be thought of as 'Me' as it includes all the SOs and
 the processing required to manage them. What to call this when a script contains only inanimate SOs?
 
 One problem with the result is that the SOs and SQs are not 'visible' and can only be inferred from the output (sounds familiar!).
@@ -259,7 +255,7 @@ For this reason the SOs class also includes several subroutines which query the 
 Inheritance: I remember Fons commenting that some people with autism are not able to generalise; which could mean that every dog is a new
 SO. 
 
-Juliet's immediate response was that all the output could be generated directly from the original list of input data.
+Juliet's immediate response was that all the output could be generated directly from the script.
 This must be True but is it a problem?
 
 1. This could also be true of humans. The hidden nature of SOs and the number of SOs in our brain coupled with memory loss makes this difficult/impossible to judge.
@@ -269,7 +265,7 @@ There is no attempt to simulate this in the software.
 
 3. An Init event is used to populate the 'Me' SOs before processing of other Events takes place. Altering the Init SO will influence creation of other SOs.
 
-4. The object structure is easier to use by the output routines such as DisplaySOs, QuerySOs and RandomSQs, than event lists. 
+4. The object structure is easier to use by the output routines such as DisplaySOs, QuerySOs and RandomSQs, than event lists in a script. 
 The object model includes redundancy. For example Nida.Tail = Short occurs in Event MeetNida. 
 An SQ is included in Nida which couples the SQ in Nida to an SQ in the event MeetNida. 
 Referencing MeetNida from Nida and vice-versa is easy and that seems analogous to thinking about Nida brings to mind MeetNida and vice-versa.

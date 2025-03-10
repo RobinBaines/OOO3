@@ -84,14 +84,16 @@ namespace OOO3
 
                 Value = result.Substring(pos + 1).Trim();
                 result = result.Substring(0, pos).Trim();
+
+                //decided not to include Name.Name = Name in the input syntax.
                 //Me.Feel = Cold
-                pos = result.IndexOf(".");
-                if (pos != -1)
-                {
-                    SOName = result.Substring(0, pos).Trim();
-                    SQName = result.Substring(pos + 1).Trim();
-                }
-                else
+                //pos = result.IndexOf(".");
+                //if (pos != -1)
+                //{
+                //    SOName = result.Substring(0, pos).Trim();
+                //    SQName = result.Substring(pos + 1).Trim();
+                //}
+                //else
                 {
                     SQName = result;
                 }
@@ -139,29 +141,29 @@ namespace OOO3
         }
         public static void WriteSensualQuality(SensualObject SOEvent, string SQName, string SQValue)
         {
-          //  if (LastSO.Name != SQValue)
-            {
-                SensualObject? SOParent = null;
-                SOParent = GetSO(SQValue);
-                if (SOParent == null)
-                {
-                    //Check if the Quality is an SO.
-                    SensualObject? SOFrom = GetSO(SQName);
-                    if (SOFrom != null)
-                        if (SOFrom == LastSO)   //do not add a self reference.
-                            SOFrom = null;
 
-                    if (SOFrom == null)
-                        LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(11));
-                    else
-                        LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(11));
-                }
+            SensualObject? SOOfValue;
+            SOOfValue = GetSO(SQValue);
+            if (SOOfValue == null)
+            {
+                //Check if the Quality is an SO.
+                SensualObject? SOFrom = GetSO(SQName);
+
+                if (SOFrom != null)
+                    if (SOFrom == LastSO)   //do not add a self reference.
+                        SOFrom = null;
+
+                if (SOFrom == null)
+                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(11));
                 else
-                {
-                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOParent, dateTime.AddMilliseconds(11));
-                    LastSO?.AddReference(SOParent);
-                }
+                    LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(11));
             }
+            else
+            {
+                LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(11));
+                LastSO?.AddReference(SOOfValue);
+            }
+            
         }
 
 
@@ -189,7 +191,7 @@ namespace OOO3
                             if (line == "Colour = Black")
                             //+                                                "" && SQName == "Colour")
                             {
-                                Console.WriteLine(line);
+                             //   Console.WriteLine(line);
                             }
                             string SOName = "";
                             string Inherits = "";
@@ -210,12 +212,12 @@ namespace OOO3
                                 {
                                     case State.OBJECT:
                                         {
-                                            if (SQName.Length > 0)
+                                            if (SQName.Length > 0 && SOEvent != null)
                                             {
                                                 WriteSensualQuality(SOEvent, SQName, SQValue);
                                             }
 
-                                            if (SOName.Length > 0 && Inherits.Length > 0)
+                                            if (SOName.Length > 0 && Inherits.Length > 0 && SOEvent != null)
                                             {
                                                 //Record the inheritance as a quality.
                                                 //2025 - 02 - 04 16:10:00.014 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
@@ -242,12 +244,12 @@ namespace OOO3
                                                 SensualObject? SOFrom = GetSO(SOName);
                                                 if (SOFrom != null)
                                                 {
-                                                    SOEvent.AddQuality(SOEvent, SOFrom, SQName, SQValue, null, "", dateTime.AddMilliseconds(12));
+                                                    SOEvent.AddQuality(SOEvent, SOFrom, SQName, SQValue,  "", dateTime.AddMilliseconds(12));
                                                 }
                                             }
                                             else
                                             {
-                                                if (SQName.Length > 0)
+                                                if (SQName.Length > 0 && SOEvent != null)
                                                 {
                                                     WriteSensualQuality(SOEvent, SQName, SQValue);
                                                 }
@@ -263,7 +265,7 @@ namespace OOO3
 
                                                     //add the new SO to the Event.
                                                     //but first check that a self reference does not occur.
-                                                    //if (SOEvent != SONew)
+                                                    if (SOEvent != null)
                                                     {
                                                         SOEvent.AddReference(SONew);
                                                         LastSO = SONew;
@@ -272,11 +274,10 @@ namespace OOO3
                                                     }
 
 
-                                                    if (Inherits.Length > 0)
+                                                    if (Inherits.Length > 0 && SOEvent != null)
                                                     {
                                                         InheritSensualObject(SOEvent, SOName, Inherits);
                                                     }
-                                                    // if (SOName != IE.Name && StartOfObject == true)
                                                     if (StartOfObject == true)
                                                     {
                                                         State = State.OBJECT;

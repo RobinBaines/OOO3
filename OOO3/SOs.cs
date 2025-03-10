@@ -17,14 +17,6 @@ namespace OOO3
 {
     internal class SOs
     {
-        private static bool ReturnTrue(SensualObject SO)
-        {
-            return true;
-        }
-
-        public static int count = 0;
-
-
         /// <summary>
         /// Display the SOs with SQs filtering on Parent.
         /// </summary>
@@ -48,9 +40,10 @@ namespace OOO3
                 {
                     Console.WriteLine("//////////////////////////////////////" + SO.Name + " " + index.ToString() + " //////////////////////////////////////");
                     SO.PrintSO("", " ");
-                    count = 0;
-                    //SOsPrinted.RemoveAll(ReturnTrue);
-                    SO.PrintQualities("", null);
+                    SO.PrintQualities("");
+                    Console.WriteLine();
+                    SO.PrintReferences("");
+                    Console.WriteLine();
                 }
                 index += 1;
             }
@@ -141,38 +134,42 @@ namespace OOO3
         public static void QuerySOSQ(string _parent)
         {
             Console.WriteLine("Query Parent: \'" + _parent + ".");
-           
+
+            //Create a List of qualities where the Name of the Quality is an SO in SOFrom.           
             List<SensualQuality> qualities = new List<SensualQuality>();
-           
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
                 if (SO.ptrDerivedFrom != null)
                 {
                     if (SO.ptrDerivedFrom.Name == _parent)
                     {
-                       // lSOs.Add(SO);
                         foreach (SensualQuality SQ in SO.qualities)
                         {
-                            if (SQ.SOFrom != null)
+                            //	2025-02-03 14:00:00.011 Quality Nida = playing Siena
+                            //if (SQ.SOFrom != null)
+                            if(SQ.IsSO)
                             {
-                                //if (SQ.SOFrom.Name == _quality) // && SQ.Value == _value)
+                            if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)) )
                                 {
-                                    if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)) )
-                                        {
-                                        qualities.Add(SQ);
-                                    }
+                                qualities.Add(SQ);
                                 }
                             }
                         }
                     }
                 }
             }
+
+            //Input 	2025-02-03 14:00:00.011 Quality Nida = playing Siena
+            //Results in output
+            //      Nida {
+            //           playing = Siena
+            //           }
+            //      playing: Verb {
+            //           Root = play
+            //           }
             if (qualities.Count > 0)
             {
                 List<string> verbs = new List<string>();
-                //if (!Directory.Exists(Path.GetDirectoryName(".\\OOO3\\GeneratedScripts\\")))
-                //    Directory.CreateDirectory(Path.GetDirectoryName(Logfile));
-
                 string theFile = "Generated.txt";
                 using (StreamWriter sw = new StreamWriter(theFile))
                 {
@@ -181,9 +178,11 @@ namespace OOO3
                     sw.WriteLine("Generated : Event {");
                     foreach (SensualQuality SQ in qualities)
                     {
-                        if (SQ.SOFrom != null)
+                        if (SQ.IsSO)
                         {
+                            //	2025-02-03 14:00:00.011 Quality Nida = playing Siena
                             int index = SQ.Value.IndexOf(" ");
+                            //Split playing Siena
                             string value = SQ.Value;
                             string value2 = "True";
                             if (index > -1)
@@ -191,8 +190,15 @@ namespace OOO3
                                 value = SQ.Value.Substring(0, index);
                                 value2 = SQ.Value.Substring(index + 1);
                             }
+                            //                            Nida {
+                            //                                playing = Siena
+                            //}
 
-                            sw.WriteLine(SQ.SOFrom.Name + " {");
+                            //                        playing: Verb {
+                            //                                Root = play
+                            //                        }
+                            //sw.WriteLine(SQ.SOFrom.Name + " {");
+                            sw.WriteLine(SQ.Name + " {");
                             sw.WriteLine(value + " = " + value2);
                             sw.WriteLine("}");
                             sw.WriteLine("");
@@ -224,7 +230,7 @@ namespace OOO3
             //    return x.created.CompareTo(y.created);
             //});
 
-            //make a list of qualitites.
+            //make a list of all the qualitites.
             List<SensualQuality> qualities = new List<SensualQuality>();
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
@@ -233,10 +239,11 @@ namespace OOO3
                     qualities.Add(SQ);
                 }
             }
+
             //choose an SQ.
             int index = RandomInt(qualities.Count);
 
-            //sort the list.
+            //sort the list of qualities.
             qualities.Sort(delegate (SensualQuality x, SensualQuality y)
             {
                 return x.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
@@ -251,44 +258,16 @@ namespace OOO3
                     SQ.PrintQuality("", SQ.SOParent.Name);
             }
         }
+
+        /// <summary>
+        /// return a random integer with maxbase as maximum of the range.
+        /// </summary>
+        /// <param name="maxbase"></param>
+        /// <returns></returns>
         public static int RandomInt(int maxbase)
         {
             long elapsedTicks = DateTime.Now.Ticks;
             return (int)(elapsedTicks % maxbase);
-        }
-
-        public static bool CheckSQ(SensualQuality ASQ, string SQName)
-        {
-            if (ASQ.SOParent != null)
-            {
-                if (ASQ.SOParent.Name != SQName)
-                {
-                    if (ASQ.SOParent.ptrDerivedFrom != null)
-                    {
-                        if (ASQ.SOParent.ptrDerivedFrom.Name != SQName)
-                            return false;
-                    }
-                    else
-                        return false;
-                }
-            }
-            return true;
-        }
-        public static bool CheckSQContains(SensualQuality ASQ, string SQName)
-        {
-            if (ASQ.SOParent != null)
-            {
-                if (ASQ.SOParent.Name.Contains(SQName))
-                {
-                    return true;
-                }
-                if (ASQ.SOParent.ptrDerivedFrom != null)
-                {
-                    if (ASQ.SOParent.ptrDerivedFrom.Name.Contains(SQName))
-                        return true;
-                }
-            }
-            return false;
         }
 
 
@@ -334,7 +313,6 @@ namespace OOO3
         //2025-01-01 14:00:00.000 Black : Colour
         //2025-01-01 14:00:00.011 Init => Secondary = False
 
-
         /// </summary>
         public static void RandomSQs()
         {
@@ -353,8 +331,9 @@ namespace OOO3
             }
 
             if (qualities.Count == 0) return;
-            int count = 40;
-            //choose an SQ.
+            int count = 4000;
+            
+            //Pick an SQ.
             int index = RandomInt(qualities.Count);
             Console.WriteLine("");
             Console.WriteLine("SOs RandomSQs based on " + qualities.Count.ToString() + " qualitites and starting with index = " + index.ToString());
@@ -368,6 +347,7 @@ namespace OOO3
                 if (SQ.SOParent != null)
                 {
                     SQ.SOParent.PrintSO("\t", " ");
+                    Console.WriteLine("\t");
                     SQ.PrintQuality("", SQ.SOParent.Name);
                     printedqualities.Add(SQ);
                     SQ2 = null;
@@ -380,19 +360,21 @@ namespace OOO3
                             if (ASQ.Name == SQ.Name && ASQ.SOParent.Name != SQ.SOParent.Name)
                             {
                                 SQ2 = ASQ;
+
                                 foreach (SensualQuality pSQ in printedqualities)
                                 {
                                     if (pSQ.SOParent!= null)
                                     {
                                         if (pSQ.Name == ASQ.Name && pSQ.SOParent.Name == ASQ.SOParent.Name)
                                         {
+                                            //already printed.
                                             SQ2 = null;
                                             break;
                                         }
                                     }
                                 }
 
-                                //stay in loop to select SQ where the SO has max references?
+                                //SQ2 is the next SQ.
                                 if (SQ2 != null)
                                     break;
                             }
@@ -423,37 +405,6 @@ namespace OOO3
                 if (SQ2 != null)
                     SQ = SQ2;
             }
-
-            //while (count > 0)
-            //{
-            //    count--;
-            //    SQ.SOParent.PrintSO("", " ");
-            //    SQ.PrintQuality("", SQ.SOParent.Name);
-            //    SO = SQ.SOParent;
-            //    if (SO.references.Count == 0)
-            //        break;
-
-            //    index = RandomInt(SO.references.Count);
-            //    SO = SO.references[index];
-            //    if (SO.qualities.Count == 0)
-            //        break;
-            //    index = RandomInt(SO.qualities.Count);
-            //    SQ = SO.qualities[index];
-            //}
-
-            ////sort the list.
-            //qualities.Sort(delegate (SensualQuality x, SensualQuality y)
-            //{
-            //    return x.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-            //                              CultureInfo.InvariantCulture)
-            //    .CompareTo(y.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-            //                              CultureInfo.InvariantCulture));
-            //});
-
-            //foreach (SensualQuality SQ in qualities)
-            //{
-            //    SQ.PrintQuality("", SQ.SOParent.Name);
-            //}
         }
     }
 }
