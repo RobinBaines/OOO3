@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
+﻿//
+// @ Copyright 2025 Robin Baines
+// Licensed under the MIT license. See LICENSE file in the project root for details.
+//
 using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static OOO3.Program;
-using static System.Net.WebRequestMethods;
-
 namespace OOO3
 {
     internal class SOs

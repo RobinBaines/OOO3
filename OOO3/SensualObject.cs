@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//
+// @ Copyright 2025 Robin Baines
+// Licensed under the MIT license. See LICENSE file in the project root for details.
+//
+
 using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices.JavaScript;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static OOO3.Program;
 
 namespace OOO3
 {
@@ -216,14 +213,19 @@ namespace OOO3
             AddQuality(SQ, true);
         }
 
-        public virtual void MoveQualities(SensualObject Dest, DateTime _dt)
+        /// <summary>
+        /// Move default properties from the Child SO to the Parent.
+        /// </summary>
+        /// <param name="DerivedFrom"></param>
+        /// <param name="_dt"></param>
+        public virtual void MoveQualities(SensualObject DerivedFrom, DateTime _dt)
         {
         foreach (SensualQuality SQ in qualities)
             {
-                int index = Dest.qualities.IndexOf(SQ);
+                int index = DerivedFrom.qualities.IndexOf(SQ);
                 if (index < 0 && SQ.SOEvent != null)
                 {
-                    Dest.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false);
+                    DerivedFrom.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false);
                 }
             }
             qualities.RemoveAll(SQ => SQ.Value == "True");

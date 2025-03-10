@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//
+// @ Copyright 2025 Robin Baines
+// Licensed under the MIT license. See LICENSE file in the project root for details.
+//
 
 namespace OOO3
 {

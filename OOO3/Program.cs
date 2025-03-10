@@ -1,17 +1,7 @@
-﻿using OOO3;
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using System.Drawing;
-using System.IO;
-using System.Reflection;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading;
-using System.Xml;
-using System.Xml.Linq;
+﻿//
+// @ Copyright 2025 Robin Baines
+// Licensed under the MIT license. See LICENSE file in the project root for details.
+//
 
 /*
 The incoming stream is a collection of Events. 

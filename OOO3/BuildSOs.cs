@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//
+// @ Copyright 2025 Robin Baines
+// Licensed under the MIT license. See LICENSE file in the project root for details.
+//
 
 namespace OOO3
 {
@@ -14,6 +13,17 @@ namespace OOO3
             EVENT,
             OBJECT
         }
+
+        public static List<SensualObject> TheSOs = new List<SensualObject>();
+        public static SensualObject? LastSO = null;
+        public static SensualObject? SOEvent = null;
+        public const string INHERITSO = "INHERIT_SENSUALOBJECT";
+
+        /// <summary>
+        /// Remove comments from a line of input.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         public static string RemoveComments(string result)
         {
             int pos = result.IndexOf("//");
@@ -94,9 +104,8 @@ namespace OOO3
                 //    SQName = result.Substring(pos + 1).Trim();
                 //}
                 //else
-                {
-                    SQName = result;
-                }
+
+                SQName = result;
                 result = "";
             }
             else
@@ -110,10 +119,11 @@ namespace OOO3
             return result;
         }
 
-        public static List<SensualObject> TheSOs = new List<SensualObject>();
-        public static SensualObject? LastSO = null;
-        public static SensualObject? SOEvent = null;
-        public  const string INHERITSO = "INHERIT_SENSUALOBJECT";
+        /// <summary>
+        /// Find and return an SO from the List of SOs.
+        /// </summary>
+        /// <param name="_name"></param>
+        /// <returns></returns>
         public static SensualObject? GetSO(string _name)
         {
             foreach (SensualObject SO in TheSOs)
@@ -126,6 +136,12 @@ namespace OOO3
             return null;
         }
 
+        /// <summary>
+        /// Set the inherited pointer of an SO if Inherits is an SO. Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
+        /// </summary>
+        /// <param name="SOEvent"></param>
+        /// <param name="SOName"></param>
+        /// <param name="Inherits"></param>
         public static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits)
         {
             LastSO = GetSO(SOName);
@@ -134,21 +150,27 @@ namespace OOO3
                 LastSO.ptrDerivedFrom = GetSO(Inherits);
                 if (LastSO.ptrDerivedFrom != null)
                 {
+                    //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
                     LastSO.MoveQualities(LastSO.ptrDerivedFrom, dateTime.AddMilliseconds(14));
                 }
                 LastSO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(14));
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SOEvent"></param>
+        /// <param name="SQName"></param>
+        /// <param name="SQValue"></param>
         public static void WriteSensualQuality(SensualObject SOEvent, string SQName, string SQValue)
         {
-
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
             if (SOOfValue == null)
             {
                 //Check if the Quality is an SO.
                 SensualObject? SOFrom = GetSO(SQName);
-
                 if (SOFrom != null)
                     if (SOFrom == LastSO)   //do not add a self reference.
                         SOFrom = null;
