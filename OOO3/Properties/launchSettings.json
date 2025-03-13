@@ -2,7 +2,7 @@
   "profiles": {
     "OOO3": {
       "commandName": "Project",
-      "commandLineArgs": "script.txt > t.txt",
+      "commandLineArgs": "script.txt > output.txt",
       "workingDirectory": "C:\\Projects\\OOO3"
     }
   }
