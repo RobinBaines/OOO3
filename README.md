@@ -7,16 +7,16 @@ Object Oriented Ontology describes Real Objects (ROs), Real Qualities (RQs), Sen
 The following should clarify how I view the difference between these:
 
 In his book, Object-oriented Ontology, Graham Harman includes a chapter on the American Civil War (ACW).
-He uses the ACW as an example of an RO. I assume here that he wrote the chapter based on his SO of this war.
+He uses the ACW as an example of an RO. I assume here that he wrote the chapter based on his SO(s) of this war.
 I further assume that he created an SO, I call it an Event, which records his experience while writing the chapter.
 On completion, the chapter in the book is an RO. The RO includes well established facts, dates and figures but also opinions, for example,
-on the relative importance of generals and battles. These are RQs and in some cases separate ROs.
-(In OOO an RQ seems to be a single statement while an RO is not only a collection of RQs but also something more which is ultimately unknowable).
+on the relative importance of generals and battles. These are RQs (and in some cases separate ROs?) of the chapter in the book.
+In OOO an RQ seems to be a single statement while an RO is not only a collection of RQs but also something more which is ultimately unknowable.
 
 While reading the chapter I create an Event SO, let's call it ReadingChapter.
 By chance I read a book about the ACW last year. I therefore had an existing ACW SO.
 The information in the chapter augmented this SO with SQs and made references between the ReadingChapter SO
-and my existing ACW SO recording not only the SQs as standalone statements but also where they came from. 
+and my existing ACW SO, recording not only the SQs as stand-alone statements, but also where they came from. 
 
 In the software and what follows I use Event with a capital letter when referring to an SO and event when referring to the sub-events in an Event.
 The 'Event' SO is like a theatre with sub-events describing changes to SOs and interactions between them.
@@ -108,7 +108,7 @@ Sometimes an SQ may refer to an SO. For example
 MeetBakkeveen: Event {
         Place = Bakkeveen
 
-Bakkeveen is a preexisting SO defined as Bakkeveen : Place
+Bakkeveen is a pre-existing SO defined as Bakkeveen : Place
 In this case the reference is stored in the SQ of the MeetBakkeveen Event.
 
 4. Names: An SO and an SQ are identified by a unique name or phrase (a string which may include white space). 
@@ -182,8 +182,8 @@ For this reason the SOs class also includes several subroutines which query the 
 		2025-03-05 09:48:48.069 Generated => playing = Siena
 			2025-02-03 14:00:00.000 SO Reference Siena : Dog
 		2025-03-05 09:48:48.069 Generated => sleeping = True
-		2025-03-05 09:48:48.069 Generated => playing = BlackDog
-			2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
+		2025-03-05 09:48:48.069 Generated => playing = Black Dog
+			2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
 		2025-03-05 09:48:48.069 Generated => coming = True
 		2025-03-05 09:48:48.069 Generated => sitting = True
 		2025-03-05 09:48:48.069 Generated => eating = True
@@ -194,9 +194,9 @@ For this reason the SOs class also includes several subroutines which query the 
 		2025-01-01 14:00:00.000 SO Reference Black : Colour
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-		2025-02-04 17:40:00.000 SO Reference faster : AdVerb
+		2025-02-04 17:40:00.000 SO Reference faster : Adverb
 		2025-03-05 09:48:48.058 SO Reference playing : Verb
-		2025-02-04 16:10:00.000 SO Reference BlackDog : Dog
+		2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
 
     
     QuerySOs(string _parent, string _child) Query SOs for example SOs.QuerySOs("Event", "Dog"); looks for SOs with a Parent = "Event" and referenced SOs 
@@ -210,7 +210,7 @@ For this reason the SOs class also includes several subroutines which query the 
 		 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-03 14:00:00.000 Siena
 		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
 		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 BlackDog
+		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 Black Dog
 		 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-02 14:00:00.000 Nida
 		 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-03 14:00:00.000 Siena
     
@@ -218,7 +218,7 @@ For this reason the SOs class also includes several subroutines which query the 
     When there are no SQs meeting the above criterion switch to another SO which is referenced by the last SO.
 	This results in a sort of declamation of related qualities: 
 	
-		SOs RandomSQs based on 314 qualitites and starting with index = 228
+		SOs RandomSQs based on 314 qualities and starting with index = 228
 		2025-02-04 15:00:00.000 MeetBakkeveen : Event
 		2025-02-04 16:31:10.011 Quality Nida = sitting
 		2025-02-03 14:00:00.000 MeetSiena : Event
@@ -274,7 +274,7 @@ Referencing MeetNida from Nida and vice-versa is easy and that seems analogous t
 Is turbulence in faster flowing water an emergent property? Computer simulation of turbulent flowing water is only approximate, the Navier Stokes Equations do
 describe it accurately but are proving impossible to solve. Perhaps this program highlights the extreme simplifications required 
 of any simulation of thought processes. Using this program with 10000 SOs (5 SOs per day * 365 * 50 years of SOs) and 20 SQs per SO would also not help 
-and would still be an extreme simplification of what is essentially an analog process. 
+and would still be an extreme simplification of what is essentially an analogue process. 
 The dependence of our experience on emotion excludes any form of experience in a simulation. The most we can expect is 
 surprise at relationships a program can find hidden in the input data.
 

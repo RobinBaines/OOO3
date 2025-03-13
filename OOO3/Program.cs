@@ -6,7 +6,7 @@
 /*
 The incoming stream is a collection of Events. 
 An Event is a collection of 'events'.
-script = {EVENT}
+script = {EVENT  | DateTime }
 EVENT = String [ ':' String] '{' { OBJECT | QUALITY | DateTime } '}'
 OBJECT = String [ ':' String] '{' { QUALITY | DateTime } '}'
 QUALITY = String [ '=' String ] 
