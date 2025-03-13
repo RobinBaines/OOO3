@@ -1,6 +1,6 @@
 ﻿//
-// @ Copyright 2025 Robin Baines
-// Licensed under the MIT license. See LICENSE file in the project root for details.
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
 namespace OOO3
@@ -142,7 +142,7 @@ namespace OOO3
         /// <param name="SOEvent"></param>
         /// <param name="SOName"></param>
         /// <param name="Inherits"></param>
-        public static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits)
+        public static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits, int msecs)
         {
             LastSO = GetSO(SOName);
             if (LastSO != null)
@@ -151,9 +151,9 @@ namespace OOO3
                 if (LastSO.ptrDerivedFrom != null)
                 {
                     //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
-                    LastSO.MoveQualities(LastSO.ptrDerivedFrom, dateTime.AddMilliseconds(14));
+                    LastSO.MoveQualities(LastSO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
                 }
-                LastSO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(14));
+                LastSO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
             }
         }
 
@@ -163,7 +163,7 @@ namespace OOO3
         /// <param name="SOEvent"></param>
         /// <param name="SQName"></param>
         /// <param name="SQValue"></param>
-        public static void WriteSensualQuality(SensualObject SOEvent, string SQName, string SQValue)
+        public static void WriteSensualQuality(SensualObject SOEvent, string SQName, string SQValue, int msecs)
         {
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
@@ -176,18 +176,16 @@ namespace OOO3
                         SOFrom = null;
 
                 if (SOFrom == null)
-                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(11));
+                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
                 else
-                    LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(11));
+                    LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
             }
             else
             {
-                LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(11));
+                LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs));
                 LastSO?.AddReference(SOOfValue);
             }
-            
         }
-
 
         /// <summary>
         /// 
@@ -198,7 +196,7 @@ namespace OOO3
             if (File.Exists(filepath))
             {
                 String? line;
-                //InterfaceEvent? IE = null;
+                int msecs = 0;
 
                 using (StreamReader sr = new StreamReader(filepath))
                 {
@@ -236,7 +234,7 @@ namespace OOO3
                                         {
                                             if (SQName.Length > 0 && SOEvent != null)
                                             {
-                                                WriteSensualQuality(SOEvent, SQName, SQValue);
+                                                WriteSensualQuality(SOEvent, SQName, SQValue, msecs++);
                                             }
 
                                             if (SOName.Length > 0 && Inherits.Length > 0 && SOEvent != null)
@@ -245,7 +243,7 @@ namespace OOO3
                                                 //2025 - 02 - 04 16:10:00.014 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
                                                 SQValue = Inherits;
                                                 SQName = SOName;
-                                                WriteSensualQuality(SOEvent, SQName, SQValue);
+                                                WriteSensualQuality(SOEvent, SQName, SQValue, msecs++);
                                             }
 
                                             if (EndOfObject == true)
@@ -261,19 +259,20 @@ namespace OOO3
 
                                     case State.EVENT:
                                         {
-                                            if (SOName.Length > 0 && SQName.Length > 0 && SQValue.Length > 0 && SOEvent != null)
-                                            {
-                                                SensualObject? SOFrom = GetSO(SOName);
-                                                if (SOFrom != null)
-                                                {
-                                                    SOEvent.AddQuality(SOEvent, SOFrom, SQName, SQValue,  "", dateTime.AddMilliseconds(12));
-                                                }
-                                            }
-                                            else
-                                            {
+                                            //Dropped  Name.Name = Name in the input syntax..
+                                            //if (SOName.Length > 0 && SQName.Length > 0 && SQValue.Length > 0 && SOEvent != null)
+                                            //{
+                                            //    SensualObject? SOFrom = GetSO(SOName);
+                                            //    if (SOFrom != null)
+                                            //    {
+                                            //        SOEvent.AddQuality(SOEvent, SOFrom, SQName, SQValue,  "", dateTime.AddMilliseconds(msecs++));
+                                            //    }
+                                            //}
+                                            //else
+                                            //{
                                                 if (SQName.Length > 0 && SOEvent != null)
                                                 {
-                                                    WriteSensualQuality(SOEvent, SQName, SQValue);
+                                                    WriteSensualQuality(SOEvent, SQName, SQValue, msecs++);
                                                 }
 
                                                 if (SOName.Length > 0)
@@ -298,7 +297,7 @@ namespace OOO3
 
                                                     if (Inherits.Length > 0 && SOEvent != null)
                                                     {
-                                                        InheritSensualObject(SOEvent, SOName, Inherits);
+                                                        InheritSensualObject(SOEvent, SOName, Inherits, msecs++);
                                                     }
                                                     if (StartOfObject == true)
                                                     {
@@ -310,12 +309,13 @@ namespace OOO3
                                                 {
                                                     State = State.START;
                                                 }
-                                            }
+                                            //}
                                         }
                                         break;
 
                                     case State.START:
                                         {
+                                            msecs = 0;
                                             if (SOName.Length > 0)
                                             {
                                                 SOEvent = new(SOName, dateTime);
@@ -330,8 +330,9 @@ namespace OOO3
                                                 }
                                                 if (Inherits.Length > 0)
                                                 {
-                                                    InheritSensualObject(SOEvent, SOName, Inherits);
+                                                    InheritSensualObject(SOEvent, SOName, Inherits, msecs++);
                                                 }
+                                                
                                                 State = State.EVENT;
                                             }
                                         }

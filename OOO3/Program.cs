@@ -1,12 +1,15 @@
 ﻿//
-// @ Copyright 2025 Robin Baines
-// Licensed under the MIT license. See LICENSE file in the project root for details.
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
 /*
 The incoming stream is a collection of Events. 
-An Event is a collection of detailed 'events'.
-{InterfaceEvent {ADD_SENSUALOBJECT |  INHERIT_SENSUALOBJECT | AddQuality | DateTime }
+An Event is a collection of 'events'.
+script = {EVENT}
+EVENT = String [ ':' String] '{' { OBJECT | QUALITY | DateTime } '}'
+OBJECT = String [ ':' String] '{' { QUALITY | DateTime } '}'
+QUALITY = String [ '=' String ] 
 */
 
 namespace OOO3
@@ -17,18 +20,26 @@ namespace OOO3
         {
             if (args.Length > 0)
             {
-                BuildSOs.ProcessFile(args[0]);
+                if (File.Exists(args[0]))
+                {
+                    BuildSOs.ProcessFile(args[0]);
+                }
+                else
+                    Console.WriteLine(args[0] + " not found.");
             }
             else
             {
-
+                if (File.Exists("script.txt"))
+                {
+                    BuildSOs.ProcessFile("script.txt");
+                }
+                else
+                    Console.WriteLine("script.txt not found.");
             }
 
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
             SOs.QuerySOSQ("Event");
 
-            ///
-            // SOs.PrintSOs(2);
             SOs.DisplaySOs("*");
             //SOs.DisplaySOs("Dog");
 
@@ -41,11 +52,6 @@ namespace OOO3
                 SOs.RandomSQs();
                 Console.WriteLine("");
             }
-
-
-            //SOs.QuerySOs("Event", "Animal");
-            //SOs.PrintInput();
-
         }
 
     }

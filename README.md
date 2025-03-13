@@ -11,20 +11,20 @@ He uses the ACW as an example of an RO. I assume here that he wrote the chapter 
 I further assume that he created an SO, I call it an Event, which records his experience while writing the chapter.
 On completion, the chapter in the book is an RO. The RO includes well established facts, dates and figures but also opinions, for example,
 on the relative importance of generals and battles. These are RQs and in some cases separate ROs.
-(I have found it difficult to understand the exact difference between an RO and an RQ. Perhaps an RQ is a single Name = Value in a book.)
+(In OOO an RQ seems to be a single statement while an RO is not only a collection of RQs but also something more which is ultimately unknowable).
 
 While reading the chapter I create an Event SO, let's call it ReadingChapter.
 By chance I read a book about the ACW last year. I therefore had an existing ACW SO.
-The information in the chapter augmented this SO and made references between the ReadingChapter SO
-and my existing ACW SO. 
+The information in the chapter augmented this SO with SQs and made references between the ReadingChapter SO
+and my existing ACW SO recording not only the SQs as standalone statements but also where they came from. 
 
 In the software and what follows I use Event with a capital letter when referring to an SO and event when referring to the sub-events in an Event.
-The 'Event' SO which is like a theatre with sub-events describing SO changes and interactions.
+The 'Event' SO is like a theatre with sub-events describing changes to SOs and interactions between them.
 
 This software is an attempt to simulate creation of SOs and SQs using a stream of data in a script file.
 It uses object oriented software ideas such as inheritance, overriding and properties.
 I have chosen to illustrate this by describing several Events starring 2 dogs we own and local places for dogs to roam and play.
-These Events are in a script file called script.tx. It is possible to describe other Events in other script files.
+These Events are in a script file called script.txt. It is possible to describe other Events in other script files.
 
 In my experience the stream of data in a (subject-object) script may have different sources: spoken language, written language, thoughts, actions,
 and emotion and external events and processes involving visual stimulus, smells, sound.... 
@@ -36,7 +36,7 @@ and the external world makes less of an impression.
 
 I have not spent time on using sophisticated streams of data from different sources; besides being very difficult/impossible it is not the focus here.
 The stream in a script must conform to a simple syntax which is explained in the file Program.cs.
-The example script in the file called script.txt is annotated and is probably more than enough information to allow writing of other scripts 
+The example script in the file called script.txt, is annotated and is probably more than enough information to allow writing of other scripts 
 which conform to the syntax.
 The script as a 'reality' simulator is an extreme simplification and it may be such a simplification that the idea of this program 
 has no point at all.
@@ -53,15 +53,15 @@ SOME OOO IDEAS:
 A flat ontology implies that interaction between inanimate objects without an observer is valid. 
 The example script implies Events with myself as observer.
 There is no reason not to create a script with combinations of animate and inanimate objects with no observer. For example a script describing a Dogs 
-interaction with food and may be one with 2 or more inanimate objects with no observer. 
+interaction with food and may be one with 2 or more inanimate objects with no observer. Or even quantum events?
 
 Vicarious causation: OOO requires an SO to facilitate interaction between (inanimate) objects. In my interpretation this occurs in the Event SO.
-Writing a script with only inanimate object immediately raises questions about the nature of the Event. Does is have qualities: a Place, datetime...?
+Writing a script with only inanimate object immediately raises questions about the nature of the Event. Does it have qualities: a Place, datetime...?
 
 Undermining means that objects can't be reduced to their parts. The Nida and Siena dogs in the script are only sketched out with a limited number of SQs. 
 By using names and derivation from Dog the objects are clearly more than their parts/more than their SQs.
 Overmining means that objects can't be reduced to their effects. To a certain extent the script is a list of effects. The conversion of the script into
-objects introduces a structure in objects which records the effects described in the script and more besides.
+SOs introduces a structure which records the effects described in the script and more besides.
  
 The Events and the events in each Event could be seen as the ROs interacting through their sensual qualities.
 
@@ -70,7 +70,7 @@ SOME SOFTWARE IDEAS:
 1. Inheritance means that an object may be derived from another, often, more abstract object. 
 For example Nida inherits from Dog, Me inherits from Person and Dog and Person both inherit from Animal.
 Inheritance can be thought of as a 'type of' relationship: Nida is a type of Dog and Dog is a type of Animal. 
-The convention 'Nida : Dog'  and 'Dog : Animal' is used to represent inheritance.
+The convention 'Nida : Dog'  and 'Dog : Animal' is used to represent inheritance in a script.
 
 A predefined class hierarchy is used for the class Sensual Object.
     SensualObject inherits from BaseClass and
@@ -87,7 +87,7 @@ These inheritance relationships are captured using a pointer from Nida to Dog an
 2. Overriding in c# means replacement or enhancement of a function or property value in a derived object.
 Here overriding is supported by allowing an SQ defined in an SO to be overridden in a derived SO. 
 For example a Dog may have an SQ called Bark = True, implying that (nearly) all dogs bark.
-Nida who is derived from Dog may have SQ Bark = Loud; and may also have a 2nd SQ Bark = High.
+Nida who is derived from Dog may have SQ Bark = Loud; and may also have another SQ: Bark = High.
 A dog which cannot/does not bark would have SQ Bark = False.
 
 3. References: An SO or SQ may refer to a number of SOs.
@@ -152,7 +152,7 @@ Init : Event			//INHERIT_SENSUALOBJECT
 Initial Conclusions.
 One idea of the experiment is to look at the data structure, sub-routines and functions needed to turn the list of input data into 
 objects and to assess whether this overhead is reasonable. The BuildSOs class processes input data and builds the SOs in a List array 
-called theSOs in a predefined class called SOs. The BuildSOs and SOs classes can be thought of as 'Me' as it includes all the SOs and
+called 'theSOs' in a predefined class called SOs. The BuildSOs and SOs classes can be thought of as 'Me' as it includes all the SOs and
 the processing required to manage them. What to call this when a script contains only inanimate SOs?
 
 One problem with the result is that the SOs and SQs are not 'visible' and can only be inferred from the output (sounds familiar!).
@@ -336,7 +336,7 @@ NOTE: There is an SO called Black but how a colour is perceived depends on the o
 
 b. Analysing Events looking for characteristics of other SOs.
 A stream of data is extracted from the SOs and is written to a separate script in an Event called Generated.txt.
-The subroutine QuerySOSQ() looks for 'SOFrom' pointers in the SQ of Events and 
+The subroutine QuerySOSQ() looks for SQs of Events which are SOs and 
 creates a script to add the quality to the subject.
 For example:
         MeetBakkeveen : Event {

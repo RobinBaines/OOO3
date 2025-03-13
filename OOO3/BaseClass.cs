@@ -1,6 +1,6 @@
 ﻿//
-// @ Copyright 2025 Robin Baines
-// Licensed under the MIT license. See LICENSE file in the project root for details.
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
 namespace OOO3

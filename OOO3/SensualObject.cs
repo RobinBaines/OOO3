@@ -1,6 +1,6 @@
 ﻿//
-// @ Copyright 2025 Robin Baines
-// Licensed under the MIT license. See LICENSE file in the project root for details.
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
 using System.Globalization;
@@ -92,8 +92,7 @@ namespace OOO3
         internal List<SensualQuality> qualities = new List<SensualQuality>();
         public virtual void PrintSO(string prefix, string extraText)
         {
-            string str = prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                                                       CultureInfo.InvariantCulture) + extraText + this.Name;
+            string str = prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + extraText + this.Name;
              if (this.ptrDerivedFrom != null)
                 str = str + " : " + this.ptrDerivedFrom.Name;
              Console.WriteLine(str);
