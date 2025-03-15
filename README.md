@@ -217,39 +217,51 @@ For this reason the SOs class also includes several subroutines which query the 
     RandomSQs() Display a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO which has not been printed yet. 
     When there are no SQs meeting the above criterion switch to another SO which is referenced by the last SO.
 	This results in a sort of declamation of related qualities: 
+	SOs RandomSQs 
+	Using 235 qualities and starting with index = 198
+		SO Feel with SQ Root = Feel
+		SO Verb with SQ Root = True
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO call with SQ Root = call
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO swimming with SQ Root = swimm
 	
-		SOs RandomSQs based on 314 qualities and starting with index = 228
-		2025-02-04 15:00:00.000 MeetBakkeveen : Event
-		2025-02-04 16:31:10.011 Quality Nida = sitting
-		2025-02-03 14:00:00.000 MeetSiena : Event
-		2025-02-03 14:00:00.011 Quality Nida = faster Siena
-
-		Switch from MeetSiena.Nida to Dino Bos.Hare
-		2025-01-01 15:00:00.000 Dino Bos : Place
-		2025-01-01 15:00:00.011 Init => Hare = Animal
-			2025-01-01 14:00:00.000 SO Reference Animal
-
-		Switch from Dino Bos.Hare to Animal.Gender
-		2025-01-01 14:00:00.000 Animal
-		2025-01-01 14:00:00.011 Init => Gender = True
-		2025-01-01 12:00:00.000 Me
-		2025-01-01 12:00:00.011 Init => Gender = Male
-		2025-01-01 18:00:00.000 M : Person
-		2025-01-01 18:00:00.011 Init => Gender = Female
-		2025-01-01 13:00:00.000 Event
-		2025-01-01 14:00:00.014 Init => Gender = True
-
-		Switch from Event.Gender to Place.Distance
-		2025-01-01 12:00:00.000 Place
-		2025-01-01 12:00:00.011 Init => Distance = True
-		2025-01-01 17:00:00.000 Home : Place
-		2025-01-01 17:00:00.011 Init => Distance = 0
-		2025-01-01 13:00:00.000 Event
-		2025-01-01 14:00:00.014 Init => Distance = True
-
-		Switch from Event.Distance to Place.Distance
-		2025-01-01 12:00:00.000 Place
-		2025-01-01 12:00:00.011 Init => Distance = True
+	SWITCH from swimming.Root using reference Generated to Me.Feel
+		SO Me with SQ Feel = Cold
+	
+	SWITCH from Me.Feel using reference InitEvent to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO M with SQ Gender = Female
+	
+	SWITCH from M.Gender using reference MeetNida to MeetNida.Weather
+		SO MeetNida with SQ Weather = Cold
+		SO Event with SQ Weather = True
+		SO MeetSiena with SQ Weather = Cold
+		SO MeetBakkeveen with SQ Weather = Cold
+	
+	SWITCH from MeetBakkeveen.Weather using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+	
+	SWITCH from T2.Place using reference Verb to Verb.Root
+		SO Verb with SQ Root = True
 	
 
 Inheritance: I remember Fons commenting that some people with autism are not able to generalise; which could mean that every dog is a new

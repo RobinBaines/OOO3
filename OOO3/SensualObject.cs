@@ -35,7 +35,8 @@ namespace OOO3
                 }
 
                 Console.WriteLine("\t" + prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                        CultureInfo.InvariantCulture) + strEvent + this.Name + " = " + this.Value);
+                            CultureInfo.InvariantCulture) + strEvent + this.Name + " = " + this.Value);
+               
 
                 if (references.Count > 0)
                 {
@@ -92,7 +93,8 @@ namespace OOO3
         internal List<SensualQuality> qualities = new List<SensualQuality>();
         public virtual void PrintSO(string prefix, string extraText)
         {
-            string str = prefix + this.created.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + extraText + this.Name;
+            string str = prefix;
+            str += this.created.ToString("yyyy-MM-dd HH:mm:ss.fff", CultureInfo.InvariantCulture) + extraText + this.Name;
              if (this.ptrDerivedFrom != null)
                 str = str + " : " + this.ptrDerivedFrom.Name;
              Console.WriteLine(str);

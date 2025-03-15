@@ -208,10 +208,10 @@ namespace OOO3
                         line = RemoveComments(line).Trim();
                         if (line.Length > 0)
                         {
-                            if (line == "Colour = Black")
+                            if (line == "Nida {")
                             //+                                                "" && SQName == "Colour")
                             {
-                             //   Console.WriteLine(line);
+                            //    Console.WriteLine(line);
                             }
                             string SOName = "";
                             string Inherits = "";
@@ -288,8 +288,9 @@ namespace OOO3
                                                     //but first check that a self reference does not occur.
                                                     if (SOEvent != null)
                                                     {
-                                                        SOEvent.AddReference(SONew);
-                                                        LastSO = SONew;
+                                                    SOEvent.AddReference(SONew);
+                                                    SONew.AddReference(SOEvent);
+                                                    LastSO = SONew;
                                                         if (index < 0)
                                                             TheSOs.Add(LastSO);
                                                     }
