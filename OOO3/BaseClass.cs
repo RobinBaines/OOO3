@@ -46,12 +46,11 @@ namespace OOO3
                 return this.Name.CompareTo(comparePart.Name);
         }
 
+
         public string Name { get; set; } = "BaseObject";
 
         public string Description ="";
-        //this may be the time of instantiation for an SO but is much less likely for an RO for example publication date of a text..
         public DateTime created = DateTime.Now;
-        //public DateTime? ended;
         public List<SensualObject> references = new List<SensualObject>();
     }
 }

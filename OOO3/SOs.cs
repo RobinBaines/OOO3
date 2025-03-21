@@ -11,6 +11,7 @@ namespace OOO3
 {
     internal class SOs
     {
+        const string GENERATEDFILE  = "generated.txt";
         /// <summary>
         /// Display the SOs with SQs filtering on Parent.
         /// </summary>
@@ -33,7 +34,7 @@ namespace OOO3
                 if (SO.Name == Parent || Parent == "*" || blnParent)
                 {
                     Console.WriteLine("//////////////////////////////////////" + SO.Name + " " + index.ToString() + " //////////////////////////////////////");
-                    SO.PrintSO("", " ");
+                    SO.PrintSO("", " ", true);
                     SO.PrintQualities("");
                     Console.WriteLine();
                     SO.PrintReferences("");
@@ -61,6 +62,7 @@ namespace OOO3
                                             CultureInfo.InvariantCulture) + " " + SOParent.Name);
                         Console.WriteLine(" Child: " + SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
                                             CultureInfo.InvariantCulture) + " " + SO.Name);
+                        //SO.PrintQualities("\t");
                     }
                     else
                     {
@@ -70,6 +72,7 @@ namespace OOO3
                                             CultureInfo.InvariantCulture) + " " + SOParent.Name);
                         Console.WriteLine(" Child: " + SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
                                             CultureInfo.InvariantCulture) + " " + SO.Name);
+                            //SO.PrintQualities("\t");
                         }
                     }
                 }
@@ -140,7 +143,8 @@ namespace OOO3
         /// <param name="_parent"></param>
         public static void QuerySOSQ(string _parent)
         {
-            Console.WriteLine("Query \'" + _parent + ".");
+            Console.WriteLine("Create "+ GENERATEDFILE + " by querying \'" + _parent + "\'.");
+            int count = 0;
 
             //Create a List of qualities where the Name of the Quality is an SO in SOFrom.           
             List<SensualQuality> qualities = new List<SensualQuality>();
@@ -176,7 +180,7 @@ namespace OOO3
             if (qualities.Count > 0)
             {
                 List<string> verbs = new List<string>();
-                string theFile = "Generated.txt";
+                string theFile = GENERATEDFILE;
                 using (StreamWriter sw = new StreamWriter(theFile))
                 {
                     sw.WriteLine("Time " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff",
@@ -196,6 +200,7 @@ namespace OOO3
                                 value = SQ.Value.Substring(0, index);
                                 value2 = SQ.Value.Substring(index + 1);
                             }
+
                             //                            Nida {
                             //                                playing = Siena
                             //}
@@ -203,11 +208,11 @@ namespace OOO3
                             //                        playing: Verb {
                             //                                Root = play
                             //                        }
-                            //sw.WriteLine(SQ.SOFrom.Name + " {");
                             sw.WriteLine(SQ.Name + " {");
                             sw.WriteLine(value + " = " + value2);
                             sw.WriteLine("}");
                             sw.WriteLine("");
+                            count++;
                             if (!verbs.Contains(value) && BuildSOs.GetSO(value) == null)
                             {
                                 verbs.Add(value);
@@ -215,6 +220,7 @@ namespace OOO3
                                 value = value.Replace("ing", "");
                                 sw.WriteLine(" Root = " + value);
                                 sw.WriteLine("}");
+                                count++;
                             }
                         }
                     }
@@ -222,6 +228,8 @@ namespace OOO3
                 }
                 BuildSOs.ProcessFile(theFile);
             }
+            Console.WriteLine("Created " + count.ToString() + " new events in " + GENERATEDFILE + " from " + qualities.Count.ToString() + " qualities.");
+            Console.WriteLine("");
         }
 
 
@@ -249,7 +257,7 @@ namespace OOO3
             SensualQuality? SQ2 = null;
             foreach (SensualQuality ASQ in qualities)
             {
-                if (ASQ.SOParent != null)
+                if (ASQ.SOParent != null && SQ.SOParent != null)
                 {
                     //find an SQ with the same Name but another SO.
                     if (ASQ.Name == SQ.Name && ASQ.SOParent.Name != SQ.SOParent.Name)

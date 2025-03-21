@@ -5,7 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <Title>Create Objects from a stream of input.</Title>
     <Copyright>@Robin Baines 2025</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>

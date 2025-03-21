@@ -6,11 +6,17 @@
 /*
 The incoming stream is a collection of Events. 
 An Event is a collection of 'events'.
-script = {EVENT  | DateTime }
-EVENT = String [ ':' String] '{' { OBJECT | QUALITY | DateTime } '}'
-OBJECT = String [ ':' String] '{' { QUALITY | DateTime } '}'
+Optional => [ ]
+1 or more => { }
+
+script = {EVENT  | DATETIME }
+EVENT = String [ ':' String] '{' { OBJECT | QUALITY | DATETIME } '}'
+OBJECT = String [ ':' String] '{' { QUALITY | DATETIME } '}'
 QUALITY = String [ '=' String ] 
+DATETIME = 'Time' [ '=' ] 'yyyy-MM-dd HH:mm:ss.fff'
 */
+
+using System.Reflection.Metadata;
 
 namespace OOO3
 {
@@ -40,13 +46,35 @@ namespace OOO3
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
             SOs.QuerySOSQ("Event");
 
-            SOs.DisplaySOs("*");
+            //BuildSOs.DisplaySOs is a list of output commands read from the script
+            //string s is the DisplaySOs parameter for example
+            //* or Dog.
+            foreach (string s in BuildSOs.DisplaySOs)
+            {
+                SOs.DisplaySOs(s);
+            }
+
+            //BuildSOs.QuerySOs is a list of output commands read from the script.
+            //string s is the QuerySOs parameter for example
+            //Event, Dog
+            foreach (string s in BuildSOs.QuerySOs)
+            {
+                string[] tokens = s.Split(',');
+                if (tokens.Length > 1)
+                {
+                    SOs.QuerySOs(tokens[0].Trim(), tokens[1].Trim());
+                }
+                
+            }
+
             //SOs.DisplaySOs("Dog");
 
-            ////Query Person present at an Event.
+            //Query Person present at an Event.
             //SOs.QuerySOs("Event", "Person");
-            SOs.QuerySOs("Event", "Dog");
 
+            // SOs.QuerySOs("Event", "Dog");
+
+            //A number of 'walks' through the SOs.    
             for (int i = 0; i < 30; i++)
             {
                 SOs.RandomSQs();
