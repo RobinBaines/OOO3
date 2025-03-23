@@ -42,8 +42,13 @@ has no point at all. On the other hand some of the results and conclusions look 
 Use by entering 
 
         OOO3.exe script.txt > t.txt 
-
 on the command line.
+
+Or if using the Scripts folder
+
+		ooo3.exe ..\Scripts\script.txt > ..\Scripts\Output\ScriptOutput.txt
+
+
 The program interprets the script.txt and writes the output to the console or to a file using redirection.
 The output is managed using output commands at the start of the script:
 
