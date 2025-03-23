@@ -61,6 +61,7 @@ The output is managed using output commands at the start of the script:
  
 
 SOME OOO IDEAS:
+
 A flat ontology implies that interaction between inanimate objects without an observer is valid. 
 The example script implies Events with myself as observer.
 There is no reason not to create a script with combinations of animate and inanimate objects with no observer. For example a script describing a Dogs 
@@ -80,6 +81,7 @@ Symbiosis. 2 or a single event which causes an irreversible change in a real obj
 Object lifecycle. Irreversible changes in the state of an object often marked by symbiosis.
 
 SOME SOFTWARE IDEAS:
+
 1. Inheritance means that an object may be derived from another, often, more abstract object. 
 For example Nida inherits from Dog, Me inherits from Person and Dog and Person both inherit from Animal.
 Inheritance can be thought of as a 'type of' relationship: Nida is a type of Dog and Dog is a type of Animal. 
@@ -93,7 +95,7 @@ both have references to SOs. This list of references is stored in the BaseClass.
 
 In the Object Oriented Software Language called c#, classes are predefined and objects are instantiated from the classes when the software runs.
 In this software all SOs are instantiated from the predefined SensualObject class but inheritance from one SO to another is 
-simulated using pointers in the BaseClass.
+simulated using a reference in the BaseClass.
 
 For example Nida is an SO. Nida is a Dog, and Dog is an SO. Dog is an Animal and Animal is an SO.
 These inheritance relationships are captured using a reference from Nida to Dog and from Dog to Animal.
