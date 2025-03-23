@@ -1,0 +1,1666 @@
+Create generated.txt by querying 'Event'.
+Created 27 new events in generated.txt from 16 qualities.
+
+Print SOs. Selection from 45 SOs filtered on *
+//////////////////////////////////////Event 1 //////////////////////////////////////
+2025-01-01 12:00:00.000 Event
+SO Event has qualities.
+	2025-01-01 12:00:00.000 Quality Place = True
+	                        Quality Weather = True
+	                        Quality End = True
+
+
+//////////////////////////////////////InitEvent 2 //////////////////////////////////////
+2025-01-01 12:00:00.000 InitEvent : Event
+SO InitEvent has qualities.
+	2025-01-01 12:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	2025-01-01 14:00:00.000 > Me INHERIT_SENSUALOBJECT Person = True
+	                        > Me Gender = Male
+	                        > Me Emotion = True
+	                        > Me Feel = True
+	                        > Me Name = Robin
+	2025-01-01 15:00:00.000 > Place Distance = True
+
+SO InitEvent has references.
+	2025-01-01 14:00:00.000 SO Reference Me
+	2025-01-01 15:00:00.000 SO Reference Place
+
+//////////////////////////////////////Me 3 //////////////////////////////////////
+2025-01-01 14:00:00.000 Me
+SO Me has qualities.
+	2025-01-01 14:00:00.000 InitEvent => INHERIT_SENSUALOBJECT Person = True
+	                        InitEvent => Gender = Male
+	                        InitEvent => Emotion = True
+	                        InitEvent => Feel = True
+	                        InitEvent => Name = Robin
+	2025-03-23 10:43:51.955 Generated => Feel = Cold
+		2025-02-04 17:40:00.000 SO Reference Cold
+	                        Generated => call = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        Generated => come = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        Generated => sit = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+
+SO Me has references.
+	2025-01-01 12:00:00.000 SO Reference InitEvent : Event
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-04 17:40:00.000 SO Reference Cold
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////Place 4 //////////////////////////////////////
+2025-01-01 15:00:00.000 Place
+SO Place has qualities.
+	2025-01-01 15:00:00.000 InitEvent => Distance = True
+
+SO Place has references.
+	2025-01-01 12:00:00.000 SO Reference InitEvent : Event
+
+//////////////////////////////////////InitColour 5 //////////////////////////////////////
+2025-01-01 16:00:00.000 InitColour : Event
+SO InitColour has qualities.
+	2025-01-01 16:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Colour Primary = True
+	                        > Colour Secondary = True
+	                        > White INHERIT_SENSUALOBJECT Colour = True
+	                        > White Primary = False
+	                        > White Secondary = False
+	                        > Black INHERIT_SENSUALOBJECT Colour = True
+	                        > Black Primary = False
+	                        > Black Secondary = False
+	                        > Brown INHERIT_SENSUALOBJECT Colour = True
+	                        > Brown Primary = False
+	                        > Brown Secondary = False
+
+SO InitColour has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference White : Colour
+	                        SO Reference Black : Colour
+	                        SO Reference Brown : Colour
+
+//////////////////////////////////////Colour 6 //////////////////////////////////////
+2025-01-01 16:00:00.000 Colour
+SO Colour has qualities.
+	2025-01-01 16:00:00.000 InitColour => Primary = True
+	                        InitColour => Secondary = True
+
+SO Colour has references.
+	2025-01-01 16:00:00.000 SO Reference InitColour : Event
+
+//////////////////////////////////////White 7 //////////////////////////////////////
+2025-01-01 16:00:00.000 White : Colour
+SO White has qualities.
+	2025-01-01 16:00:00.000 InitColour => INHERIT_SENSUALOBJECT Colour = True
+	                        InitColour => Primary = False
+	                        InitColour => Secondary = False
+
+SO White has references.
+	2025-01-01 16:00:00.000 SO Reference InitColour : Event
+
+//////////////////////////////////////Black 8 //////////////////////////////////////
+2025-01-01 16:00:00.000 Black : Colour
+SO Black has qualities.
+	2025-01-01 16:00:00.000 InitColour => INHERIT_SENSUALOBJECT Colour = True
+	                        InitColour => Primary = False
+	                        InitColour => Secondary = False
+
+SO Black has references.
+	2025-01-01 16:00:00.000 SO Reference InitColour : Event
+
+//////////////////////////////////////Brown 9 //////////////////////////////////////
+2025-01-01 16:00:00.000 Brown : Colour
+SO Brown has qualities.
+	2025-01-01 16:00:00.000 InitColour => INHERIT_SENSUALOBJECT Colour = True
+	                        InitColour => Primary = False
+	                        InitColour => Secondary = False
+
+SO Brown has references.
+	2025-01-01 16:00:00.000 SO Reference InitColour : Event
+
+//////////////////////////////////////InitAnimal 10 //////////////////////////////////////
+2025-01-01 17:00:00.000 InitAnimal : Event
+SO InitAnimal has qualities.
+	2025-01-01 17:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Animal Brain = True
+	                        > Animal LeftEar = True
+	                        > Animal RightEar = True
+	                        > Animal Gender = True
+	                        > Dino Bos INHERIT_SENSUALOBJECT Place = True
+	                        > Dino Bos Deer = Animal
+	                        > Dino Bos Hare = Animal
+	2025-01-01 18:00:00.000 > Person RightArm = True
+	                        > Person LeftArm = True
+	                        > Person LeftLeg = True
+	                        > Person INHERIT_SENSUALOBJECT Animal = True
+	                        > Person RightLeg = True
+	2025-01-01 19:00:00.000 > Home INHERIT_SENSUALOBJECT Place = True
+	                        > Home Distance = 0
+	                        > Home WoodFire = True
+	                        > Home Kitchen = True
+	2025-01-01 20:00:00.000 > M INHERIT_SENSUALOBJECT Person = True
+	                        > M Gender = Female
+
+SO InitAnimal has references.
+	2025-01-01 17:00:00.000 SO Reference Animal
+	                        SO Reference Dino Bos : Place
+	2025-01-01 18:00:00.000 SO Reference Person : Animal
+	2025-01-01 19:00:00.000 SO Reference Home : Place
+	2025-01-01 20:00:00.000 SO Reference M : Person
+
+//////////////////////////////////////Animal 11 //////////////////////////////////////
+2025-01-01 17:00:00.000 Animal
+SO Animal has qualities.
+	2025-01-01 17:00:00.000 InitAnimal => Brain = True
+	                        InitAnimal => LeftEar = True
+	                        InitAnimal => RightEar = True
+	                        InitAnimal => Gender = True
+
+SO Animal has references.
+	2025-01-01 17:00:00.000 SO Reference InitAnimal : Event
+
+//////////////////////////////////////Dino Bos 12 //////////////////////////////////////
+2025-01-01 17:00:00.000 Dino Bos : Place
+SO Dino Bos has qualities.
+	2025-01-01 17:00:00.000 InitAnimal => INHERIT_SENSUALOBJECT Place = True
+	                        InitAnimal => Deer = Animal
+		2025-01-01 17:00:00.000 SO Reference Animal
+	                        InitAnimal => Hare = Animal
+		2025-01-01 17:00:00.000 SO Reference Animal
+
+SO Dino Bos has references.
+	2025-01-01 17:00:00.000 SO Reference InitAnimal : Event
+	                        SO Reference Animal
+
+//////////////////////////////////////Person 13 //////////////////////////////////////
+2025-01-01 18:00:00.000 Person : Animal
+SO Person has qualities.
+	2025-01-01 18:00:00.000 InitAnimal => INHERIT_SENSUALOBJECT Animal = True
+	                        InitAnimal => LeftLeg = True
+	                        InitAnimal => RightLeg = True
+	                        InitAnimal => LeftArm = True
+	                        InitAnimal => RightArm = True
+
+SO Person has references.
+	2025-01-01 17:00:00.000 SO Reference InitAnimal : Event
+
+//////////////////////////////////////Home 14 //////////////////////////////////////
+2025-01-01 19:00:00.000 Home : Place
+SO Home has qualities.
+	2025-01-01 19:00:00.000 InitAnimal => INHERIT_SENSUALOBJECT Place = True
+	                        InitAnimal => Distance = 0
+	                        InitAnimal => WoodFire = True
+	                        InitAnimal => Kitchen = True
+
+SO Home has references.
+	2025-01-01 17:00:00.000 SO Reference InitAnimal : Event
+
+//////////////////////////////////////M 15 //////////////////////////////////////
+2025-01-01 20:00:00.000 M : Person
+SO M has qualities.
+	2025-01-01 20:00:00.000 InitAnimal => INHERIT_SENSUALOBJECT Person = True
+	                        InitAnimal => Gender = Female
+
+SO M has references.
+	2025-01-01 17:00:00.000 SO Reference InitAnimal : Event
+	2025-02-02 14:00:00.000 SO Reference MeetNida : Event
+
+//////////////////////////////////////InitBooks 16 //////////////////////////////////////
+2025-01-02 20:00:00.000 InitBooks : Event
+SO InitBooks has qualities.
+	2025-01-02 20:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Book Author = True
+	                        > Book Character = True
+	                        > TreasureIsland INHERIT_SENSUALOBJECT Book = True
+	                        > TreasureIsland Author = Robert Louis Stevenson
+	                        > TreasureIsland Character = Black Dog
+	                        > TreasureIsland Character = Billy Bones
+	                        > TreasureIsland Character = Long John Silver
+
+SO InitBooks has references.
+	2025-01-02 20:00:00.000 SO Reference Book
+	                        SO Reference TreasureIsland : Book
+
+//////////////////////////////////////Book 17 //////////////////////////////////////
+2025-01-02 20:00:00.000 Book
+SO Book has qualities.
+	2025-01-02 20:00:00.000 InitBooks => Author = True
+	                        InitBooks => Character = True
+
+SO Book has references.
+	2025-01-02 20:00:00.000 SO Reference InitBooks : Event
+
+//////////////////////////////////////TreasureIsland 18 //////////////////////////////////////
+2025-01-02 20:00:00.000 TreasureIsland : Book
+SO TreasureIsland has qualities.
+	2025-01-02 20:00:00.000 InitBooks => INHERIT_SENSUALOBJECT Book = True
+	                        InitBooks => Author = Robert Louis Stevenson
+	                        InitBooks => Character = Black Dog
+	                        InitBooks => Character = Billy Bones
+	                        InitBooks => Character = Long John Silver
+
+SO TreasureIsland has references.
+	2025-01-02 20:00:00.000 SO Reference InitBooks : Event
+
+//////////////////////////////////////MeetNida 19 //////////////////////////////////////
+2025-02-02 14:00:00.000 MeetNida : Event
+SO MeetNida has qualities.
+	2025-02-02 14:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Nida Name = Nidaatje
+	                        > Nida Name = Nida
+	                        > Nida Colour = Black
+	                        > Nida RightEar = True
+	                        > Nida LeftEar = True
+	                        > Nida Bark = True
+	                        > Nida Tail = Short
+	                        > Nida BackRightLeg = True
+	                        > Nida FrontRightLeg = True
+	                        > Nida BackLeftLeg = True
+	                        > Nida FrontLeftLeg = True
+	                        Quality Place = Bakkeveen
+		2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+	                        > Bakkeveen Sand dunes = True
+	                        > Bakkeveen Birch Trees = True
+	                        > Bakkeveen INHERIT_SENSUALOBJECT Place = True
+	                        Quality Busy = True
+	                        Quality Weather = Cold
+	                        Quality Me = Feel Cold
+	                        Quality End = Went Home
+
+SO MeetNida has references.
+	2025-01-01 14:00:00.000 SO Reference Me
+	2025-01-01 15:00:00.000 SO Reference Place
+	2025-01-01 16:00:00.000 SO Reference Colour
+	2025-01-01 20:00:00.000 SO Reference M : Person
+	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+	                        SO Reference Nida : Dog
+
+//////////////////////////////////////Bakkeveen 20 //////////////////////////////////////
+2025-02-02 14:00:00.000 Bakkeveen : Place
+SO Bakkeveen has qualities.
+	2025-02-02 14:00:00.000 MeetNida => INHERIT_SENSUALOBJECT Place = True
+	                        MeetNida => Birch Trees = True
+	                        MeetNida => Sand dunes = True
+
+SO Bakkeveen has references.
+	2025-02-02 14:00:00.000 SO Reference MeetNida : Event
+
+//////////////////////////////////////Nida 21 //////////////////////////////////////
+2025-02-02 14:00:00.000 Nida : Dog
+SO Nida has qualities.
+	2025-02-02 14:00:00.000 MeetNida => Tail = Short
+	                        MeetNida => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	                        MeetNida => Name = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        MeetNida => Name = Nidaatje
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
+	                        DogsAreDogs => Breed = None
+	                        DogsAreDogs => Size = Medium
+	2025-02-04 16:00:00.000 MeetBakkeveen => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	                        MeetBakkeveen => faster = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-03-23 10:43:51.955 Generated => eating = True
+	                        Generated => faster = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        Generated => playing = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        Generated => sleeping = True
+	                        Generated => playing = Black Dog
+		2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
+	                        Generated => coming = True
+	                        Generated => sitting = True
+	                        Generated => swimming = True
+
+SO Nida has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	2025-02-02 14:00:00.000 SO Reference MeetNida : Event
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+	2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
+	2025-02-04 17:40:00.000 SO Reference faster
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+	                        SO Reference playing : Verb
+
+//////////////////////////////////////MeetSiena 22 //////////////////////////////////////
+2025-02-03 14:00:00.000 MeetSiena : Event
+SO MeetSiena has qualities.
+	2025-02-03 14:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Nida = sleeping
+	                        Quality Nida = playing Siena
+	                        Quality Nida = faster Siena
+	                        > Siena Colour = White
+	                        > Siena Colour = Black
+	                        > Siena Name = Siena
+	                        > Siena RightEar = True
+	                        Quality Siena = playing Nida
+	                        > Siena LeftEar = True
+	                        > Siena Tail = True
+	                        > Siena BackRightLeg = True
+	                        > Siena FrontRightLeg = True
+	                        > Siena BackLeftLeg = True
+	                        > Siena FrontLeftLeg = True
+	                        Quality Place = Dino Bos
+		2025-01-01 17:00:00.000 SO Reference Dino Bos : Place
+	                        Quality Weather = Cold
+	                        > Siena Bark = Noisy
+	                        Quality Siena = sleeping
+
+SO MeetSiena has references.
+	2025-01-01 15:00:00.000 SO Reference Place
+	2025-01-01 16:00:00.000 SO Reference Colour
+	2025-01-01 17:00:00.000 SO Reference Dino Bos : Place
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+
+//////////////////////////////////////Siena 23 //////////////////////////////////////
+2025-02-03 14:00:00.000 Siena : Dog
+SO Siena has qualities.
+	2025-02-03 14:00:00.000 MeetSiena => Bark = Noisy
+	                        MeetSiena => Name = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        MeetSiena => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	                        MeetSiena => Colour = White
+		2025-01-01 16:00:00.000 SO Reference White : Colour
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
+	                        DogsAreDogs => Breed = None
+	                        DogsAreDogs => Size = Large
+	2025-03-23 10:43:51.955 Generated => playing = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        Generated => sleeping = True
+	                        Generated => running = True
+	                        Generated => eating = True
+
+SO Siena has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	                        SO Reference White : Colour
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference MeetSiena : Event
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+	                        SO Reference playing : Verb
+	                        SO Reference sleeping : Verb
+	                        SO Reference eating : Verb
+
+//////////////////////////////////////DogsAreDogs 24 //////////////////////////////////////
+2025-02-04 14:00:00.000 DogsAreDogs : Event
+SO DogsAreDogs has qualities.
+	2025-02-04 14:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Place = Home
+		2025-01-01 19:00:00.000 SO Reference Home : Place
+	                        > Dog INHERIT_SENSUALOBJECT Animal = True
+	                        > Dog Breed = True
+	                        > Dog Size = True
+	                        > Nida INHERIT_SENSUALOBJECT Dog = True
+	                        > Nida Breed = None
+	                        > Nida Size = Medium
+	                        > Siena INHERIT_SENSUALOBJECT Dog = True
+	                        > Siena Breed = None
+	                        > Siena Size = Large
+
+SO DogsAreDogs has references.
+	2025-01-01 15:00:00.000 SO Reference Place
+	2025-01-01 19:00:00.000 SO Reference Home : Place
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-04 14:00:00.000 SO Reference Dog : Animal
+
+//////////////////////////////////////Dog 25 //////////////////////////////////////
+2025-02-04 14:00:00.000 Dog : Animal
+SO Dog has qualities.
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Animal = True
+	                        DogsAreDogs => Breed = True
+	                        DogsAreDogs => Size = True
+	                        MeetNida => FrontLeftLeg = True
+	                        MeetNida => BackLeftLeg = True
+	                        MeetNida => FrontRightLeg = True
+	                        MeetNida => BackRightLeg = True
+	                        MeetNida => Tail = True
+	                        MeetNida => Bark = True
+	                        MeetNida => LeftEar = True
+	                        MeetNida => RightEar = True
+	                        MeetNida => Colour = True
+	                        MeetNida => Name = True
+
+SO Dog has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+
+//////////////////////////////////////MeetBakkeveen 26 //////////////////////////////////////
+2025-02-04 15:00:00.000 MeetBakkeveen : Event
+SO MeetBakkeveen has qualities.
+	2025-02-04 15:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Weather = Cold
+	                        Quality Weather = Snow
+	                        Quality Place = Bakkeveen
+		2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+	                        Quality Nida = faster Siena
+	2025-02-04 16:00:00.000 Quality Nida = playing Siena
+	                        Quality Siena = playing Nida
+	                        Quality Nida = faster Siena
+	                        > Nida faster = Siena
+	                        > Nida Colour = Black
+	2025-02-04 16:10:00.000 Quality Siena = running
+	                        > Black Dog Colour = Black
+	                        > Black Dog Name = None
+	                        Quality Nida = playing Black Dog
+	                        > Black Dog Size = Small
+	                        > Black Dog INHERIT_SENSUALOBJECT Dog = True
+	                        > Black Dog Breed = Terrier
+	2025-02-04 16:30:00.000 > Black Dog Name = Donald
+	                        Quality Me = call Nida
+	2025-02-04 16:30:30.000 Quality Me = come Nida
+	2025-02-04 16:30:45.000 Quality Nida = coming
+	2025-02-04 16:31:00.000 Quality Me = sit Nida
+	2025-02-04 16:31:10.000 Quality Nida = sitting
+	2025-02-04 16:32:00.000 Quality Nida = eating
+	                        Quality Siena = eating
+	2025-02-04 16:45:00.000 Quality Nida = swimming
+	2025-02-04 17:00:00.000 Quality Nida = sleeping
+	                        Quality Siena = sleeping
+	                        Quality Me.Feel = Cold
+	2025-02-04 17:30:00.000 Quality End = Went Home
+	2025-02-04 17:40:00.000 Quality Nida = eating
+	                        Quality Siena = eating
+
+SO MeetBakkeveen has references.
+	2025-01-01 14:00:00.000 SO Reference Me
+	2025-01-01 15:00:00.000 SO Reference Place
+	2025-01-01 16:00:00.000 SO Reference Colour
+	2025-02-02 14:00:00.000 SO Reference Bakkeveen : Place
+	                        SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
+
+//////////////////////////////////////Black Dog 27 //////////////////////////////////////
+2025-02-04 16:10:00.000 Black Dog : Dog
+SO Black Dog has qualities.
+	2025-02-04 16:10:00.000 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
+	                        MeetBakkeveen => Size = Small
+	                        MeetBakkeveen => Breed = Terrier
+	                        MeetBakkeveen => Name = None
+	                        MeetBakkeveen => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	2025-02-04 16:30:00.000 MeetBakkeveen => Name = Donald
+
+SO Black Dog has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+
+//////////////////////////////////////T2 28 //////////////////////////////////////
+2025-02-04 17:40:00.000 T2 : Event
+SO T2 has qualities.
+	2025-02-04 17:40:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Place = Home
+		2025-01-01 19:00:00.000 SO Reference Home : Place
+	                        > Verb INHERIT_SENSUALOBJECT Word = True
+	                        > Verb Root = True
+	                        > Adverb INHERIT_SENSUALOBJECT Word = True
+	                        > faster INHERIT_SENSUALOBJECT AdVerb = True
+	                        > Cold INHERIT_SENSUALOBJECT AdVerb = True
+
+SO T2 has references.
+	2025-01-01 15:00:00.000 SO Reference Place
+	2025-01-01 19:00:00.000 SO Reference Home : Place
+	2025-02-04 17:40:00.000 SO Reference Word
+	                        SO Reference Verb : Word
+	                        SO Reference Adverb : Word
+	                        SO Reference faster
+	                        SO Reference Cold
+
+//////////////////////////////////////Word 29 //////////////////////////////////////
+2025-02-04 17:40:00.000 Word
+
+SO Word has references.
+	2025-02-04 17:40:00.000 SO Reference T2 : Event
+
+//////////////////////////////////////Verb 30 //////////////////////////////////////
+2025-02-04 17:40:00.000 Verb : Word
+SO Verb has qualities.
+	2025-02-04 17:40:00.000 T2 => INHERIT_SENSUALOBJECT Word = True
+	                        T2 => Root = True
+
+SO Verb has references.
+	2025-02-04 17:40:00.000 SO Reference T2 : Event
+
+//////////////////////////////////////Adverb 31 //////////////////////////////////////
+2025-02-04 17:40:00.000 Adverb : Word
+SO Adverb has qualities.
+	2025-02-04 17:40:00.000 T2 => INHERIT_SENSUALOBJECT Word = True
+
+SO Adverb has references.
+	2025-02-04 17:40:00.000 SO Reference T2 : Event
+
+//////////////////////////////////////faster 32 //////////////////////////////////////
+2025-02-04 17:40:00.000 faster
+SO faster has qualities.
+	2025-02-04 17:40:00.000 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+
+SO faster has references.
+	2025-02-04 17:40:00.000 SO Reference T2 : Event
+
+//////////////////////////////////////Cold 33 //////////////////////////////////////
+2025-02-04 17:40:00.000 Cold
+SO Cold has qualities.
+	2025-02-04 17:40:00.000 T2 => INHERIT_SENSUALOBJECT AdVerb = True
+
+SO Cold has references.
+	2025-02-04 17:40:00.000 SO Reference T2 : Event
+
+//////////////////////////////////////Generated 34 //////////////////////////////////////
+2025-03-23 10:43:51.955 Generated : Event
+SO Generated has qualities.
+	2025-03-23 10:43:51.955 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > come INHERIT_SENSUALOBJECT Verb = True
+	                        > come Root = come
+	                        > Nida coming = True
+	                        > coming INHERIT_SENSUALOBJECT Verb = True
+	                        > coming Root = com
+	                        > Me sit = Nida
+	                        > sit INHERIT_SENSUALOBJECT Verb = True
+	                        > Me come = Nida
+	                        > sit Root = sit
+	                        > sitting INHERIT_SENSUALOBJECT Verb = True
+	                        > sitting Root = sitt
+	                        > Nida eating = True
+	                        > eating INHERIT_SENSUALOBJECT Verb = True
+	                        > eating Root = eat
+	                        > Siena eating = True
+	                        > Nida swimming = True
+	                        > Nida sitting = True
+	                        > swimming INHERIT_SENSUALOBJECT Verb = True
+	                        > call Root = call
+	                        > Me call = Nida
+	                        > Me Feel = Cold
+	                        > Feel INHERIT_SENSUALOBJECT Verb = True
+	                        > Feel Root = Feel
+	                        > Nida faster = Siena
+	                        > Nida playing = Siena
+	                        > playing INHERIT_SENSUALOBJECT Verb = True
+	                        > playing Root = play
+	                        > call INHERIT_SENSUALOBJECT Verb = True
+	                        > Nida sleeping = True
+	                        > sleeping Root = sleep
+	                        > Siena playing = Nida
+	                        > Siena sleeping = True
+	                        > Nida playing = Black Dog
+	                        > Siena running = True
+	                        > running INHERIT_SENSUALOBJECT Verb = True
+	                        > running Root = runn
+	                        > sleeping INHERIT_SENSUALOBJECT Verb = True
+	                        > swimming Root = swimm
+
+SO Generated has references.
+	2025-01-01 14:00:00.000 SO Reference Me
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-04 17:40:00.000 SO Reference faster
+	2025-03-23 10:43:51.955 SO Reference Feel : Verb
+	                        SO Reference playing : Verb
+	                        SO Reference sleeping : Verb
+	                        SO Reference running : Verb
+	                        SO Reference call : Verb
+	                        SO Reference come : Verb
+	                        SO Reference coming : Verb
+	                        SO Reference sit : Verb
+	                        SO Reference sitting : Verb
+	                        SO Reference eating : Verb
+	                        SO Reference swimming : Verb
+
+//////////////////////////////////////Feel 35 //////////////////////////////////////
+2025-03-23 10:43:51.955 Feel : Verb
+SO Feel has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = Feel
+		2025-03-23 10:43:51.955 SO Reference Feel : Verb
+
+SO Feel has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////playing 36 //////////////////////////////////////
+2025-03-23 10:43:51.955 playing : Verb
+SO playing has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = play
+
+SO playing has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////sleeping 37 //////////////////////////////////////
+2025-03-23 10:43:51.955 sleeping : Verb
+SO sleeping has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = sleep
+
+SO sleeping has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////running 38 //////////////////////////////////////
+2025-03-23 10:43:51.955 running : Verb
+SO running has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = runn
+
+SO running has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////call 39 //////////////////////////////////////
+2025-03-23 10:43:51.955 call : Verb
+SO call has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = call
+		2025-03-23 10:43:51.955 SO Reference call : Verb
+
+SO call has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////come 40 //////////////////////////////////////
+2025-03-23 10:43:51.955 come : Verb
+SO come has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = come
+		2025-03-23 10:43:51.955 SO Reference come : Verb
+
+SO come has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////coming 41 //////////////////////////////////////
+2025-03-23 10:43:51.955 coming : Verb
+SO coming has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = com
+
+SO coming has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////sit 42 //////////////////////////////////////
+2025-03-23 10:43:51.955 sit : Verb
+SO sit has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = sit
+		2025-03-23 10:43:51.955 SO Reference sit : Verb
+
+SO sit has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////sitting 43 //////////////////////////////////////
+2025-03-23 10:43:51.955 sitting : Verb
+SO sitting has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = sitt
+
+SO sitting has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////eating 44 //////////////////////////////////////
+2025-03-23 10:43:51.955 eating : Verb
+SO eating has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = eat
+
+SO eating has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+//////////////////////////////////////swimming 45 //////////////////////////////////////
+2025-03-23 10:43:51.955 swimming : Verb
+SO swimming has qualities.
+	2025-03-23 10:43:51.955 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = swimm
+
+SO swimming has references.
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+
+Print SOs. Selection from 45 SOs filtered on Dog
+//////////////////////////////////////Nida 21 //////////////////////////////////////
+2025-02-02 14:00:00.000 Nida : Dog
+SO Nida has qualities.
+	2025-02-02 14:00:00.000 MeetNida => Tail = Short
+	                        MeetNida => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	                        MeetNida => Name = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        MeetNida => Name = Nidaatje
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
+	                        DogsAreDogs => Breed = None
+	                        DogsAreDogs => Size = Medium
+	2025-02-04 16:00:00.000 MeetBakkeveen => faster = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        MeetBakkeveen => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	2025-03-23 10:43:51.955 Generated => sitting = True
+	                        Generated => eating = True
+	                        Generated => faster = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        Generated => playing = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        Generated => sleeping = True
+	                        Generated => playing = Black Dog
+		2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
+	                        Generated => coming = True
+	                        Generated => swimming = True
+
+SO Nida has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	2025-02-02 14:00:00.000 SO Reference MeetNida : Event
+	2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+	2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
+	2025-02-04 17:40:00.000 SO Reference faster
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+	                        SO Reference playing : Verb
+
+//////////////////////////////////////Siena 23 //////////////////////////////////////
+2025-02-03 14:00:00.000 Siena : Dog
+SO Siena has qualities.
+	2025-02-03 14:00:00.000 MeetSiena => Bark = Noisy
+	                        MeetSiena => Name = Siena
+		2025-02-03 14:00:00.000 SO Reference Siena : Dog
+	                        MeetSiena => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	                        MeetSiena => Colour = White
+		2025-01-01 16:00:00.000 SO Reference White : Colour
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
+	                        DogsAreDogs => Breed = None
+	                        DogsAreDogs => Size = Large
+	2025-03-23 10:43:51.955 Generated => playing = Nida
+		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	                        Generated => sleeping = True
+	                        Generated => running = True
+	                        Generated => eating = True
+
+SO Siena has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	                        SO Reference White : Colour
+	2025-02-02 14:00:00.000 SO Reference Nida : Dog
+	2025-02-03 14:00:00.000 SO Reference MeetSiena : Event
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+	2025-03-23 10:43:51.955 SO Reference Generated : Event
+	                        SO Reference playing : Verb
+	                        SO Reference sleeping : Verb
+	                        SO Reference eating : Verb
+
+//////////////////////////////////////Dog 25 //////////////////////////////////////
+2025-02-04 14:00:00.000 Dog : Animal
+SO Dog has qualities.
+	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Animal = True
+	                        DogsAreDogs => Breed = True
+	                        DogsAreDogs => Size = True
+	                        MeetNida => FrontLeftLeg = True
+	                        MeetNida => BackLeftLeg = True
+	                        MeetNida => FrontRightLeg = True
+	                        MeetNida => BackRightLeg = True
+	                        MeetNida => Tail = True
+	                        MeetNida => Bark = True
+	                        MeetNida => LeftEar = True
+	                        MeetNida => RightEar = True
+	                        MeetNida => Colour = True
+	                        MeetNida => Name = True
+
+SO Dog has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+
+//////////////////////////////////////Black Dog 27 //////////////////////////////////////
+2025-02-04 16:10:00.000 Black Dog : Dog
+SO Black Dog has qualities.
+	2025-02-04 16:10:00.000 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
+	                        MeetBakkeveen => Size = Small
+	                        MeetBakkeveen => Breed = Terrier
+	                        MeetBakkeveen => Name = None
+	                        MeetBakkeveen => Colour = Black
+		2025-01-01 16:00:00.000 SO Reference Black : Colour
+	2025-02-04 16:30:00.000 MeetBakkeveen => Name = Donald
+
+SO Black Dog has references.
+	2025-01-01 16:00:00.000 SO Reference Colour
+	                        SO Reference Black : Colour
+	2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
+
+////////////////////////////// QuerySOs of Event//////////////////////////////////////
+Query 'Event' for 'Dog'
+ Parent: 2025-02-02 14:00:00.000 MeetNida Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-03 14:00:00.000 Siena
+ Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-03 14:00:00.000 Siena
+ Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-04 14:00:00.000 Dog
+ Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
+ Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 Black Dog
+ Parent: 2025-03-23 10:43:51.955 Generated Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-03-23 10:43:51.955 Generated Child: 2025-02-03 14:00:00.000 Siena
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 166
+		SO Black Dog with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Dog with SQ Colour = True
+	
+	SWITCH from Dog.Colour using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+	
+	SWITCH from T2.Place using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Home with SQ Distance = 0
+	
+	SWITCH from Home.Distance using reference InitAnimal to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 90
+		SO MeetNida with SQ End = Went Home
+		SO Event with SQ End = True
+		SO MeetBakkeveen with SQ End = Went Home
+	
+	SWITCH from MeetBakkeveen.End using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 221
+		SO Feel with SQ Root = Feel
+		SO Verb with SQ Root = True
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference playing to playing.Root
+		SO playing with SQ Root = play
+	
+	SWITCH from playing.Root using reference Generated to Me.sit
+		SO Me with SQ sit = Nida
+	
+	SWITCH from Me.sit using reference InitEvent to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO M with SQ Gender = Female
+	
+	SWITCH from M.Gender using reference InitAnimal to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 190
+		SO Black Dog with SQ Name = Donald
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 203
+		SO Siena with SQ eating = True
+		SO Nida with SQ eating = True
+	
+	SWITCH from Nida.eating using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+	
+	SWITCH from T2.Place using reference Home to Home.Distance
+		SO Home with SQ Distance = 0
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference InitEvent to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO M with SQ Gender = Female
+	
+	SWITCH from M.Gender using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
+		SO Me with SQ Name = Robin
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+		SO Black Dog with SQ Name = None
+	
+	SWITCH from Black Dog.Name using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 17
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 86
+		SO Bakkeveen with SQ Birch Trees = True
+	
+	SWITCH from Bakkeveen.Birch Trees using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
+		SO Me with SQ Name = Robin
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+		SO Black Dog with SQ Name = None
+	
+	SWITCH from Black Dog.Name using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 86
+		SO Bakkeveen with SQ Birch Trees = True
+	
+	SWITCH from Bakkeveen.Birch Trees using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
+		SO Me with SQ Name = Robin
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+		SO Black Dog with SQ Name = None
+	
+	SWITCH from Black Dog.Name using reference MeetBakkeveen to MeetBakkeveen.Weather
+		SO MeetBakkeveen with SQ Weather = Cold
+		SO Event with SQ Weather = True
+		SO MeetNida with SQ Weather = Cold
+		SO MeetSiena with SQ Weather = Cold
+	
+	SWITCH from MeetSiena.Weather using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 22
+		SO Black with SQ Secondary = False
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 66
+		SO TreasureIsland with SQ Character = Long John Silver
+		SO Book with SQ Character = True
+	
+	SWITCH from Book.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+	
+	SWITCH from TreasureIsland.Author using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Black Dog
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Billy Bones
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 142
+		SO Siena with SQ Breed = None
+		SO Nida with SQ Breed = None
+		SO Dog with SQ Breed = True
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black to Black.Primary
+		SO Black with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Black.Primary
+		SO Black with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 228
+		SO sit with SQ Root = sit
+		SO Verb with SQ Root = True
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 116
+		SO MeetSiena with SQ Siena = playing Nida
+		SO MeetBakkeveen with SQ Siena = playing Nida
+	
+	SWITCH from MeetBakkeveen.Siena using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 10
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Generated to come.Root
+		SO come with SQ Root = come
+		SO Verb with SQ Root = True
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference Black to Black.Primary
+		SO Black with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Black.Primary
+		SO Black with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 138
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black to Black.Primary
+		SO Black with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Black.Primary
+		SO Black with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 31
+		SO Brown with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+	
+	SWITCH from Black.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Brown.Primary
+		SO Brown with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 100
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black to Black.Primary
+		SO Black with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Black.Primary
+		SO Black with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 176
+		SO MeetBakkeveen with SQ Nida = sitting
+		SO MeetSiena with SQ Nida = sleeping
+	
+	SWITCH from MeetSiena.Nida using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference DogsAreDogs to DogsAreDogs.Place
+		SO DogsAreDogs with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+	
+	SWITCH from T2.Place using reference Verb to Verb.Root
+		SO Verb with SQ Root = True
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference Black to Black.Primary
+		SO Black with SQ Primary = False
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+	
+	SWITCH from Brown.Secondary using reference InitColour to Black.Primary
+		SO Black with SQ Primary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 184
+		SO MeetBakkeveen with SQ Nida = eating
+		SO MeetSiena with SQ Nida = sleeping
+	
+	SWITCH from MeetSiena.Nida using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 66
+		SO TreasureIsland with SQ Character = Long John Silver
+		SO Book with SQ Character = True
+	
+	SWITCH from Book.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+	
+	SWITCH from TreasureIsland.Author using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Black Dog
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Billy Bones
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 62
+		SO Book with SQ Character = True
+		SO TreasureIsland with SQ Character = Black Dog
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+	
+	SWITCH from TreasureIsland.Author using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Billy Bones
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Long John Silver
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 91
+		SO Bakkeveen with SQ Birch Trees = True
+	
+	SWITCH from Bakkeveen.Birch Trees using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
+		SO Me with SQ Name = Robin
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+		SO Black Dog with SQ Name = None
+	
+	SWITCH from Black Dog.Name using reference MeetBakkeveen to MeetBakkeveen.Weather
+		SO MeetBakkeveen with SQ Weather = Cold
+		SO Event with SQ Weather = True
+		SO MeetNida with SQ Weather = Cold
+		SO MeetSiena with SQ Weather = Cold
+	
+	SWITCH from MeetSiena.Weather using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 1
+		SO Event with SQ Weather = True
+		SO MeetNida with SQ Weather = Cold
+		SO MeetSiena with SQ Weather = Cold
+		SO MeetBakkeveen with SQ Weather = Cold
+	
+	SWITCH from MeetBakkeveen.Weather using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Home with SQ Distance = 0
+	
+	SWITCH from Home.Distance using reference InitAnimal to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 145
+		SO Dog with SQ Size = True
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Black Dog with SQ Size = Small
+	
+	SWITCH from Black Dog.Size using reference MeetBakkeveen to MeetBakkeveen.Weather
+		SO MeetBakkeveen with SQ Weather = Cold
+		SO Event with SQ Weather = True
+		SO MeetNida with SQ Weather = Cold
+		SO MeetSiena with SQ Weather = Cold
+	
+	SWITCH from MeetSiena.Weather using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 207
+		SO Me with SQ call = Nida
+	
+	SWITCH from Me.call using reference Generated to come.Root
+		SO come with SQ Root = come
+		SO Verb with SQ Root = True
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference playing to playing.Root
+		SO playing with SQ Root = play
+	
+	SWITCH from playing.Root using reference Generated to Me.sit
+		SO Me with SQ sit = Nida
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 117
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 188
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 121
+		SO Siena with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Dog with SQ BackLeftLeg = True
+	
+	SWITCH from Dog.BackLeftLeg using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 70
+		SO TreasureIsland with SQ Character = Black Dog
+		SO Book with SQ Character = True
+	
+	SWITCH from Book.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+	
+	SWITCH from TreasureIsland.Author using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Black Dog
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Billy Bones
+	
+	SWITCH from TreasureIsland.Character using reference InitBooks to TreasureIsland.Character
+		SO TreasureIsland with SQ Character = Long John Silver
+
+
+SOs RandomSQs 
+	Using 232 qualities and starting with index = 145
+		SO Dog with SQ Size = True
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Black Dog with SQ Size = Small
+	
+	SWITCH from Black Dog.Size using reference Colour to Colour.Primary
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Primary
+		SO Colour with SQ Primary = True
+	
+	SWITCH from Colour.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
