@@ -1,0 +1,358 @@
+//This is a comment.
+
+//Output commands.
+DisplaySOs *	//display all the SOs with SQs.
+DisplaySOs Dog  //display the SOs with SQs which inherit from Dog.
+
+//An output command.
+QuerySOs Event, Dog  //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
+
+//This is a time stamp.
+Time 2025-01-01 12:00:00.000
+
+///////////////////////////////////////////
+//An SO is defined by a name followed by {.
+	Event {
+	Place
+	Weather
+	End
+	}
+
+
+///////////////////////////////////////////	
+//An SO which inherits from another SO is defined by a name followed by : and the name of the inherited SO followed by {.
+InitEvent : Event {
+
+//This is a time stamp:  
+Time = 2025-01-01 14:00:00.000
+
+//This is an SO defined within the Init Event. Me is derived from Person which has not been defined yet.
+	Me : Person {
+			//An SQ called Gender with a value Male.
+			Gender = Male
+			//Another SQ without an explicit value. The default value is applied in this case and is True.
+			Emotion
+			//Another SQ with value True.
+			Feel
+			Name = Robin
+	}	
+Time 2025-01-01 15:00:00.000
+//another SO	
+	Place {
+	Distance
+	}
+
+}
+
+///////////////////////////////////////////	
+Time 2025-01-01 16:00:00.000
+InitColour : Event {	
+//define an 'abstract' class Colour and then some colours. 
+//Bit of an experiment here which does not do much in what follows.	
+	Colour {
+	Primary
+	Secondary
+	}
+	
+	White : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+	Black : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+//	Red : Colour {
+//	Primary = True
+//	Secondary = False
+//	}
+//	Yellow : Colour {
+//	Primary = True
+//	Secondary = False
+//	}
+//	Blue : Colour {
+//	Primary = True
+//	Secondary = False
+//	}
+	
+//	Orange : Colour {
+//	Primary = False
+//	Secondary = True
+//	}
+//	Green : Colour {
+//	Primary = False
+//	Secondary = True
+//	}
+//	Purple : Colour {
+//	Primary = False
+//	Secondary = True
+//	}
+	Brown : Colour {
+	Primary = False
+	Secondary = False
+	}
+	
+}	
+	
+Time 2025-01-01 17:00:00.000	
+
+///////////////////////////////////////////
+InitAnimal : Event {
+//another SO in Init Event.
+	Animal {
+		Brain
+		LeftEar
+		RightEar
+		Gender
+	}
+
+//another SO derived from Place in Event Init.
+	Dino Bos : Place {
+		
+		Deer : Animal
+		Hare : Animal
+	}
+	
+Time 2025-01-01 18:00:00.000
+//another SO in Init Event. Person is derived from Animal. Person has already be used see Me : Person above.		
+	Person : Animal {
+		LeftLeg
+		RightLeg
+		LeftArm
+		RightArm
+	}
+
+Time 2025-01-01 19:00:00.000	
+//another SO derived from Place in Event Init.	
+	Home : Place {
+			Distance = 0
+			WoodFire
+			Kitchen
+	}
+	
+Time = 2025-01-01 20:00:00.000	
+//another SO derived from Person in Event Init.	
+	M : Person {
+			Gender = Female
+	}
+//Closing bracket defining the end of Event InitBooks.		
+}
+
+Time = 2025-01-02 20:00:00.000	
+///////////////////////////////////////////
+InitBooks : Event {	
+	
+//another SO	
+	Book {
+	Author
+	Character
+	}	
+	
+	TreasureIsland : Book
+	{
+	Author = Robert Louis Stevenson
+	Character = Black Dog
+	Character = Billy Bones
+	Character = Long John Silver
+	}
+	
+//Closing bracket defining the end of Event InitBooks.	
+}
+	
+	
+Time 2025-02-02 14:00:00.000
+
+///////////////////////////////////////////
+MeetNida : Event {
+		//override the Weather SQ which was defined Weather = True when Event was defined above.
+		Weather = Cold
+		Busy
+		
+		//add a new SO called Bakkeveen  and which is derived from Place
+		Bakkeveen : Place {
+		Birch Trees
+		Sand dunes
+		}
+		
+		//Set the SQ of the MeetNida Event to SO Bakkeveen.
+		Place = Bakkeveen
+		
+		//Add existing SO M to the Event.
+		M {	
+		}
+
+		//Add new SO Nida to the Event. Nida is not yet derived from Dog.
+		Nida {
+		FrontLeftLeg
+		BackLeftLeg
+		FrontRightLeg
+		BackRightLeg
+		Tail = Short
+		Bark
+		LeftEar
+		RightEar
+		Colour = Black
+		
+		//this does not work because of self-reference
+		Name = Nida
+		Name = Nidaatje
+		}
+		
+//decided not to include Name.Name = Name in the input syntax.
+		//Me.Feel = Cold
+		
+		//An existing or new SO.SQ is set to a Value in the Event.
+		Me = Feel Cold
+		
+		End = Went Home
+//Closing bracket defining the end of Event MeetNida.	
+}
+	
+Time 2025-02-03 14:00:00.000
+
+///////////////////////////////////////////	
+MeetSiena : Event {
+		Weather = Cold
+		Place = Dino Bos
+		
+		//Add new SO to the Event.
+		Siena {
+		FrontLeftLeg
+		BackLeftLeg
+		FrontRightLeg
+		BackRightLeg
+		Tail
+		Bark = Noisy
+		LeftEar
+		RightEar
+		Name = Siena
+		Colour = Black
+		Colour = White
+		}
+		
+		//Nida {	
+		//}
+		
+		//add some SQs to the Event.
+		Nida = faster Siena
+		Nida = playing Siena
+		Nida = sleeping
+		Siena = playing Nida
+		Siena = sleeping
+//Closing bracket defining the end of Event MeetSiena.			
+}
+	
+Time 2025-02-04 14:00:00.000
+
+///////////////////////////////////////////					
+//This Event simulates me thinking about Nida and Siena and realising that a type Dog exists and Nida and Siena are both examples of this type.
+//OK I may have done that when I was about 5 years old!
+DogsAreDogs	: Event {
+		Place = Home
+		Dog : Animal {    //At home I realise that Nida and Siena are a type of Animal called a Dog.
+		Breed
+		Size
+		}
+		
+		Nida : Dog	{	//Because Nida already exists the True qualities are moved to Dog
+		Breed = None
+		Size = Medium
+		}
+		
+		Siena : Dog	{	//The True qualitites of Dog are removed from Siena.
+		Breed = None
+		Size = Large
+		}
+//Closing bracket defining the end of Event.		
+}
+
+Time 2025-02-04 15:00:00.000
+
+///////////////////////////////////////////
+//A new Event with a new Dog being added to the mix.
+MeetBakkeveen : Event {
+		Weather = Cold
+		Weather = Snow
+		Place = Bakkeveen
+		Siena {	
+		}
+		Nida = faster Siena
+
+Time 2025-02-04 16:00:00.000			
+		Nida = playing Siena
+		Siena = playing Nida
+		Nida = faster Siena
+		Nida {
+		faster = Siena
+		Colour = Black
+		}
+
+Time 2025-02-04 16:10:00.000		
+		Black Dog : Dog	{
+			Size = Small
+			Breed = Terrier
+			Name = None
+			Colour = Black
+		}
+		
+		Nida = playing Black Dog
+		Siena = running
+Time 2025-02-04 16:30:00.000		
+		Me = call Nida
+Time 2025-02-04 16:30:30.000
+		Me = come Nida
+Time 2025-02-04 16:30:45.000
+		Nida = coming
+Time 2025-02-04 16:31:00.000		
+		Me = sit Nida
+Time 2025-02-04 16:31:10.000				
+		Nida = sitting
+Time 2025-02-04 16:32:00.000				
+		Nida = eating
+		Siena = eating
+
+Time 2025-02-04 16:30:00.000		
+//At around this point I learn that the Black Dog is called Donald.
+		Black Dog {
+		Name = Donald
+		}
+		
+Time 2025-02-04 16:45:00.000
+//A quality of Nida which occurred during the MeetBakkeveen : Event.
+		Nida = swimming  
+		
+Time 2025-02-04 17:00:00.000			
+		Nida = sleeping
+		Siena = sleeping
+		Me.Feel = Cold
+Time 2025-02-04 17:30:00.000		
+		End = Went Home
+Time 2025-02-04 17:40:00.000				
+		Nida = eating
+		Siena = eating
+//Closing bracket defining the end of Event.		
+}
+
+///////////////////////////////////////////
+//Another 'thinking' Event where I begin to learn about types of speech.
+T2 : Event {
+Place = Home
+Word {
+}
+
+Verb : Word {
+Root = True
+}
+Adverb : Word {
+}
+
+
+faster : AdVerb {
+}
+Cold : AdVerb {
+}
+//Closing bracket defining the end of Event.
+}
+
