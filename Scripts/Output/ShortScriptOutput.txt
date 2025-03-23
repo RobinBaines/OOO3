@@ -1,0 +1,823 @@
+Create generated.txt by querying 'Event'.
+Created 2 new events in generated.txt from 1 qualities.
+
+Print SOs. Selection from 8 SOs filtered on *
+//////////////////////////////////////Init 1 //////////////////////////////////////
+2025-01-01 12:00:00.000 Init : Event
+SO Init has qualities.
+	2025-01-01 12:00:00.000 > Me Gender = Male
+	                        > Fons Gender = Male
+	                        Quality Fons = visiting Me
+	2025-01-01 14:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Animal Brain = True
+	                        > Animal LeftEar = True
+	                        > Animal RightEar = True
+	                        > Animal Gender = True
+
+SO Init has references.
+	2025-01-01 12:00:00.000 SO Reference Me
+	                        SO Reference Fons
+	                        SO Reference Place
+	2025-01-01 13:00:00.000 SO Reference Event
+	2025-01-01 14:00:00.000 SO Reference Animal
+
+//////////////////////////////////////Me 2 //////////////////////////////////////
+2025-01-01 12:00:00.000 Me
+SO Me has qualities.
+	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
+	                        Init => Gender = Male
+	                        Init => Emotion = True
+	                        Init => Feel = True
+
+SO Me has references.
+	2025-01-01 12:00:00.000 SO Reference Init : Event
+
+//////////////////////////////////////Fons 3 //////////////////////////////////////
+2025-01-01 12:00:00.000 Fons
+SO Fons has qualities.
+	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
+	                        Init => Gender = Male
+	                        Init => Emotion = True
+	                        Init => Feel = True
+	2025-03-23 11:45:09.056 Generated => visiting = Me
+		2025-01-01 12:00:00.000 SO Reference Me
+
+SO Fons has references.
+	2025-01-01 12:00:00.000 SO Reference Init : Event
+	                        SO Reference Me
+	2025-03-23 11:45:09.056 SO Reference Generated : Event
+
+//////////////////////////////////////Place 4 //////////////////////////////////////
+2025-01-01 12:00:00.000 Place
+SO Place has qualities.
+	2025-01-01 12:00:00.000 Init => Distance = True
+
+SO Place has references.
+	2025-01-01 12:00:00.000 SO Reference Init : Event
+
+//////////////////////////////////////Event 5 //////////////////////////////////////
+2025-01-01 13:00:00.000 Event
+SO Event has qualities.
+	2025-01-01 13:00:00.000 Init => Place = True
+	                        Init => Weather = True
+	                        Init => End = True
+	2025-01-01 14:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
+	                        Init => Gender = True
+	                        Init => Emotion = True
+	                        Init => Feel = True
+	                        Init => Fons = True
+	                        Init => Distance = True
+
+SO Event has references.
+	2025-01-01 12:00:00.000 SO Reference Init : Event
+	                        SO Reference Place
+	                        SO Reference Fons
+
+//////////////////////////////////////Animal 6 //////////////////////////////////////
+2025-01-01 14:00:00.000 Animal
+SO Animal has qualities.
+	2025-01-01 14:00:00.000 Init => Brain = True
+	                        Init => LeftEar = True
+	                        Init => RightEar = True
+	                        Init => Gender = True
+
+SO Animal has references.
+	2025-01-01 12:00:00.000 SO Reference Init : Event
+
+//////////////////////////////////////Generated 7 //////////////////////////////////////
+2025-03-23 11:45:09.056 Generated : Event
+SO Generated has qualities.
+	2025-03-23 11:45:09.056 Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Fons visiting = Me
+	                        > visiting INHERIT_SENSUALOBJECT Verb = True
+	                        > visiting Root = visit
+
+SO Generated has references.
+	2025-01-01 12:00:00.000 SO Reference Fons
+	2025-03-23 11:45:09.056 SO Reference visiting
+
+//////////////////////////////////////visiting 8 //////////////////////////////////////
+2025-03-23 11:45:09.056 visiting
+SO visiting has qualities.
+	2025-03-23 11:45:09.056 Generated => INHERIT_SENSUALOBJECT Verb = True
+	                        Generated => Root = visit
+
+SO visiting has references.
+	2025-03-23 11:45:09.056 SO Reference Generated : Event
+
+////////////////////////////// QuerySOs of Event//////////////////////////////////////
+Query 'Event' for 'Animal'
+ Parent: 2025-01-01 12:00:00.000 Init Child: 2025-01-01 14:00:00.000 Animal
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 22
+		SO Event with SQ Distance = True
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 28
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 8
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 27
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 9
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 5
+		SO Animal with SQ RightEar = True
+	
+	SWITCH from Animal.RightEar using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Fons to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Fons to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 28
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 1
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Generated to visiting.Root
+		SO visiting with SQ Root = visit
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 4
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 17
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Event with SQ Emotion = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 15
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 12
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 21
+		SO Event with SQ Fons = True
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 7
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Me to Me.Emotion
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Fons to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Generated to visiting.Root
+		SO visiting with SQ Root = visit
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 23
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 7
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 6
+		SO Animal with SQ Gender = True
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 6
+		SO Animal with SQ Gender = True
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 15
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 0
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 11
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Fons to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 19
+		SO Event with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+	
+	SWITCH from Fons.Emotion using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 5
+		SO Animal with SQ RightEar = True
+	
+	SWITCH from Animal.RightEar using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+	
+	SWITCH from Event.Distance using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 21
+		SO Event with SQ Fons = True
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 28
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 11
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Event with SQ Emotion = True
+	
+	SWITCH from Event.Emotion using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Event with SQ Feel = True
+	
+	SWITCH from Event.Feel using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 18
+		SO Event with SQ Gender = True
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 23
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+		SO Event with SQ Fons = True
+	
+	SWITCH from Event.Fons using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Me to Me.Gender
+		SO Me with SQ Gender = Male
+	
+	SWITCH from Me.Gender using reference Init to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference Init to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Animal.RightEar
+		SO Animal with SQ RightEar = True
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 27
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+	
+	SWITCH from Fons.Gender using reference Generated to visiting.Root
+		SO visiting with SQ Root = visit
+
+
+SOs RandomSQs 
+	Using 30 qualities and starting with index = 24
+		SO Animal with SQ LeftEar = True
+	
+	SWITCH from Animal.LeftEar using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Event with SQ Gender = True
+	
+	SWITCH from Event.Gender using reference Place to Place.Distance
+		SO Place with SQ Distance = True
+		SO Event with SQ Distance = True
+

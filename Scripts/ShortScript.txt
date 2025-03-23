@@ -1,0 +1,59 @@
+//This is a comment.
+//Output commands.
+DisplaySOs *	//display all the SOs with SQs.
+
+//An output command.
+QuerySOs Event, Animal //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
+
+//An SO is defined by a name followed by {.
+Init {
+//This is a time stamp: 
+Time = 2025-01-01 12:00:00.000
+
+//This is an SO defined within the Init Event. Me is derived from Person which has not been defined yet.
+	Me : Person {
+			//An SQ called Gender with a value Male.
+			Gender = Male
+			//Another SQ without an explicit value. The default value is applied in this case and is True.
+			Emotion
+			//Another SQ with value True.
+			Feel
+	}	
+	Fons : Person {
+			Gender = Male
+			//Another SQ without an explicit value. The default value is applied in this case and is True.
+			Emotion
+			//Another SQ with value True.
+			Feel
+	}
+
+Time = 2025-01-01 12:00:00.000
+ Fons = visiting Me
+ 
+//another SO	
+	Place {
+	Distance
+	}
+
+Time 2025-01-01 13:00:00.000
+//another SO in Init Event.
+	Event {
+	Place
+	Weather
+	End
+	}
+
+Time 2025-01-01 14:00:00.000
+
+//The existing SO Init is derived from Event.
+Init : Event			//INHERIT_SENSUALOBJECT
+
+//another SO in Init Event.
+	Animal {
+		Brain
+		LeftEar
+		RightEar
+		Gender
+	}
+	
+}

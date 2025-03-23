@@ -16,6 +16,8 @@ Time 2025-01-01 12:00:00.000
 	End
 	}
 
+//////////////////////////////////////
+//Define some inheritable objects in an Init Event.
 Init : Event {
 
 	Battle {
@@ -62,10 +64,19 @@ Init : Event {
 		}		
 		
 }	
-	
+
+//////////////////////////////////////
+//Create the main Event called ACW (American Civil War). 
+//Because I already new something about this war I have used https://en.wikipedia.org/wiki/List_of_American_Civil_War_battles to create an ACW SO with referenced 
+//SOs as a very abbreviated summary.	
+//The CWSAC (the Civil War Sites Advisory Commission ) rating is as follows:  A – Decisive, Class B – Major, Class C – Formative, Class D – Limited
+//There are about 45 'A' (decisive) battles in the list on the above site!
+
 ACW : Event {
 Place = USA
-Time 1861-04-12 17:00:00.000	
+Time 1861-04-12 17:00:00.000
+
+//A list of generals. Their exact rank changed during the war and I have not tried to summarize accurately. 
 Beauregard : Confed {
 	}
 Price : Confed {
@@ -106,7 +117,8 @@ Thomas : Union {
 Meade : Union {
 	}	
 					
-			
+
+//Presidents. 			
 Time 1857-03-04 17:00:00.000	
 Buchanen : President	{
 InOffice = 1857-1861
@@ -123,14 +135,7 @@ End
 Time 1865-04-15 17:00:00.000
 }
 
-
-Time 1863-01-01 17:00:00.000	
-Emancipation Proclamation : Executive Order  {
-By = Lincoln
-}
-
-//January 1, 1863, he issued the Emancipation Proclamation
-	
+//A list of battles.	
 Time 1861-04-12 17:00:00.000	
 Fort Sumter : Confed_victory {
 		CWSAC = Decisive
@@ -260,19 +265,54 @@ Appomattox : Union {
 
 }
 
+///////////////////////////////////////////////////////////////////////
+//I read section from GH book Object Oriented Ontology on the ACW.
+//I have tried to follow his analysis by augmenting the above SOs.
+//This is my interpretation of his analysis and some of the assumptions I made are in the comments.
 OOO_Analysis : Event {
-Symbiosis {
 
+//Symbiosis is one or several SOs which combine and cause irreversibe and transformative changes to the main SO, in this case the ACW. 
+//They do not/should not be a literal combination. A half failed combination is also a good symbiosis.
+Symbiosis {
+SO1 = True
+SO2 = True
 }
 
+//The main Object undergoes several state changes as it progresses from starting to its death.
+//After the start the Object ripens or as alternative state; develops.
+//At a certain stage it is Mature. The Object is mature when there is no room for further symbiosis.
+//Decadence and Death follow.
+
+//I was ot able to work out exactly which sy
 ACW {
 Start = Fort Sumter
 }
 ACW {
 End = Appomattox
 }
-//Symbiotic is not a literal combination. Half failed combination. Transformative irrecversible bonds.
+
 //Development/ripening
+
+
+//January 1, 1863, the Emancipation Proclamation
+Time 1863-01-01 17:00:00.000
+	
+Emancipation Proclamation : Executive Order  {
+By = Lincoln
+}
+
+Symbiosis1 : Symbiosis {
+SO1 = Grant
+SO2 = Lee
+	ACW = Mature
+}
+
+
+Symbiosis2 : Symbiosis {
+SO1 = Emancipation Proclamation
+SO2 = False
+	ACW = Decadence
+}
 
 
 //Time 1864-03-02 17:00:00.000	
