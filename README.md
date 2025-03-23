@@ -41,7 +41,7 @@ has no point at all. On the other hand some of the results and conclusions look 
 
 Use by entering 
 
-        OOO3.exe script.txt > t.txt 
+        OOO3.exe Script.txt > ScriptOutput.txt 
 on the command line.
 
 Or if using the Scripts folder
