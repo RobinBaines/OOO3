@@ -88,9 +88,12 @@ Inheritance can be thought of as a 'type of' relationship: Nida is a type of Dog
 The convention 'Nida : Dog'  and 'Dog : Animal' is used to represent inheritance in a script.
 
 A predefined class hierarchy is used for the class Sensual Object.
+
     SensualObject inherits from BaseClass and
+    
     SensualQuality also inherits from BaseClass
-    BaseClass encapsulates properties which are part of the SensualObject and the SensualQuality. For example SensualObject and SensualQuality 
+    
+BaseClass encapsulates properties which are part of the SensualObject and the SensualQuality. For example SensualObject and SensualQuality 
 both have references to SOs. This list of references is stored in the BaseClass.
 
 In the Object Oriented Software Language called c#, classes are predefined and objects are instantiated from the classes when the software runs.
@@ -115,15 +118,18 @@ The following captures an observation about an SO which occured during the Event
     Nida = swimming //is a quality of Nida which occurred during the MeetBakkeveen : Event.
 	
 Slightly different is that I may realise that an SO has an SQ during an Event:	
-		Nida {
+		
+  	Nida {
+  
 		FrontLeftLeg	
 
 The SQ is added to Nida and an SQ is added to the Event to record that happening (see redundancy below).
 
 Sometimes an SQ may refer to an SO. For example
 
-MeetBakkeveen: Event {
-        Place = Bakkeveen
+	MeetBakkeveen: Event {
+
+        	Place = Bakkeveen
 
 Bakkeveen is a pre-existing SO defined as Bakkeveen : Place
 In this case the reference is stored in the SQ of the MeetBakkeveen Event.
@@ -145,15 +151,20 @@ The Event object used in this program could be used to coordinate this sort of i
 While distinct events may occur in these types of Event, processes are also common.
 The script language does not support descriptions of processes except approximately by using time stamps. For example growth of a crystal
 could be described by 
+
     Crystal = size 5
+    
     Time 2000-02-04 06:30:00.000
+    
     Crystal = size 6
+    
     Time 2025-02-04 20:30:00.000
 
 6. No forward referencing. The program processes the script step by step without forward references.
 For example: 
 
 //The class Event is defined with several SQ's.
+
 	Event {
 	Place
 	Weather
@@ -161,7 +172,8 @@ For example:
 	}
 
 //Only then can Init be defined as a type of Event.
-Init : Event {			//Init is a type of Event
+
+	Init : Event {			//Init is a type of Event
 
 
 INITIAL CONCLUSIONS
@@ -178,58 +190,62 @@ These subroutines use similar approaches by iterating through SOs and SQs.
     SOs.PrintSOs("Dog"); Displays SOs derived from Dog.
 	Here is the SO Nida at the end of the script (Nida undergoes several changes during the script; check out the time stamps.
 	
+	//////////////////////////////////////Nida 21 //////////////////////////////////////
 	2025-02-02 14:00:00.000 Nida : Dog
 	SO Nida has qualities.
-		2025-02-02 14:00:00.011 MeetNida => Tail = Short
-		2025-02-02 14:00:00.011 MeetNida => Colour = Black
-			2025-01-01 14:00:00.000 SO Reference Black : Colour
-		2025-02-02 14:00:00.011 MeetNida => Name = Nida
+		2025-02-02 14:00:00.000 MeetNida => Tail = Short
+		                        MeetNida => Colour = Black
+			2025-01-01 16:00:00.000 SO Reference Black : Colour
+		                        MeetNida => Name = Nida
 			2025-02-02 14:00:00.000 SO Reference Nida : Dog
-		2025-02-02 14:00:00.011 MeetNida => Name = Nidaatje
-		2025-02-04 14:00:00.014 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
-		2025-02-04 14:00:00.011 DogsAreDogs => Breed = None
-		2025-02-04 14:00:00.011 DogsAreDogs => Size = Medium
-		2025-02-04 16:00:00.011 MeetBakkeveen => faster = Siena
+		                        MeetNida => Name = Nidaatje
+		2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
+		                        DogsAreDogs => Breed = None
+		                        DogsAreDogs => Size = Medium
+		2025-02-04 16:00:00.000 MeetBakkeveen => Colour = Black
+			2025-01-01 16:00:00.000 SO Reference Black : Colour
+		                        MeetBakkeveen => faster = Siena
 			2025-02-03 14:00:00.000 SO Reference Siena : Dog
-		2025-02-04 16:00:00.011 MeetBakkeveen => Colour = Black
-			2025-01-01 14:00:00.000 SO Reference Black : Colour
-		2025-03-05 09:48:48.069 Generated => faster = Siena
+		2025-03-23 10:43:51.955 Generated => eating = True
+		                        Generated => faster = Siena
 			2025-02-03 14:00:00.000 SO Reference Siena : Dog
-		2025-03-05 09:48:48.069 Generated => playing = Siena
+		                        Generated => playing = Siena
 			2025-02-03 14:00:00.000 SO Reference Siena : Dog
-		2025-03-05 09:48:48.069 Generated => sleeping = True
-		2025-03-05 09:48:48.069 Generated => playing = Black Dog
+		                        Generated => sleeping = True
+		                        Generated => playing = Black Dog
 			2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
-		2025-03-05 09:48:48.069 Generated => coming = True
-		2025-03-05 09:48:48.069 Generated => sitting = True
-		2025-03-05 09:48:48.069 Generated => eating = True
-		2025-03-05 09:48:48.069 Generated => swimming = True
-
+		                        Generated => coming = True
+		                        Generated => sitting = True
+		                        Generated => swimming = True
+	
 	SO Nida has references.
-		2025-01-01 14:00:00.000 SO Reference Colour
-		2025-01-01 14:00:00.000 SO Reference Black : Colour
-		2025-02-02 14:00:00.000 SO Reference Nida : Dog
+		2025-01-01 16:00:00.000 SO Reference Colour
+		                        SO Reference Black : Colour
+		2025-02-02 14:00:00.000 SO Reference MeetNida : Event
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-		2025-02-04 17:40:00.000 SO Reference faster : Adverb
-		2025-03-05 09:48:48.058 SO Reference playing : Verb
+		2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
+		2025-02-04 15:00:00.000 SO Reference MeetBakkeveen : Event
 		2025-02-04 16:10:00.000 SO Reference Black Dog : Dog
-
-    
-    QuerySOs(string _parent, string _child) Query SOs for example SOs.QuerySOs("Event", "Dog"); looks for SOs with a Parent = "Event" and referenced SOs 
-    with a Parent = "Dog".
-	Query Parent: 'Event' for Child: 'Dog'
-		 Parent: 2025-02-02 14:00:00.000 MeetNida Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-03 14:00:00.000 Siena
-		 Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-04 14:00:00.000 Dog
-		 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-03 14:00:00.000 Siena
-		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
-		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 Black Dog
-		 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-02 14:00:00.000 Nida
-		 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-03 14:00:00.000 Siena
-    
+		2025-02-04 17:40:00.000 SO Reference faster
+		2025-03-23 10:43:51.955 SO Reference Generated : Event
+		                        SO Reference playing : Verb
+	
+	    
+	    QuerySOs(string _parent, string _child) Query SOs for example SOs.QuerySOs("Event", "Dog"); looks for SOs with a Parent = "Event" and referenced SOs 
+	    with a Parent = "Dog".
+		Query Parent: 'Event' for Child: 'Dog'
+			 Parent: 2025-02-02 14:00:00.000 MeetNida Child: 2025-02-02 14:00:00.000 Nida
+			 Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-03 14:00:00.000 Siena
+			 Parent: 2025-02-03 14:00:00.000 MeetSiena Child: 2025-02-02 14:00:00.000 Nida
+			 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-04 14:00:00.000 Dog
+			 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-02 14:00:00.000 Nida
+			 Parent: 2025-02-04 14:00:00.000 DogsAreDogs Child: 2025-02-03 14:00:00.000 Siena
+			 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
+			 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
+			 Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 Black Dog
+			 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-02 14:00:00.000 Nida
+			 Parent: 2025-03-05 09:48:48.058 Generated Child: 2025-02-03 14:00:00.000 Siena
+	    
     RandomSQs() Display a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO which has not been printed yet. 
     When there are no SQs meeting the above criterion switch to another SO which is referenced by the last SO.
 	This results in a sort of declamation of related qualities: 
@@ -314,7 +330,9 @@ In more detail:
 a. Create objects like Dog, on the fly, simulating the realisation that several SOs are the same type: Nida and Siena are a type of Dog.
 
 The Dogs Nida and Siena are defined before the SO Dog has been defined. Here is Nida who is defined in event MeetNida.
-		Nida {
+
+	Nida {
+  
 		FrontLeftLeg
 		BackLeftLeg
 		FrontRightLeg
@@ -330,34 +348,44 @@ The Dogs Nida and Siena are defined before the SO Dog has been defined. Here is 
 In Event DogsAreDogs : Event {
 
 Dog is defined
-		Dog : Animal {    //At home I realise that Nida and Siena are a type of Animal called a Dog.
+
+	Dog : Animal {    //At home I realise that Nida and Siena are a type of Animal called a Dog.
+  
 		Breed
 		Size
 		}
 
 And only then is the derivation of Nida from Dog defined:
-Nida : Dog	{	//Because Nida already exists the default qualities (qualities with Value True of not defined) are moved to Dog
+
+	Nida : Dog	{	//Because Nida already exists the default qualities (qualities with Value True of not defined) are moved to Dog
+
 		Breed = None
 		Size = Medium
 		}
 
 The result is the following showing how default properties are now in Dog and the none default properties of Nida remain in Nida.
 	SO Nida inherits from Dog which has qualities
-		2025-02-04 14:00:00.000 SO: Dog
-		SO Dog inherits from Animal which has qualities
-		SO Dog has qualities
-			2025-02-04 14:00:00.003  Dog.INHERIT_SENSUALOBJECT Animal = True
-			2025-02-04 14:00:00.001  Dog.FrontLeftLeg = True
-			2025-02-04 14:00:00.001  Dog.BackLeftLeg = True
-			2025-02-04 14:00:00.001  Dog.FrontRightLeg = True
-			2025-02-04 14:00:00.001  Dog.BackRightLeg = True
-			2025-02-04 14:00:00.001  Dog.Bark = True
-			2025-02-04 14:00:00.001  Dog.LeftEar = True
-			2025-02-04 14:00:00.001  Dog.RightEar = True
+ 
+	//////////////////////////////////////Dog 25 //////////////////////////////////////
+	2025-02-04 14:00:00.000 Dog : Animal
+	SO Dog has qualities.
+		2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Animal = True
+		                        DogsAreDogs => Breed = True
+		                        DogsAreDogs => Size = True
+		                        MeetNida => FrontLeftLeg = True
+		                        MeetNida => BackLeftLeg = True
+		                        MeetNida => FrontRightLeg = True
+		                        MeetNida => BackRightLeg = True
+		                        MeetNida => Tail = True
+		                        MeetNida => Bark = True
+		                        MeetNida => LeftEar = True
+		                        MeetNida => RightEar = True
+		                        MeetNida => Colour = True
+		                        MeetNida => Name = True
 
-	SO Nida has qualities
-		2025-02-02 14:00:00.005  Nida.Tail = Short
-		2025-02-02 14:00:00.009  Nida.Colour = Black
+	SO Dog has references.
+		2025-01-01 16:00:00.000 SO Reference Colour
+		2025-02-04 14:00:00.000 SO Reference DogsAreDogs : Event
 
 NOTE: There is an SO called Black but how a colour is perceived depends on the object. Nida.Black is different from the SO Black.
 
@@ -366,17 +394,23 @@ A stream of data is extracted from the SOs and is written to a separate script i
 The subroutine QuerySOSQ() looks for SQs of Events which are SOs and 
 creates a script to add the quality to the subject.
 For example:
+
         MeetBakkeveen : Event {
+	
         Nida = swimming
         
 		
 is used to imply that Nida can swim and will create a new SQ for Nida:
+
 		Nida {
+  
 		swimming = True
 		}
 		
-And to imply that swimming is a verb. 
+And to imply that swimming is a verb.
+
 		swimming : Verb {
+  
 			Root = swimm
 		}		
 This is an initial attempt at creating SOs to hold types of speech (verbs, adverbs, nouns) and to eventually
