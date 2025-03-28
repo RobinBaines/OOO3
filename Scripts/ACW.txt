@@ -143,9 +143,27 @@ Fort Sumter : Confed_victory {
 		State = South Carolina
 		General = Beauregard
 		General = Anderson
+		//use of nested objects.
+		Day1 : Event {
+			Weather = good
+			Hour1 : Event {
+							Weather = raining
+							Minute1 : Event {
+								Weather = dryer
+								}
+							}
+		}
+		Day2 : Event {
+		Weather = sunny
+		}
 	Time 1861-04-13 17:00:00.000
 		End = Yes
 	}
+
+//a nested object called (Fort Sumter.Day1.Hour1) Minute1 can be referenced from another object.
+Minute1 {
+ Weather = wetter
+} 
 	
 Time 1861-07-21 17:00:00.000	
 First Battle of Bull Run  : Confed_victory {
@@ -291,8 +309,8 @@ ACW {
 End = Appomattox
 }
 
+//Real changes only occur five or six times in an object's lifetime, according to Graham Harman. 
 //Development/ripening
-
 
 //January 1, 1863, the Emancipation Proclamation
 Time 1863-01-01 17:00:00.000
@@ -302,27 +320,30 @@ By = Lincoln
 }
 
 Symbiosis1 : Symbiosis {
-SO1 = Grant
-SO2 = Lee
-	ACW = Mature
+	SO1 = Emancipation Proclamation
+	SO2 = False
+	ACW = Development
 }
 
-
+--Time  1863-11-24 17:00:00.000	
 Symbiosis2 : Symbiosis {
-SO1 = Emancipation Proclamation
-SO2 = False
-	ACW = Decadence
+	SO1 = Siege of Vicksburg
+	SO2 = ChattanoogaIII
+	ACW = Mature
 }
 
 
 //Time 1864-03-02 17:00:00.000	
 //Mature //Grant commander all union armies
 //Object is mature when there is no room for further symbiosis.
-//February 6, 1865, Lee was appointed General in Chief of the Armies of the Confederate States.
 //Lee: Army of Northern Virginia commander (June 1862 – June 1863)
+Symbiosis3 : Symbiosis {
+	SO1 = Grant
+	SO2 = Lee
+	ACW = Mature
+}
 
 //Decadence and 
 //Death
 }
-
 

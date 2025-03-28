@@ -111,8 +111,10 @@ InitAnimal : Event {
 //another SO derived from Place in Event Init.
 	Dino Bos : Place {
 		
-		Deer : Animal
-		Hare : Animal
+		Deer : Animal {
+		}
+		Hare : Animal {
+		}
 	}
 	
 Time 2025-01-01 18:00:00.000
@@ -150,8 +152,7 @@ InitBooks : Event {
 	Character
 	}	
 	
-	TreasureIsland : Book
-	{
+	TreasureIsland : Book {
 	Author = Robert Louis Stevenson
 	Character = Black Dog
 	Character = Billy Bones
@@ -185,7 +186,7 @@ MeetNida : Event {
 
 		//Add new SO Nida to the Event. Nida is not yet derived from Dog.
 		Nida {
-		FrontLeftLeg
+		FrontLeftLeg 
 		BackLeftLeg
 		FrontRightLeg
 		BackRightLeg

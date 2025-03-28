@@ -3,17 +3,15 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
+using OOO3;
+using static OOO3.BuildSOs;
+using System.Xml.Linq;
+using System;
+
 namespace OOO3
 {
     internal class BuildSOs
     {
-        public enum State
-        {
-            START,
-            EVENT,
-            OBJECT
-        }
-
         public static List<SensualObject> TheSOs = new List<SensualObject>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
@@ -23,6 +21,7 @@ namespace OOO3
         public const string INHERITSO = "INHERIT_SENSUALOBJECT";
         public const string DISPLAYSOS = "DisplaySOs";
         public const string QUERYSOS = "QuerySOs";
+        public static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
         /// <summary>
         /// Remove comments from a line of input.
         /// </summary>
@@ -38,8 +37,6 @@ namespace OOO3
             result = result.Trim();
             return result;
         }
-
-        public static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
 
         /// <summary>
         /// Parse a line of input.
@@ -154,16 +151,16 @@ namespace OOO3
         /// <param name="Inherits"></param>
         public static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits, int msecs)
         {
-            LastSO = GetSO(SOName);
-            if (LastSO != null)
+           SensualObject? SO = GetSO(SOName);
+            if (SO != null)
             {
-                LastSO.ptrDerivedFrom = GetSO(Inherits);
-                if (LastSO.ptrDerivedFrom != null)
+                SO.ptrDerivedFrom = GetSO(Inherits);
+                if (SO.ptrDerivedFrom != null)
                 {
                     //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
-                    LastSO.MoveQualities(LastSO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
+                    SO.MoveQualities(SO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
                 }
-                LastSO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
+                SO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
             }
         }
 
@@ -173,7 +170,7 @@ namespace OOO3
         /// <param name="SOEvent"></param>
         /// <param name="SQName"></param>
         /// <param name="SQValue"></param>
-        public static void WriteQuality(SensualObject SOEvent, string SQName, string SQValue, int msecs)
+        public static void WriteQuality(SensualObject LastSO, SensualObject SOEvent, string SQName, string SQValue, int msecs)
         {
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
@@ -197,20 +194,110 @@ namespace OOO3
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="filepath"></param>
-        public static void ProcessFile(string filepath)
+     internal static  Stack<SensualObject> StackLastSO = new Stack<SensualObject>();
+        internal static Stack<SensualObject> StackSOEvent = new Stack<SensualObject>();
+        public static void ProcessSO(int msecs, string Command, string SOName, string Inherits, string SQName, string SQValue, bool StartOfObject, bool EndOfObject)
         {
-            if (File.Exists(filepath))
+            if (LastSO == null)
+            {
+                LastSO = SOEvent;
+            }
+
+            //A quality Nida = sleeping
+            if (SQName.Length > 0 && SOEvent != null && LastSO != null)
+            {
+                WriteQuality(SOEvent, LastSO,  SQName, SQValue, msecs);
+            }
+
+            //An SO is created or referenced MeetSiena : Event {
+            if (SOName.Length > 0 && StartOfObject == true)
+            {
+                msecs = 0;
+
+                //If switching from a parent SO to a nested child SO save the context of the parent.
+                if (LastSO != null)
+                {
+                    StackLastSO.Push(LastSO);
+                }
+                if (SOEvent != null)
+                {
+                    StackSOEvent.Push(SOEvent);
+                }
+                LastSO = SOEvent;
+
+                //create the SO if it is a new one.
+                SOEvent = new(SOName, dateTime);
+                int index = TheSOs.IndexOf(SOEvent);
+                if (index < 0)
+                {
+                    TheSOs.Add(SOEvent);
+                }
+                else
+                {
+                    SOEvent = TheSOs[index];
+                }
+
+                //add the reference from the parent to the child and vice versa.
+                if (SOEvent != null && LastSO != null)
+                {
+                    SOEvent.AddReference(LastSO);
+                    LastSO.AddReference(SOEvent);
+                }
+
+                //If the new SO inherits, MeetSiena: Event {
+                if (Inherits.Length > 0 )
+                {
+                    //If this is a root SO (has no parent) then create the inheritance and references.
+                    if (LastSO == null || LastSO.Name == Inherits)
+                    {
+                        if (SOEvent != null)
+                        {
+                            SensualObject SOInherits = new(Inherits, dateTime);
+                            int ind = TheSOs.IndexOf(SOInherits);
+                            if (ind >= 0)
+                            {
+                                SOEvent.AddReference(TheSOs[ind]);
+                                TheSOs[ind].AddReference(SOEvent);
+                            }
+                           InheritSensualObject(SOEvent, SOName, Inherits, msecs);
+                        }
+                    }
+                    else
+                    {
+                        InheritSensualObject(LastSO, SOName, Inherits, msecs);
+                    }
+                }
+            }
+
+            if (EndOfObject == true)
+            {
+                if (StackLastSO.Count > 0)
+                {
+                    LastSO = StackLastSO.Pop();
+                    SOEvent = StackSOEvent.Pop();
+                }
+                else
+                {
+                    LastSO = null;
+                    SOEvent = null;
+                }
+            }
+        }
+
+
+/// <summary>
+/// 
+/// </summary>
+/// <param name="filepath"></param>
+public static void ProcessFile(string filepath)
+        {
+           if (File.Exists(filepath))
             {
                 String? line;
                 int msecs = 0;
 
                 using (StreamReader sr = new StreamReader(filepath))
                 {
-                    State State = State.START;
                     line = sr.ReadLine();
                     while (line != null)
                     {
@@ -218,6 +305,10 @@ namespace OOO3
                         line = RemoveComments(line).Trim();
                         if (line.Length > 0)
                         {
+                            if (line.Contains("M {"))
+                            {
+                                Console.WriteLine(line);
+                            }
                             string Command = "";
                             string SOName = "";
                             string Inherits = "";
@@ -238,110 +329,7 @@ namespace OOO3
                                 }
                                 else
                                 {
-                                    if (LastSO == null)
-                                    {
-                                        LastSO = SOEvent;
-                                    }
-                                    switch (State)
-                                    {
-                                        case State.OBJECT:
-                                            {
-                                                if (SQName.Length > 0 && SOEvent != null)
-                                                {
-                                                    WriteQuality(SOEvent, SQName, SQValue, msecs);
-                                                }
-
-                                                if (SOName.Length > 0 && Inherits.Length > 0 && SOEvent != null)
-                                                {
-                                                    //Record the inheritance as a quality.
-                                                    //2025 - 02 - 04 16:10:00.014 MeetBakkeveen => INHERIT_SENSUALOBJECT Dog = True
-                                                    SQValue = Inherits;
-                                                    SQName = SOName;
-                                                    WriteQuality(SOEvent, SQName, SQValue, msecs);
-                                                }
-
-                                                if (EndOfObject == true)
-                                                {
-                                                    // if (IE != null)
-                                                    {
-                                                        LastSO = null;
-                                                        State = State.EVENT;
-                                                    }
-                                                }
-                                            }
-                                            break;
-
-                                        case State.EVENT:
-                                            {
-                                                if (SQName.Length > 0 && SOEvent != null)
-                                                {
-                                                    WriteQuality(SOEvent, SQName, SQValue, msecs);
-                                                }
-
-                                                if (SOName.Length > 0)
-                                                {
-                                                    SensualObject SONew = new(SOName, dateTime);
-                                                    int index = TheSOs.IndexOf(SONew);
-                                                    if (index >= 0)
-                                                    {
-                                                        SONew = TheSOs[index];
-                                                    }
-
-                                                    //add the new SO to the Event.
-                                                    //but first check that a self reference does not occur.
-                                                    if (SOEvent != null)
-                                                    {
-                                                        SOEvent.AddReference(SONew);
-                                                        SONew.AddReference(SOEvent);
-                                                        LastSO = SONew;
-                                                        if (index < 0)
-                                                            TheSOs.Add(LastSO);
-                                                    }
-
-
-                                                    if (Inherits.Length > 0 && SOEvent != null)
-                                                    {
-                                                        InheritSensualObject(SOEvent, SOName, Inherits, msecs);
-                                                    }
-                                                    if (StartOfObject == true)
-                                                    {
-                                                        State = State.OBJECT;
-                                                    }
-
-                                                }
-                                                if (EndOfObject == true)
-                                                {
-                                                    State = State.START;
-                                                }
-                                                //}
-                                            }
-                                            break;
-
-                                        case State.START:
-                                            {
-                                                msecs = 0;
-                                                if (SOName.Length > 0)
-                                                {
-                                                    SOEvent = new(SOName, dateTime);
-                                                    int index = TheSOs.IndexOf(SOEvent);
-                                                    if (index < 0)
-                                                    {
-                                                        TheSOs.Add(SOEvent);
-                                                    }
-                                                    else
-                                                    {
-                                                        SOEvent = TheSOs[index];
-                                                    }
-                                                    if (Inherits.Length > 0)
-                                                    {
-                                                        InheritSensualObject(SOEvent, SOName, Inherits, msecs);
-                                                    }
-
-                                                    State = State.EVENT;
-                                                }
-                                            }
-                                            break;
-                                    }
+                                    ProcessSO( msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
                                 }
                             }
                         }
