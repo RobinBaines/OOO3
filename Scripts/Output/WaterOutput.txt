@@ -1,0 +1,491 @@
+Create generated.txt by querying 'Event'.
+Created 0 new events in generated.txt from 0 qualities.
+
+Print SOs. Selection from 10 SOs filtered on *
+//////////////////////////////////////Event 1 //////////////////////////////////////
+2000-01-01 12:00:00.000 Event
+SO Event has qualities.
+	2000-01-01 12:00:00.000 Quality Place = True
+	                        Quality Weather = True
+	                        Quality End = True
+
+SO Event has references.
+	2025-01-01 12:00:00.000 Includes          Collision : Event
+	2025-01-01 13:00:00.000 Includes          GustOfWind : Event
+
+//////////////////////////////////////Element 2 //////////////////////////////////////
+2000-01-01 12:00:00.000 Element
+SO Element has qualities.
+	2000-01-01 12:00:00.000 Quality atoms = true
+
+
+//////////////////////////////////////Water 3 //////////////////////////////////////
+2000-01-01 12:00:00.000 Water
+SO Water has qualities.
+	2000-01-01 12:00:00.000 Quality surface_tension = true
+
+
+//////////////////////////////////////Collision 4 //////////////////////////////////////
+2025-01-01 12:00:00.000 Collision : Event
+SO Collision has qualities.
+	2025-01-01 12:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Weather = wet
+	                        > Drop1 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop1 mass = 1 gm
+	                        > Drop2 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop2 mass = 1,5 gm
+	2025-01-01 12:30:00.000 > Big_drop INHERIT_SENSUALOBJECT Water = True
+	                        > Big_drop mass = 2,3 gm
+
+SO Collision has references.
+	2025-01-01 12:00:00.000 Includes          Drop1 : Water
+	                        Includes          Drop2 : Water
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+//////////////////////////////////////Drop1 5 //////////////////////////////////////
+2025-01-01 12:00:00.000 Drop1 : Water
+	                       Parent SO = Collision : Event
+SO Drop1 has qualities.
+	2025-01-01 12:00:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 1 gm
+
+SO Drop1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 12:30:00.000 Is part of          Big_drop : Water
+
+//////////////////////////////////////Drop2 6 //////////////////////////////////////
+2025-01-01 12:00:00.000 Drop2 : Water
+	                       Parent SO = Collision : Event
+SO Drop2 has qualities.
+	2025-01-01 12:00:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 1,5 gm
+
+SO Drop2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 12:30:00.000 Is part of          Big_drop : Water
+
+//////////////////////////////////////Big_drop 7 //////////////////////////////////////
+2025-01-01 12:30:00.000 Big_drop : Water
+	                       Parent SO = Collision : Event
+SO Big_drop has qualities.
+	2025-01-01 12:30:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 2,3 gm
+	2025-01-01 13:00:00.000 GustOfWind => mass = 0 gm
+
+SO Big_drop is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 13:00:00.000 Is part of          Drop3 : Water
+	                        Is part of          Drop4 : Water
+	                        Is part of          GustOfWind : Event
+SO Big_drop has references.
+	2025-01-01 12:00:00.000 Includes          Drop1 : Water
+	                        Includes          Drop2 : Water
+
+//////////////////////////////////////GustOfWind 8 //////////////////////////////////////
+2025-01-01 13:00:00.000 GustOfWind : Event
+SO GustOfWind has qualities.
+	2025-01-01 13:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Weather = wet
+	                        > Drop3 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop3 mass = 1 gm
+	                        > Drop4 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop4 mass = 1 gm
+	                        > Big_drop mass = 0 gm
+
+SO GustOfWind has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+	2025-01-01 13:00:00.000 Includes          Drop4 : Water
+	                        Includes          Drop3 : Water
+
+//////////////////////////////////////Drop3 9 //////////////////////////////////////
+2025-01-01 13:00:00.000 Drop3 : Water
+	                       Parent SO = GustOfWind : Event
+SO Drop3 has qualities.
+	2025-01-01 13:00:00.000 GustOfWind => INHERIT_SENSUALOBJECT Water = True
+	                        GustOfWind => mass = 1 gm
+
+SO Drop3 is part of other objects.
+	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
+SO Drop3 has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+//////////////////////////////////////Drop4 10 //////////////////////////////////////
+2025-01-01 13:00:00.000 Drop4 : Water
+	                       Parent SO = GustOfWind : Event
+SO Drop4 has qualities.
+	2025-01-01 13:00:00.000 GustOfWind => INHERIT_SENSUALOBJECT Water = True
+	                        GustOfWind => mass = 1 gm
+
+SO Drop4 is part of other objects.
+	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
+SO Drop4 has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 12
+		SO Big_drop with SQ mass = 0 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 0
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 11
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 10
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 6
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 15
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 16
+		SO Big_drop with SQ mass = 0 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 2
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.Place
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 2
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.Place
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 10
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 14
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 9
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 0
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 10
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 9
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 10
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 13
+		SO GustOfWind with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+	
+	SWITCH from Collision.Weather using reference Collision to Drop1.mass
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 13
+		SO GustOfWind with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+	
+	SWITCH from Collision.Weather using reference Collision to Drop1.mass
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 18
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 5
+		SO Collision with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 6
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 14
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 15
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 11
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 9
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 5
+		SO Collision with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 13
+		SO GustOfWind with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+	
+	SWITCH from Collision.Weather using reference Collision to Drop1.mass
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 16
+		SO Big_drop with SQ mass = 0 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 7
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 19 qualities and starting with index = 13
+		SO GustOfWind with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+	
+	SWITCH from Collision.Weather using reference Collision to Drop1.mass
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+

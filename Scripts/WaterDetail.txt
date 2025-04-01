@@ -1,0 +1,107 @@
+
+DisplaySOs *	//display all the SOs with SQs.
+
+
+Time 2000-01-01 12:00:00.000
+Event {
+	Place
+	Weather
+	End
+	}
+	
+Element {
+	atoms = true
+}
+
+WaterMolecule {
+	H2 : Element {
+	}
+	O2 : Element {
+	}
+}
+
+Water {
+surface_tension = true
+}
+
+aerosol {
+wettable = true
+insoluble = true
+}
+
+
+			
+//heterogeneous nucleation around a wettable insoluble aerosol particle.
+
+Time 2025-01-01 12:00:00.000
+Collision : Event {
+	Weather = wet
+	
+	Drop1 : Water {
+	mass = 1 gm
+		SmallDrop1 : Water {
+			VerySmallDrop1 : Water {
+					Molecule1 : WaterMolecule {
+						}
+					aerosol1 : aerosol {
+						}				
+					}
+			Molecule1_2 : WaterMolecule {
+					}	
+			Molecule1_3 : WaterMolecule {
+					}	
+//etc					
+			}
+	}
+	
+	Drop2 : Water {
+	mass = 1,5 gm
+		SmallDrop2 : Water {
+			VerySmallDrop2 : Water {
+					Molecule2 : WaterMolecule {
+						}
+					aerosol2 : aerosol {
+						}				
+					}
+			Molecule2_2 : WaterMolecule {
+					}	
+			Molecule2_3 : WaterMolecule {
+					}	
+//etc					
+		}
+	}
+	
+Time 2025-01-01 12:30:00.000	
+	Big_drop : Water {
+		Drop1 {
+			}
+		Drop2 {
+			}
+		}
+
+	Big_drop {
+		mass = 2,3 gm
+		}
+	
+	
+}
+
+Time 2025-01-01 13:00:00.000
+GustOfWind : Event {
+	Weather = wet
+	
+	Drop3 : Water {
+	mass = 1 gm
+		Big_drop {
+		}
+	}
+	Drop4 : Water {
+	mass = 1 gm
+		Big_drop {
+			}
+	}
+	Big_drop {
+		mass = 0 gm
+		}
+	
+}

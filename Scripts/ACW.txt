@@ -20,7 +20,7 @@ Time 2025-01-01 12:00:00.000
 //Define some inheritable objects in an Init Event.
 Init : Event {
 
-	Battle {
+	Battle : Event {
 	CWSAC	//Civil War Sites Advisory Commission  Battle Rating A = Decisive - D
 	Place
 	State

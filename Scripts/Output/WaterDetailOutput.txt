@@ -1,0 +1,602 @@
+Create generated.txt by querying 'Event'.
+Created 0 new events in generated.txt from 0 qualities.
+
+Print SOs. Selection from 26 SOs filtered on *
+//////////////////////////////////////Event 1 //////////////////////////////////////
+2000-01-01 12:00:00.000 Event
+SO Event has qualities.
+	2000-01-01 12:00:00.000 Quality Place = True
+	                        Quality Weather = True
+	                        Quality End = True
+
+SO Event has references.
+	2025-01-01 12:00:00.000 Includes          Collision : Event
+	2025-01-01 13:00:00.000 Includes          GustOfWind : Event
+
+//////////////////////////////////////Element 2 //////////////////////////////////////
+2000-01-01 12:00:00.000 Element
+SO Element has qualities.
+	2000-01-01 12:00:00.000 Quality atoms = true
+
+
+//////////////////////////////////////WaterMolecule 3 //////////////////////////////////////
+2000-01-01 12:00:00.000 WaterMolecule
+SO WaterMolecule has qualities.
+	2000-01-01 12:00:00.000 > H2 INHERIT_SENSUALOBJECT Element = True
+	                        > O2 INHERIT_SENSUALOBJECT Element = True
+
+SO WaterMolecule has references.
+	2000-01-01 12:00:00.000 Includes          H2 : Element
+	                        Includes          O2 : Element
+
+//////////////////////////////////////H2 4 //////////////////////////////////////
+2000-01-01 12:00:00.000 H2 : Element
+	                       Parent SO = WaterMolecule
+SO H2 has qualities.
+	2000-01-01 12:00:00.000 WaterMolecule => INHERIT_SENSUALOBJECT Element = True
+
+SO H2 is part of other objects.
+	2000-01-01 12:00:00.000 Is part of Parent = WaterMolecule
+
+//////////////////////////////////////O2 5 //////////////////////////////////////
+2000-01-01 12:00:00.000 O2 : Element
+	                       Parent SO = WaterMolecule
+SO O2 has qualities.
+	2000-01-01 12:00:00.000 WaterMolecule => INHERIT_SENSUALOBJECT Element = True
+
+SO O2 is part of other objects.
+	2000-01-01 12:00:00.000 Is part of Parent = WaterMolecule
+
+//////////////////////////////////////Water 6 //////////////////////////////////////
+2000-01-01 12:00:00.000 Water
+SO Water has qualities.
+	2000-01-01 12:00:00.000 Quality surface_tension = true
+
+
+//////////////////////////////////////aerosol 7 //////////////////////////////////////
+2000-01-01 12:00:00.000 aerosol
+SO aerosol has qualities.
+	2000-01-01 12:00:00.000 Quality wettable = true
+	                        Quality insoluble = true
+
+
+//////////////////////////////////////Collision 8 //////////////////////////////////////
+2025-01-01 12:00:00.000 Collision : Event
+SO Collision has qualities.
+	2025-01-01 12:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Weather = wet
+	                        > Drop1 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop1 mass = 1 gm
+	                        > Drop2 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop2 mass = 1,5 gm
+	2025-01-01 12:30:00.000 > Big_drop INHERIT_SENSUALOBJECT Water = True
+	                        > Big_drop mass = 2,3 gm
+
+SO Collision has references.
+	2025-01-01 12:00:00.000 Includes          Drop1 : Water
+	                        Includes          Drop2 : Water
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+//////////////////////////////////////Drop1 9 //////////////////////////////////////
+2025-01-01 12:00:00.000 Drop1 : Water
+	                       Parent SO = Collision : Event
+SO Drop1 has qualities.
+	2025-01-01 12:00:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 1 gm
+	                        > SmallDrop1 INHERIT_SENSUALOBJECT Water = True
+
+SO Drop1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 12:30:00.000 Is part of          Big_drop : Water
+SO Drop1 has references.
+	2025-01-01 12:00:00.000 Includes          SmallDrop1 : Water
+
+//////////////////////////////////////SmallDrop1 10 //////////////////////////////////////
+2025-01-01 12:00:00.000 SmallDrop1 : Water
+	                       Parent SO = Drop1 : Water
+SO SmallDrop1 has qualities.
+	2025-01-01 12:00:00.000 Drop1 => INHERIT_SENSUALOBJECT Water = True
+	                        > VerySmallDrop1 INHERIT_SENSUALOBJECT Water = True
+	                        > Molecule1_2 INHERIT_SENSUALOBJECT WaterMolecule = True
+	                        > Molecule1_3 INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO SmallDrop1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Drop1 : Water
+SO SmallDrop1 has references.
+	2025-01-01 12:00:00.000 Includes          VerySmallDrop1 : Water
+	                        Includes          Molecule1_2 : WaterMolecule
+	                        Includes          Molecule1_3 : WaterMolecule
+
+//////////////////////////////////////VerySmallDrop1 11 //////////////////////////////////////
+2025-01-01 12:00:00.000 VerySmallDrop1 : Water
+	                       Parent SO = SmallDrop1 : Water
+SO VerySmallDrop1 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop1 => INHERIT_SENSUALOBJECT Water = True
+	                        > Molecule1 INHERIT_SENSUALOBJECT WaterMolecule = True
+	                        > aerosol1 INHERIT_SENSUALOBJECT aerosol = True
+
+SO VerySmallDrop1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop1 : Water
+SO VerySmallDrop1 has references.
+	2025-01-01 12:00:00.000 Includes          Molecule1 : WaterMolecule
+	                        Includes          aerosol1 : aerosol
+
+//////////////////////////////////////Molecule1 12 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule1 : WaterMolecule
+	                       Parent SO = VerySmallDrop1 : Water
+SO Molecule1 has qualities.
+	2025-01-01 12:00:00.000 VerySmallDrop1 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = VerySmallDrop1 : Water
+
+//////////////////////////////////////aerosol1 13 //////////////////////////////////////
+2025-01-01 12:00:00.000 aerosol1 : aerosol
+	                       Parent SO = VerySmallDrop1 : Water
+SO aerosol1 has qualities.
+	2025-01-01 12:00:00.000 VerySmallDrop1 => INHERIT_SENSUALOBJECT aerosol = True
+
+SO aerosol1 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = VerySmallDrop1 : Water
+
+//////////////////////////////////////Molecule1_2 14 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule1_2 : WaterMolecule
+	                       Parent SO = SmallDrop1 : Water
+SO Molecule1_2 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop1 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule1_2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop1 : Water
+
+//////////////////////////////////////Molecule1_3 15 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule1_3 : WaterMolecule
+	                       Parent SO = SmallDrop1 : Water
+SO Molecule1_3 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop1 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule1_3 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop1 : Water
+
+//////////////////////////////////////Drop2 16 //////////////////////////////////////
+2025-01-01 12:00:00.000 Drop2 : Water
+	                       Parent SO = Collision : Event
+SO Drop2 has qualities.
+	2025-01-01 12:00:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 1,5 gm
+	                        > SmallDrop2 INHERIT_SENSUALOBJECT Water = True
+
+SO Drop2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 12:30:00.000 Is part of          Big_drop : Water
+SO Drop2 has references.
+	2025-01-01 12:00:00.000 Includes          SmallDrop2 : Water
+
+//////////////////////////////////////SmallDrop2 17 //////////////////////////////////////
+2025-01-01 12:00:00.000 SmallDrop2 : Water
+	                       Parent SO = Drop2 : Water
+SO SmallDrop2 has qualities.
+	2025-01-01 12:00:00.000 Drop2 => INHERIT_SENSUALOBJECT Water = True
+	                        > VerySmallDrop2 INHERIT_SENSUALOBJECT Water = True
+	                        > Molecule2_2 INHERIT_SENSUALOBJECT WaterMolecule = True
+	                        > Molecule2_3 INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO SmallDrop2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Drop2 : Water
+SO SmallDrop2 has references.
+	2025-01-01 12:00:00.000 Includes          VerySmallDrop2 : Water
+	                        Includes          Molecule2_2 : WaterMolecule
+	                        Includes          Molecule2_3 : WaterMolecule
+
+//////////////////////////////////////VerySmallDrop2 18 //////////////////////////////////////
+2025-01-01 12:00:00.000 VerySmallDrop2 : Water
+	                       Parent SO = SmallDrop2 : Water
+SO VerySmallDrop2 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop2 => INHERIT_SENSUALOBJECT Water = True
+	                        > Molecule2 INHERIT_SENSUALOBJECT WaterMolecule = True
+	                        > aerosol2 INHERIT_SENSUALOBJECT aerosol = True
+
+SO VerySmallDrop2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop2 : Water
+SO VerySmallDrop2 has references.
+	2025-01-01 12:00:00.000 Includes          Molecule2 : WaterMolecule
+	                        Includes          aerosol2 : aerosol
+
+//////////////////////////////////////Molecule2 19 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule2 : WaterMolecule
+	                       Parent SO = VerySmallDrop2 : Water
+SO Molecule2 has qualities.
+	2025-01-01 12:00:00.000 VerySmallDrop2 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = VerySmallDrop2 : Water
+
+//////////////////////////////////////aerosol2 20 //////////////////////////////////////
+2025-01-01 12:00:00.000 aerosol2 : aerosol
+	                       Parent SO = VerySmallDrop2 : Water
+SO aerosol2 has qualities.
+	2025-01-01 12:00:00.000 VerySmallDrop2 => INHERIT_SENSUALOBJECT aerosol = True
+
+SO aerosol2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = VerySmallDrop2 : Water
+
+//////////////////////////////////////Molecule2_2 21 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule2_2 : WaterMolecule
+	                       Parent SO = SmallDrop2 : Water
+SO Molecule2_2 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop2 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule2_2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop2 : Water
+
+//////////////////////////////////////Molecule2_3 22 //////////////////////////////////////
+2025-01-01 12:00:00.000 Molecule2_3 : WaterMolecule
+	                       Parent SO = SmallDrop2 : Water
+SO Molecule2_3 has qualities.
+	2025-01-01 12:00:00.000 SmallDrop2 => INHERIT_SENSUALOBJECT WaterMolecule = True
+
+SO Molecule2_3 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = SmallDrop2 : Water
+
+//////////////////////////////////////Big_drop 23 //////////////////////////////////////
+2025-01-01 12:30:00.000 Big_drop : Water
+	                       Parent SO = Collision : Event
+SO Big_drop has qualities.
+	2025-01-01 12:30:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 2,3 gm
+	2025-01-01 13:00:00.000 GustOfWind => mass = 0 gm
+
+SO Big_drop is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 13:00:00.000 Is part of          Drop3 : Water
+	                        Is part of          Drop4 : Water
+	                        Is part of          GustOfWind : Event
+SO Big_drop has references.
+	2025-01-01 12:00:00.000 Includes          Drop1 : Water
+	                        Includes          Drop2 : Water
+
+//////////////////////////////////////GustOfWind 24 //////////////////////////////////////
+2025-01-01 13:00:00.000 GustOfWind : Event
+SO GustOfWind has qualities.
+	2025-01-01 13:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
+	                        Quality Weather = wet
+	                        > Drop3 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop3 mass = 1 gm
+	                        > Drop4 INHERIT_SENSUALOBJECT Water = True
+	                        > Drop4 mass = 1 gm
+	                        > Big_drop mass = 0 gm
+
+SO GustOfWind has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+	2025-01-01 13:00:00.000 Includes          Drop4 : Water
+	                        Includes          Drop3 : Water
+
+//////////////////////////////////////Drop3 25 //////////////////////////////////////
+2025-01-01 13:00:00.000 Drop3 : Water
+	                       Parent SO = GustOfWind : Event
+SO Drop3 has qualities.
+	2025-01-01 13:00:00.000 GustOfWind => INHERIT_SENSUALOBJECT Water = True
+	                        GustOfWind => mass = 1 gm
+
+SO Drop3 is part of other objects.
+	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
+SO Drop3 has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+//////////////////////////////////////Drop4 26 //////////////////////////////////////
+2025-01-01 13:00:00.000 Drop4 : Water
+	                       Parent SO = GustOfWind : Event
+SO Drop4 has qualities.
+	2025-01-01 13:00:00.000 GustOfWind => INHERIT_SENSUALOBJECT Water = True
+	                        GustOfWind => mass = 1 gm
+
+SO Drop4 is part of other objects.
+	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
+SO Drop4 has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 17
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 11
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 3
+		SO Element with SQ atoms = true
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 2
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.Place
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 4
+		SO Water with SQ surface_tension = true
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 17
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 9
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 12
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 16
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 9
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 1
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 15
+		SO GustOfWind with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO Collision with SQ Weather = wet
+	
+	SWITCH from Collision.Weather using reference Collision to Drop1.mass
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 13
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 6
+		SO aerosol with SQ insoluble = true
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 16
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 20
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 8
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 14
+		SO Big_drop with SQ mass = 0 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 5
+		SO aerosol with SQ wettable = true
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 14
+		SO Big_drop with SQ mass = 0 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 20
+		SO Drop4 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 7
+		SO Collision with SQ Weather = wet
+		SO Event with SQ Weather = True
+		SO GustOfWind with SQ Weather = wet
+	
+	SWITCH from GustOfWind.Weather using reference GustOfWind to Drop3.mass
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 19
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 16
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 9
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 16
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 19
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 10
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 5
+		SO aerosol with SQ wettable = true
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 21 qualities and starting with index = 13
+		SO Big_drop with SQ mass = 2,3 gm
+		SO Drop1 with SQ mass = 1 gm
+		SO Drop2 with SQ mass = 1,5 gm
+		SO Drop3 with SQ mass = 1 gm
+		SO Drop4 with SQ mass = 1 gm
+

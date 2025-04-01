@@ -93,8 +93,7 @@ A predefined class hierarchy is used for the class Sensual Object.
     
     SensualQuality also inherits from BaseClass
     
-BaseClass encapsulates properties which are part of the SensualObject and the SensualQuality. For example SensualObject and SensualQuality 
-both have references to SOs. This list of references is stored in the BaseClass.
+BaseClass encapsulates properties which are part of the SensualObject and the SensualQuality. 
 
 In the Object Oriented Software Language called c#, classes are predefined and objects are instantiated from the classes when the software runs.
 In this software all SOs are instantiated from the predefined SensualObject class but inheritance from one SO to another is 
@@ -416,8 +415,154 @@ And to imply that swimming is a verb.
 This is an initial attempt at creating SOs to hold types of speech (verbs, adverbs, nouns) and to eventually
 add 'production' rules which described how the words should be used in output.
 
-I would need to simulate reading a book about grammar to improve! 
+I would need to simulate reading a book about grammar to improve. 
 
-Finally; software requirements can make use of scenarios. These are sequences of statements which describe the use and actions
-of users, computer, mouse, software modules and complete programs to achieve the required tasks.
-It is tempting to develop a scenario in a script and eventually to generate c# code to implement it.
+
+//////////////////////////////////////////
+RO Lifetime and the ACW and Water scripts.
+
+The American Civil War and Fort Sumter are both examples of RO which have ended and will not change.
+Opinions as to the exact moment this type of object started and ended may differ
+and are properties/qualities of SOs.
+OOO theory seems to depend on comparing an RO with one of many possible SOs. 
+Only then can relationships between RO, SO, RQ en SQ be analysed.
+
+
+The OOO3 program allows (reasonably unlimited) nesting of SOs.
+Initially this was used to define an SO of type Event and then to define and then modify SOs which were nested 
+in the Event.
+For example in ACW.txt the American Civil War Event has a nested Fort Sumter SO (which is also an Event; 
+Fort Sumter : Confed_victory : Battle : Event).
+
+ACW : Event {
+...
+Fort Sumter : Confed_victory {
+		CWSAC = Decisive
+		...
+		}
+}
+
+In Script.txt the MeetNida Event defines a nested Nida SO.
+MeetNida : Event {
+	...
+	//define Nida.
+	Nida {
+			FrontLeftLeg 
+	...
+	}
+}	
+
+The Nida SO is then modified in MeetBakkeveen : Event.
+....
+MeetBakkeveen : Event {
+	...
+	//Modify Nida.
+	Nida {
+		faster = Siena	
+		...
+		}
+}		
+
+With unlimited nesting of SOs it is possible to divide an SO in to other SOs and so on.
+In the following, the battle Fort Sumter went on for 2 days and is is possible to divide it into 2 days and these
+days in to time periods of 1 hour and those hours into seconds.
+But it seems unlikely that there is any sensible way to relate these time period SOs to ROs 
+after all what does an RO know about time periods?
+Fort Sumter : Confed_victory {
+	...
+	Day1 : Event {
+			Weather = good
+			Hour1 : Event {
+							Weather = raining
+							Minute1 : Event {
+								Weather = dryer
+								}
+							}
+		}
+	Day2 : Event {
+		Weather = sunny
+		}		
+...
+}
+
+
+The SO Nida the dog may also be seen as an Event. Somewhere at some time she was created, 
+for example at the moment of gestation or of birth, but again this highlights how arbitrary these SO qualities
+must be when compared to RO qualities; can we have an opinion about when the RO Nida came into being?
+However using the SO Nida during an Event 'MeetNida' looks legitimate as Nida was essentially 
+the same object during the Event.
+
+Water.txt is a script which describes how 2 drops of water collide to form a single drop which then divides
+into 2 other drops some time later when a gust of wind occurs.
+	In the 
+	
+		Collision : Event { 
+		
+Drop 1 and Drop2 are defined before Big_drop is defined when Drop1 and 2 collided .
+In GustOfWind : Event the reverse takes place with Drop3 and Drop4 defined (as part of) Big_drop when that drop split
+and ceased to exist.
+
+Here is the object Big_drop.
+//////////////////////////////////////Big_drop 9 //////////////////////////////////////
+2025-01-01 12:30:00.000 Big_drop : Water
+	                       Parent SO = Collision : Event
+SO Big_drop has qualities.
+	2025-01-01 12:30:00.000 Collision => INHERIT_SENSUALOBJECT Water = True
+	                        Collision => mass = 2,3 gm
+	2025-01-01 13:00:00.000 GustOfWind => mass = 0 gm
+
+SO Big_drop is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Collision : Event
+	2025-01-01 13:00:00.000 Is part of          Drop3 : Water
+	                        Is part of          Drop4 : Water
+	                        Is part of          GustOfWind : Event
+SO Big_drop has references.
+	2025-01-01 12:00:00.000 Includes          Drop1 : Water
+	                        Includes          Drop2 : Water
+
+And here the object Drop3. 
+//////////////////////////////////////Drop3 11 //////////////////////////////////////
+2025-01-01 13:00:00.000 Drop3 : Water
+	                       Parent SO = GustOfWind : Event
+SO Drop3 has qualities.
+	2025-01-01 13:00:00.000 GustOfWind => INHERIT_SENSUALOBJECT Water = True
+	                        GustOfWind => mass = 1 gm
+
+SO Drop3 is part of other objects.
+	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
+SO Drop3 has references.
+	2025-01-01 12:30:00.000 Includes          Big_drop : Water
+
+
+
+This script does not describe how Drop1 and 2 formed. This is legitimate because we may define the 
+initial conditions of any script and in this case the fully formed ROs Drop1 and 2 are initial conditions. 
+
+The script WaterDetail.txt is an attempt to trace the lives of Drops1 and 2 back to the moment they nucleated 
+in a cloud raising questions of when these different drop ROs (Drop1, SmallDrop1 and VerySmallDrop1) 
+start to exist.
+
+	Drop1 : Water {
+	mass = 1 gm
+		SmallDrop1 : Water {
+			VerySmallDrop1 : Water {
+					Molecule1 : WaterMolecule {
+						}
+					aerosol1 : aerosol {
+						}				
+					}
+			Molecule1_2 : WaterMolecule {
+					}	
+			Molecule1_3 : WaterMolecule {
+					}	
+//etc					
+			}
+	}
+	
+VerySmallDrop1	is defined as an aerosol (wettable and insoluble) plus a molecule of (condensed) water.
+The molecule of (condensed) water is called Molecule1_2 : WaterMolecule
+It is 'type of' WaterMolecule which is further defined as being made of the elements H2 and O2.
+Here the type of/inheritance is being used to end further reduction of an SO into parts.
+It is a way to 'snapshot' the molecule and is a standin for explaining where the molecule came from.
+In this example the 'type of' means we do not have to trace the molecule of water to a molecule 
+of water vapour which may have come from the sea etc.  
