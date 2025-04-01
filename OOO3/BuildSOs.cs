@@ -190,7 +190,7 @@ namespace OOO3
             else
             {
                 LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs));
-                LastSO?.AddReference(SOOfValue);
+                LastSO?.AddIncludesReference(SOOfValue);
             }
         }
 
@@ -226,7 +226,7 @@ namespace OOO3
                 LastSO = SOEvent;
 
                 //create the SO if it is a new one.
-                SOEvent = new(SOName, dateTime);
+                SOEvent = new(SOName, dateTime, LastSO);
                 int index = TheSOs.IndexOf(SOEvent);
                 if (index < 0)
                 {
@@ -240,8 +240,8 @@ namespace OOO3
                 //add the reference from the parent to the child and vice versa.
                 if (SOEvent != null && LastSO != null)
                 {
-                    SOEvent.AddReference(LastSO);
-                    LastSO.AddReference(SOEvent);
+                    SOEvent.AddIsPartOfReference(LastSO);
+                    LastSO.AddIncludesReference(SOEvent);
                 }
 
                 //If the new SO inherits, MeetSiena: Event {
@@ -252,12 +252,12 @@ namespace OOO3
                     {
                         if (SOEvent != null)
                         {
-                            SensualObject SOInherits = new(Inherits, dateTime);
+                            SensualObject SOInherits = new(Inherits, dateTime, SOEvent);
                             int ind = TheSOs.IndexOf(SOInherits);
                             if (ind >= 0)
                             {
-                                SOEvent.AddReference(TheSOs[ind]);
-                                TheSOs[ind].AddReference(SOEvent);
+                                //SOEvent.AddIsPartOf(TheSOs[ind]);
+                                TheSOs[ind].AddIncludesReference(SOEvent);
                             }
                            InheritSensualObject(SOEvent, SOName, Inherits, msecs);
                         }
@@ -269,7 +269,13 @@ namespace OOO3
                 }
             }
 
-            if (EndOfObject == true)
+            //support Init : Event			//INHERIT_SENSUALOBJECT
+            if (SOName.Length > 0 && StartOfObject == false && Inherits.Length > 0 && LastSO!=null)
+            {
+                InheritSensualObject(LastSO, SOName, Inherits, msecs);
+            }
+
+                if (EndOfObject == true)
             {
                 if (StackLastSO.Count > 0)
                 {
@@ -305,7 +311,7 @@ public static void ProcessFile(string filepath)
                         line = RemoveComments(line).Trim();
                         if (line.Length > 0)
                         {
-                            if (line.Contains("M {"))
+                            if (line.Contains("Init : Event"))
                             {
                                 Console.WriteLine(line);
                             }

@@ -2,10 +2,12 @@
 // @Copyright 2025 Robin Baines
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
+using System;
 using System.Buffers.Text;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 namespace OOO3
 {
@@ -35,8 +37,10 @@ namespace OOO3
                 {
                     Console.WriteLine("//////////////////////////////////////" + SO.Name + " " + index.ToString() + " //////////////////////////////////////");
                     SO.PrintSO("", " ", true);
+                    SO.PrintParent("", "");
                     SO.PrintQualities("");
                     Console.WriteLine();
+                    SO.PrintIsPartOf("");
                     SO.PrintReferences("");
                     Console.WriteLine();
                 }
@@ -54,7 +58,7 @@ namespace OOO3
         {
             if (SOParent != null)
             {
-                foreach (SensualObject SO in SOParent.references)
+                foreach (SensualObject SO in SOParent.IncludesReference)
                 {
                     if (SO.Name == Name)
                     {
@@ -267,8 +271,9 @@ namespace OOO3
                         {
                             if (pSQ.SOParent != null)
                             {
-                                if (pSQ.Name == ASQ.Name && pSQ.SOParent.Name == ASQ.SOParent.Name)
-                                {
+                                //if (pSQ.Name == ASQ.Name && pSQ.SOParent.Name == ASQ.SOParent.Name)
+                                if (ASQ.GetHashCode() == pSQ.GetHashCode())
+                                    {
                                     //already printed.
                                     SQ2 = null;
                                     break;
@@ -285,60 +290,72 @@ namespace OOO3
             return SQ2;
         }
 
-        /// <summary>
-        ///  Print a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO 
-        ///  which has not been printed yet.
-        ///  When there are no more SQs meeting the above criteria switch to another SO which is referenced by the last SO and
-        ///  find an SQ which hasn't been printed yet.
-        /// Typical output:
-/*SOs RandomSQs 
-	Using 235 qualities and starting with index = 198
-		SO Feel with SQ Root = Feel
-		SO Verb with SQ Root = True
-		SO playing with SQ Root = play
-		SO sleeping with SQ Root = sleep
-		SO running with SQ Root = runn
-		SO call with SQ Root = call
-		SO come with SQ Root = come
-		SO coming with SQ Root = com
-		SO sit with SQ Root = sit
-		SO sitting with SQ Root = sitt
-		SO eating with SQ Root = eat
-		SO swimming with SQ Root = swimm
-	
-	SWITCH from swimming.Root using reference Generated to Me.Feel
-		SO Me with SQ Feel = Cold
-	
-	SWITCH from Me.Feel using reference InitEvent to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-		SO M with SQ Gender = Female
-	
-	SWITCH from M.Gender using reference MeetNida to MeetNida.Weather
-		SO MeetNida with SQ Weather = Cold
-		SO Event with SQ Weather = True
-		SO MeetSiena with SQ Weather = Cold
-		SO MeetBakkeveen with SQ Weather = Cold
-	
-	SWITCH from MeetBakkeveen.Weather using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference DogsAreDogs to DogsAreDogs.Place
-		SO DogsAreDogs with SQ Place = Home
-		SO Event with SQ Place = True
-		SO MeetNida with SQ Place = Bakkeveen
-		SO MeetSiena with SQ Place = Dino Bos
-		SO MeetBakkeveen with SQ Place = Bakkeveen
-		SO T2 with SQ Place = Home
-	
-	SWITCH from T2.Place using reference Verb to Verb.Root
-		SO Verb with SQ Root = True
-*/
-        /// </summary>
-        public static void RandomSQs()
+        private static SensualObject? GetAnSO(List<SensualObject> SOs)
+        {
+            SensualObject? NextSO = null;
+            int index;
+            if (SOs.Count > 0)
+            {
+                index = RandomInt(SOs.Count);
+                if (SOs[index].qualities.Count > 0)
+                    NextSO = SOs[index];
+            }
+        return NextSO;
+        }
+            /// <summary>
+            ///  Print a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO 
+            ///  which has not been printed yet.
+            ///  When there are no more SQs meeting the above criteria switch to another SO which is referenced by the last SO and
+            ///  find an SQ which hasn't been printed yet.
+            /// Typical output:
+            /*SOs RandomSQs 
+                Using 235 qualities and starting with index = 198
+                    SO Feel with SQ Root = Feel
+                    SO Verb with SQ Root = True
+                    SO playing with SQ Root = play
+                    SO sleeping with SQ Root = sleep
+                    SO running with SQ Root = runn
+                    SO call with SQ Root = call
+                    SO come with SQ Root = come
+                    SO coming with SQ Root = com
+                    SO sit with SQ Root = sit
+                    SO sitting with SQ Root = sitt
+                    SO eating with SQ Root = eat
+                    SO swimming with SQ Root = swimm
+
+                SWITCH from swimming.Root using reference Generated to Me.Feel
+                    SO Me with SQ Feel = Cold
+
+                SWITCH from Me.Feel using reference InitEvent to Me.Gender
+                    SO Me with SQ Gender = Male
+                    SO Animal with SQ Gender = True
+                    SO M with SQ Gender = Female
+
+                SWITCH from M.Gender using reference MeetNida to MeetNida.Weather
+                    SO MeetNida with SQ Weather = Cold
+                    SO Event with SQ Weather = True
+                    SO MeetSiena with SQ Weather = Cold
+                    SO MeetBakkeveen with SQ Weather = Cold
+
+                SWITCH from MeetBakkeveen.Weather using reference Black Dog to Black Dog.Size
+                    SO Black Dog with SQ Size = Small
+                    SO Nida with SQ Size = Medium
+                    SO Siena with SQ Size = Large
+                    SO Dog with SQ Size = True
+
+                SWITCH from Dog.Size using reference DogsAreDogs to DogsAreDogs.Place
+                    SO DogsAreDogs with SQ Place = Home
+                    SO Event with SQ Place = True
+                    SO MeetNida with SQ Place = Bakkeveen
+                    SO MeetSiena with SQ Place = Dino Bos
+                    SO MeetBakkeveen with SQ Place = Bakkeveen
+                    SO T2 with SQ Place = Home
+
+                SWITCH from T2.Place using reference Verb to Verb.Root
+                    SO Verb with SQ Root = True
+            */
+            /// </summary>
+            public static void RandomSQs()
         {
             //make a list of qualities.
             List<SensualQuality> qualities = new List<SensualQuality>();
@@ -361,13 +378,14 @@ namespace OOO3
             
             //Pick a random SQ.
             int index = RandomInt(qualities.Count);
-            //index = 4;
+            //index = 117;
             Console.WriteLine("");
             Console.WriteLine("SOs RandomSQs ");
             Console.WriteLine("\tUsing " + qualities.Count.ToString() + " qualities and starting with index = " + index.ToString());
 
             SensualQuality SQ = qualities[index];
             SensualObject? SO;
+            
             SensualQuality? SQ2= null;
             while (count > 0)
             {
@@ -383,41 +401,59 @@ namespace OOO3
                     SQ2 = GetSQ(SQ, qualities, printedqualities);
                 }
 
+
                 //switch to another referenced SO if there are no matching SQs.
                 if (SQ2 == null)
                 {
                     SO = SQ.SOParent;
                     if (SO != null)
                     {
-                        if (SO.references.Count == 0)
-                            break;
-                        index = RandomInt(SO.references.Count);
-                        SO = SO.references[index];
-                        if (SO.qualities.Count == 0)
-                            break;
+                        SensualObject? NextSO = GetAnSO(SO.IncludesReference);
+                        if (NextSO == null)
+                        {
+                            NextSO = GetAnSO(SO.IsPartOfReference);
+                            if (NextSO == null)
+                            {
+                                break;
+                            }
+                            //This was a mistake but turns out to work well.
+                            //If NextSO cannot be set retain the SO and select a new quality.
+                            SO = NextSO;
+                        }
 
+                        SensualQuality thepSQ;
                         //find an SQ which has not been printed yet.
                         foreach (SensualQuality ASQ in SO.qualities)
                         {
-                            bool printed = false;
-                            foreach (SensualQuality pSQ in printedqualities)
+                            if (!ASQ.Name.Contains(BuildSOs.INHERITSO))
                             {
-                                if (ASQ == pSQ)
+                                bool printed = false;
+                                foreach (SensualQuality pSQ in printedqualities)
                                 {
-                                    printed = true;
-                                    break;                                    
+                                    //if (ASQ.Name == pSQ.Name && ASQ.SOParent.Name == pSQ.SOParent.Name)
+                                    if (ASQ.GetHashCode() == pSQ.GetHashCode())
+                                    {
+                                        thepSQ = pSQ;
+                                        printed = true;
+                                        break;
+                                    }
                                 }
-                            }
-                            if (printed == false && !ASQ.Name.Contains(BuildSOs.INHERITSO))
-                            {
-                                SQ2 = ASQ;
-                                break;
+                                if (printed == false)
+                                {
+
+                                    SQ2 = ASQ;
+                                    //if (SQ.SOParent.Name == SQ2.SOParent.Name && SQ.Name == SQ2.Name)
+                                    //    if (ReferenceEquals(SQ, SQ2))
+                                    //        Console.WriteLine("");
+                                    break;
+                                }
                             }
                         }
 
                         //if a new SQ was found continue.
                         if (SQ2 != null)
                         {
+
                             if (SQ.SOParent != null && SQ2.SOParent != null)
                             {
                                 Console.WriteLine("\t");

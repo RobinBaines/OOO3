@@ -12,8 +12,33 @@ namespace OOO3
     {
         public string Value ="";
         public bool IsSO;
-        public SensualObject? SOParent;  //is the owner of this SQ.
-        public SensualObject? SOEvent; 
+        public SensualObject? SOEvent;
+
+        public List<SensualObject> SOReferences = new List<SensualObject>();
+
+        //unicity of an SQ is SOParent and Name.
+        public override int GetHashCode()
+        {
+            string s = "";
+            if (SOParent != null)
+                s = SOParent.Name + ";";
+            s += Name;
+            return s.GetHashCode();
+        }
+        public new bool Equals(BaseClass? other)
+        {
+            if (other == null) return false;
+            string s = "";
+            if (SOParent != null)
+                s = SOParent.Name + ";";
+            s += Name;
+
+            string sother = "";
+            if (other.SOParent != null)
+                sother = other.SOParent.Name + ";";
+            sother += other.Name;
+            return (s.Equals(sother));
+        }
 
         /// <summary>
         /// 
@@ -53,10 +78,10 @@ namespace OOO3
                 str += strEvent + this.Name + " = " + this.Value;
                 Console.WriteLine(str);
 
-                if (references.Count > 0)
+                if (SOReferences.Count > 0)
                 {
-                    references.Sort((x, y) => DateTime.Compare(x.created, y.created));
-                    foreach (SensualObject SO in references)
+                    SOReferences.Sort((x, y) => DateTime.Compare(x.created, y.created));
+                    foreach (SensualObject SO in SOReferences)
                     {
                         SO.PrintSO("\t" + "\t" + prefix, " SO Reference ", true);
                     }
@@ -79,7 +104,7 @@ namespace OOO3
             SensualQualityInit(_SOEvent, _SOparent, false, _name, _value, _description, _dt);
             if (_SOOfValue != null)
             {
-                references.Add(_SOOfValue);
+                SOReferences.Add(_SOOfValue);
             }
         }
 
@@ -104,8 +129,11 @@ namespace OOO3
     class SensualObject : BaseClass
     {
         public SensualObject? ptrDerivedFrom = null;
-       
+        public List<SensualObject> IncludesReference = new List<SensualObject>();
+        public List<SensualObject> IsPartOfReference = new List<SensualObject>();
         internal List<SensualQuality> qualities = new List<SensualQuality>();
+
+
         public virtual void PrintSO(string prefix, string extraText, bool blnDisplayCreated)
         {
             string str = prefix;
@@ -120,6 +148,16 @@ namespace OOO3
                 str = str + " : " + this.ptrDerivedFrom.Name;
              Console.WriteLine(str);
         }
+
+        public virtual void PrintParent(string prefix, string extraText)
+        {
+            if (SOParent != null)
+            {
+                this.SOParent.PrintSO("\t" + prefix, "Parent SO = ", false);
+            //Console.WriteLine();
+            }
+        }
+
 
         /// <summary>
         /// Display the qualities of an SO. 
@@ -157,40 +195,87 @@ namespace OOO3
         public virtual void PrintReferences(string prefix)
         {
             DateTime created = DateTime.MinValue;
-            if (references.Count > 0)
+            if (IncludesReference.Count > 0)
             {
-                references.Sort((x, y) => DateTime.Compare(x.created, y.created));
+                IncludesReference.Sort((x, y) => DateTime.Compare(x.created, y.created));
 
                 Console.WriteLine(prefix + "SO " + this.Name + " has references.");
-                foreach (SensualObject SO in references)
+                foreach (SensualObject SOReference in IncludesReference)
                 {
-                    if (SO.created != created)
+                    string str = " Includes          ";
+                    if (SOReference.created != created)
                     {
-                        created = SO.created;
-                        SO.PrintSO("\t" + prefix, " SO Reference ", true);
+                        created = SOReference.created;
+                        SOReference.PrintSO("\t" + prefix, str, true);
                     }
                     else
                     {
-                        SO.PrintSO("\t" + prefix, " SO Reference ", false);
+                        SOReference.PrintSO("\t" + prefix, str, false);
                     }
                 }
             }
          }
+        public virtual void PrintIsPartOf(string prefix)
+        {
+            DateTime created = DateTime.MinValue;
+            if (IsPartOfReference.Count > 0)
+            {
+                IsPartOfReference.Sort((x, y) => DateTime.Compare(x.created, y.created));
+                Console.WriteLine(prefix + "SO " + this.Name + " is part of other objects.");
+                foreach (SensualObject SOIsPartOf in IsPartOfReference)
+                {
+                    string str = " Is part of          ";
+                    if (SOIsPartOf == SOParent)
+                    {
+                        str =    " Is part of Parent = ";
+                    }
+                    
+                    if (SOIsPartOf.created != created)
+                    {
+                        created = SOIsPartOf.created;
+                        SOIsPartOf.PrintSO("\t" + prefix, str, true);
+                    }
+                    else
+                    {
+                        SOIsPartOf.PrintSO("\t" + prefix, str, false);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Add a reference to an SO if the reference is a new one and if it is not a self reference.
         /// </summary>
         /// <param name="SO"></param>
-        public virtual void AddReference(SensualObject SO)
+        public virtual void AddIncludesReference(SensualObject SO)
         {
             if(SO != null)
             {
                 //Check it is not a self reference.
                 if (this != SO)
                 {
-                    if (!references.Exists(_SO => Equals(_SO, SO)))
+                    if (!IncludesReference.Exists(_SO => Equals(_SO, SO)))
                     {
-                        references.Add(SO);
+                        IncludesReference.Add(SO);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add an IsPartOf reference to an SO if the reference is a new one and if it is not a self reference.
+        /// </summary>
+        /// <param name="SO"></param>
+        public virtual void AddIsPartOfReference(SensualObject SO)
+        {
+            if (SO != null)
+            {
+                //Check it is not a self reference.
+                if (this != SO)
+                {
+                    if (!IsPartOfReference.Exists(_SO => Equals(_SO, SO)))
+                    {
+                        IsPartOfReference.Add(SO);
                     }
                 }
             }
@@ -208,7 +293,7 @@ namespace OOO3
                 SensualObject? SOFrom = BuildSOs.GetSO(SQ.Name);
                 if (SOFrom != null)
                 {
-                    AddReference(SOFrom);
+                    AddIncludesReference(SOFrom);
                 }
 
                 //Add a quality to this SO.
@@ -256,7 +341,7 @@ namespace OOO3
         /// <param name="_dt"></param>
         public virtual void AddQuality(SensualObject _SOEvent, SensualObject _SOFrom, string _name, string _value, string _description, DateTime _dt)
         {
-            AddReference(_SOFrom);
+            AddIncludesReference(_SOFrom);
             SensualQuality? SQ = new(_SOEvent,this, true, _name, _value, _description, _dt);
             AddQuality(SQ, true);
         }
@@ -268,23 +353,31 @@ namespace OOO3
         /// <param name="_dt"></param>
         public virtual void MoveQualities(SensualObject DerivedFrom, DateTime _dt)
         {
+        List<SensualQuality> MovedQualities = new List<SensualQuality>();
         foreach (SensualQuality SQ in qualities)
             {
                 int index = DerivedFrom.qualities.IndexOf(SQ);
 
                 //add the quality to DerivedFrom if it is not already in DerivedFrom.
-                if (index < 0 && SQ.SOEvent != null)
+                if (index < 0 && SQ.SOEvent != null && SQ.SOParent == this && SQ.IsSO == false)
                 {
                     DerivedFrom.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false);
+                    if(SQ.Value == "True")
+                        MovedQualities.Add(SQ);
                 }
             }
-            qualities.RemoveAll(SQ => SQ.Value == "True");
+        foreach (SensualQuality SQ in MovedQualities)
+            {
+                qualities.Remove(SQ);
+            }
+            //qualities.RemoveAll(SQ => SQ.Value == "True");
         }
 
-        public SensualObject(string _name, DateTime _dt)
+        public SensualObject(string _name, DateTime _dt, SensualObject Parent)
         {
             Name = _name;
             this.created = _dt;
+            this.SOParent = Parent;
         }
     }
 

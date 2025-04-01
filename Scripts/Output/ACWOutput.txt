@@ -1,7 +1,4 @@
-Confed_victory : Battle {
-Person : Animal {
-Day1 : Event {
-Hour1 : Event {
+Init : Event {
 Create generated.txt by querying 'Event'.
 Created 4 new events in generated.txt from 2 qualities.
 
@@ -30,13 +27,12 @@ SO OOO_Analysis has qualities.
 	                        Quality INHERIT_SENSUALOBJECT Event = True
 
 SO OOO_Analysis has references.
-	1863-01-01 17:00:00.000 SO Reference Emancipation Proclamation : Executive Order
-	                        SO Reference Symbiosis1 : Symbiosis
-	1863-11-24 17:00:00.000 SO Reference Symbiosis2 : Symbiosis
-	                        SO Reference Symbiosis3 : Symbiosis
-	1865-05-09 17:00:00.000 SO Reference Symbiosis
-	2025-01-01 12:00:00.000 SO Reference Event
-	                        SO Reference ACW : Event
+	1863-01-01 17:00:00.000 Includes          Emancipation Proclamation : Executive Order
+	                        Includes          Symbiosis1 : Symbiosis
+	1863-11-24 17:00:00.000 Includes          Symbiosis2 : Symbiosis
+	                        Includes          Symbiosis3 : Symbiosis
+	1865-05-09 17:00:00.000 Includes          Symbiosis
+	2025-01-01 12:00:00.000 Includes          ACW : Event
 
 Print SOs. Selection from 58 SOs filtered on *
 //////////////////////////////////////Event 1 //////////////////////////////////////
@@ -47,10 +43,10 @@ SO Event has qualities.
 	                        Quality End = True
 
 SO Event has references.
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
-	2025-01-01 12:00:00.000 SO Reference Init : Event
-	                        SO Reference ACW : Event
-	2025-03-28 17:17:32.189 SO Reference Generated : Event
+	1865-05-09 17:00:00.000 Includes          OOO_Analysis : Event
+	2025-01-01 12:00:00.000 Includes          Init : Event
+	                        Includes          ACW : Event
+	2025-03-31 14:32:57.725 Includes          Generated : Event
 
 //////////////////////////////////////Init 2 //////////////////////////////////////
 2025-01-01 12:00:00.000 Init : Event
@@ -75,20 +71,20 @@ SO Init has qualities.
 	                        > President INHERIT_SENSUALOBJECT Person = True
 
 SO Init has references.
-	2025-01-01 12:00:00.000 SO Reference Event
-	                        SO Reference Battle
-	                        SO Reference Confed_victory : Battle
-	                        SO Reference Union_victory : Battle
-	                        SO Reference Inconclusive : Battle
-	                        SO Reference Person
-	                        SO Reference General : Person
-	                        SO Reference Confed : General
-	                        SO Reference Union : General
-	                        SO Reference President : Person
-	                        SO Reference Executive Order
+	2025-01-01 12:00:00.000 Includes          Battle
+	                        Includes          Confed_victory : Battle
+	                        Includes          Union_victory : Battle
+	                        Includes          Inconclusive : Battle
+	                        Includes          Person
+	                        Includes          General : Person
+	                        Includes          Confed : General
+	                        Includes          Union : General
+	                        Includes          President : Person
+	                        Includes          Executive Order
 
 //////////////////////////////////////Battle 3 //////////////////////////////////////
 2025-01-01 12:00:00.000 Battle
+	                       Parent SO = Init : Event
 SO Battle has qualities.
 	2025-01-01 12:00:00.000 Init => CWSAC = True
 	                        Init => Place = True
@@ -96,35 +92,39 @@ SO Battle has qualities.
 	                        Init => Weather = True
 	                        Init => End = True
 
-SO Battle has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Battle is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Confed_victory 4 //////////////////////////////////////
 2025-01-01 12:00:00.000 Confed_victory : Battle
+	                       Parent SO = Init : Event
 SO Confed_victory has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Battle = True
 
-SO Confed_victory has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Confed_victory is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Union_victory 5 //////////////////////////////////////
 2025-01-01 12:00:00.000 Union_victory : Battle
+	                       Parent SO = Init : Event
 SO Union_victory has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Battle = True
 
-SO Union_victory has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Union_victory is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Inconclusive 6 //////////////////////////////////////
 2025-01-01 12:00:00.000 Inconclusive : Battle
+	                       Parent SO = Init : Event
 SO Inconclusive has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Battle = True
 
-SO Inconclusive has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Inconclusive is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Person 7 //////////////////////////////////////
 2025-01-01 12:00:00.000 Person
+	                       Parent SO = Init : Event
 SO Person has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Animal = True
 	                        Init => LeftLeg = True
@@ -132,46 +132,51 @@ SO Person has qualities.
 	                        Init => LeftArm = True
 	                        Init => RightArm = True
 
-SO Person has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Person is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////General 8 //////////////////////////////////////
 2025-01-01 12:00:00.000 General : Person
+	                       Parent SO = Init : Event
 SO General has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
 
-SO General has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO General is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Confed 9 //////////////////////////////////////
 2025-01-01 12:00:00.000 Confed : General
+	                       Parent SO = Init : Event
 SO Confed has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT General = True
 
-SO Confed has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Confed is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Union 10 //////////////////////////////////////
 2025-01-01 12:00:00.000 Union : General
+	                       Parent SO = Init : Event
 SO Union has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT General = True
 
-SO Union has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Union is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////President 11 //////////////////////////////////////
 2025-01-01 12:00:00.000 President : Person
+	                       Parent SO = Init : Event
 SO President has qualities.
 	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
 
-SO President has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO President is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Executive Order 12 //////////////////////////////////////
 2025-01-01 12:00:00.000 Executive Order
+	                       Parent SO = Init : Event
 
-SO Executive Order has references.
-	2025-01-01 12:00:00.000 SO Reference Init : Event
+SO Executive Order is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////ACW 13 //////////////////////////////////////
 2025-01-01 12:00:00.000 ACW : Event
@@ -293,224 +298,246 @@ SO ACW has qualities.
 	                        > Appomattox End = True
 	2025-01-01 12:00:00.000 Quality INHERIT_SENSUALOBJECT Event = True
 	                        Quality Place = USA
-	2025-03-28 17:17:32.189 Generated => Development = True
+	2025-03-31 14:32:57.725 Generated => Development = True
 	                        Generated => Mature = True
 
+SO ACW is part of other objects.
+	1865-05-09 17:00:00.000 Is part of          OOO_Analysis : Event
+	2025-03-31 14:32:57.725 Is part of          Generated : Event
 SO ACW has references.
-	1857-03-04 17:00:00.000 SO Reference Buchanen : President
-	1860-11-06 17:00:00.000 SO Reference Lincoln : President
-	1861-04-12 17:00:00.000 SO Reference Thomas : Union
-	                        SO Reference Minute1 : Event
-	                        SO Reference Fort Sumter : Confed_victory
-	                        SO Reference Meade : Union
-	                        SO Reference Hooker : Union
-	                        SO Reference Buell : Union
-	                        SO Reference Grant : Union
-	                        SO Reference Lyon : Union
-	                        SO Reference Sturgis : Union
-	                        SO Reference McClellan : Union
-	                        SO Reference Anderson : Union
-	                        SO Reference Beauregard : Confed
-	                        SO Reference McDowell : Union
-	                        SO Reference McCulloch : Confed
-	                        SO Reference Jackson : Confed
-	                        SO Reference Buckner : Confed
-	                        SO Reference Price : Confed
-	                        SO Reference Johnston : Confed
-	                        SO Reference Bragg : Confed
-	                        SO Reference Lee : Confed
-	                        SO Reference Pemberton : Confed
-	1861-07-21 17:00:00.000 SO Reference First Battle of Bull Run : Confed_victory
-	                        SO Reference Wilsons Creek : Confed_victory
-	1862-02-11 17:00:00.000 SO Reference Fort Donelson : Union_victory
-	1862-04-06 17:00:00.000 SO Reference Shiloh : Union_victory
-	1862-09-17 17:00:00.000 SO Reference Antietam : Union_victory
-	1863-05-18 17:00:00.000 SO Reference Siege of Vicksburg : Union_victory
-	1863-07-01 17:00:00.000 SO Reference Gettysburg : Union_victory
-	1863-11-24 17:00:00.000 SO Reference ChattanoogaIII : Union_victory
-	1864-05-05 17:00:00.000 SO Reference Wilderness : Inconclusive
-	1865-05-09 17:00:00.000 SO Reference Appomattox : Union
-	                        SO Reference OOO_Analysis : Event
-	2025-01-01 12:00:00.000 SO Reference Event
-	                        SO Reference General : Person
-	2025-03-28 17:17:32.189 SO Reference Generated : Event
+	1857-03-04 17:00:00.000 Includes          Buchanen : President
+	1860-11-06 17:00:00.000 Includes          Lincoln : President
+	1861-04-12 17:00:00.000 Includes          Beauregard : Confed
+	                        Includes          Minute1 : Event
+	                        Includes          Fort Sumter : Confed_victory
+	                        Includes          Meade : Union
+	                        Includes          Thomas : Union
+	                        Includes          McClellan : Union
+	                        Includes          Buell : Union
+	                        Includes          Grant : Union
+	                        Includes          Lyon : Union
+	                        Includes          Hooker : Union
+	                        Includes          McDowell : Union
+	                        Includes          Price : Confed
+	                        Includes          Sturgis : Union
+	                        Includes          Jackson : Confed
+	                        Includes          Buckner : Confed
+	                        Includes          Johnston : Confed
+	                        Includes          McCulloch : Confed
+	                        Includes          Lee : Confed
+	                        Includes          Pemberton : Confed
+	                        Includes          Anderson : Union
+	                        Includes          Bragg : Confed
+	1861-07-21 17:00:00.000 Includes          First Battle of Bull Run : Confed_victory
+	                        Includes          Wilsons Creek : Confed_victory
+	1862-02-11 17:00:00.000 Includes          Fort Donelson : Union_victory
+	1862-04-06 17:00:00.000 Includes          Shiloh : Union_victory
+	1862-09-17 17:00:00.000 Includes          Antietam : Union_victory
+	1863-05-18 17:00:00.000 Includes          Siege of Vicksburg : Union_victory
+	1863-07-01 17:00:00.000 Includes          Gettysburg : Union_victory
+	1863-11-24 17:00:00.000 Includes          ChattanoogaIII : Union_victory
+	1864-05-05 17:00:00.000 Includes          Wilderness : Inconclusive
+	1865-05-09 17:00:00.000 Includes          Appomattox : Union
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Beauregard 14 //////////////////////////////////////
 1861-04-12 17:00:00.000 Beauregard : Confed
+	                       Parent SO = ACW : Event
 SO Beauregard has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Beauregard has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Beauregard is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Price 15 //////////////////////////////////////
 1861-04-12 17:00:00.000 Price : Confed
+	                       Parent SO = ACW : Event
 SO Price has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Price has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Price is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////McCulloch 16 //////////////////////////////////////
 1861-04-12 17:00:00.000 McCulloch : Confed
+	                       Parent SO = ACW : Event
 SO McCulloch has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO McCulloch has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO McCulloch is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Jackson 17 //////////////////////////////////////
 1861-04-12 17:00:00.000 Jackson : Confed
+	                       Parent SO = ACW : Event
 SO Jackson has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Jackson has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Jackson is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Buckner 18 //////////////////////////////////////
 1861-04-12 17:00:00.000 Buckner : Confed
+	                       Parent SO = ACW : Event
 SO Buckner has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Buckner has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Buckner is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Johnston 19 //////////////////////////////////////
 1861-04-12 17:00:00.000 Johnston : Confed
+	                       Parent SO = ACW : Event
 SO Johnston has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Johnston has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Johnston is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Bragg 20 //////////////////////////////////////
 1861-04-12 17:00:00.000 Bragg : Confed
+	                       Parent SO = ACW : Event
 SO Bragg has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Bragg has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Bragg is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Lee 21 //////////////////////////////////////
 1861-04-12 17:00:00.000 Lee : Confed
+	                       Parent SO = ACW : Event
 SO Lee has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Lee has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Lee is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Pemberton 22 //////////////////////////////////////
 1861-04-12 17:00:00.000 Pemberton : Confed
+	                       Parent SO = ACW : Event
 SO Pemberton has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed = True
 
-SO Pemberton has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Pemberton is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Anderson 23 //////////////////////////////////////
 1861-04-12 17:00:00.000 Anderson : Union
+	                       Parent SO = ACW : Event
 SO Anderson has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Anderson has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Anderson is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////McDowell 24 //////////////////////////////////////
 1861-04-12 17:00:00.000 McDowell : Union
+	                       Parent SO = ACW : Event
 SO McDowell has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO McDowell has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO McDowell is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Sturgis 25 //////////////////////////////////////
 1861-04-12 17:00:00.000 Sturgis : Union
+	                       Parent SO = ACW : Event
 SO Sturgis has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Sturgis has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Sturgis is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Lyon 26 //////////////////////////////////////
 1861-04-12 17:00:00.000 Lyon : Union
+	                       Parent SO = ACW : Event
 SO Lyon has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Lyon has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Lyon is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Grant 27 //////////////////////////////////////
 1861-04-12 17:00:00.000 Grant : Union
+	                       Parent SO = ACW : Event
 SO Grant has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Grant has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Grant is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Buell 28 //////////////////////////////////////
 1861-04-12 17:00:00.000 Buell : Union
+	                       Parent SO = ACW : Event
 SO Buell has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Buell has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Buell is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////McClellan 29 //////////////////////////////////////
 1861-04-12 17:00:00.000 McClellan : Union
+	                       Parent SO = ACW : Event
 SO McClellan has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO McClellan has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO McClellan is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Hooker 30 //////////////////////////////////////
 1861-04-12 17:00:00.000 Hooker : Union
+	                       Parent SO = ACW : Event
 SO Hooker has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Hooker has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Hooker is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Thomas 31 //////////////////////////////////////
 1861-04-12 17:00:00.000 Thomas : Union
+	                       Parent SO = ACW : Event
 SO Thomas has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Thomas has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Thomas is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Meade 32 //////////////////////////////////////
 1861-04-12 17:00:00.000 Meade : Union
+	                       Parent SO = ACW : Event
 SO Meade has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 
-SO Meade has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Meade is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Buchanen 33 //////////////////////////////////////
 1857-03-04 17:00:00.000 Buchanen : President
+	                       Parent SO = ACW : Event
 SO Buchanen has qualities.
 	1857-03-04 17:00:00.000 ACW => INHERIT_SENSUALOBJECT President = True
 	                        ACW => InOffice = 1857-1861
 	                        ACW => NrPresident = 15th
 	                        ACW => End = True
 
-SO Buchanen has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Buchanen is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Lincoln 34 //////////////////////////////////////
 1860-11-06 17:00:00.000 Lincoln : President
+	                       Parent SO = ACW : Event
 SO Lincoln has qualities.
 	1860-11-06 17:00:00.000 ACW => INHERIT_SENSUALOBJECT President = True
 	                        ACW => InOffice = 1861-1865
 	                        ACW => NrPresident = 16th
 	                        ACW => End = True
 
-SO Lincoln has references.
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Lincoln is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 
 //////////////////////////////////////Fort Sumter 35 //////////////////////////////////////
 1861-04-12 17:00:00.000 Fort Sumter : Confed_victory
+	                       Parent SO = ACW : Event
 SO Fort Sumter has qualities.
 	1861-04-12 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed_victory = True
 	                        ACW => CWSAC = Decisive
@@ -526,60 +553,68 @@ SO Fort Sumter has qualities.
 	                        > Day2 Weather = sunny
 	1861-04-13 17:00:00.000 ACW => End = Yes
 
+SO Fort Sumter is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Fort Sumter has references.
-	1861-04-12 17:00:00.000 SO Reference Beauregard : Confed
-	                        SO Reference Anderson : Union
-	                        SO Reference Day1 : Event
-	                        SO Reference Day2 : Event
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Beauregard : Confed
+	                        Includes          Anderson : Union
+	                        Includes          Day1 : Event
+	                        Includes          Day2 : Event
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Day1 36 //////////////////////////////////////
 1861-04-12 17:00:00.000 Day1 : Event
+	                       Parent SO = Fort Sumter : Confed_victory
 SO Day1 has qualities.
 	1861-04-12 17:00:00.000 Fort Sumter => INHERIT_SENSUALOBJECT Event = True
 	                        Fort Sumter => Weather = good
 	                        > Hour1 INHERIT_SENSUALOBJECT Event = True
 	                        > Hour1 Weather = raining
 
+SO Day1 is part of other objects.
+	1861-04-12 17:00:00.000 Is part of Parent = Fort Sumter : Confed_victory
 SO Day1 has references.
-	1861-04-12 17:00:00.000 SO Reference Fort Sumter : Confed_victory
-	                        SO Reference Hour1 : Event
+	1861-04-12 17:00:00.000 Includes          Hour1 : Event
 
 //////////////////////////////////////Hour1 37 //////////////////////////////////////
 1861-04-12 17:00:00.000 Hour1 : Event
+	                       Parent SO = Day1 : Event
 SO Hour1 has qualities.
 	1861-04-12 17:00:00.000 Day1 => INHERIT_SENSUALOBJECT Event = True
 	                        Day1 => Weather = raining
 	                        > Minute1 INHERIT_SENSUALOBJECT Event = True
 	                        > Minute1 Weather = dryer
 
+SO Hour1 is part of other objects.
+	1861-04-12 17:00:00.000 Is part of Parent = Day1 : Event
 SO Hour1 has references.
-	1861-04-12 17:00:00.000 SO Reference Day1 : Event
-	                        SO Reference Minute1 : Event
+	1861-04-12 17:00:00.000 Includes          Minute1 : Event
 
 //////////////////////////////////////Minute1 38 //////////////////////////////////////
 1861-04-12 17:00:00.000 Minute1 : Event
+	                       Parent SO = Hour1 : Event
 SO Minute1 has qualities.
 	1861-04-12 17:00:00.000 Hour1 => INHERIT_SENSUALOBJECT Event = True
 	                        Hour1 => Weather = dryer
 	1861-04-13 17:00:00.000 ACW => Weather = wetter
 
-SO Minute1 has references.
-	1861-04-12 17:00:00.000 SO Reference Hour1 : Event
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+SO Minute1 is part of other objects.
+	1861-04-12 17:00:00.000 Is part of Parent = Hour1 : Event
+	2025-01-01 12:00:00.000 Is part of          ACW : Event
 
 //////////////////////////////////////Day2 39 //////////////////////////////////////
 1861-04-12 17:00:00.000 Day2 : Event
+	                       Parent SO = Fort Sumter : Confed_victory
 SO Day2 has qualities.
 	1861-04-12 17:00:00.000 Fort Sumter => INHERIT_SENSUALOBJECT Event = True
 	                        Fort Sumter => Weather = sunny
 
-SO Day2 has references.
-	1861-04-12 17:00:00.000 SO Reference Fort Sumter : Confed_victory
+SO Day2 is part of other objects.
+	1861-04-12 17:00:00.000 Is part of Parent = Fort Sumter : Confed_victory
 
 //////////////////////////////////////First Battle of Bull Run 40 //////////////////////////////////////
 1861-07-21 17:00:00.000 First Battle of Bull Run : Confed_victory
+	                       Parent SO = ACW : Event
 SO First Battle of Bull Run has qualities.
 	1861-07-21 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed_victory = True
 	                        ACW => CWSAC = Decisive
@@ -593,15 +628,17 @@ SO First Battle of Bull Run has qualities.
 		1861-04-12 17:00:00.000 SO Reference Jackson : Confed
 	1861-07-21 18:00:00.000 ACW => End = True
 
+SO First Battle of Bull Run is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO First Battle of Bull Run has references.
-	1861-04-12 17:00:00.000 SO Reference Beauregard : Confed
-	                        SO Reference McDowell : Union
-	                        SO Reference Jackson : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Beauregard : Confed
+	                        Includes          McDowell : Union
+	                        Includes          Jackson : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Wilsons Creek 41 //////////////////////////////////////
 1861-07-21 17:00:00.000 Wilsons Creek : Confed_victory
+	                       Parent SO = ACW : Event
 SO Wilsons Creek has qualities.
 	1861-07-21 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Confed_victory = True
 	                        ACW => CWSAC = Decisive
@@ -617,16 +654,18 @@ SO Wilsons Creek has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lyon : Union
 	1861-07-21 18:00:00.000 ACW => End = True
 
+SO Wilsons Creek is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Wilsons Creek has references.
-	1861-04-12 17:00:00.000 SO Reference Price : Confed
-	                        SO Reference McCulloch : Confed
-	                        SO Reference Sturgis : Union
-	                        SO Reference Lyon : Union
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Price : Confed
+	                        Includes          McCulloch : Confed
+	                        Includes          Sturgis : Union
+	                        Includes          Lyon : Union
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Fort Donelson 42 //////////////////////////////////////
 1862-02-11 17:00:00.000 Fort Donelson : Union_victory
+	                       Parent SO = ACW : Event
 SO Fort Donelson has qualities.
 	1862-02-11 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -638,14 +677,16 @@ SO Fort Donelson has qualities.
 		1861-04-12 17:00:00.000 SO Reference Grant : Union
 	1862-02-16 18:00:00.000 ACW => End = True
 
+SO Fort Donelson is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Fort Donelson has references.
-	1861-04-12 17:00:00.000 SO Reference Buckner : Confed
-	                        SO Reference Grant : Union
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Buckner : Confed
+	                        Includes          Grant : Union
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Shiloh 43 //////////////////////////////////////
 1862-04-06 17:00:00.000 Shiloh : Union_victory
+	                       Parent SO = ACW : Event
 SO Shiloh has qualities.
 	1862-04-06 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -661,16 +702,18 @@ SO Shiloh has qualities.
 		1861-04-12 17:00:00.000 SO Reference Johnston : Confed
 	1862-04-07 17:00:00.000 ACW => End = True
 
+SO Shiloh is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Shiloh has references.
-	1861-04-12 17:00:00.000 SO Reference Buell : Union
-	                        SO Reference Grant : Union
-	                        SO Reference Beauregard : Confed
-	                        SO Reference Johnston : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Buell : Union
+	                        Includes          Grant : Union
+	                        Includes          Beauregard : Confed
+	                        Includes          Johnston : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Antietam 44 //////////////////////////////////////
 1862-09-17 17:00:00.000 Antietam : Union_victory
+	                       Parent SO = ACW : Event
 SO Antietam has qualities.
 	1862-09-17 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -682,14 +725,16 @@ SO Antietam has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lee : Confed
 	                        ACW => End = True
 
+SO Antietam is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Antietam has references.
-	1861-04-12 17:00:00.000 SO Reference McClellan : Union
-	                        SO Reference Lee : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          McClellan : Union
+	                        Includes          Lee : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Siege of Vicksburg 45 //////////////////////////////////////
 1863-05-18 17:00:00.000 Siege of Vicksburg : Union_victory
+	                       Parent SO = ACW : Event
 SO Siege of Vicksburg has qualities.
 	1863-05-18 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -701,14 +746,16 @@ SO Siege of Vicksburg has qualities.
 		1861-04-12 17:00:00.000 SO Reference Pemberton : Confed
 	1863-07-04 17:00:00.000 ACW => End = True
 
+SO Siege of Vicksburg is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Siege of Vicksburg has references.
-	1861-04-12 17:00:00.000 SO Reference Grant : Union
-	                        SO Reference Pemberton : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Grant : Union
+	                        Includes          Pemberton : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Gettysburg 46 //////////////////////////////////////
 1863-07-01 17:00:00.000 Gettysburg : Union_victory
+	                       Parent SO = ACW : Event
 SO Gettysburg has qualities.
 	1863-07-01 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -721,14 +768,16 @@ SO Gettysburg has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lee : Confed
 	1863-07-03 17:00:00.000 ACW => End = True
 
+SO Gettysburg is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Gettysburg has references.
-	1861-04-12 17:00:00.000 SO Reference Meade : Union
-	                        SO Reference Lee : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Meade : Union
+	                        Includes          Lee : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////ChattanoogaIII 47 //////////////////////////////////////
 1863-11-24 17:00:00.000 ChattanoogaIII : Union_victory
+	                       Parent SO = ACW : Event
 SO ChattanoogaIII has qualities.
 	1863-11-24 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union_victory = True
 	                        ACW => CWSAC = Decisive
@@ -742,15 +791,17 @@ SO ChattanoogaIII has qualities.
 		1861-04-12 17:00:00.000 SO Reference Bragg : Confed
 	1863-11-25 17:00:00.000 ACW => End = True
 
+SO ChattanoogaIII is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO ChattanoogaIII has references.
-	1861-04-12 17:00:00.000 SO Reference Grant : Union
-	                        SO Reference Hooker : Union
-	                        SO Reference Bragg : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Grant : Union
+	                        Includes          Hooker : Union
+	                        Includes          Bragg : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Wilderness 48 //////////////////////////////////////
 1864-05-05 17:00:00.000 Wilderness : Inconclusive
+	                       Parent SO = ACW : Event
 SO Wilderness has qualities.
 	1864-05-05 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Inconclusive = True
 	                        ACW => CWSAC = Decisive
@@ -762,14 +813,16 @@ SO Wilderness has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lee : Confed
 	1864-05-07 17:00:00.000 ACW => End = True
 
+SO Wilderness is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Wilderness has references.
-	1861-04-12 17:00:00.000 SO Reference Grant : Union
-	                        SO Reference Lee : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Grant : Union
+	                        Includes          Lee : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////Appomattox 49 //////////////////////////////////////
 1865-05-09 17:00:00.000 Appomattox : Union
+	                       Parent SO = ACW : Event
 SO Appomattox has qualities.
 	1865-05-09 17:00:00.000 ACW => INHERIT_SENSUALOBJECT Union = True
 	                        ACW => CWSAC = Decisive
@@ -781,11 +834,12 @@ SO Appomattox has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lee : Confed
 	                        ACW => End = True
 
+SO Appomattox is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ACW : Event
 SO Appomattox has references.
-	1861-04-12 17:00:00.000 SO Reference Grant : Union
-	                        SO Reference Lee : Confed
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
-	                        SO Reference General : Person
+	1861-04-12 17:00:00.000 Includes          Grant : Union
+	                        Includes          Lee : Confed
+	2025-01-01 12:00:00.000 Includes          General : Person
 
 //////////////////////////////////////OOO_Analysis 50 //////////////////////////////////////
 1865-05-09 17:00:00.000 OOO_Analysis : Event
@@ -811,36 +865,39 @@ SO OOO_Analysis has qualities.
 	                        Quality INHERIT_SENSUALOBJECT Event = True
 
 SO OOO_Analysis has references.
-	1863-01-01 17:00:00.000 SO Reference Emancipation Proclamation : Executive Order
-	                        SO Reference Symbiosis1 : Symbiosis
-	1863-11-24 17:00:00.000 SO Reference Symbiosis2 : Symbiosis
-	                        SO Reference Symbiosis3 : Symbiosis
-	1865-05-09 17:00:00.000 SO Reference Symbiosis
-	2025-01-01 12:00:00.000 SO Reference Event
-	                        SO Reference ACW : Event
+	1863-01-01 17:00:00.000 Includes          Emancipation Proclamation : Executive Order
+	                        Includes          Symbiosis1 : Symbiosis
+	1863-11-24 17:00:00.000 Includes          Symbiosis2 : Symbiosis
+	                        Includes          Symbiosis3 : Symbiosis
+	1865-05-09 17:00:00.000 Includes          Symbiosis
+	2025-01-01 12:00:00.000 Includes          ACW : Event
 
 //////////////////////////////////////Symbiosis 51 //////////////////////////////////////
 1865-05-09 17:00:00.000 Symbiosis
+	                       Parent SO = OOO_Analysis : Event
 SO Symbiosis has qualities.
 	1865-05-09 17:00:00.000 OOO_Analysis => SO1 = True
 	                        OOO_Analysis => SO2 = True
 
-SO Symbiosis has references.
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
+SO Symbiosis is part of other objects.
+	1865-05-09 17:00:00.000 Is part of Parent = OOO_Analysis : Event
 
 //////////////////////////////////////Emancipation Proclamation 52 //////////////////////////////////////
 1863-01-01 17:00:00.000 Emancipation Proclamation : Executive Order
+	                       Parent SO = OOO_Analysis : Event
 SO Emancipation Proclamation has qualities.
 	1863-01-01 17:00:00.000 OOO_Analysis => INHERIT_SENSUALOBJECT Executive Order = True
 	                        OOO_Analysis => By = Lincoln
 		1860-11-06 17:00:00.000 SO Reference Lincoln : President
 
+SO Emancipation Proclamation is part of other objects.
+	1865-05-09 17:00:00.000 Is part of Parent = OOO_Analysis : Event
 SO Emancipation Proclamation has references.
-	1860-11-06 17:00:00.000 SO Reference Lincoln : President
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
+	1860-11-06 17:00:00.000 Includes          Lincoln : President
 
 //////////////////////////////////////Symbiosis1 53 //////////////////////////////////////
 1863-01-01 17:00:00.000 Symbiosis1 : Symbiosis
+	                       Parent SO = OOO_Analysis : Event
 SO Symbiosis1 has qualities.
 	1863-01-01 17:00:00.000 OOO_Analysis => INHERIT_SENSUALOBJECT Symbiosis = True
 	                        OOO_Analysis => SO1 = Emancipation Proclamation
@@ -848,13 +905,15 @@ SO Symbiosis1 has qualities.
 	                        OOO_Analysis => SO2 = False
 	                        OOO_Analysis => ACW = Development
 
+SO Symbiosis1 is part of other objects.
+	1865-05-09 17:00:00.000 Is part of Parent = OOO_Analysis : Event
 SO Symbiosis1 has references.
-	1863-01-01 17:00:00.000 SO Reference Emancipation Proclamation : Executive Order
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+	1863-01-01 17:00:00.000 Includes          Emancipation Proclamation : Executive Order
+	2025-01-01 12:00:00.000 Includes          ACW : Event
 
 //////////////////////////////////////Symbiosis2 54 //////////////////////////////////////
 1863-11-24 17:00:00.000 Symbiosis2 : Symbiosis
+	                       Parent SO = OOO_Analysis : Event
 SO Symbiosis2 has qualities.
 	1863-11-24 17:00:00.000 OOO_Analysis => INHERIT_SENSUALOBJECT Symbiosis = True
 	                        OOO_Analysis => SO1 = Siege of Vicksburg
@@ -863,14 +922,16 @@ SO Symbiosis2 has qualities.
 		1863-11-24 17:00:00.000 SO Reference ChattanoogaIII : Union_victory
 	                        OOO_Analysis => ACW = Mature
 
+SO Symbiosis2 is part of other objects.
+	1865-05-09 17:00:00.000 Is part of Parent = OOO_Analysis : Event
 SO Symbiosis2 has references.
-	1863-05-18 17:00:00.000 SO Reference Siege of Vicksburg : Union_victory
-	1863-11-24 17:00:00.000 SO Reference ChattanoogaIII : Union_victory
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+	1863-05-18 17:00:00.000 Includes          Siege of Vicksburg : Union_victory
+	1863-11-24 17:00:00.000 Includes          ChattanoogaIII : Union_victory
+	2025-01-01 12:00:00.000 Includes          ACW : Event
 
 //////////////////////////////////////Symbiosis3 55 //////////////////////////////////////
 1863-11-24 17:00:00.000 Symbiosis3 : Symbiosis
+	                       Parent SO = OOO_Analysis : Event
 SO Symbiosis3 has qualities.
 	1863-11-24 17:00:00.000 OOO_Analysis => INHERIT_SENSUALOBJECT Symbiosis = True
 	                        OOO_Analysis => SO1 = Grant
@@ -879,16 +940,17 @@ SO Symbiosis3 has qualities.
 		1861-04-12 17:00:00.000 SO Reference Lee : Confed
 	                        OOO_Analysis => ACW = Mature
 
+SO Symbiosis3 is part of other objects.
+	1865-05-09 17:00:00.000 Is part of Parent = OOO_Analysis : Event
 SO Symbiosis3 has references.
-	1861-04-12 17:00:00.000 SO Reference Grant : Union
-	                        SO Reference Lee : Confed
-	1865-05-09 17:00:00.000 SO Reference OOO_Analysis : Event
-	2025-01-01 12:00:00.000 SO Reference ACW : Event
+	1861-04-12 17:00:00.000 Includes          Grant : Union
+	                        Includes          Lee : Confed
+	2025-01-01 12:00:00.000 Includes          ACW : Event
 
 //////////////////////////////////////Generated 56 //////////////////////////////////////
-2025-03-28 17:17:32.189 Generated : Event
+2025-03-31 14:32:57.725 Generated : Event
 SO Generated has qualities.
-	2025-03-28 17:17:32.189 Quality INHERIT_SENSUALOBJECT Event = True
+	2025-03-31 14:32:57.725 Quality INHERIT_SENSUALOBJECT Event = True
 	                        > ACW Development = True
 	                        > Development INHERIT_SENSUALOBJECT Verb = True
 	                        > Development Root = Development
@@ -897,30 +959,31 @@ SO Generated has qualities.
 	                        > Mature Root = Mature
 
 SO Generated has references.
-	2025-01-01 12:00:00.000 SO Reference Event
-	                        SO Reference ACW : Event
-	2025-03-28 17:17:32.189 SO Reference Development
-	                        SO Reference Mature
+	2025-01-01 12:00:00.000 Includes          ACW : Event
+	2025-03-31 14:32:57.725 Includes          Development
+	                        Includes          Mature
 
 //////////////////////////////////////Development 57 //////////////////////////////////////
-2025-03-28 17:17:32.189 Development
+2025-03-31 14:32:57.725 Development
+	                       Parent SO = Generated : Event
 SO Development has qualities.
-	2025-03-28 17:17:32.189 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-31 14:32:57.725 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = Development
-		2025-03-28 17:17:32.189 SO Reference Development
+		2025-03-31 14:32:57.725 SO Reference Development
 
-SO Development has references.
-	2025-03-28 17:17:32.189 SO Reference Generated : Event
+SO Development is part of other objects.
+	2025-03-31 14:32:57.725 Is part of Parent = Generated : Event
 
 //////////////////////////////////////Mature 58 //////////////////////////////////////
-2025-03-28 17:17:32.189 Mature
+2025-03-31 14:32:57.725 Mature
+	                       Parent SO = Generated : Event
 SO Mature has qualities.
-	2025-03-28 17:17:32.189 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-03-31 14:32:57.725 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = Mature
-		2025-03-28 17:17:32.189 SO Reference Mature
+		2025-03-31 14:32:57.725 SO Reference Mature
 
-SO Mature has references.
-	2025-03-28 17:17:32.189 SO Reference Generated : Event
+SO Mature is part of other objects.
+	2025-03-31 14:32:57.725 Is part of Parent = Generated : Event
 
 ////////////////////////////// QuerySOs of Battle//////////////////////////////////////
 Query 'Battle' for 'General'
@@ -960,107 +1023,15 @@ Query 'Battle' for 'General'
  Parent: 1864-05-05 17:00:00.000 Wilderness Child: 1861-04-12 17:00:00.000 Grant
  Parent: 1864-05-05 17:00:00.000 Wilderness Child: 1861-04-12 17:00:00.000 Lee
  Parent: 1864-05-05 17:00:00.000 Wilderness Child: 2025-01-01 12:00:00.000 General
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 170
-		SO Gettysburg with SQ General = Meade
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 184
-		SO Wilderness with SQ General = Lee
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Appomattox with SQ General = Grant
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 129
-		SO First Battle of Bull Run with SQ General = Beauregard
-		SO Fort Sumter with SQ General = Anderson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
+	Using 224 qualities and starting with index = 214
+		SO Symbiosis2 with SQ ACW = Mature
+		SO Symbiosis1 with SQ ACW = Development
+		SO Symbiosis3 with SQ ACW = Mature
 	
-	SWITCH from Appomattox.General using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 99
-		SO ACW with SQ Start = Fort Sumter
-	
-	SWITCH from ACW.Start using reference Wilsons Creek to Wilsons Creek.CWSAC
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 78
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 215
+	SWITCH from Symbiosis3.ACW using reference Symbiosis3 to Symbiosis3.SO1
 		SO Symbiosis3 with SQ SO1 = Grant
 		SO Symbiosis1 with SQ SO1 = Emancipation Proclamation
 		SO Symbiosis2 with SQ SO1 = Siege of Vicksburg
@@ -1074,36 +1045,54 @@ SOs RandomSQs
 	
 	SWITCH from Symbiosis.SO2 using reference OOO_Analysis to Emancipation Proclamation.By
 		SO Emancipation Proclamation with SQ By = Lincoln
-	
-	SWITCH from Emancipation Proclamation.By using reference Lincoln to Lincoln.InOffice
-		SO Lincoln with SQ InOffice = 1861-1865
-		SO Buchanen with SQ InOffice = 1857-1861
-	
-	SWITCH from Buchanen.InOffice using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 23
-		SO Buchanen with SQ InOffice = 1857-1861
-		SO Lincoln with SQ InOffice = 1861-1865
+	Using 224 qualities and starting with index = 150
+		SO Shiloh with SQ General = Buell
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
 	
-	SWITCH from Lincoln.InOffice using reference ACW to Buchanen.End
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
@@ -1120,7 +1109,1084 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
 
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 182
+		SO Wilderness with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 160
+		SO Antietam with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.NrPresident
+		SO Buchanen with SQ NrPresident = 15th
+		SO Lincoln with SQ NrPresident = 16th
+	
+	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
+		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
+	
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 75
+		SO Gettysburg with SQ General = Meade
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 102
+		SO ACW with SQ Place = USA
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO Appomattox with SQ Place = Locust Grove
+	
+	SWITCH from Appomattox.Place using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.State
+		SO Wilderness with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+	
+	SWITCH from Wilderness.General using reference Wilderness to Wilderness.End
+		SO Wilderness with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 20
+		SO Person with SQ RightArm = True
+	
+	SWITCH from Person.RightArm using reference Init to Person.LeftArm
+		SO Person with SQ LeftArm = True
+	
+	SWITCH from Person.LeftArm using reference Init to Person.RightLeg
+		SO Person with SQ RightLeg = True
+	
+	SWITCH from Person.RightLeg using reference Init to Person.LeftLeg
+		SO Person with SQ LeftLeg = True
+	
+	SWITCH from Person.LeftLeg using reference Init to Battle.End
+		SO Battle with SQ End = True
+		SO Event with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.NrPresident
+		SO Buchanen with SQ NrPresident = 15th
+		SO Lincoln with SQ NrPresident = 16th
+	
+	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
+		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
+	
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 27
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 94
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+	
+	SWITCH from Wilderness.General using reference Wilderness to Wilderness.CWSAC
+		SO Wilderness with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Appomattox with SQ CWSAC = Decisive
+	
+	SWITCH from Appomattox.CWSAC using reference Appomattox to Appomattox.Place
+		SO Appomattox with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 114
+		SO Fort Sumter with SQ General = Beauregard
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 4
+		SO Person with SQ LeftArm = True
+	
+	SWITCH from Person.LeftArm using reference Init to Person.RightArm
+		SO Person with SQ RightArm = True
+	
+	SWITCH from Person.RightArm using reference Init to Person.RightLeg
+		SO Person with SQ RightLeg = True
+	
+	SWITCH from Person.RightLeg using reference Init to Person.LeftLeg
+		SO Person with SQ LeftLeg = True
+	
+	SWITCH from Person.LeftLeg using reference Init to Battle.End
+		SO Battle with SQ End = True
+		SO Event with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.NrPresident
+		SO Buchanen with SQ NrPresident = 15th
+		SO Lincoln with SQ NrPresident = 16th
+	
+	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
+		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
+	
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 46
+		SO First Battle of Bull Run with SQ General = McDowell
+		SO Fort Sumter with SQ General = Anderson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 134
+		SO Wilsons Creek with SQ Place = Manassas
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.State
+		SO Wilderness with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 190
+		SO Appomattox with SQ General = Lee
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+	
+	SWITCH from Wilderness.General using reference Wilderness to Wilderness.CWSAC
+		SO Wilderness with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Appomattox with SQ CWSAC = Decisive
+	
+	SWITCH from Appomattox.CWSAC using reference Appomattox to Appomattox.Place
+		SO Appomattox with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 169
+		SO Gettysburg with SQ State = Pennsylvania
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
 	Using 224 qualities and starting with index = 156
@@ -1139,11 +2205,7 @@ SOs RandomSQs
 		SO Appomattox with SQ Place = Locust Grove
 		SO ACW with SQ Place = USA
 	
-	SWITCH from ACW.Place using reference Buchanen to Buchanen.InOffice
-		SO Buchanen with SQ InOffice = 1857-1861
-		SO Lincoln with SQ InOffice = 1861-1865
-	
-	SWITCH from Lincoln.InOffice using reference ACW to Buchanen.End
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
@@ -1161,14 +2223,110 @@ SOs RandomSQs
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
 	
-	SWITCH from Appomattox.End using reference ACW to Buchanen.NrPresident
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.State
+		SO Wilderness with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 218
+		SO ACW with SQ Development = True
+	
+	SWITCH from ACW.Development using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.NrPresident
 		SO Buchanen with SQ NrPresident = 15th
 		SO Lincoln with SQ NrPresident = 16th
 	
 	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
 		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
 	
-	SWITCH from Buchanen.InOffice using reference ACW to Fort Sumter.General
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
 		SO Fort Sumter with SQ General = Anderson
 		SO First Battle of Bull Run with SQ General = Jackson
 		SO Wilsons Creek with SQ General = Price
@@ -1180,361 +2338,66 @@ SOs RandomSQs
 		SO ChattanoogaIII with SQ General = Bragg
 		SO Wilderness with SQ General = Grant
 		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 119
-		SO Day1 with SQ Weather = good
+	Using 224 qualities and starting with index = 1
 		SO Event with SQ Weather = True
 		SO Battle with SQ Weather = True
 		SO Minute1 with SQ Weather = wetter
-		SO Day2 with SQ Weather = sunny
-		SO Hour1 with SQ Weather = raining
-	
-	SWITCH from Hour1.Weather using reference Minute1 to Minute1.Weather
-		SO Minute1 with SQ Weather = dryer
-	
-	SWITCH from Minute1.Weather using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-	
-	SWITCH from Appomattox.End using reference ACW to Buchanen.NrPresident
-		SO Buchanen with SQ NrPresident = 15th
-		SO Lincoln with SQ NrPresident = 16th
-	
-	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
-		SO Buchanen with SQ InOffice = 1857-1861
-		SO Lincoln with SQ InOffice = 1861-1865
-	
-	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 68
-		SO Antietam with SQ Place = Sharpsburg
-		SO Event with SQ Place = True
-		SO Battle with SQ Place = True
-		SO Fort Sumter with SQ Place = Charleston
-		SO Wilsons Creek with SQ Place = Manassas
-		SO First Battle of Bull Run with SQ Place = Manassas
-		SO Fort Donelson with SQ Place = Donelson
-		SO Shiloh with SQ Place = Pittsburg Landing
-		SO Siege of Vicksburg with SQ Place = Vicksburg
-		SO Gettysburg with SQ Place = Gettysburg
-		SO ChattanoogaIII with SQ Place = Missionary Ridge
-		SO Wilderness with SQ Place = Locust Grove
-		SO Appomattox with SQ Place = Locust Grove
-		SO ACW with SQ Place = USA
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 185
-		SO Wilderness with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Buchanen with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 138
-		SO Wilsons Creek with SQ General = Sturgis
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-	
-	SWITCH from Appomattox.General using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 220
-		SO ACW with SQ Mature = True
-	
-	SWITCH from ACW.Mature using reference Fort Sumter to Fort Sumter.CWSAC
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 59
-		SO Shiloh with SQ General = Grant
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 70
-		SO Siege of Vicksburg with SQ Place = Vicksburg
-		SO Event with SQ Place = True
-		SO Battle with SQ Place = True
-		SO Fort Sumter with SQ Place = Charleston
-		SO Wilsons Creek with SQ Place = Manassas
-		SO First Battle of Bull Run with SQ Place = Manassas
-		SO Fort Donelson with SQ Place = Donelson
-		SO Shiloh with SQ Place = Pittsburg Landing
-		SO Antietam with SQ Place = Sharpsburg
-		SO Gettysburg with SQ Place = Gettysburg
-		SO ChattanoogaIII with SQ Place = Missionary Ridge
-		SO Wilderness with SQ Place = Locust Grove
-		SO Appomattox with SQ Place = Locust Grove
-		SO ACW with SQ Place = USA
-	
-	SWITCH from ACW.Place using reference Shiloh to Shiloh.CWSAC
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 136
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-	
-	SWITCH from Appomattox.General using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 17
-		SO Person with SQ LeftLeg = True
-	
-	SWITCH from Person.LeftLeg using reference Init to Person.RightArm
-		SO Person with SQ RightArm = True
-	
-	SWITCH from Person.RightArm using reference Init to Person.LeftArm
-		SO Person with SQ LeftArm = True
-	
-	SWITCH from Person.LeftArm using reference Init to Person.RightLeg
-		SO Person with SQ RightLeg = True
-	
-	SWITCH from Person.RightLeg using reference Init to Person.LeftLeg
-		SO Person with SQ LeftLeg = True
-	
-	SWITCH from Person.LeftLeg using reference Init to Battle.End
-		SO Battle with SQ End = True
-		SO Event with SQ End = True
-		SO Buchanen with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
-	
-	SWITCH from Appomattox.End using reference ACW to Buchanen.NrPresident
-		SO Buchanen with SQ NrPresident = 15th
-		SO Lincoln with SQ NrPresident = 16th
-	
-	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
-		SO Buchanen with SQ InOffice = 1857-1861
-		SO Lincoln with SQ InOffice = 1861-1865
-	
-	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
-		SO Fort Sumter with SQ General = Anderson
-		SO First Battle of Bull Run with SQ General = Jackson
-		SO Wilsons Creek with SQ General = Price
-		SO Fort Donelson with SQ General = Buckner
-		SO Shiloh with SQ General = Buell
-		SO Antietam with SQ General = Lee
-		SO Siege of Vicksburg with SQ General = Pemberton
-		SO Gettysburg with SQ General = Meade
-		SO ChattanoogaIII with SQ General = Bragg
-		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-	
-	SWITCH from Appomattox.General using reference ACW to Fort Sumter.General
-		SO Fort Sumter with SQ General = Beauregard
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 141
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 99
-		SO ACW with SQ Start = Fort Sumter
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 37
-		SO Wilsons Creek with SQ Place = Manassas
-		SO Event with SQ Place = True
-		SO Battle with SQ Place = True
-		SO Fort Sumter with SQ Place = Charleston
-		SO First Battle of Bull Run with SQ Place = Manassas
-		SO Fort Donelson with SQ Place = Donelson
-		SO Shiloh with SQ Place = Pittsburg Landing
-		SO Antietam with SQ Place = Sharpsburg
-		SO Siege of Vicksburg with SQ Place = Vicksburg
-		SO Gettysburg with SQ Place = Gettysburg
-		SO ChattanoogaIII with SQ Place = Missionary Ridge
-		SO Wilderness with SQ Place = Locust Grove
-		SO Appomattox with SQ Place = Locust Grove
-		SO ACW with SQ Place = USA
-	
-	SWITCH from ACW.Place using reference Fort Sumter to Fort Sumter.CWSAC
-		SO Fort Sumter with SQ CWSAC = Decisive
-		SO Battle with SQ CWSAC = True
-		SO Wilsons Creek with SQ CWSAC = Decisive
-		SO First Battle of Bull Run with SQ CWSAC = Decisive
-		SO Fort Donelson with SQ CWSAC = Decisive
-		SO Shiloh with SQ CWSAC = Decisive
-		SO Antietam with SQ CWSAC = Decisive
-		SO Siege of Vicksburg with SQ CWSAC = Decisive
-		SO Gettysburg with SQ CWSAC = Decisive
-		SO ChattanoogaIII with SQ CWSAC = Decisive
-		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 33
-		SO Minute1 with SQ Weather = wetter
-		SO Event with SQ Weather = True
-		SO Battle with SQ Weather = True
 		SO Day1 with SQ Weather = good
 		SO Day2 with SQ Weather = sunny
 		SO Hour1 with SQ Weather = raining
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 69
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+		SO Appomattox with SQ CWSAC = Decisive
 	
-	SWITCH from Hour1.Weather using reference Minute1 to Minute1.Weather
-		SO Minute1 with SQ Weather = dryer
+	SWITCH from Appomattox.CWSAC using reference Appomattox to Appomattox.Place
+		SO Appomattox with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
 	
-	SWITCH from Minute1.Weather using reference Hour1 to Hour1.Weather
-		SO Hour1 with SQ Weather = raining
-	
-	SWITCH from Hour1.Weather using reference Minute1 to Minute1.Weather
-		SO Minute1 with SQ Weather = wetter
-	
-	SWITCH from Minute1.Weather using reference ACW to Buchanen.End
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
@@ -1551,26 +2414,101 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+	
+	SWITCH from Wilderness.State using reference Wilderness to Wilderness.General
+		SO Wilderness with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Appomattox with SQ General = Grant
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 155
-		SO Antietam with SQ CWSAC = Decisive
+	Using 224 qualities and starting with index = 84
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO Wilderness with SQ Place = Locust Grove
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
 		SO Battle with SQ CWSAC = True
 		SO Fort Sumter with SQ CWSAC = Decisive
 		SO Wilsons Creek with SQ CWSAC = Decisive
 		SO First Battle of Bull Run with SQ CWSAC = Decisive
 		SO Fort Donelson with SQ CWSAC = Decisive
 		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
 		SO Siege of Vicksburg with SQ CWSAC = Decisive
 		SO Gettysburg with SQ CWSAC = Decisive
 		SO ChattanoogaIII with SQ CWSAC = Decisive
 		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 115
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.State
+		SO Wilderness with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
 		SO Fort Sumter with SQ General = Anderson
 		SO First Battle of Bull Run with SQ General = Jackson
 		SO Wilsons Creek with SQ General = Price
@@ -1581,43 +2519,55 @@ SOs RandomSQs
 		SO Gettysburg with SQ General = Meade
 		SO ChattanoogaIII with SQ General = Bragg
 		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
-	
-	SWITCH from Appomattox.General using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Shiloh with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 155
-		SO Antietam with SQ CWSAC = Decisive
+	Using 224 qualities and starting with index = 36
+		SO Wilsons Creek with SQ State = Missouri
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+		SO Appomattox with SQ State = Virginia
+	
+	SWITCH from Appomattox.State using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
 		SO Battle with SQ CWSAC = True
 		SO Fort Sumter with SQ CWSAC = Decisive
 		SO Wilsons Creek with SQ CWSAC = Decisive
 		SO First Battle of Bull Run with SQ CWSAC = Decisive
 		SO Fort Donelson with SQ CWSAC = Decisive
 		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
 		SO Siege of Vicksburg with SQ CWSAC = Decisive
 		SO Gettysburg with SQ CWSAC = Decisive
 		SO ChattanoogaIII with SQ CWSAC = Decisive
 		SO Wilderness with SQ CWSAC = Decisive
-		SO Appomattox with SQ CWSAC = Decisive
 	
-	SWITCH from Appomattox.CWSAC using reference ACW to Buchanen.End
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
@@ -1634,36 +2584,9 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 154
-		SO Shiloh with SQ End = True
-		SO Event with SQ End = True
-		SO Battle with SQ End = True
-		SO Buchanen with SQ End = True
-		SO Lincoln with SQ End = True
-		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
-		SO Wilsons Creek with SQ End = True
-		SO Fort Donelson with SQ End = True
-		SO Antietam with SQ End = True
-		SO Gettysburg with SQ End = True
-		SO Siege of Vicksburg with SQ End = True
-		SO ChattanoogaIII with SQ End = True
-		SO Wilderness with SQ End = True
-		SO ACW with SQ End = Appomattox
-		SO Appomattox with SQ End = True
 	
-	SWITCH from Appomattox.End using reference ACW to Buchanen.NrPresident
-		SO Buchanen with SQ NrPresident = 15th
-		SO Lincoln with SQ NrPresident = 16th
-	
-	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
-		SO Buchanen with SQ InOffice = 1857-1861
-		SO Lincoln with SQ InOffice = 1861-1865
-	
-	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.General
+		SO Appomattox with SQ General = Grant
 		SO Fort Sumter with SQ General = Anderson
 		SO First Battle of Bull Run with SQ General = Jackson
 		SO Wilsons Creek with SQ General = Price
@@ -1674,11 +2597,24 @@ SOs RandomSQs
 		SO Gettysburg with SQ General = Meade
 		SO ChattanoogaIII with SQ General = Bragg
 		SO Wilderness with SQ General = Grant
-		SO Appomattox with SQ General = Grant
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 186
+	Using 224 qualities and starting with index = 145
+		SO Fort Donelson with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
 		SO Appomattox with SQ CWSAC = Decisive
 		SO Battle with SQ CWSAC = True
 		SO Fort Sumter with SQ CWSAC = Decisive
@@ -1691,14 +2627,24 @@ SOs RandomSQs
 		SO Gettysburg with SQ CWSAC = Decisive
 		SO ChattanoogaIII with SQ CWSAC = Decisive
 		SO Wilderness with SQ CWSAC = Decisive
-
-
-SOs RandomSQs 
-	Using 224 qualities and starting with index = 24
-		SO Lincoln with SQ NrPresident = 16th
-		SO Buchanen with SQ NrPresident = 15th
 	
-	SWITCH from Buchanen.NrPresident using reference ACW to Buchanen.End
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
@@ -1715,13 +2661,58 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 2
+	Using 224 qualities and starting with index = 11
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+		SO Appomattox with SQ CWSAC = Decisive
+	
+	SWITCH from Appomattox.CWSAC using reference Appomattox to Appomattox.Place
+		SO Appomattox with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Wilderness with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
+		SO Buchanen with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
-		SO Buchanen with SQ End = True
 		SO Lincoln with SQ End = True
 		SO Fort Sumter with SQ End = Yes
 		SO First Battle of Bull Run with SQ End = True
@@ -1735,13 +2726,58 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+	
+	SWITCH from Wilderness.State using reference Wilderness to Wilderness.General
+		SO Wilderness with SQ General = Grant
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Appomattox with SQ General = Grant
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 198
-		SO Symbiosis2 with SQ SO1 = Siege of Vicksburg
-		SO Symbiosis1 with SQ SO1 = Emancipation Proclamation
+	Using 224 qualities and starting with index = 196
+		SO Symbiosis3 with SQ SO2 = Lee
+		SO Symbiosis1 with SQ SO2 = False
+		SO Symbiosis2 with SQ SO2 = ChattanoogaIII
+		SO Symbiosis with SQ SO2 = True
+	
+	SWITCH from Symbiosis.SO2 using reference OOO_Analysis to Emancipation Proclamation.By
+		SO Emancipation Proclamation with SQ By = Lincoln
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 200
+		SO Symbiosis2 with SQ ACW = Mature
+		SO Symbiosis1 with SQ ACW = Development
+		SO Symbiosis3 with SQ ACW = Mature
+	
+	SWITCH from Symbiosis3.ACW using reference Symbiosis3 to Symbiosis3.SO1
 		SO Symbiosis3 with SQ SO1 = Grant
+		SO Symbiosis1 with SQ SO1 = Emancipation Proclamation
+		SO Symbiosis2 with SQ SO1 = Siege of Vicksburg
 		SO Symbiosis with SQ SO1 = True
 	
 	SWITCH from Symbiosis.SO1 using reference OOO_Analysis to Symbiosis1.SO2
@@ -1752,19 +2788,17 @@ SOs RandomSQs
 	
 	SWITCH from Symbiosis.SO2 using reference OOO_Analysis to Emancipation Proclamation.By
 		SO Emancipation Proclamation with SQ By = Lincoln
-	
-	SWITCH from Emancipation Proclamation.By using reference OOO_Analysis to Symbiosis1.ACW
-		SO Symbiosis1 with SQ ACW = Development
-		SO Symbiosis3 with SQ ACW = Mature
-		SO Symbiosis2 with SQ ACW = Mature
-	
-	SWITCH from Symbiosis2.ACW using reference ACW to Buchanen.End
-		SO Buchanen with SQ End = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 47
+		SO First Battle of Bull Run with SQ End = True
 		SO Event with SQ End = True
 		SO Battle with SQ End = True
+		SO Buchanen with SQ End = True
 		SO Lincoln with SQ End = True
 		SO Fort Sumter with SQ End = Yes
-		SO First Battle of Bull Run with SQ End = True
 		SO Wilsons Creek with SQ End = True
 		SO Fort Donelson with SQ End = True
 		SO Shiloh with SQ End = True
@@ -1776,7 +2810,37 @@ SOs RandomSQs
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
 	
-	SWITCH from Appomattox.End using reference ACW to Buchanen.NrPresident
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Buchanen.NrPresident
 		SO Buchanen with SQ NrPresident = 15th
 		SO Lincoln with SQ NrPresident = 16th
 	
@@ -1796,28 +2860,71 @@ SOs RandomSQs
 		SO ChattanoogaIII with SQ General = Bragg
 		SO Wilderness with SQ General = Grant
 		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
 
+///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 224 qualities and starting with index = 19
-		SO Person with SQ LeftArm = True
+	Using 224 qualities and starting with index = 170
+		SO Gettysburg with SQ General = Meade
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
 	
-	SWITCH from Person.LeftArm using reference Init to Person.RightArm
-		SO Person with SQ RightArm = True
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
 	
-	SWITCH from Person.RightArm using reference Init to Person.LeftArm
-		SO Person with SQ LeftArm = True
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
 	
-	SWITCH from Person.LeftArm using reference Init to Person.RightLeg
-		SO Person with SQ RightLeg = True
-	
-	SWITCH from Person.RightLeg using reference Init to Person.LeftLeg
-		SO Person with SQ LeftLeg = True
-	
-	SWITCH from Person.LeftLeg using reference Init to Battle.End
-		SO Battle with SQ End = True
-		SO Event with SQ End = True
+	SWITCH from ACW.Place using reference ACW to Buchanen.End
 		SO Buchanen with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
 		SO Lincoln with SQ End = True
 		SO Fort Sumter with SQ End = Yes
 		SO First Battle of Bull Run with SQ End = True
@@ -1831,4 +2938,208 @@ SOs RandomSQs
 		SO Wilderness with SQ End = True
 		SO ACW with SQ End = Appomattox
 		SO Appomattox with SQ End = True
+	
+	SWITCH from Appomattox.End using reference Appomattox to Appomattox.State
+		SO Appomattox with SQ State = Virginia
+		SO Battle with SQ State = True
+		SO Fort Sumter with SQ State = South Carolina
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 205
+		SO Symbiosis with SQ SO1 = True
+		SO Symbiosis1 with SQ SO1 = Emancipation Proclamation
+		SO Symbiosis2 with SQ SO1 = Siege of Vicksburg
+		SO Symbiosis3 with SQ SO1 = Grant
+	
+	SWITCH from Symbiosis3.SO1 using reference Symbiosis3 to Symbiosis3.SO2
+		SO Symbiosis3 with SQ SO2 = Lee
+		SO Symbiosis1 with SQ SO2 = False
+		SO Symbiosis2 with SQ SO2 = ChattanoogaIII
+		SO Symbiosis with SQ SO2 = True
+	
+	SWITCH from Symbiosis.SO2 using reference OOO_Analysis to Emancipation Proclamation.By
+		SO Emancipation Proclamation with SQ By = Lincoln
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 101
+		SO Appomattox with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+	
+	SWITCH from ACW.End using reference ACW to Buchanen.NrPresident
+		SO Buchanen with SQ NrPresident = 15th
+		SO Lincoln with SQ NrPresident = 16th
+	
+	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
+		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
+	
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Fort Sumter.State
+		SO Fort Sumter with SQ State = South Carolina
+		SO Battle with SQ State = True
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+		SO Appomattox with SQ State = Virginia
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 224 qualities and starting with index = 101
+		SO Appomattox with SQ End = True
+		SO Event with SQ End = True
+		SO Battle with SQ End = True
+		SO Buchanen with SQ End = True
+		SO Lincoln with SQ End = True
+		SO Fort Sumter with SQ End = Yes
+		SO First Battle of Bull Run with SQ End = True
+		SO Wilsons Creek with SQ End = True
+		SO Fort Donelson with SQ End = True
+		SO Shiloh with SQ End = True
+		SO Antietam with SQ End = True
+		SO Gettysburg with SQ End = True
+		SO Siege of Vicksburg with SQ End = True
+		SO ChattanoogaIII with SQ End = True
+		SO Wilderness with SQ End = True
+		SO ACW with SQ End = Appomattox
+	
+	SWITCH from ACW.End using reference ACW to Buchanen.NrPresident
+		SO Buchanen with SQ NrPresident = 15th
+		SO Lincoln with SQ NrPresident = 16th
+	
+	SWITCH from Lincoln.NrPresident using reference ACW to Buchanen.InOffice
+		SO Buchanen with SQ InOffice = 1857-1861
+		SO Lincoln with SQ InOffice = 1861-1865
+	
+	SWITCH from Lincoln.InOffice using reference ACW to Fort Sumter.General
+		SO Fort Sumter with SQ General = Anderson
+		SO First Battle of Bull Run with SQ General = Jackson
+		SO Wilsons Creek with SQ General = Price
+		SO Fort Donelson with SQ General = Buckner
+		SO Shiloh with SQ General = Buell
+		SO Antietam with SQ General = Lee
+		SO Siege of Vicksburg with SQ General = Pemberton
+		SO Gettysburg with SQ General = Meade
+		SO ChattanoogaIII with SQ General = Bragg
+		SO Wilderness with SQ General = Grant
+		SO Appomattox with SQ General = Grant
+	
+	SWITCH from Appomattox.General using reference Appomattox to Appomattox.CWSAC
+		SO Appomattox with SQ CWSAC = Decisive
+		SO Battle with SQ CWSAC = True
+		SO Fort Sumter with SQ CWSAC = Decisive
+		SO Wilsons Creek with SQ CWSAC = Decisive
+		SO First Battle of Bull Run with SQ CWSAC = Decisive
+		SO Fort Donelson with SQ CWSAC = Decisive
+		SO Shiloh with SQ CWSAC = Decisive
+		SO Antietam with SQ CWSAC = Decisive
+		SO Siege of Vicksburg with SQ CWSAC = Decisive
+		SO Gettysburg with SQ CWSAC = Decisive
+		SO ChattanoogaIII with SQ CWSAC = Decisive
+		SO Wilderness with SQ CWSAC = Decisive
+	
+	SWITCH from Wilderness.CWSAC using reference Wilderness to Wilderness.Place
+		SO Wilderness with SQ Place = Locust Grove
+		SO Event with SQ Place = True
+		SO Battle with SQ Place = True
+		SO Fort Sumter with SQ Place = Charleston
+		SO Wilsons Creek with SQ Place = Manassas
+		SO First Battle of Bull Run with SQ Place = Manassas
+		SO Fort Donelson with SQ Place = Donelson
+		SO Shiloh with SQ Place = Pittsburg Landing
+		SO Antietam with SQ Place = Sharpsburg
+		SO Siege of Vicksburg with SQ Place = Vicksburg
+		SO Gettysburg with SQ Place = Gettysburg
+		SO ChattanoogaIII with SQ Place = Missionary Ridge
+		SO Appomattox with SQ Place = Locust Grove
+		SO ACW with SQ Place = USA
+	
+	SWITCH from ACW.Place using reference ACW to Fort Sumter.State
+		SO Fort Sumter with SQ State = South Carolina
+		SO Battle with SQ State = True
+		SO Wilsons Creek with SQ State = Missouri
+		SO First Battle of Bull Run with SQ State = Virginia
+		SO Fort Donelson with SQ State = Tennessee
+		SO Shiloh with SQ State = Tennessee
+		SO Antietam with SQ State = Maryland
+		SO Siege of Vicksburg with SQ State = Mississippi
+		SO Gettysburg with SQ State = Pennsylvania
+		SO ChattanoogaIII with SQ State = Tennessee
+		SO Wilderness with SQ State = Virginia
+		SO Appomattox with SQ State = Virginia
 

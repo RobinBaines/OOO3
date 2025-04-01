@@ -74,9 +74,10 @@ namespace OOO3
 
             // SOs.QuerySOs("Event", "Dog");
 
-            //A number of 'walks' through the SOs.    
+            //A number of 'walks' through the SOs.
             for (int i = 0; i < 30; i++)
             {
+                Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
                 SOs.RandomSQs();
                 Console.WriteLine("");
             }

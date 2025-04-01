@@ -9,7 +9,8 @@ QuerySOs Event, Animal //display all the SOs which inherit from Event and which 
 Init {
 //This is a time stamp: 
 Time = 2025-01-01 12:00:00.000
-
+	Place = Home
+	MakeObjects = True
 //This is an SO defined within the Init Event. Me is derived from Person which has not been defined yet.
 	Me : Person {
 			//An SQ called Gender with a value Male.

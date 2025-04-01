@@ -29,21 +29,23 @@ namespace OOO3
         {
             return Name.GetHashCode();
         }
+
         public bool Equals(BaseClass? other)
         {
             if (other == null) return false;
             return (this.Name.Equals(other.Name));
+
         }
 
-        // Default comparer for Part type.
-        public int CompareTo(BaseClass? comparePart)
+        // Default comparer for type.
+        public int CompareTo(BaseClass? compareClass)
         {
             // A null value means that this object is greater.
-            if (comparePart == null)
+            if (compareClass == null)
                 return 1;
 
             else
-                return this.Name.CompareTo(comparePart.Name);
+                return this.Name.CompareTo(compareClass.Name);
         }
 
 
@@ -51,6 +53,6 @@ namespace OOO3
 
         public string Description ="";
         public DateTime created = DateTime.Now;
-        public List<SensualObject> references = new List<SensualObject>();
+        public SensualObject? SOParent;  //is the owner of this SQ.
     }
 }
