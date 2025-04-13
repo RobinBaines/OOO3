@@ -1,4 +1,3 @@
-Init : Event
 Create generated.txt by querying 'Event'.
 Created 4 new events in generated.txt from 2 qualities.
 
@@ -53,12 +52,12 @@ SO Fons has qualities.
 	                        Init => Gender = Male
 	                        Init => Emotion = True
 	                        Init => Feel = True
-	2025-03-30 19:03:07.206 Generated => visiting = Me
+	2025-04-13 16:35:17.569 Generated => visiting = Me
 		2025-01-01 12:00:00.000 SO Reference Me
 
 SO Fons is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
-	2025-03-30 19:03:07.206 Is part of          Generated : Event
+	2025-04-13 16:35:17.569 Is part of          Generated : Event
 SO Fons has references.
 	2025-01-01 12:00:00.000 Includes          Me
 
@@ -67,11 +66,11 @@ SO Fons has references.
 	                       Parent SO = Init : Event
 SO Place has qualities.
 	2025-01-01 12:00:00.000 Init => Distance = True
-	2025-03-30 19:03:07.206 Generated => True = True
+	2025-04-13 16:35:17.569 Generated => True = True
 
 SO Place is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
-	2025-03-30 19:03:07.206 Is part of          Generated : Event
+	2025-04-13 16:35:17.569 Is part of          Generated : Event
 
 //////////////////////////////////////Event 5 //////////////////////////////////////
 2025-01-01 13:00:00.000 Event
@@ -86,7 +85,7 @@ SO Event is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 SO Event has references.
 	2025-01-01 12:00:00.000 Includes          Place
-	2025-03-30 19:03:07.206 Includes          Generated : Event
+	2025-04-13 16:35:17.569 Includes          Generated : Event
 
 //////////////////////////////////////Animal 6 //////////////////////////////////////
 2025-01-01 14:00:00.000 Animal
@@ -101,9 +100,9 @@ SO Animal is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 
 //////////////////////////////////////Generated 7 //////////////////////////////////////
-2025-03-30 19:03:07.206 Generated : Event
+2025-04-13 16:35:17.569 Generated : Event
 SO Generated has qualities.
-	2025-03-30 19:03:07.206 Quality INHERIT_SENSUALOBJECT Event = True
+	2025-04-13 16:35:17.569 Quality INHERIT_SENSUALOBJECT Event = True
 	                        > Fons visiting = Me
 	                        > visiting INHERIT_SENSUALOBJECT Verb = True
 	                        > visiting Root = visit
@@ -114,29 +113,29 @@ SO Generated has qualities.
 SO Generated has references.
 	2025-01-01 12:00:00.000 Includes          Fons
 	                        Includes          Place
-	2025-03-30 19:03:07.206 Includes          visiting
+	2025-04-13 16:35:17.569 Includes          visiting
 	                        Includes          True
 
 //////////////////////////////////////visiting 8 //////////////////////////////////////
-2025-03-30 19:03:07.206 visiting
+2025-04-13 16:35:17.569 visiting
 	                       Parent SO = Generated : Event
 SO visiting has qualities.
-	2025-03-30 19:03:07.206 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 16:35:17.569 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = visit
 
 SO visiting is part of other objects.
-	2025-03-30 19:03:07.206 Is part of Parent = Generated : Event
+	2025-04-13 16:35:17.569 Is part of Parent = Generated : Event
 
 //////////////////////////////////////True 9 //////////////////////////////////////
-2025-03-30 19:03:07.206 True
+2025-04-13 16:35:17.569 True
 	                       Parent SO = Generated : Event
 SO True has qualities.
-	2025-03-30 19:03:07.206 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 16:35:17.569 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = True
-		2025-03-30 19:03:07.206 SO Reference True
+		2025-04-13 16:35:17.569 SO Reference True
 
 SO True is part of other objects.
-	2025-03-30 19:03:07.206 Is part of Parent = Generated : Event
+	2025-04-13 16:35:17.569 Is part of Parent = Generated : Event
 
 ////////////////////////////// QuerySOs of Event//////////////////////////////////////
 Query 'Event' for 'Animal'
@@ -144,221 +143,77 @@ Query 'Event' for 'Animal'
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 39 qualities and starting with index = 13
-		SO Animal with SQ Brain = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 2
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 23
-		SO Place with SQ Distance = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 3
-		SO Fons with SQ Emotion = True
-		SO Me with SQ Emotion = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 0
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Place to Place.Distance
-		SO Place with SQ Distance = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 6
-		SO Me with SQ Feel = True
-		SO Fons with SQ Feel = True
-	
-	SWITCH from Fons.Feel using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 2
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 32
-		SO Animal with SQ Gender = True
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 18
-		SO Me with SQ Feel = True
-		SO Fons with SQ Feel = True
-	
-	SWITCH from Fons.Feel using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 14
-		SO Animal with SQ LeftEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 26
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Place to Place.Distance
-		SO Place with SQ Distance = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 8
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
 	Using 39 qualities and starting with index = 38
 		SO True with SQ Root = True
 		SO visiting with SQ Root = visit
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 36
-		SO True with SQ Root = True
-		SO visiting with SQ Root = visit
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 29
-		SO Animal with SQ Brain = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 36
-		SO True with SQ Root = True
-		SO visiting with SQ Root = visit
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 29
-		SO Animal with SQ Brain = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 10
-		SO Event with SQ Weather = True
 	
-	SWITCH from Event.Weather using reference Generated to Fons.visiting
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
 		SO Fons with SQ visiting = Me
 	
-	SWITCH from Fons.visiting using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 15
-		SO Animal with SQ Gender = True
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 4
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
 	Using 39 qualities and starting with index = 31
 		SO Animal with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 8
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 6
-		SO Me with SQ Feel = True
-		SO Fons with SQ Feel = True
 	
-	SWITCH from Fons.Feel using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 8
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 23
-		SO Place with SQ Distance = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 39 qualities and starting with index = 18
-		SO Me with SQ Feel = True
-		SO Fons with SQ Feel = True
+	SWITCH from Animal.RightEar using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
 	
-	SWITCH from Fons.Feel using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 39 qualities and starting with index = 12
-		SO Animal with SQ RightEar = True
+	Using 39 qualities and starting with index = 36
+		SO True with SQ Root = True
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
@@ -367,16 +222,555 @@ SOs RandomSQs
 		SO Event with SQ Place = True
 		SO Init with SQ Place = Home
 	
-	SWITCH from Init.Place using reference Event to Event.Weather
+	SWITCH from Init.Place using reference Init to Place.Distance
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Init to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Init to Event.Weather
 		SO Event with SQ Weather = True
 	
-	SWITCH from Event.Weather using reference Generated to Fons.visiting
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 9
+		SO Event with SQ Place = True
+		SO Init with SQ Place = Home
+	
+	SWITCH from Init.Place using reference Init to Place.Distance
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Init to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Init to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 1
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 27
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.Place
+		SO Event with SQ Place = True
+		SO Init with SQ Place = Home
+	
+	SWITCH from Init.Place using reference Init to Place.Distance
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Generated to Fons.visiting
 		SO Fons with SQ visiting = Me
 	
-	SWITCH from Fons.visiting using reference Me to Me.Gender
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Init to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 22
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 35
+		SO Place with SQ True = True
+	
+	SWITCH from Place.True using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 16
 		SO Me with SQ Gender = Male
 		SO Fons with SQ Gender = Male
 		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 24
+		SO Place with SQ True = True
+	
+	SWITCH from Place.True using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 20
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 37
+		SO visiting with SQ Root = visit
+		SO True with SQ Root = True
+	
+	SWITCH from True.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 24
+		SO Place with SQ True = True
+	
+	SWITCH from Place.True using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 7
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+	
+	SWITCH from Fons.Emotion using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 17
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+	
+	SWITCH from Fons.Emotion using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 2
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 8
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 2
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 1
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 8
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 34
+		SO visiting with SQ Root = visit
+		SO True with SQ Root = True
+	
+	SWITCH from True.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 38
+		SO True with SQ Root = True
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 23
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 26
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.Place
+		SO Event with SQ Place = True
+		SO Init with SQ Place = Home
+	
+	SWITCH from Init.Place using reference Init to Place.Distance
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Init to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
@@ -385,15 +779,122 @@ SOs RandomSQs
 		SO Me with SQ Feel = True
 		SO Fons with SQ Feel = True
 	
-	SWITCH from Fons.Feel using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
+	SWITCH from Fons.Feel using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 39 qualities and starting with index = 34
-		SO visiting with SQ Root = visit
+	Using 39 qualities and starting with index = 24
+		SO Place with SQ True = True
+	
+	SWITCH from Place.True using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 36
 		SO True with SQ Root = True
+		SO visiting with SQ Root = visit
+	
+	SWITCH from visiting.Root using reference Generated to Fons.visiting
+		SO Fons with SQ visiting = Me
+	
+	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 35
+		SO Place with SQ True = True
+	
+	SWITCH from Place.True using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 39 qualities and starting with index = 11
+		SO Event with SQ End = True
+	
+	SWITCH from Event.End using reference Event to Event.Place
+		SO Event with SQ Place = True
+		SO Init with SQ Place = Home
+	
+	SWITCH from Init.Place using reference Init to Place.Distance
+		SO Place with SQ Distance = True
+	
+	SWITCH from Place.Distance using reference Init to Fons.Feel
+		SO Fons with SQ Feel = True
+		SO Me with SQ Feel = True
+	
+	SWITCH from Me.Feel using reference Init to Fons.Emotion
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+	
+	SWITCH from Me.Emotion using reference Init to Fons.Gender
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+	
+	SWITCH from Animal.Gender using reference Init to Init.Fons
+		SO Init with SQ Fons = visiting Me
+	
+	SWITCH from Init.Fons using reference Init to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.MakeObjects
+		SO Event with SQ MakeObjects = True
 

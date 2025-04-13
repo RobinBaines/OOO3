@@ -44,7 +44,11 @@ namespace OOO3
             }
 
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
-            SOs.QuerySOSQ("Event");
+            //SOs.QuerySOSQ("Event");
+            foreach (string s in BuildSOs.GenerateScript)
+            {
+                SOs.GenerateAScript(s);
+            }
 
             //BuildSOs.DisplaySOs is a list of output commands read from the script
             //string s is the DisplaySOs parameter for example
@@ -64,7 +68,6 @@ namespace OOO3
                 {
                     SOs.QuerySOs(tokens[0].Trim(), tokens[1].Trim());
                 }
-                
             }
 
             //SOs.DisplaySOs("Dog");
@@ -73,14 +76,27 @@ namespace OOO3
             //SOs.QuerySOs("Event", "Person");
 
             // SOs.QuerySOs("Event", "Dog");
-
-            //A number of 'walks' through the SOs.
-            for (int i = 0; i < 30; i++)
+            foreach (string s in BuildSOs.RandomWalk)
             {
-                Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
-                SOs.RandomSQs();
-                Console.WriteLine("");
+                int nr = 0;
+                if (Int32.TryParse(s, out nr))
+                { 
+                    for (int i = 0; i < nr; i++)
+                    {
+                        Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
+                        SOs.RandomSQs();
+                        Console.WriteLine("");
+                    }
+                }
             }
+
+            ////A number of 'walks' through the SOs.
+            //for (int i = 0; i < 30; i++)
+            //{
+            //    Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
+            //    SOs.RandomSQs();
+            //    Console.WriteLine("");
+            //}
         }
 
     }

@@ -19,7 +19,7 @@ SO Event has references.
 	2025-02-04 14:00:00.000 Includes          DogsAreDogs : Event
 	2025-02-04 15:00:00.000 Includes          MeetBakkeveen : Event
 	2025-02-04 17:40:00.000 Includes          T2 : Event
-	2025-04-01 11:39:50.370 Includes          Generated : Event
+	2025-04-13 15:58:45.025 Includes          Generated : Event
 
 //////////////////////////////////////InitEvent 2 //////////////////////////////////////
 2025-01-01 12:00:00.000 InitEvent : Event
@@ -45,7 +45,7 @@ SO Me has qualities.
 	                        InitEvent => Emotion = True
 	                        InitEvent => Feel = True
 	                        InitEvent => Name = Robin
-	2025-04-01 11:39:50.370 Generated => Feel = Cold
+	2025-04-13 15:58:45.025 Generated => Feel = Cold
 		2025-02-04 17:40:00.000 SO Reference Cold
 	                        Generated => call = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
@@ -56,7 +56,7 @@ SO Me has qualities.
 
 SO Me is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = InitEvent : Event
-	2025-04-01 11:39:50.370 Is part of          Generated : Event
+	2025-04-13 15:58:45.025 Is part of          Generated : Event
 SO Me has references.
 	2025-02-02 14:00:00.000 Includes          Nida : Dog
 	2025-02-04 17:40:00.000 Includes          Cold
@@ -343,7 +343,7 @@ SO Nida has qualities.
 		2025-01-01 16:00:00.000 SO Reference Black : Colour
 	                        MeetBakkeveen => faster = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
-	2025-04-01 11:39:50.370 Generated => eating = True
+	2025-04-13 15:58:45.025 Generated => eating = True
 	                        Generated => faster = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	                        Generated => playing = Siena
@@ -359,14 +359,14 @@ SO Nida is part of other objects.
 	2025-02-02 14:00:00.000 Is part of Parent = MeetNida : Event
 	2025-02-04 14:00:00.000 Is part of          DogsAreDogs : Event
 	2025-02-04 15:00:00.000 Is part of          MeetBakkeveen : Event
-	2025-04-01 11:39:50.370 Is part of          Generated : Event
+	2025-04-13 15:58:45.025 Is part of          Generated : Event
 SO Nida has references.
 	2025-01-01 16:00:00.000 Includes          Colour
 	                        Includes          Black : Colour
 	2025-02-03 14:00:00.000 Includes          Siena : Dog
 	2025-02-04 16:10:00.000 Includes          Black Dog : Dog
 	2025-02-04 17:40:00.000 Includes          faster
-	2025-04-01 11:39:50.370 Includes          playing : Verb
+	2025-04-13 15:58:45.025 Includes          playing : Verb
 
 //////////////////////////////////////MeetSiena 24 //////////////////////////////////////
 2025-02-03 14:00:00.000 MeetSiena : Event
@@ -420,7 +420,7 @@ SO Siena has qualities.
 	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
 	                        DogsAreDogs => Breed = None
 	                        DogsAreDogs => Size = Large
-	2025-04-01 11:39:50.370 Generated => running = True
+	2025-04-13 15:58:45.025 Generated => running = True
 	                        Generated => playing = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
 	                        Generated => sleeping = True
@@ -430,13 +430,13 @@ SO Siena is part of other objects.
 	2025-02-03 14:00:00.000 Is part of Parent = MeetSiena : Event
 	2025-02-04 14:00:00.000 Is part of          DogsAreDogs : Event
 	2025-02-04 15:00:00.000 Is part of          MeetBakkeveen : Event
-	2025-04-01 11:39:50.370 Is part of          Generated : Event
+	2025-04-13 15:58:45.025 Is part of          Generated : Event
 SO Siena has references.
 	2025-01-01 16:00:00.000 Includes          Colour
 	                        Includes          Black : Colour
 	                        Includes          White : Colour
 	2025-02-02 14:00:00.000 Includes          Nida : Dog
-	2025-04-01 11:39:50.370 Includes          playing : Verb
+	2025-04-13 15:58:45.025 Includes          playing : Verb
 	                        Includes          sleeping : Verb
 	                        Includes          eating : Verb
 
@@ -616,9 +616,9 @@ SO Cold is part of other objects.
 	2025-02-04 17:40:00.000 Is part of Parent = T2 : Event
 
 //////////////////////////////////////Generated 36 //////////////////////////////////////
-2025-04-01 11:39:50.370 Generated : Event
+2025-04-13 15:58:45.025 Generated : Event
 SO Generated has qualities.
-	2025-04-01 11:39:50.370 Quality INHERIT_SENSUALOBJECT Event = True
+	2025-04-13 15:58:45.025 Quality INHERIT_SENSUALOBJECT Event = True
 	                        > come INHERIT_SENSUALOBJECT Verb = True
 	                        > come Root = come
 	                        > Nida coming = True
@@ -663,7 +663,7 @@ SO Generated has references.
 	2025-02-02 14:00:00.000 Includes          Nida : Dog
 	2025-02-03 14:00:00.000 Includes          Siena : Dog
 	2025-02-04 17:40:00.000 Includes          faster
-	2025-04-01 11:39:50.370 Includes          Feel : Verb
+	2025-04-13 15:58:45.025 Includes          Feel : Verb
 	                        Includes          playing : Verb
 	                        Includes          sleeping : Verb
 	                        Includes          running : Verb
@@ -676,118 +676,118 @@ SO Generated has references.
 	                        Includes          swimming : Verb
 
 //////////////////////////////////////Feel 37 //////////////////////////////////////
-2025-04-01 11:39:50.370 Feel : Verb
+2025-04-13 15:58:45.025 Feel : Verb
 	                       Parent SO = Generated : Event
 SO Feel has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = Feel
-		2025-04-01 11:39:50.370 SO Reference Feel : Verb
+		2025-04-13 15:58:45.025 SO Reference Feel : Verb
 
 SO Feel is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////playing 38 //////////////////////////////////////
-2025-04-01 11:39:50.370 playing : Verb
+2025-04-13 15:58:45.025 playing : Verb
 	                       Parent SO = Generated : Event
 SO playing has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = play
 
 SO playing is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////sleeping 39 //////////////////////////////////////
-2025-04-01 11:39:50.370 sleeping : Verb
+2025-04-13 15:58:45.025 sleeping : Verb
 	                       Parent SO = Generated : Event
 SO sleeping has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = sleep
 
 SO sleeping is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////running 40 //////////////////////////////////////
-2025-04-01 11:39:50.370 running : Verb
+2025-04-13 15:58:45.025 running : Verb
 	                       Parent SO = Generated : Event
 SO running has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = runn
 
 SO running is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////call 41 //////////////////////////////////////
-2025-04-01 11:39:50.370 call : Verb
+2025-04-13 15:58:45.025 call : Verb
 	                       Parent SO = Generated : Event
 SO call has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = call
-		2025-04-01 11:39:50.370 SO Reference call : Verb
+		2025-04-13 15:58:45.025 SO Reference call : Verb
 
 SO call is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////come 42 //////////////////////////////////////
-2025-04-01 11:39:50.370 come : Verb
+2025-04-13 15:58:45.025 come : Verb
 	                       Parent SO = Generated : Event
 SO come has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = come
-		2025-04-01 11:39:50.370 SO Reference come : Verb
+		2025-04-13 15:58:45.025 SO Reference come : Verb
 
 SO come is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////coming 43 //////////////////////////////////////
-2025-04-01 11:39:50.370 coming : Verb
+2025-04-13 15:58:45.025 coming : Verb
 	                       Parent SO = Generated : Event
 SO coming has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = com
 
 SO coming is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////sit 44 //////////////////////////////////////
-2025-04-01 11:39:50.370 sit : Verb
+2025-04-13 15:58:45.025 sit : Verb
 	                       Parent SO = Generated : Event
 SO sit has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = sit
-		2025-04-01 11:39:50.370 SO Reference sit : Verb
+		2025-04-13 15:58:45.025 SO Reference sit : Verb
 
 SO sit is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////sitting 45 //////////////////////////////////////
-2025-04-01 11:39:50.370 sitting : Verb
+2025-04-13 15:58:45.025 sitting : Verb
 	                       Parent SO = Generated : Event
 SO sitting has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = sitt
 
 SO sitting is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////eating 46 //////////////////////////////////////
-2025-04-01 11:39:50.370 eating : Verb
+2025-04-13 15:58:45.025 eating : Verb
 	                       Parent SO = Generated : Event
 SO eating has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = eat
 
 SO eating is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 //////////////////////////////////////swimming 47 //////////////////////////////////////
-2025-04-01 11:39:50.370 swimming : Verb
+2025-04-13 15:58:45.025 swimming : Verb
 	                       Parent SO = Generated : Event
 SO swimming has qualities.
-	2025-04-01 11:39:50.370 Generated => INHERIT_SENSUALOBJECT Verb = True
+	2025-04-13 15:58:45.025 Generated => INHERIT_SENSUALOBJECT Verb = True
 	                        Generated => Root = swimm
 
 SO swimming is part of other objects.
-	2025-04-01 11:39:50.370 Is part of Parent = Generated : Event
+	2025-04-13 15:58:45.025 Is part of Parent = Generated : Event
 
 Print SOs. Selection from 47 SOs filtered on Dog
 //////////////////////////////////////Nida 23 //////////////////////////////////////
@@ -807,7 +807,7 @@ SO Nida has qualities.
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
 	                        MeetBakkeveen => Colour = Black
 		2025-01-01 16:00:00.000 SO Reference Black : Colour
-	2025-04-01 11:39:50.370 Generated => sitting = True
+	2025-04-13 15:58:45.025 Generated => sitting = True
 	                        Generated => eating = True
 	                        Generated => faster = Siena
 		2025-02-03 14:00:00.000 SO Reference Siena : Dog
@@ -823,14 +823,14 @@ SO Nida is part of other objects.
 	2025-02-02 14:00:00.000 Is part of Parent = MeetNida : Event
 	2025-02-04 14:00:00.000 Is part of          DogsAreDogs : Event
 	2025-02-04 15:00:00.000 Is part of          MeetBakkeveen : Event
-	2025-04-01 11:39:50.370 Is part of          Generated : Event
+	2025-04-13 15:58:45.025 Is part of          Generated : Event
 SO Nida has references.
 	2025-01-01 16:00:00.000 Includes          Colour
 	                        Includes          Black : Colour
 	2025-02-03 14:00:00.000 Includes          Siena : Dog
 	2025-02-04 16:10:00.000 Includes          Black Dog : Dog
 	2025-02-04 17:40:00.000 Includes          faster
-	2025-04-01 11:39:50.370 Includes          playing : Verb
+	2025-04-13 15:58:45.025 Includes          playing : Verb
 
 //////////////////////////////////////Siena 25 //////////////////////////////////////
 2025-02-03 14:00:00.000 Siena : Dog
@@ -853,7 +853,7 @@ SO Siena has qualities.
 	2025-02-04 14:00:00.000 DogsAreDogs => INHERIT_SENSUALOBJECT Dog = True
 	                        DogsAreDogs => Breed = None
 	                        DogsAreDogs => Size = Large
-	2025-04-01 11:39:50.370 Generated => sleeping = True
+	2025-04-13 15:58:45.025 Generated => sleeping = True
 	                        Generated => running = True
 	                        Generated => playing = Nida
 		2025-02-02 14:00:00.000 SO Reference Nida : Dog
@@ -863,13 +863,13 @@ SO Siena is part of other objects.
 	2025-02-03 14:00:00.000 Is part of Parent = MeetSiena : Event
 	2025-02-04 14:00:00.000 Is part of          DogsAreDogs : Event
 	2025-02-04 15:00:00.000 Is part of          MeetBakkeveen : Event
-	2025-04-01 11:39:50.370 Is part of          Generated : Event
+	2025-04-13 15:58:45.025 Is part of          Generated : Event
 SO Siena has references.
 	2025-01-01 16:00:00.000 Includes          Colour
 	                        Includes          Black : Colour
 	                        Includes          White : Colour
 	2025-02-02 14:00:00.000 Includes          Nida : Dog
-	2025-04-01 11:39:50.370 Includes          playing : Verb
+	2025-04-13 15:58:45.025 Includes          playing : Verb
 	                        Includes          sleeping : Verb
 	                        Includes          eating : Verb
 
@@ -925,573 +925,13 @@ Query 'Event' for 'Dog'
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-02 14:00:00.000 Nida
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-03 14:00:00.000 Siena
  Parent: 2025-02-04 15:00:00.000 MeetBakkeveen Child: 2025-02-04 16:10:00.000 Black Dog
- Parent: 2025-04-01 11:39:50.370 Generated Child: 2025-02-02 14:00:00.000 Nida
- Parent: 2025-04-01 11:39:50.370 Generated Child: 2025-02-03 14:00:00.000 Siena
+ Parent: 2025-04-13 15:58:45.025 Generated Child: 2025-02-02 14:00:00.000 Nida
+ Parent: 2025-04-13 15:58:45.025 Generated Child: 2025-02-03 14:00:00.000 Siena
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 83
-		SO MeetNida with SQ Busy = True
-	
-	SWITCH from MeetNida.Busy using reference MeetNida to Nida.Name
-		SO Nida with SQ Name = Nidaatje
-		SO Me with SQ Name = Robin
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-		SO Black Dog with SQ Name = None
-	
-	SWITCH from Black Dog.Name using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Colour
-		SO Black Dog with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Dog with SQ Colour = True
-	
-	SWITCH from Dog.Colour using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 75
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 203
-		SO sitting with SQ Root = sitt
-		SO Verb with SQ Root = True
-		SO come with SQ Root = come
-		SO coming with SQ Root = com
-		SO sit with SQ Root = sit
-		SO eating with SQ Root = eat
-		SO call with SQ Root = call
-		SO Feel with SQ Root = Feel
+	Using 235 qualities and starting with index = 215
 		SO playing with SQ Root = play
-		SO sleeping with SQ Root = sleep
-		SO running with SQ Root = runn
-		SO swimming with SQ Root = swimm
-	
-	SWITCH from swimming.Root using reference Generated to Nida.coming
-		SO Nida with SQ coming = True
-	
-	SWITCH from Nida.coming using reference Nida to Nida.Tail
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 164
-		SO MeetBakkeveen with SQ Siena = playing Nida
-		SO MeetSiena with SQ Siena = playing Nida
-	
-	SWITCH from MeetSiena.Siena using reference MeetSiena to MeetSiena.Nida
-		SO MeetSiena with SQ Nida = sleeping
-		SO MeetBakkeveen with SQ Nida = faster Siena
-	
-	SWITCH from MeetBakkeveen.Nida using reference MeetBakkeveen to MeetBakkeveen.Weather
-		SO MeetBakkeveen with SQ Weather = Cold
-		SO Event with SQ Weather = True
-		SO MeetNida with SQ Weather = Cold
-		SO MeetSiena with SQ Weather = Cold
-	
-	SWITCH from MeetSiena.Weather using reference MeetSiena to Siena.Colour
-		SO Siena with SQ Colour = White
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-	
-	SWITCH from Dog.Name using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 120
-		SO MeetSiena with SQ Weather = Cold
-		SO Event with SQ Weather = True
-		SO MeetNida with SQ Weather = Cold
-		SO MeetBakkeveen with SQ Weather = Cold
-	
-	SWITCH from MeetBakkeveen.Weather using reference MeetBakkeveen to MeetBakkeveen.Place
-		SO MeetBakkeveen with SQ Place = Bakkeveen
-		SO Event with SQ Place = True
-		SO MeetNida with SQ Place = Bakkeveen
-		SO MeetSiena with SQ Place = Dino Bos
-		SO DogsAreDogs with SQ Place = Home
-		SO T2 with SQ Place = Home
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 149
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-	
-	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
-		SO Dog with SQ Colour = True
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 200
-		SO Me with SQ sit = Nida
-	
-	SWITCH from Me.sit using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-		SO M with SQ Gender = Female
-	
-	SWITCH from M.Gender using reference MeetNida to Nida.Name
-		SO Nida with SQ Name = Nidaatje
-		SO Me with SQ Name = Robin
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-		SO Black Dog with SQ Name = None
-	
-	SWITCH from Black Dog.Name using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Colour
-		SO Black Dog with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Dog with SQ Colour = True
-	
-	SWITCH from Dog.Colour using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 176
-		SO MeetBakkeveen with SQ Me = come Nida
-		SO MeetNida with SQ Me = Feel Cold
-	
-	SWITCH from MeetNida.Me using reference MeetNida to Nida.Name
-		SO Nida with SQ Name = Nidaatje
-		SO Me with SQ Name = Robin
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-		SO Black Dog with SQ Name = None
-	
-	SWITCH from Black Dog.Name using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Colour
-		SO Black Dog with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Dog with SQ Colour = True
-	
-	SWITCH from Dog.Colour using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 161
-		SO MeetBakkeveen with SQ Place = Bakkeveen
-		SO Event with SQ Place = True
-		SO MeetNida with SQ Place = Bakkeveen
-		SO MeetSiena with SQ Place = Dino Bos
-		SO DogsAreDogs with SQ Place = Home
-		SO T2 with SQ Place = Home
-	
-	SWITCH from T2.Place using reference T2 to Verb.Root
 		SO Verb with SQ Root = True
 		SO come with SQ Root = come
 		SO coming with SQ Root = com
@@ -1500,7 +940,6 @@ SOs RandomSQs
 		SO eating with SQ Root = eat
 		SO call with SQ Root = call
 		SO Feel with SQ Root = Feel
-		SO playing with SQ Root = play
 		SO sleeping with SQ Root = sleep
 		SO running with SQ Root = runn
 		SO swimming with SQ Root = swimm
@@ -1654,8 +1093,152 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 91
-		SO Nida with SQ Name = Nida
+	Using 235 qualities and starting with index = 147
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+	
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
+		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 151
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.FrontLeftLeg
+		SO Siena with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Dog with SQ FrontLeftLeg = True
+	
+	SWITCH from Dog.FrontLeftLeg using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackRightLeg
+		SO Dog with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Siena with SQ BackRightLeg = True
+	
+	SWITCH from Siena.BackRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+	
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
+		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 176
+		SO MeetBakkeveen with SQ Me = come Nida
+		SO MeetNida with SQ Me = Feel Cold
+	
+	SWITCH from MeetNida.Me using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
 		SO Me with SQ Name = Robin
 		SO Siena with SQ Name = Siena
 		SO Dog with SQ Name = True
@@ -1724,16 +1307,10 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 192
-		SO Black Dog with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Dog with SQ Colour = True
-	
-	SWITCH from Dog.Colour using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
+	Using 235 qualities and starting with index = 143
 		SO Nida with SQ Breed = None
 		SO Siena with SQ Breed = None
+		SO Dog with SQ Breed = True
 		SO Black Dog with SQ Breed = Terrier
 	
 	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
@@ -1784,22 +1361,833 @@ SOs RandomSQs
 		SO Nida with SQ RightEar = True
 		SO Dog with SQ RightEar = True
 	
-	SWITCH from Dog.RightEar using reference Dog to Dog.Name
-		SO Dog with SQ Name = True
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
+		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
 		SO Me with SQ Name = Robin
 		SO Nida with SQ Name = Nidaatje
 		SO Siena with SQ Name = Siena
-		SO Black Dog with SQ Name = None
+		SO Dog with SQ Name = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 122
-		SO MeetSiena with SQ Siena = sleeping
-		SO MeetBakkeveen with SQ Siena = playing Nida
+	Using 235 qualities and starting with index = 215
+		SO playing with SQ Root = play
+		SO Verb with SQ Root = True
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
 	
-	SWITCH from MeetBakkeveen.Siena using reference MeetBakkeveen to MeetBakkeveen.Weather
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 49
+		SO Person with SQ LeftLeg = True
+	
+	SWITCH from Person.LeftLeg using reference InitAnimal to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 80
+		SO MeetNida with SQ Place = Bakkeveen
+		SO Event with SQ Place = True
+		SO MeetSiena with SQ Place = Dino Bos
+		SO DogsAreDogs with SQ Place = Home
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+		SO T2 with SQ Place = Home
+	
+	SWITCH from T2.Place using reference T2 to Verb.Root
+		SO Verb with SQ Root = True
+		SO come with SQ Root = come
+		SO coming with SQ Root = com
+		SO sit with SQ Root = sit
+		SO sitting with SQ Root = sitt
+		SO eating with SQ Root = eat
+		SO call with SQ Root = call
+		SO Feel with SQ Root = Feel
+		SO playing with SQ Root = play
+		SO sleeping with SQ Root = sleep
+		SO running with SQ Root = runn
+		SO swimming with SQ Root = swimm
+	
+	SWITCH from swimming.Root using reference Generated to Nida.coming
+		SO Nida with SQ coming = True
+	
+	SWITCH from Nida.coming using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 46
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 114
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 194
+		SO T2 with SQ Place = Home
+		SO Event with SQ Place = True
+		SO MeetNida with SQ Place = Bakkeveen
+		SO MeetSiena with SQ Place = Dino Bos
+		SO DogsAreDogs with SQ Place = Home
+		SO MeetBakkeveen with SQ Place = Bakkeveen
+	
+	SWITCH from MeetBakkeveen.Place using reference MeetBakkeveen to MeetBakkeveen.Weather
 		SO MeetBakkeveen with SQ Weather = Cold
+		SO Event with SQ Weather = True
+		SO MeetNida with SQ Weather = Cold
+		SO MeetSiena with SQ Weather = Cold
+	
+	SWITCH from MeetSiena.Weather using reference MeetSiena to MeetSiena.Nida
+		SO MeetSiena with SQ Nida = sleeping
+		SO MeetBakkeveen with SQ Nida = faster Siena
+	
+	SWITCH from MeetBakkeveen.Nida using reference MeetBakkeveen to MeetBakkeveen.Siena
+		SO MeetBakkeveen with SQ Siena = playing Nida
+		SO MeetSiena with SQ Siena = playing Nida
+	
+	SWITCH from MeetSiena.Siena using reference MeetSiena to Siena.Colour
+		SO Siena with SQ Colour = White
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 166
+		SO Nida with SQ faster = Siena
+	
+	SWITCH from Nida.faster using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 71
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 219
+		SO Siena with SQ sleeping = True
+		SO Nida with SQ sleeping = True
+	
+	SWITCH from Nida.sleeping using reference Nida to Nida.Tail
+		SO Nida with SQ Tail = Short
+		SO Siena with SQ Tail = True
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
+		SO Siena with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 17
+		SO Colour with SQ Primary = True
+		SO White with SQ Primary = False
+		SO Black with SQ Primary = False
+		SO Brown with SQ Primary = False
+	
+	SWITCH from Brown.Primary using reference InitColour to Colour.Secondary
+		SO Colour with SQ Secondary = True
+		SO White with SQ Secondary = False
+		SO Black with SQ Secondary = False
+		SO Brown with SQ Secondary = False
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 51
+		SO Person with SQ LeftArm = True
+	
+	SWITCH from Person.LeftArm using reference InitAnimal to Animal.Brain
+		SO Animal with SQ Brain = True
+	
+	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+		SO Dog with SQ LeftEar = True
+	
+	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
+		SO Dog with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Siena with SQ RightEar = True
+	
+	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 66
+		SO TreasureIsland with SQ Character = Black Dog
+		SO Book with SQ Character = True
+	
+	SWITCH from Book.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 160
+		SO MeetBakkeveen with SQ Weather = Snow
 		SO Event with SQ Weather = True
 		SO MeetNida with SQ Weather = Cold
 		SO MeetSiena with SQ Weather = Cold
@@ -1903,13 +2291,176 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 130
+	Using 235 qualities and starting with index = 59
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+		SO Book with SQ Author = True
+	
+	SWITCH from Book.Author using reference InitBooks to Book.Character
+		SO Book with SQ Character = True
+		SO TreasureIsland with SQ Character = Black Dog
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 131
+		SO Siena with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Dog with SQ Colour = True
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 62
+		SO TreasureIsland with SQ Character = Long John Silver
+		SO Book with SQ Character = True
+	
+	SWITCH from Book.Character using reference InitBooks to Book.Author
+		SO Book with SQ Author = True
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 145
+		SO Siena with SQ Breed = None
+		SO Nida with SQ Breed = None
+		SO Dog with SQ Breed = True
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+		SO Dog with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Siena with SQ FrontLeftLeg = True
+	
+	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
+		SO Siena with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Dog with SQ BackRightLeg = True
+	
+	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
 		SO Siena with SQ RightEar = True
 		SO Animal with SQ RightEar = True
 		SO Nida with SQ RightEar = True
 		SO Dog with SQ RightEar = True
 	
-	SWITCH from Dog.RightEar using reference Dog to Dog.Breed
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
+		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Black Dog with SQ Colour = Black
+	
+	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 170
+		SO Black Dog with SQ Name = None
+		SO Me with SQ Name = Robin
+		SO Nida with SQ Name = Nidaatje
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+	
+	SWITCH from Dog.Name using reference Dog to Dog.Breed
 		SO Dog with SQ Breed = True
 		SO Nida with SQ Breed = None
 		SO Siena with SQ Breed = None
@@ -1957,28 +2508,22 @@ SOs RandomSQs
 		SO Nida with SQ LeftEar = True
 		SO Siena with SQ LeftEar = True
 	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
 	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
+		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Black Dog with SQ Colour = Black
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 186
-		SO MeetBakkeveen with SQ End = Went Home
-		SO Event with SQ End = True
-		SO MeetNida with SQ End = Went Home
-	
-	SWITCH from MeetNida.End using reference MeetNida to Nida.Name
+	Using 235 qualities and starting with index = 92
 		SO Nida with SQ Name = Nidaatje
 		SO Me with SQ Name = Robin
 		SO Siena with SQ Name = Siena
@@ -2048,33 +2593,35 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 48
-		SO Animal with SQ Gender = True
-		SO Me with SQ Gender = Male
-		SO M with SQ Gender = Female
+	Using 235 qualities and starting with index = 87
+		SO Bakkeveen with SQ Birch Trees = True
 	
-	SWITCH from M.Gender using reference InitAnimal to Animal.Brain
-		SO Animal with SQ Brain = True
+	SWITCH from Bakkeveen.Birch Trees using reference MeetNida to Nida.Name
+		SO Nida with SQ Name = Nidaatje
+		SO Me with SQ Name = Robin
+		SO Siena with SQ Name = Siena
+		SO Dog with SQ Name = True
+		SO Black Dog with SQ Name = None
 	
-	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+	SWITCH from Black Dog.Name using reference Black Dog to Black Dog.Size
 		SO Black Dog with SQ Size = Small
 		SO Nida with SQ Size = Medium
 		SO Siena with SQ Size = Large
 		SO Dog with SQ Size = True
 	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
+	SWITCH from Dog.Size using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Colour
+		SO Black Dog with SQ Colour = Black
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
+		SO Dog with SQ Colour = True
+	
+	SWITCH from Dog.Colour using reference Dog to Dog.FrontLeftLeg
 		SO Dog with SQ FrontLeftLeg = True
 		SO Nida with SQ FrontLeftLeg = True
 		SO Siena with SQ FrontLeftLeg = True
@@ -2104,16 +2651,90 @@ SOs RandomSQs
 		SO Nida with SQ Tail = Short
 		SO Dog with SQ Tail = True
 	
-	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
 		SO Animal with SQ RightEar = True
 		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 59
+		SO TreasureIsland with SQ Author = Robert Louis Stevenson
+		SO Book with SQ Author = True
 	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
+	SWITCH from Book.Author using reference InitBooks to Book.Character
+		SO Book with SQ Character = True
+		SO TreasureIsland with SQ Character = Black Dog
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 235 qualities and starting with index = 151
+		SO Dog with SQ FrontRightLeg = True
+		SO Nida with SQ FrontRightLeg = True
+		SO Siena with SQ FrontRightLeg = True
+	
+	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.FrontLeftLeg
+		SO Siena with SQ FrontLeftLeg = True
+		SO Nida with SQ FrontLeftLeg = True
+		SO Dog with SQ FrontLeftLeg = True
+	
+	SWITCH from Dog.FrontLeftLeg using reference Dog to Dog.Breed
+		SO Dog with SQ Breed = True
+		SO Nida with SQ Breed = None
+		SO Siena with SQ Breed = None
+		SO Black Dog with SQ Breed = Terrier
+	
+	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
+		SO Black Dog with SQ Size = Small
+		SO Nida with SQ Size = Medium
+		SO Siena with SQ Size = Large
+		SO Dog with SQ Size = True
+	
+	SWITCH from Dog.Size using reference Dog to Dog.BackLeftLeg
+		SO Dog with SQ BackLeftLeg = True
+		SO Nida with SQ BackLeftLeg = True
+		SO Siena with SQ BackLeftLeg = True
+	
+	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.Bark
+		SO Siena with SQ Bark = Noisy
+		SO Nida with SQ Bark = True
+		SO Dog with SQ Bark = True
+	
+	SWITCH from Dog.Bark using reference Dog to Dog.BackRightLeg
+		SO Dog with SQ BackRightLeg = True
+		SO Nida with SQ BackRightLeg = True
+		SO Siena with SQ BackRightLeg = True
+	
+	SWITCH from Siena.BackRightLeg using reference Siena to Siena.Tail
+		SO Siena with SQ Tail = True
+		SO Nida with SQ Tail = Short
+		SO Dog with SQ Tail = True
+	
+	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
+		SO Dog with SQ LeftEar = True
+		SO Animal with SQ LeftEar = True
+		SO Nida with SQ LeftEar = True
+		SO Siena with SQ LeftEar = True
+	
+	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
+		SO Siena with SQ RightEar = True
+		SO Animal with SQ RightEar = True
+		SO Nida with SQ RightEar = True
+		SO Dog with SQ RightEar = True
+	
+	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
 		SO Dog with SQ Colour = True
+		SO Nida with SQ Colour = Black
+		SO Siena with SQ Colour = White
 		SO Black Dog with SQ Colour = Black
 	
 	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
@@ -2126,20 +2747,12 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 0
-		SO Event with SQ Place = True
-		SO MeetNida with SQ Place = Bakkeveen
-		SO MeetSiena with SQ Place = Dino Bos
-		SO DogsAreDogs with SQ Place = Home
-		SO MeetBakkeveen with SQ Place = Bakkeveen
-		SO T2 with SQ Place = Home
-	
-	SWITCH from T2.Place using reference T2 to Verb.Root
+	Using 235 qualities and starting with index = 203
+		SO sitting with SQ Root = sitt
 		SO Verb with SQ Root = True
 		SO come with SQ Root = come
 		SO coming with SQ Root = com
 		SO sit with SQ Root = sit
-		SO sitting with SQ Root = sitt
 		SO eating with SQ Root = eat
 		SO call with SQ Root = call
 		SO Feel with SQ Root = Feel
@@ -2221,8 +2834,8 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 235 qualities and starting with index = 177
-		SO MeetBakkeveen with SQ Nida = coming
+	Using 235 qualities and starting with index = 187
+		SO MeetBakkeveen with SQ Nida = eating
 		SO MeetSiena with SQ Nida = sleeping
 	
 	SWITCH from MeetSiena.Nida using reference MeetSiena to Siena.Colour
@@ -2291,874 +2904,4 @@ SOs RandomSQs
 		SO Animal with SQ RightEar = True
 		SO Nida with SQ RightEar = True
 		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 35
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-	
-	SWITCH from Dog.RightEar using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 128
-		SO Siena with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Dog with SQ FrontRightLeg = True
-	
-	SWITCH from Dog.FrontRightLeg using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.Tail
-		SO Dog with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-	
-	SWITCH from Siena.Tail using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 83
-		SO MeetNida with SQ Busy = True
-	
-	SWITCH from MeetNida.Busy using reference MeetNida to Nida.Name
-		SO Nida with SQ Name = Nidaatje
-		SO Me with SQ Name = Robin
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-		SO Black Dog with SQ Name = None
-	
-	SWITCH from Black Dog.Name using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Colour
-		SO Black Dog with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Dog with SQ Colour = True
-	
-	SWITCH from Dog.Colour using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 229
-		SO come with SQ Root = come
-		SO Verb with SQ Root = True
-		SO coming with SQ Root = com
-		SO sit with SQ Root = sit
-		SO sitting with SQ Root = sitt
-		SO eating with SQ Root = eat
-		SO call with SQ Root = call
-		SO Feel with SQ Root = Feel
-		SO playing with SQ Root = play
-		SO sleeping with SQ Root = sleep
-		SO running with SQ Root = runn
-		SO swimming with SQ Root = swimm
-	
-	SWITCH from swimming.Root using reference Generated to Nida.coming
-		SO Nida with SQ coming = True
-	
-	SWITCH from Nida.coming using reference Nida to Nida.Tail
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 206
-		SO Siena with SQ eating = True
-		SO Nida with SQ eating = True
-	
-	SWITCH from Nida.eating using reference Nida to Nida.Tail
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 212
-		SO Feel with SQ Root = Feel
-		SO Verb with SQ Root = True
-		SO come with SQ Root = come
-		SO coming with SQ Root = com
-		SO sit with SQ Root = sit
-		SO sitting with SQ Root = sitt
-		SO eating with SQ Root = eat
-		SO call with SQ Root = call
-		SO playing with SQ Root = play
-		SO sleeping with SQ Root = sleep
-		SO running with SQ Root = runn
-		SO swimming with SQ Root = swimm
-	
-	SWITCH from swimming.Root using reference Generated to Nida.coming
-		SO Nida with SQ coming = True
-	
-	SWITCH from Nida.coming using reference Nida to Nida.Tail
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 227
-		SO running with SQ Root = runn
-		SO Verb with SQ Root = True
-		SO come with SQ Root = come
-		SO coming with SQ Root = com
-		SO sit with SQ Root = sit
-		SO sitting with SQ Root = sitt
-		SO eating with SQ Root = eat
-		SO call with SQ Root = call
-		SO Feel with SQ Root = Feel
-		SO playing with SQ Root = play
-		SO sleeping with SQ Root = sleep
-		SO swimming with SQ Root = swimm
-	
-	SWITCH from swimming.Root using reference Generated to Nida.coming
-		SO Nida with SQ coming = True
-	
-	SWITCH from Nida.coming using reference Nida to Nida.Tail
-		SO Nida with SQ Tail = Short
-		SO Siena with SQ Tail = True
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.LeftEar
-		SO Siena with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 210
-		SO Me with SQ call = Nida
-	
-	SWITCH from Me.call using reference Me to Me.Gender
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-		SO M with SQ Gender = Female
-	
-	SWITCH from M.Gender using reference InitAnimal to Animal.Brain
-		SO Animal with SQ Brain = True
-	
-	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 43
-		SO Home with SQ Kitchen = True
-	
-	SWITCH from Home.Kitchen using reference InitAnimal to Animal.Brain
-		SO Animal with SQ Brain = True
-	
-	SWITCH from Animal.Brain using reference InitAnimal to Animal.LeftEar
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-		SO Dog with SQ LeftEar = True
-	
-	SWITCH from Dog.LeftEar using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.RightEar
-		SO Dog with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Siena with SQ RightEar = True
-	
-	SWITCH from Siena.RightEar using reference Siena to Siena.Colour
-		SO Siena with SQ Colour = Black
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 181
-		SO MeetBakkeveen with SQ Siena = eating
-		SO MeetSiena with SQ Siena = playing Nida
-	
-	SWITCH from MeetSiena.Siena using reference MeetSiena to MeetSiena.Nida
-		SO MeetSiena with SQ Nida = sleeping
-		SO MeetBakkeveen with SQ Nida = faster Siena
-	
-	SWITCH from MeetBakkeveen.Nida using reference MeetBakkeveen to MeetBakkeveen.Weather
-		SO MeetBakkeveen with SQ Weather = Cold
-		SO Event with SQ Weather = True
-		SO MeetNida with SQ Weather = Cold
-		SO MeetSiena with SQ Weather = Cold
-	
-	SWITCH from MeetSiena.Weather using reference MeetSiena to Siena.Colour
-		SO Siena with SQ Colour = White
-		SO Nida with SQ Colour = Black
-		SO Dog with SQ Colour = True
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-	
-	SWITCH from Dog.Name using reference Dog to Dog.FrontLeftLeg
-		SO Dog with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Siena with SQ FrontLeftLeg = True
-	
-	SWITCH from Siena.FrontLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.BackRightLeg
-		SO Siena with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Dog with SQ BackRightLeg = True
-	
-	SWITCH from Dog.BackRightLeg using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 152
-		SO Dog with SQ BackRightLeg = True
-		SO Nida with SQ BackRightLeg = True
-		SO Siena with SQ BackRightLeg = True
-	
-	SWITCH from Siena.BackRightLeg using reference Siena to Siena.FrontLeftLeg
-		SO Siena with SQ FrontLeftLeg = True
-		SO Nida with SQ FrontLeftLeg = True
-		SO Dog with SQ FrontLeftLeg = True
-	
-	SWITCH from Dog.FrontLeftLeg using reference Dog to Dog.Breed
-		SO Dog with SQ Breed = True
-		SO Nida with SQ Breed = None
-		SO Siena with SQ Breed = None
-		SO Black Dog with SQ Breed = Terrier
-	
-	SWITCH from Black Dog.Breed using reference Black Dog to Black Dog.Size
-		SO Black Dog with SQ Size = Small
-		SO Nida with SQ Size = Medium
-		SO Siena with SQ Size = Large
-		SO Dog with SQ Size = True
-	
-	SWITCH from Dog.Size using reference Dog to Dog.BackLeftLeg
-		SO Dog with SQ BackLeftLeg = True
-		SO Nida with SQ BackLeftLeg = True
-		SO Siena with SQ BackLeftLeg = True
-	
-	SWITCH from Siena.BackLeftLeg using reference Siena to Siena.Bark
-		SO Siena with SQ Bark = Noisy
-		SO Nida with SQ Bark = True
-		SO Dog with SQ Bark = True
-	
-	SWITCH from Dog.Bark using reference Dog to Dog.FrontRightLeg
-		SO Dog with SQ FrontRightLeg = True
-		SO Nida with SQ FrontRightLeg = True
-		SO Siena with SQ FrontRightLeg = True
-	
-	SWITCH from Siena.FrontRightLeg using reference Siena to Siena.Tail
-		SO Siena with SQ Tail = True
-		SO Nida with SQ Tail = Short
-		SO Dog with SQ Tail = True
-	
-	SWITCH from Dog.Tail using reference Dog to Dog.LeftEar
-		SO Dog with SQ LeftEar = True
-		SO Animal with SQ LeftEar = True
-		SO Nida with SQ LeftEar = True
-		SO Siena with SQ LeftEar = True
-	
-	SWITCH from Siena.LeftEar using reference Siena to Siena.RightEar
-		SO Siena with SQ RightEar = True
-		SO Animal with SQ RightEar = True
-		SO Nida with SQ RightEar = True
-		SO Dog with SQ RightEar = True
-	
-	SWITCH from Dog.RightEar using reference Dog to Dog.Colour
-		SO Dog with SQ Colour = True
-		SO Nida with SQ Colour = Black
-		SO Siena with SQ Colour = White
-		SO Black Dog with SQ Colour = Black
-	
-	SWITCH from Black Dog.Colour using reference Black Dog to Black Dog.Name
-		SO Black Dog with SQ Name = None
-		SO Me with SQ Name = Robin
-		SO Nida with SQ Name = Nidaatje
-		SO Siena with SQ Name = Siena
-		SO Dog with SQ Name = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 235 qualities and starting with index = 57
-		SO Book with SQ Author = True
-		SO TreasureIsland with SQ Author = Robert Louis Stevenson
-	
-	SWITCH from TreasureIsland.Author using reference InitBooks to Book.Character
-		SO Book with SQ Character = True
-		SO TreasureIsland with SQ Character = Black Dog
 

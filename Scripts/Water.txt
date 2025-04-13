@@ -1,4 +1,5 @@
 DisplaySOs *	//display all the SOs with SQs.
+RandomWalk 30
 
 
 Time 2000-01-01 12:00:00.000

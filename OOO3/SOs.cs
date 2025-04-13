@@ -145,7 +145,7 @@ namespace OOO3
         ///}
         /// </summary>
         /// <param name="_parent"></param>
-        public static void QuerySOSQ(string _parent)
+        public static void GenerateAScript(string _parent)
         {
             Console.WriteLine("Create "+ GENERATEDFILE + " by querying \'" + _parent + "\'.");
             int count = 0;

@@ -1,6 +1,5 @@
-Making a program based on OOO involved making decisions on implementation which will not do justice to the original ideas.
+Making a program based on OOO involved making decisions on implementation which may not do justice to the original ideas.
 However getting to a working program and some of the conclusions based on using it was interesting.
-
 
 Object Oriented Ontology (OOO) describes Real Objects (ROs), Real Qualities (RQs), Sensual Objects (SOs) and Sensual Qualities (SQs).
 The following should clarify how I view the difference between these:
@@ -19,11 +18,11 @@ and my existing ACW SO, recording not only the SQs as stand-alone statements, bu
 In the software and what follows I use Event with a capital letter when referring to an SO and event when referring to the sub-events in an Event.
 The 'Event' SO is like a theatre with sub-events describing changes to SOs and interactions between them.
 
-This software is an attempt to simulate creation of SOs and SQs using a stream of data in a script file.
+This software simulates creation of SOs and SQs using a stream of data in a script file.
 It uses object oriented software ideas such as inheritance, overriding and properties.
 I have chosen to illustrate this by describing several Events starring 2 dogs we own and local places for dogs to roam and play.
 These Events are in a script file called script.txt. It is possible to describe other Events in other script files. 
-ACW.txt is a first attempt at writing a script with an OOO analysis of the American Civil War and is included in the release.
+ACW.txt describes the American Civil War and is included in the release.
 
 In my experience the stream of data in a (subject-object) script may have different sources: spoken language, written language, thoughts, actions,
 and emotion and external events and processes involving visual stimulus, smells, sound.... 
@@ -34,7 +33,7 @@ One day I will be receptive to the external stimuli the next I may be thinking a
 
 I have not spent time on using sophisticated streams of data from different sources; besides being very difficult/impossible it is not the focus here.
 The stream in a script must conform to a simple syntax which is explained in the file Program.cs.
-The example script in the file called script.txt, is annotated and is probably more than enough information to allow writing of other scripts 
+The example script in the file called script.txt, is annotated and is more than enough information to allow writing of other scripts 
 which conform to the syntax.
 The script as a 'reality' simulator is an extreme simplification and it may be such a simplification that the idea of this program 
 has no point at all. On the other hand some of the results and conclusions look interesting; see below.
@@ -42,12 +41,12 @@ has no point at all. On the other hand some of the results and conclusions look 
 Use by entering 
 
         OOO3.exe Script.txt > ScriptOutput.txt 
+		
 on the command line.
 
 Or if using the Scripts folder
 
 		ooo3.exe ..\Scripts\script.txt > ..\Scripts\Output\ScriptOutput.txt
-
 
 The program interprets the script.txt and writes the output to the console or to a file using redirection.
 The output is managed using output commands at the start of the script:
@@ -56,9 +55,19 @@ The output is managed using output commands at the start of the script:
 	DisplaySOs *	//display all the SOs with SQs.
 	DisplaySOs Dog  //display the SOs with SQs which inherit from Dog.
 
-	//An output command.
 	QuerySOs Event, Dog  //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
- 
+	
+	GenerateScript Event //Look for SQ's in SOs derived from Event which are an SO. For each of these generate a script to add an SQ 
+						 //to the SO. For example 
+							MeetBakkeveen : Event {
+								Nida = playing Siena
+								///will create 
+								Nida{
+									playing = Siena
+							The idea is that if Nida was playing with Siena then Nida has the SQ (can) play.
+	
+	RandomWalk 30	//Print a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO.
+					//Do this 30 times.
 
 SOME OOO IDEAS:
 
@@ -66,6 +75,7 @@ A flat ontology implies that interaction between inanimate objects without an ob
 The example script implies Events with myself as observer.
 There is no reason not to create a script with combinations of animate and inanimate objects with no observer. For example a script describing a Dogs 
 interaction with food and may be one with 2 or more inanimate objects with no observer. Or even quantum events?
+See Water.txt and WaterDetail.txt.
 
 Vicarious causation: OOO requires an SO to facilitate interaction between (inanimate) objects. In my interpretation this occurs in the Event SO.
 Writing a script with only inanimate object immediately raises questions about the nature of the Event. Does it have qualities: a Place, datetime...?
@@ -82,7 +92,7 @@ Object lifecycle. Irreversible changes in the state of an object often marked by
 
 SOME SOFTWARE IDEAS:
 
-1. Inheritance means that an object may be derived from another, often, more abstract object. 
+1. Inheritance allows an object may be derived from another, often, more abstract object. 
 For example Nida inherits from Dog, Me inherits from Person and Dog and Person both inherit from Animal.
 Inheritance can be thought of as a 'type of' relationship: Nida is a type of Dog and Dog is a type of Animal. 
 The convention 'Nida : Dog'  and 'Dog : Animal' is used to represent inheritance in a script.
@@ -119,15 +129,13 @@ The following captures an observation about an SO which occured during the Event
 Slightly different is that I may realise that an SO has an SQ during an Event:	
 		
   	Nida {
-  
-		FrontLeftLeg	
+  		FrontLeftLeg	
 
 The SQ is added to Nida and an SQ is added to the Event to record that happening (see redundancy below).
 
 Sometimes an SQ may refer to an SO. For example
 
 	MeetBakkeveen: Event {
-
         	Place = Bakkeveen
 
 Bakkeveen is a pre-existing SO defined as Bakkeveen : Place
@@ -230,7 +238,7 @@ These subroutines use similar approaches by iterating through SOs and SQs.
 		                        SO Reference playing : Verb
 	
 	    
-	    QuerySOs(string _parent, string _child) Query SOs for example SOs.QuerySOs("Event", "Dog"); looks for SOs with a Parent = "Event" and referenced SOs 
+    QuerySOs(string _parent, string _child) Query SOs for example SOs.QuerySOs("Event", "Dog"); looks for SOs with a Parent = "Event" and referenced SOs 
 	    with a Parent = "Dog".
 		Query Parent: 'Event' for Child: 'Dog'
 			 Parent: 2025-02-02 14:00:00.000 MeetNida Child: 2025-02-02 14:00:00.000 Nida
@@ -390,48 +398,41 @@ NOTE: There is an SO called Black but how a colour is perceived depends on the o
 
 b. Analysing Events looking for characteristics of other SOs.
 A stream of data is extracted from the SOs and is written to a separate script in an Event called Generated.txt.
-The subroutine QuerySOSQ() looks for SQs of Events which are SOs and 
+The subroutine GenerateAScript() looks for SQs of Events which are SOs and 
 creates a script to add the quality to the subject.
 For example:
 
         MeetBakkeveen : Event {
-	
         Nida = swimming
         
 		
 is used to imply that Nida can swim and will create a new SQ for Nida:
 
 		Nida {
-  
 		swimming = True
 		}
 		
 And to imply that swimming is a verb.
-
 		swimming : Verb {
-  
 			Root = swimm
 		}		
+
 This is an initial attempt at creating SOs to hold types of speech (verbs, adverbs, nouns) and to eventually
 add 'production' rules which described how the words should be used in output.
-
 I would need to simulate reading a book about grammar to improve. 
-
 
 //////////////////////////////////////////
 RO Lifetime and the ACW and Water scripts.
 
 The American Civil War and Fort Sumter are both examples of RO which have ended and will not change.
-Opinions as to the exact moment this type of object started and ended may differ
-and are properties/qualities of SOs.
+Opinions as to the exact moment this type of object started and ended may differ and are properties/qualities of SOs.
 OOO theory seems to depend on comparing an RO with one of many possible SOs. 
 Only then can relationships between RO, SO, RQ en SQ be analysed.
-
 
 The OOO3 program allows (reasonably unlimited) nesting of SOs.
 Initially this was used to define an SO of type Event and then to define and then modify SOs which were nested 
 in the Event.
-For example in ACW.txt the American Civil War Event has a nested Fort Sumter SO (which is also an Event; 
+For example in ACW.txt the American Civil War Event has a nested Fort Sumter SO (which is also an Event); 
 Fort Sumter : Confed_victory : Battle : Event).
 
 ACW : Event {
@@ -498,7 +499,7 @@ into 2 other drops some time later when a gust of wind occurs.
 	
 		Collision : Event { 
 		
-Drop 1 and Drop2 are defined before Big_drop is defined when Drop1 and 2 collided .
+Drop 1 and Drop2 are defined before Big_drop is defined when Drop1 and 2 collided.
 In GustOfWind : Event the reverse takes place with Drop3 and Drop4 defined (as part of) Big_drop when that drop split
 and ceased to exist.
 
@@ -532,7 +533,6 @@ SO Drop3 is part of other objects.
 	2025-01-01 13:00:00.000 Is part of Parent = GustOfWind : Event
 SO Drop3 has references.
 	2025-01-01 12:30:00.000 Includes          Big_drop : Water
-
 
 
 This script does not describe how Drop1 and 2 formed. This is legitimate because we may define the 

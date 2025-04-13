@@ -1,11 +1,12 @@
 //This is a comment.
-
+GenerateScript Event
 //Output commands.
 DisplaySOs *	//display all the SOs with SQs.
 DisplaySOs Dog  //display the SOs with SQs which inherit from Dog.
 
 //An output command.
 QuerySOs Event, Dog  //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
+RandomWalk 30
 
 //This is a time stamp.
 Time 2025-01-01 12:00:00.000

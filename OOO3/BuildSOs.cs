@@ -13,12 +13,16 @@ namespace OOO3
     internal class BuildSOs
     {
         public static List<SensualObject> TheSOs = new List<SensualObject>();
+        public static List<string> GenerateScript = new List<string>();
+        public static List<string> RandomWalk = new List<string>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
 
         public static SensualObject? LastSO = null;
         public static SensualObject? SOEvent = null;
         public const string INHERITSO = "INHERIT_SENSUALOBJECT";
+        public const string GENERATESCRIPT = "GenerateScript";
+        public const string RANDOMWALK = "RandomWalk";
         public const string DISPLAYSOS = "DisplaySOs";
         public const string QUERYSOS = "QuerySOs";
         public static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
@@ -51,7 +55,24 @@ namespace OOO3
         /// <returns></returns>
         public static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
         {
-            int pos = result.IndexOf(DISPLAYSOS);
+            int pos = result.IndexOf(GENERATESCRIPT);
+            if (pos != -1)
+            {
+                result = result.Substring(pos + GENERATESCRIPT.Length).Trim();
+                Command = GENERATESCRIPT;
+                return result;
+            }
+
+             pos = result.IndexOf(RANDOMWALK);
+            if (pos != -1)
+            {
+                result = result.Substring(pos + RANDOMWALK.Length).Trim();
+                Command = RANDOMWALK;
+                return result;
+            }
+          
+
+            pos = result.IndexOf(DISPLAYSOS);
             if (pos != -1)
             {
             result = result.Substring(pos + DISPLAYSOS.Length).Trim();
@@ -311,10 +332,6 @@ public static void ProcessFile(string filepath)
                         line = RemoveComments(line).Trim();
                         if (line.Length > 0)
                         {
-                            if (line.Contains("Init : Event"))
-                            {
-                                Console.WriteLine(line);
-                            }
                             string Command = "";
                             string SOName = "";
                             string Inherits = "";
@@ -328,6 +345,10 @@ public static void ProcessFile(string filepath)
                             {
                                 if (Command != "")
                                 {
+                                    if (Command == RANDOMWALK)
+                                        RandomWalk.Add(line);
+                                    if (Command == GENERATESCRIPT)
+                                        GenerateScript.Add(line);
                                     if (Command == DISPLAYSOS)
                                         DisplaySOs.Add(line);
                                     if (Command == QUERYSOS)

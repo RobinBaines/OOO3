@@ -1,5 +1,8 @@
+GenerateScript Event
 DisplaySOs OOO_Analysis
 DisplaySOs *
+RandomWalk 30
+
 //DisplaySOs Confed_victory
 
 

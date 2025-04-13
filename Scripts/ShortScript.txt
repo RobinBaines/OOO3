@@ -1,9 +1,11 @@
 //This is a comment.
 //Output commands.
+GenerateScript Event
 DisplaySOs *	//display all the SOs with SQs.
 
 //An output command.
 QuerySOs Event, Animal //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
+RandomWalk 30
 
 //An SO is defined by a name followed by {.
 Init {
