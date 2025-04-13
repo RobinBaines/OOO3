@@ -1,4 +1,4 @@
-OOO3 is an application which simulates some aspects of Object-oriented Ontology, the book of the same name by Graham Harman.
+OOO3 is an application which simulates some aspects of Object-oriented Ontology, which is described in the book of the same name by Graham Harman.
 Making a program based on OOO involved making decisions on implementation which may not do justice to the original ideas.
 However getting to a working program and some of the conclusions based on using it was interesting.
 
