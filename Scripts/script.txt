@@ -128,7 +128,7 @@ Time 2025-01-01 18:00:00.000
 	}
 
 Time 2025-01-01 19:00:00.000	
-//another SO derived from Place in Event Init.	
+//another SO derived from Place in Event InitAnimal. 
 	Home : Place {
 			Distance = 0
 			WoodFire
@@ -136,11 +136,11 @@ Time 2025-01-01 19:00:00.000
 	}
 	
 Time = 2025-01-01 20:00:00.000	
-//another SO derived from Person in Event Init.	
+//another SO derived from Person in Event InitAnimal 
 	M : Person {
 			Gender = Female
 	}
-//Closing bracket defining the end of Event InitBooks.		
+//Closing bracket defining the end of Event InitAnimal.
 }
 
 Time = 2025-01-02 20:00:00.000	

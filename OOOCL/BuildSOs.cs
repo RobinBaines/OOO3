@@ -3,35 +3,47 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
-using OOO3;
-using static OOO3.BuildSOs;
-using System.Xml.Linq;
 using System;
+using System.ComponentModel;
+using System.Collections.Generic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace OOO3
+namespace OOOCL
 {
-    internal class BuildSOs
+    public class BuildSOs
     {
-        public static List<SensualObject> TheSOs = new List<SensualObject>();
+        public static BindingList<SensualObject> TheSOs = new BindingList<SensualObject>();
         public static List<string> GenerateScript = new List<string>();
         public static List<string> RandomWalk = new List<string>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
 
-        public static SensualObject? LastSO = null;
-        public static SensualObject? SOEvent = null;
-        public const string INHERITSO = "INHERIT_SENSUALOBJECT";
-        public const string GENERATESCRIPT = "GenerateScript";
-        public const string RANDOMWALK = "RandomWalk";
-        public const string DISPLAYSOS = "DisplaySOs";
-        public const string QUERYSOS = "QuerySOs";
-        public static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
+        static int _sleeptime;
+        static public int SleepTime { 
+            get
+            {
+                return _sleeptime;
+            }
+            set {
+                _sleeptime = value;
+            }
+        }
+
+        internal static SensualObject? LastSO = null;
+        internal static SensualObject? SOEvent = null;
+        public const string INHERITSO = "INHERIT";
+        internal const string GENERATESCRIPT = "GenerateScript";
+        
+        internal const string RANDOMWALK = "RandomWalk";
+        internal const string DISPLAYSOS = "DisplaySOs";
+        internal const string QUERYSOS = "QuerySOs";
+        internal static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
         /// <summary>
         /// Remove comments from a line of input.
         /// </summary>
         /// <param name="result"></param>
         /// <returns></returns>
-        public static string RemoveComments(string result)
+        internal static string RemoveComments(string result)
         {
             int pos = result.IndexOf("//");
             if (pos != -1)
@@ -53,7 +65,7 @@ namespace OOO3
         /// <param name="StartOfObject"></param>
         /// <param name="EndOfObject"></param>
         /// <returns></returns>
-        public static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
+        internal static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
         {
             int pos = result.IndexOf(GENERATESCRIPT);
             if (pos != -1)
@@ -152,7 +164,7 @@ namespace OOO3
         /// </summary>
         /// <param name="_name"></param>
         /// <returns></returns>
-        public static SensualObject? GetSO(string _name)
+        internal static SensualObject? GetSO(string _name)
         {
             foreach (SensualObject SO in TheSOs)
             {
@@ -170,9 +182,25 @@ namespace OOO3
         /// <param name="SOEvent"></param>
         /// <param name="SOName"></param>
         /// <param name="Inherits"></param>
-        public static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits, int msecs)
+        internal static void InheritSensualObject(SensualObject SOEvent, string SOName, string Inherits, int msecs)
         {
-           SensualObject? SO = GetSO(SOName);
+            SensualObject? SO;
+            if(SOEvent.Name == SOName)
+                SO = SOEvent;
+            else SO = GetSO(SOName);
+            if (SO != null)
+            {
+                SO.ptrDerivedFrom = GetSO(Inherits);
+                if (SO.ptrDerivedFrom != null)
+                {
+                    //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
+                    SO.MoveQualities(SO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
+                }
+                SO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
+            }
+        }
+        internal static void InheritSensualObject(SensualObject SOEvent, SensualObject SO, string Inherits, int msecs)
+        {
             if (SO != null)
             {
                 SO.ptrDerivedFrom = GetSO(Inherits);
@@ -191,7 +219,7 @@ namespace OOO3
         /// <param name="SOEvent"></param>
         /// <param name="SQName"></param>
         /// <param name="SQValue"></param>
-        public static void WriteQuality(SensualObject LastSO, SensualObject SOEvent, string SQName, string SQValue, int msecs)
+        internal static void WriteQuality(SensualObject LastSO, SensualObject SOEvent, string SQName, string SQValue, int msecs)
         {
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
@@ -249,14 +277,13 @@ namespace OOO3
                 //create the SO if it is a new one.
                 SOEvent = new(SOName, dateTime, LastSO);
                 int index = TheSOs.IndexOf(SOEvent);
-                if (index < 0)
-                {
-                    TheSOs.Add(SOEvent);
-                }
-                else
-                {
+                if (index >= 0)
+                    {
                     SOEvent = TheSOs[index];
-                }
+                    }
+
+                //if(SOEvent.Name == "TreasureIsland")
+                //    Console.WriteLine("");
 
                 //add the reference from the parent to the child and vice versa.
                 if (SOEvent != null && LastSO != null)
@@ -280,13 +307,23 @@ namespace OOO3
                                 //SOEvent.AddIsPartOf(TheSOs[ind]);
                                 TheSOs[ind].AddIncludesReference(SOEvent);
                             }
-                           InheritSensualObject(SOEvent, SOName, Inherits, msecs);
+                           //InheritSensualObject(SOEvent, SOName, Inherits, msecs);
+                            InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
                         }
                     }
                     else
                     {
-                        InheritSensualObject(LastSO, SOName, Inherits, msecs);
+                        //InheritSensualObject(LastSO, SOName, Inherits, msecs);
+                        InheritSensualObject(LastSO, SOEvent, Inherits, msecs);
                     }
+                }
+
+                //Add the SO after updating Inherits.
+                if (index < 0)
+                {
+                    if(SleepTime > 0)
+                        Thread.Sleep(SleepTime);
+                    TheSOs.Add(SOEvent);
                 }
             }
 
@@ -296,7 +333,7 @@ namespace OOO3
                 InheritSensualObject(LastSO, SOName, Inherits, msecs);
             }
 
-                if (EndOfObject == true)
+            if (EndOfObject == true)
             {
                 if (StackLastSO.Count > 0)
                 {
@@ -312,15 +349,15 @@ namespace OOO3
         }
 
 
-/// <summary>
-/// 
-/// </summary>
-/// <param name="filepath"></param>
-public static void ProcessFile(string filepath)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filepath"></param>
+        internal static void ProcessFile(string filepath)
         {
-           if (File.Exists(filepath))
+            if (File.Exists(filepath))
             {
-                String? line;
+                string? line;
                 int msecs = 0;
 
                 using (StreamReader sr = new StreamReader(filepath))
@@ -356,12 +393,60 @@ public static void ProcessFile(string filepath)
                                 }
                                 else
                                 {
-                                    ProcessSO( msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
+                                    ProcessSO(msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
                                 }
                             }
                         }
                         //Read the next line
                         line = sr.ReadLine();
+                    }
+                }
+            }
+        }
+        
+
+        public static void CreateOutput(string filepath)
+        {
+            BuildSOs.ProcessFile(filepath);
+
+            //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
+            //SOs.QuerySOSQ("Event");
+            foreach (string s in GenerateScript)
+            {
+                SOs.GenerateAScript(s);
+            }
+
+
+            //BuildSOs.DisplaySOs is a list of output commands read from the script
+            //string s is the DisplaySOs parameter for example
+            //* or Dog.
+            foreach (string s in DisplaySOs)
+            {
+                SOs.DisplaySOs(s);
+            }
+
+            //BuildSOs.QuerySOs is a list of output commands read from the script.
+            //string s is the QuerySOs parameter for example
+            //Event, Dog
+            foreach (string s in QuerySOs)
+            {
+                string[] tokens = s.Split(',');
+                if (tokens.Length > 1)
+                {
+                    SOs.QuerySOs(tokens[0].Trim(), tokens[1].Trim());
+                }
+            }
+
+            foreach (string s in RandomWalk)
+            {
+                int nr = 0;
+                if (Int32.TryParse(s, out nr))
+                {
+                    for (int i = 0; i < nr; i++)
+                    {
+                        Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
+                        SOs.RandomSQs();
+                        Console.WriteLine("");
                     }
                 }
             }

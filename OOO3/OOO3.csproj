@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="OOO\**" />
+    <EmbeddedResource Remove="OOO\**" />
+    <None Remove="OOO\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="InterfaceEvent.cs" />
   </ItemGroup>
 
@@ -33,6 +39,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OOOCL\OOOCL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

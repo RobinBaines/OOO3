@@ -3,14 +3,14 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
-namespace OOO3
+namespace OOOCL
 {
     /// <summary>
     /// An abstract class cannot be instantiated.
     /// The Name of an Object and a Quality is unique.
     /// Checking for Objects in a List requires IEquatable and Equal and Hash overrides.
     /// </summary>
-    abstract class BaseClass : IEquatable<BaseClass>, IComparable<BaseClass>
+   public abstract class BaseClass : System.IEquatable<BaseClass>, IComparable<BaseClass>
     {
         public override string ToString()
         {

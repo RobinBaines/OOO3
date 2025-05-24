@@ -79,211 +79,216 @@ ACW : Event {
 Place = USA
 Time 1861-04-12 17:00:00.000
 
-//A list of generals. Their exact rank changed during the war and I have not tried to summarize accurately. 
-Beauregard : Confed {
-	}
-Price : Confed {
-	}
-McCulloch : Confed {
-	}	
-Jackson : Confed {
-	}
-Buckner : Confed {
-	}
-Johnston : Confed {
-	}	
-Bragg	 : Confed {
-	}
-Lee : Confed {
-	}
-Pemberton : Confed {
-	}	
-	
-Anderson : Union {
-	}	
-McDowell : Union {
-	}		
-Sturgis : Union {
-	}
-Lyon : Union {
-	}
-Grant : Union {
-	}	
-Buell : Union {
-	}		
-McClellan : Union {
-	}
-Hooker : Union {
-	}
-Thomas : Union {
-	}	
-Meade : Union {
-	}	
-					
-
-//Presidents. 			
-Time 1857-03-04 17:00:00.000	
-Buchanen : President	{
-InOffice = 1857-1861
-NrPresident = 15th
-End
-Time 1861-03-04 17:00:00.000
-}
+	//A list of generals. Their exact rank changed during the war and I have not tried to summarize accurately. 
+	Beauregard : Confed {
+		}
+	Price : Confed {
+		}
+	McCulloch : Confed {
+		}	
+	Jackson : Confed {
+		}
+	Buckner : Confed {
+		}
+	Johnston : Confed {
+		}	
+	Bragg	 : Confed {
+		}
+	Lee : Confed {
+		}
+	Pemberton : Confed {
+		}	
 		
-Time 1860-11-06 17:00:00.000		
-Lincoln : President	{
-InOffice =  1861-1865
-NrPresident = 16th
-End
-Time 1865-04-15 17:00:00.000
+	Anderson : Union {
+		}	
+	McDowell : Union {
+		}		
+	Sturgis : Union {
+		}
+	Lyon : Union {
+		}
+	Grant : Union {
+		}	
+	Buell : Union {
+		}		
+	McClellan : Union {
+		}
+	Hooker : Union {
+		}
+	Thomas : Union {
+		}	
+	Meade : Union {
+		}	
+						
+
+	//Presidents. 			
+	Time 1857-03-04 17:00:00.000	
+	Buchanen : President	{
+	InOffice = 1857-1861
+	NrPresident = 15th
+	End
+	Time 1861-03-04 17:00:00.000
+	}
+			
+	Time 1860-11-06 17:00:00.000		
+	Lincoln : President	{
+	InOffice =  1861-1865
+	NrPresident = 16th
+	End
+	Time 1865-04-15 17:00:00.000
+	}
 }
 
-//A list of battles.	
-Time 1861-04-12 17:00:00.000	
-Fort Sumter : Confed_victory {
-		CWSAC = Decisive
-		Place = Charleston
-		State = South Carolina
-		General = Beauregard
-		General = Anderson
-		//use of nested objects.
-		Day1 : Event {
-			Weather = good
-			Hour1 : Event {
-							Weather = raining
-							Minute1 : Event {
-								Weather = dryer
+
+//ACWBattles : Event {
+	//Place = USA
+	//A list of battles.	
+	Time 1861-04-12 17:00:00.000	
+	Fort Sumter : Confed_victory {
+			CWSAC = Decisive
+			Place = Charleston
+			State = South Carolina
+			General = Beauregard
+			General = Anderson
+			//use of nested objects.
+			Day1 : Event {
+				Weather = good
+				Hour1 : Event {
+								Weather = raining
+								Minute1 : Event {
+									Weather = dryer
+									}
 								}
-							}
+			}
+			Day2 : Event {
+			Weather = sunny
+			}
+		Time 1861-04-13 17:00:00.000
+			End = Yes
 		}
-		Day2 : Event {
-		Weather = sunny
-		}
-	Time 1861-04-13 17:00:00.000
-		End = Yes
-	}
 
-//a nested object called (Fort Sumter.Day1.Hour1) Minute1 can be referenced from another object.
-Minute1 {
- Weather = wetter
-} 
-	
-Time 1861-07-21 17:00:00.000	
-First Battle of Bull Run  : Confed_victory {
-		CWSAC = Decisive
-		Place = Manassas
-		State = Virginia
-		General = Beauregard
-		General = McDowell
-		General = Jackson
-		Time 1861-07-21 18:00:00.000			
-		End 
-	}	
-	Time 1861-07-21 17:00:00.000	
-Wilsons Creek  : Confed_victory {
-		CWSAC = Decisive
-		Place = Manassas
-		State = Missouri
-		General = Price
-		General = McCulloch
-		General = Sturgis
-		General = Lyon
-		Time 1861-07-21 18:00:00.000			
-		End 
-	}
-	
-Time 1862-02-11 17:00:00.000		
-Fort Donelson : Union_victory {
-		CWSAC = Decisive
-		Place = Donelson
-		State = Tennessee
-		General = Buckner
-		General = Grant
-		Time 1862-02-16 18:00:00.000			
-		End 
-	}
-	
-Time  1862-04-06 17:00:00.000		
-Shiloh : Union_victory {
-		CWSAC = Decisive
-		Place = Pittsburg Landing
-		State = Tennessee
-		General = Buell
-		General = Grant
-		General = Beauregard
-		General = Johnston
-		Time  1862-04-07 17:00:00.000		
-		End 
-	}	
-	
-Time  1862-09-17 17:00:00.000	
-Antietam : Union_victory {
-		CWSAC = Decisive
-		Place = Sharpsburg
-		State = Maryland
-		General = McClellan
-		General = Lee
-		End 
-	}	
-	
-Time  1863-05-18 17:00:00.000	
-Siege of Vicksburg : Union_victory {
-		CWSAC = Decisive
-		Place = Vicksburg
-		State = Mississippi
-		General = Grant
-		General = Pemberton
-Time  1863-07-04 17:00:00.000		
-		End 
-	}	
-
-Time  1863-07-01 17:00:00.000	
-Gettysburg : Union_victory {
-		CWSAC = Decisive
-		Place = Gettysburg
-		State = Pennsylvania
-		General = Meade
-		General = Lee
-Time  1863-07-03 17:00:00.000	
-		End 
-	}		
+	//a nested object called (Fort Sumter.Day1.Hour1) Minute1 can be referenced from another object.
+	Minute1 {
+	 Weather = wetter
+	} 
 		
-	
-Time  1863-11-24 17:00:00.000	
-//also known as Battle of Chattanooga (and the 3rd one there).
-//Note: combined with the Battle of Lookout Mountain as Chattanooga III in the CWSAC report.
-ChattanoogaIII : Union_victory {
-		CWSAC = Decisive
-		Place = Missionary Ridge
-		State = Tennessee
-		General = Grant
-		General = Hooker //Battle of Lookout Mountain
-		General = Bragg
-		Time  1863-11-25 17:00:00.000	
-		End 
-	}	
-	
-Time  1864-05-05 17:00:00.000	
-Wilderness : Inconclusive {
-		CWSAC = Decisive
-		Place = Locust Grove
-		State = Virginia
-		General = Grant
-		General = Lee
-		Time  1864-05-07 17:00:00.000		
-		End 
-	}
-	
-Time  1865-05-09 17:00:00.000	
-Appomattox : Union {
-		CWSAC = Decisive
-		Place = Locust Grove
-		State = Virginia
-		General = Grant
-		General = Lee
-		End 
-	}	
+	Time 1861-07-21 17:00:00.000	
+	First Battle of Bull Run  : Confed_victory {
+			CWSAC = Decisive
+			Place = Manassas
+			State = Virginia
+			General = Beauregard
+			General = McDowell
+			General = Jackson
+			Time 1861-07-21 18:00:00.000			
+			End 
+		}	
+		Time 1861-07-21 17:00:00.000	
+	Wilsons Creek  : Confed_victory {
+			CWSAC = Decisive
+			Place = Manassas
+			State = Missouri
+			General = Price
+			General = McCulloch
+			General = Sturgis
+			General = Lyon
+			Time 1861-07-21 18:00:00.000			
+			End 
+		}
+		
+	Time 1862-02-11 17:00:00.000		
+	Fort Donelson : Union_victory {
+			CWSAC = Decisive
+			Place = Donelson
+			State = Tennessee
+			General = Buckner
+			General = Grant
+			Time 1862-02-16 18:00:00.000			
+			End 
+		}
+		
+	Time  1862-04-06 17:00:00.000		
+	Shiloh : Union_victory {
+			CWSAC = Decisive
+			Place = Pittsburg Landing
+			State = Tennessee
+			General = Buell
+			General = Grant
+			General = Beauregard
+			General = Johnston
+			Time  1862-04-07 17:00:00.000		
+			End 
+		}	
+		
+	Time  1862-09-17 17:00:00.000	
+	Antietam : Union_victory {
+			CWSAC = Decisive
+			Place = Sharpsburg
+			State = Maryland
+			General = McClellan
+			General = Lee
+			End 
+		}	
+		
+	Time  1863-05-18 17:00:00.000	
+	Siege of Vicksburg : Union_victory {
+			CWSAC = Decisive
+			Place = Vicksburg
+			State = Mississippi
+			General = Grant
+			General = Pemberton
+	Time  1863-07-04 17:00:00.000		
+			End 
+		}	
 
+	Time  1863-07-01 17:00:00.000	
+	Gettysburg : Union_victory {
+			CWSAC = Decisive
+			Place = Gettysburg
+			State = Pennsylvania
+			General = Meade
+			General = Lee
+	Time  1863-07-03 17:00:00.000	
+			End 
+		}		
+			
+		
+	Time  1863-11-24 17:00:00.000	
+	//also known as Battle of Chattanooga (and the 3rd one there).
+	//Note: combined with the Battle of Lookout Mountain as Chattanooga III in the CWSAC report.
+	ChattanoogaIII : Union_victory {
+			CWSAC = Decisive
+			Place = Missionary Ridge
+			State = Tennessee
+			General = Grant
+			General = Hooker //Battle of Lookout Mountain
+			General = Bragg
+			Time  1863-11-25 17:00:00.000	
+			End 
+		}	
+		
+	Time  1864-05-05 17:00:00.000	
+	Wilderness : Inconclusive {
+			CWSAC = Decisive
+			Place = Locust Grove
+			State = Virginia
+			General = Grant
+			General = Lee
+			Time  1864-05-07 17:00:00.000		
+			End 
+		}
+		
+	Time  1865-05-09 17:00:00.000	
+	Appomattox : Union {
+			CWSAC = Decisive
+			Place = Locust Grove
+			State = Virginia
+			General = Grant
+			General = Lee
+			End 
+		}	
+
+	
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -318,8 +323,9 @@ End = Appomattox
 //January 1, 1863, the Emancipation Proclamation
 Time 1863-01-01 17:00:00.000
 	
-Emancipation Proclamation : Executive Order  {
+Proclamation : Executive Order  {
 By = Lincoln
+Emancipation = True
 }
 
 Symbiosis1 : Symbiosis {

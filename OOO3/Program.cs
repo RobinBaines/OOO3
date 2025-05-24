@@ -17,87 +17,38 @@ DATETIME = 'Time' [ '=' ] 'yyyy-MM-dd HH:mm:ss.fff'
 */
 
 using System.Reflection.Metadata;
-
+using OOOCL;
 namespace OOO3
 {
     static class Program
     {
     static void Main(string[] args)
         {
+            string filepath="";
             if (args.Length > 0)
             {
                 if (File.Exists(args[0]))
                 {
-                    BuildSOs.ProcessFile(args[0]);
+                    filepath = args[0];
                 }
                 else
                     Console.WriteLine(args[0] + " not found.");
             }
+
             else
             {
                 if (File.Exists("script.txt"))
                 {
-                    BuildSOs.ProcessFile("script.txt");
+                    filepath = "script.txt";
                 }
                 else
                     Console.WriteLine("script.txt not found.");
             }
 
-            //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
-            //SOs.QuerySOSQ("Event");
-            foreach (string s in BuildSOs.GenerateScript)
+            if (filepath.Length > 0)
             {
-                SOs.GenerateAScript(s);
+                BuildSOs.CreateOutput(filepath);
             }
-
-            //BuildSOs.DisplaySOs is a list of output commands read from the script
-            //string s is the DisplaySOs parameter for example
-            //* or Dog.
-            foreach (string s in BuildSOs.DisplaySOs)
-            {
-                SOs.DisplaySOs(s);
-            }
-
-            //BuildSOs.QuerySOs is a list of output commands read from the script.
-            //string s is the QuerySOs parameter for example
-            //Event, Dog
-            foreach (string s in BuildSOs.QuerySOs)
-            {
-                string[] tokens = s.Split(',');
-                if (tokens.Length > 1)
-                {
-                    SOs.QuerySOs(tokens[0].Trim(), tokens[1].Trim());
-                }
-            }
-
-            //SOs.DisplaySOs("Dog");
-
-            //Query Person present at an Event.
-            //SOs.QuerySOs("Event", "Person");
-
-            // SOs.QuerySOs("Event", "Dog");
-            foreach (string s in BuildSOs.RandomWalk)
-            {
-                int nr = 0;
-                if (Int32.TryParse(s, out nr))
-                { 
-                    for (int i = 0; i < nr; i++)
-                    {
-                        Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
-                        SOs.RandomSQs();
-                        Console.WriteLine("");
-                    }
-                }
-            }
-
-            ////A number of 'walks' through the SOs.
-            //for (int i = 0; i < 30; i++)
-            //{
-            //    Console.WriteLine("///////////////// Random started connected walk through SQs /////////////////");
-            //    SOs.RandomSQs();
-            //    Console.WriteLine("");
-            //}
         }
-
     }
 }

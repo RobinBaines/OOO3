@@ -3,17 +3,15 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 using System;
-using System.Buffers.Text;
-using System.Diagnostics;
-using System.Drawing;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Reflection.Metadata.Ecma335;
-using System.Threading;
-namespace OOO3
+
+namespace OOOCL
 {
-    internal class SOs
+    public class SOs
     {
-        const string GENERATEDFILE  = "generated.txt";
+        internal const string GENFILE  = "generated.txt";
+        internal const string GENOBJECTNAME = "GEN";
         /// <summary>
         /// Display the SOs with SQs filtering on Parent.
         /// </summary>
@@ -147,7 +145,7 @@ namespace OOO3
         /// <param name="_parent"></param>
         public static void GenerateAScript(string _parent)
         {
-            Console.WriteLine("Create "+ GENERATEDFILE + " by querying \'" + _parent + "\'.");
+            Console.WriteLine("Create "+ GENFILE + " by querying \'" + _parent + "\'.");
             int count = 0;
 
             //Create a List of qualities where the Name of the Quality is an SO in SOFrom.           
@@ -184,12 +182,12 @@ namespace OOO3
             if (qualities.Count > 0)
             {
                 List<string> verbs = new List<string>();
-                string theFile = GENERATEDFILE;
+                string theFile = GENFILE;
                 using (StreamWriter sw = new StreamWriter(theFile))
                 {
                     sw.WriteLine("Time " + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff",
                                             CultureInfo.InvariantCulture));
-                    sw.WriteLine("Generated : Event {");
+                    sw.WriteLine(GENOBJECTNAME + " : Event {");
                     foreach (SensualQuality SQ in qualities)
                     {
                         if (SQ.IsSO)
@@ -232,7 +230,7 @@ namespace OOO3
                 }
                 BuildSOs.ProcessFile(theFile);
             }
-            Console.WriteLine("Created " + count.ToString() + " new events in " + GENERATEDFILE + " from " + qualities.Count.ToString() + " qualities.");
+            Console.WriteLine("Created " + count.ToString() + " new events in " + GENFILE + " from " + qualities.Count.ToString() + " qualities.");
             Console.WriteLine("");
         }
 
