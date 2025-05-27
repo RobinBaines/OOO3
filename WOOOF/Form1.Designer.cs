@@ -40,9 +40,11 @@
             label3 = new Label();
             numQualityFontsize = new NumericUpDown();
             panel1 = new Panel();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)SleepTimer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numObjectFontsize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQualityFontsize).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // timer1
@@ -136,11 +138,21 @@
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.AutoScroll = true;
+            panel1.Controls.Add(button1);
             panel1.Location = new Point(9, 38);
             panel1.Name = "panel1";
             panel1.Size = new Size(1182, 409);
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1157, 383);
+            button1.Name = "button1";
+            button1.Size = new Size(22, 23);
+            button1.TabIndex = 3;
+            button1.Text = "RL";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -163,6 +175,7 @@
             ((System.ComponentModel.ISupportInitialize)SleepTimer).EndInit();
             ((System.ComponentModel.ISupportInitialize)numObjectFontsize).EndInit();
             ((System.ComponentModel.ISupportInitialize)numQualityFontsize).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -180,5 +193,6 @@
         private Label label3;
         private NumericUpDown numQualityFontsize;
         private Panel panel1;
+        private Button button1;
     }
 }

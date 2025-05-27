@@ -13,7 +13,10 @@ namespace WOOOF
     {
 
         internal static Dictionary<string, GDISO> GDISOs = new Dictionary<string, GDISO>();
-
+        Point bottom_right_point;
+        bool blnScriptBeingProcessed = false;
+        int ticks = 0;
+        Thread? newThread;
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace WOOOF
         /// </summary>
         /// <param name="Name"></param>
         /// <returns></returns>
-        GDISO RedrawFrom(string Name)
+        GDISO? RedrawFrom(string Name)
         {
             GDISO RedrawFromGDISO = GDISOs[Name];
             if (RedrawFromGDISO != null)
@@ -50,135 +53,111 @@ namespace WOOOF
             return RedrawFromGDISO;
         }
 
-        void HandleSOChanged(object sender, ListChangedEventArgs e)
+        void HandleSOChanged(object? sender, ListChangedEventArgs? e)
         {
-            if (e.ListChangedType == ListChangedType.Reset)
+            if (e != null)
             {
-            }
-
-            if (e.ListChangedType == ListChangedType.ItemChanged)
-            {
-                //called from NotifyPropertyChanged(); if an SQ is added to SO.qualities.
-                SensualObject SO = BuildSOs.TheSOs[e.NewIndex];
-                gDISO = RedrawFrom(SO.Name);
-                if (gDISO != null)
+                if (e.ListChangedType == ListChangedType.Reset)
                 {
-                    Rectangle rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
-                    panel1.Invalidate(rect);
+                }
 
-                    //Force the Update otherwise the next Invalidate() may be invoked 
-                    //before this OnPaint has been executed.
-                    try
+                if (e.ListChangedType == ListChangedType.ItemChanged)
+                {
+                    //called from NotifyPropertyChanged(); if an SQ is added to SO.qualities.
+                    SensualObject SO = BuildSOs.TheSOs[e.NewIndex];
+
+                    //work out from which Parent GDISO needs to be updated.
+                    gDISO = RedrawFrom(SO.Name);
+                    if (gDISO != null)
                     {
-                        Invoke(delegate
+                        Rectangle rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
+                        panel1.Invalidate(rect);
+
+                        //Force the Update otherwise the next Invalidate() may be invoked 
+                        //before this OnPaint has been executed.
+                        try
                         {
-                            Update();
-                        });
-                    }
-                    catch
-                    { }
-                }
-            }
-
-            if (e.ListChangedType == ListChangedType.ItemAdded)
-            {
-                SensualObject SO = BuildSOs.TheSOs[e.NewIndex];
-                //string test;
-                //if (SO.Name == "Dino Bos")
-                //    test = SO.Name;
-                //if (SO.Name == "Deer")
-                //    test = SO.Name;
-
-                //get the GDISOParent of this GDISO.
-                GDISO? GDISOParent = null;
-                if (SO.SOParent != null)
-                {
-                    int index = BuildSOs.TheSOs.IndexOf(SO.SOParent);
-                    if (index >= 0)
-                    {
-                        GDISOParent = GDISOs[BuildSOs.TheSOs[index].Name];
+                            Invoke(delegate
+                            {
+                                Update();
+                            });
+                        }
+                        catch
+                        { }
                     }
                 }
 
-                //If this GDI has no GDISOParent then set GDINeighbour to the last Neighbour so that the X position
-                //is correct.
-                GDISO? GDINeighbour = null;
-                if (GDISOParent == null)
-                    GDINeighbour = LastNeighbourGDISO;
-
-                //create the new gDISO.
-                gDISO = new GDISO(GDINeighbour, SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value);
-
-                //If this  GDI has no GDISOParent then save it. 
-                if (GDISOParent == null)
-                    LastNeighbourGDISO = gDISO;
-
-                GDISOs.Add(SO.Name, gDISO);
-
-                //_SO.ptrDerivedFrom is set after the SO is added to BuildSOs.TheSOs.
-                //so update everytime an SO is added to BuildSOs.TheSOs.
-                foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
+                if (e.ListChangedType == ListChangedType.ItemAdded)
                 {
-                    if (_SO.ptrDerivedFrom != null)
-                        GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
-                }
-                Rectangle rect;
-                gDISO = RedrawFrom(SO.Name);
-                rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
-                panel1.Invalidate(rect);
-                try 
-                {
-                    Invoke(delegate
+                    SensualObject SO = BuildSOs.TheSOs[e.NewIndex];
+                    //string test;
+                    //if (SO.Name == "Dino Bos")
+                    //    test = SO.Name;
+                    //if (SO.Name == "Deer")
+                    //    test = SO.Name;
+
+                    //get the GDISOParent of this GDISO.
+                    GDISO? GDISOParent = null;
+                    if (SO.SOParent != null)
                     {
-                        Update();
-                    });
-                }
-                catch
-                {
+                        int index = BuildSOs.TheSOs.IndexOf(SO.SOParent);
+                        if (index >= 0)
+                        {
+                            GDISOParent = GDISOs[BuildSOs.TheSOs[index].Name];
+                        }
+                    }
+
+                    //If this GDI has no GDISOParent then set GDINeighbour to the last Neighbour so that the X position
+                    //is correct.
+                    GDISO? GDINeighbour = null;
+                    if (GDISOParent == null)
+                        GDINeighbour = LastNeighbourGDISO;
+
+                    //create the new gDISO.
+                    gDISO = new GDISO(GDINeighbour, SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value);
+
+                    //If this  GDI has no GDISOParent then save it. 
+                    if (GDISOParent == null)
+                        LastNeighbourGDISO = gDISO;
+
+                    GDISOs.Add(SO.Name, gDISO);
+
+                    //_SO.ptrDerivedFrom is set after the SO is added to BuildSOs.TheSOs.
+                    //so update everytime an SO is added to BuildSOs.TheSOs.
+                    foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
+                    {
+                        if (_SO.ptrDerivedFrom != null)
+                            GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
+                    }
+                    Rectangle rect;
+
+                    //work out from which Parent GDISO needs to be updated.
+                    gDISO = RedrawFrom(SO.Name);
+                    if (gDISO != null)
+                    {
+                        rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
+                        panel1.Invalidate(rect);
+                        try
+                        {
+                            Invoke(delegate
+                            {
+                                Update();
+                            });
+                        }
+                        catch
+                        {
+                        }
+                    }
                 }
             }
         }
 
 
         /// <summary>
-        /// Called after Invalidate.
+        /// Check if the Thread has finished and Invalidate.
         /// </summary>
+        /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            //Graphics g = e.Graphics;
-            //bool blnStartDrawing = false;
-            //if (gDISO == null)
-            //    blnStartDrawing = true;
-
-            //foreach (GDISO GDISO in GDISOs.Values.ToList())
-            //{
-            //    GDISO.qualities.Clear();
-
-            //    //add the SO.qualities to this GDISO.qualities
-            //    foreach (OOOCL.SensualQuality SQ in GDISO.SO.qualities.ToList())
-            //    {
-            //        if (SQ.SOParent == GDISO.SO)
-            //            GDISO.AddSQ(SQ.Name, SQ.Value, SQ.SOEvent);
-            //    }
-            //    if (gDISO != null)
-            //    {
-            //        if (gDISO.Name == GDISO.Name)
-            //        {
-            //            blnStartDrawing = true;
-            //        }
-            //    }
-            //    if (blnStartDrawing)
-            //    {
-            //        GDISO.DrawGDISO(g);
-            //    }
-            //}
-            //g.Dispose();
-        }
-
-        bool blnScriptBeingProcessed = false;
-        int ticks = 0;
-        Thread newThread;
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (blnScriptBeingProcessed)
@@ -186,12 +165,16 @@ namespace WOOOF
                 ticks++;
 
                 //re-write once more when thread finishes.
-                if (newThread.IsAlive == false)
+                if (newThread != null)
                 {
-                    gDISO = null;
-                    panel1.Invalidate();
-                    blnScriptBeingProcessed = false;
-                    btnRunScript.Enabled = true;
+                    if (newThread.IsAlive == false)
+                    {
+                        gDISO = null;
+                        button1.Location = bottom_right_point;
+                        blnScriptBeingProcessed = false;
+                        panel1.Invalidate();
+                        btnRunScript.Enabled = true;
+                    }
                 }
             }
         }
@@ -204,12 +187,16 @@ namespace WOOOF
                 {
                     BuildSOs.TheSOs.Clear();
                     GDISOs.Clear();
+                    bottom_right_point.X = 0;
+                    bottom_right_point.Y = 0;
+                    button1.Location = new Point(panel1.Height - button1.Height, panel1.Width - button1.Width);
                     LastNeighbourGDISO = null;
                     BuildSOs.SleepTime = (int)SleepTimer.Value;
                     btnRunScript.Enabled = false;
+                    blnScriptBeingProcessed = true;
                     newThread = new Thread(DoWork);
                     newThread.Start(textBox1.Text);
-                    blnScriptBeingProcessed = true;
+                    
                 }
                 else
                     MessageBox.Show(textBox1.Text + " not found.");
@@ -221,19 +208,22 @@ namespace WOOOF
         /// added without interferring with the Form updates.
         /// </summary>
         /// <param name="data"></param>
-        public static void DoWork(object data)
+        public static void DoWork(object? data)
         {
             //redirect std output
-            string output_file = (string)data;
-            output_file = output_file.Replace(".", "Output.");
-            FileStream fs = new FileStream(output_file, FileMode.Create);
-            TextWriter tmp = Console.Out;
-            StreamWriter sw = new StreamWriter(fs);
-            Console.SetOut(sw);
+            if (data != null)
+            {
+                string output_file = (string)data;
+                output_file = output_file.Replace(".", "Output.");
+                FileStream fs = new FileStream(output_file, FileMode.Create);
+                TextWriter tmp = Console.Out;
+                StreamWriter sw = new StreamWriter(fs);
+                Console.SetOut(sw);
 
-            //process the script
-            BuildSOs.CreateOutput((string)data);
-            sw.Close();
+                //process the script
+                BuildSOs.CreateOutput((string)data);
+                sw.Close();
+            }
         }
         private void btnSelectScript_Click(object sender, EventArgs e)
         {
@@ -267,6 +257,8 @@ namespace WOOOF
 
             foreach (GDISO GDISO in GDISOs.Values.ToList())
             {
+                GDISO.IncludesRef.Clear();
+                GDISO.IsPartOfRef.Clear();
                 GDISO.qualities.Clear();
 
                 //add the SO.qualities to this GDISO.qualities
@@ -275,6 +267,17 @@ namespace WOOOF
                     if (SQ.SOParent == GDISO.SO)
                         GDISO.AddSQ(SQ.Name, SQ.Value, SQ.SOEvent);
                 }
+                foreach (OOOCL.SensualObject SO in GDISO.SO.IncludesReference.ToList())
+                {
+                    // if (SO.SOParent == GDISO.SO)
+                    GDISO.AddIncludesRef(SO.Name);
+                }
+                foreach (OOOCL.SensualObject SO in GDISO.SO.IsPartOfReference.ToList())
+                {
+                    // if (SO.SOParent == GDISO.SO)
+                    GDISO.AddPartOfRef(SO.Name);
+                }
+
                 if (gDISO != null)
                 {
                     if (gDISO.Name == GDISO.Name)
@@ -284,7 +287,15 @@ namespace WOOOF
                 }
                 if (blnStartDrawing)
                 {
-                    GDISO.DrawGDISO(g);
+                    Point point = GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
+                    if (point.X > bottom_right_point.X)
+                        bottom_right_point.X = point.X;
+                    if (point.Y > bottom_right_point.Y)
+                    {
+                        bottom_right_point.Y = point.Y;
+                        if(blnScriptBeingProcessed == false)
+                            button1.Location = bottom_right_point;
+                    }
                 }
             }
             g.Dispose();

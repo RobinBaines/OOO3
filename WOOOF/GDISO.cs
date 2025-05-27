@@ -21,51 +21,22 @@ namespace WOOOF
     {
         const int YCOORDINATE = 0;
         const int OBJECTSPACING = 2;
+        internal List<GDIIncludesRef> IncludesRef = new List<GDIIncludesRef>();
+        internal List<GDIPartOfRef> IsPartOfRef = new List<GDIPartOfRef>();
+
         internal List<GDISQ> qualities = new List<GDISQ>();
         internal List<GDISO> ChildGDISOs = new List<GDISO>();
 
-        private Graphics? _G;
+        public Graphics? G { get; set; }
 
-        public Graphics? G
-        {
-            get { return _G; }
-            set { _G = value; }
-        }
+        public GDISO? Parent { get; set; }
 
-        private GDISO? _Parent;
+        public GDISO? Neighbour { get; set; }
 
-        public GDISO? Parent
-        {
-            get { return _Parent; }
-            set { _Parent = value; }
-        }
-
-        private GDISO? _Neighbour;
-
-        public GDISO? Neighbour
-        {
-            get { return _Neighbour; }
-            set { _Neighbour = value; }
-        }
-
-
-        private string _Inherits;
-
-        public string Inherits
-        {
-            get { return _Inherits; }
-            set { _Inherits = value; }
-        }
-
-        private Color _theColour;
-        public Color theColour
-        {
-            get { return _theColour; }
-            set { _theColour = value; }
-        }
-
+        public string Inherits { get; set; }
+      
+        public Color theColour { get; set; }
      
-
         public int _x;
         public int X
         {
@@ -81,16 +52,7 @@ namespace WOOOF
             set { _x = value; }
         }
 
-        private int _y;
-
-        public int Y
-        {
-            get
-            {
-                return _y;
-            }
-            set { _y = value; }
-        }
+        public int Y { get; set; }
 
         int _width = 300;
         public int Width
@@ -98,11 +60,19 @@ namespace WOOOF
             get
             {
                 _width = TextWidth + 15;
-                foreach (GDISO GDISO in ChildGDISOs)
+                foreach (GDISO GDISO in ChildGDISOs.ToList())
                 {
                     if (GDISO.Width + GDISO._x - _x + OBJECTSPACING > _width) _width = GDISO.Width + GDISO._x - _x + OBJECTSPACING;
                 }
                 foreach (GDISQ SQ in qualities.ToList())
+                {
+                    if ((SQ.Width) > _width) _width = SQ.Width;
+                }
+                foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                {
+                    if ((SQ.Width) > _width) _width = SQ.Width;
+                }
+                foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
                 {
                     if ((SQ.Width) > _width) _width = SQ.Width;
                 }
@@ -115,28 +85,31 @@ namespace WOOOF
         {
             get {
                 _height = (int)TextHeight;
-                foreach (GDISO GDISO in ChildGDISOs)
+                foreach (GDISO GDISO in ChildGDISOs.ToList())
                 {
                     _height += (GDISO.Height + 10);
                 }
                 foreach (GDISQ SQ in qualities.ToList())
                     _height += ((int)SQ.TextHeight);
+                foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                {
+                    _height += ((int)SQ.TextHeight);
+                }
+                foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                {
+                    _height += ((int)SQ.TextHeight);
+                }
                 return _height; 
             }
         }
 
         public int ObjectFontsize { get; set; }
         public int QualityFontsize { get; set; }
-        private Font _theFont;
-        public Font theFont
-        {
-            get { return _theFont; }
-            set { _theFont = value; }
-        }
+       
+        public Font theFont { get; set; }
 
         public SensualObject SO;
 
-        private float _textHeight;
         public float TextHeight
         {
             get { return theFont.SizeInPoints + 10; }
@@ -183,12 +156,12 @@ namespace WOOOF
             ObjectFontsize = _objectfontsize;
             QualityFontsize = _qualityfontsize;
             theFont = new Font("Verdana", ObjectFontsize);
-           // CalculateY();
             if (Parent != null)
             {
                 Parent.ChildGDISOs.Add(this);
             }
             theColour = Color.Blue;
+            Inherits = "";
         }
        
 
@@ -196,10 +169,10 @@ namespace WOOOF
         {
             Inherits = _SO.Name;
         }
-        public void AddSQ(string _name, string _value, SensualObject SOEvent)
+        public void AddSQ(string _name, string _value, SensualObject? SOEvent)
         {
             string soevent ="";
-            if(SOEvent != null)
+            if (SOEvent != null)
             {
                 soevent = SOEvent.Name;
             }
@@ -207,6 +180,20 @@ namespace WOOOF
             qualities.Add(SQ);
         }
 
+        public void AddIncludesRef(string _name)
+        {
+            string soevent = "";
+            GDIIncludesRef SQ = new GDIIncludesRef(this, _name, "", soevent, QualityFontsize);
+
+            IncludesRef.Add(SQ);
+        }
+
+        public void AddPartOfRef(string _name)
+        {
+            string soevent = "";
+            GDIPartOfRef SQ = new GDIPartOfRef(this, _name, "", soevent, QualityFontsize);
+            IsPartOfRef.Add(SQ);
+        }
         private void CalculateY()
         {
             int y = YCOORDINATE;
@@ -226,26 +213,35 @@ namespace WOOOF
                     {
                         y += ((int)SQ.TextHeight); // + 10);
                     }
+                    foreach (GDIIncludesRef SQ in Parent.IncludesRef.ToList())
+                    {
+                        y += ((int)SQ.TextHeight);
+                    }
+                    foreach (GDIPartOfRef SQ in Parent.IsPartOfRef.ToList())
+                    {
+                        y += ((int)SQ.TextHeight);
+                    }
                 }
             }
             Y = y;
         }
 
-public void DrawGDISO(Graphics _g)
+public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPositionY)
         {
+            Point point = new Point(0,0);
             G = _g;
             RectangleF rect;
-            if (_G != null)
+            if (G != null)
             {
                 string test;
-                if (Name == "InitEvent")
+                if (Name == "swimming")
                     test = Name;
 
                 CalculateY();
 
                 if (Neighbour != null)
                 {
-                    rect = new RectangleF(X, Neighbour.Y, Width, Height);
+                    rect = new RectangleF(X + AutoScrollPositionX, Y + AutoScrollPositionY, Width, Height);
                 }
                 else
                 {
@@ -253,11 +249,11 @@ public void DrawGDISO(Graphics _g)
                     {
                         X = Parent.X + 1;
                         //rect = new RectangleF(Parent.X + 5, Y, Width - 10, Height);
-                        rect = new RectangleF(X, Y, Width - 10, Height);
+                        rect = new RectangleF(X + AutoScrollPositionX, Y + AutoScrollPositionY, Width - 10, Height);
                     }
                     else
                     {
-                        rect = new RectangleF(X, Y, Width, Height);
+                        rect = new RectangleF(X + AutoScrollPositionX, Y + AutoScrollPositionY, Width, Height);
                     }
                 }
 
@@ -283,7 +279,23 @@ public void DrawGDISO(Graphics _g)
                     SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
                     i++;
                 }
+
+                foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                {
+                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                    i++;
+                }
+
+                foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                {
+                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                    i++;
+                }
+
+                point.X = (int)X + AutoScrollPositionX + (int)Width;
+                point.Y = (int)Y + AutoScrollPositionY + (int)Height;
             }
+            return point;
         }
     }
 }

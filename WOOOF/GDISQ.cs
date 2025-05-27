@@ -24,58 +24,50 @@ namespace WOOOF
         public int FontSize { get; set; }
         public string Value { get; set; }
 
-        private Font _theFont;
-        public Font theFont
-        {
-            get { return _theFont; }
-            set { _theFont = value; }
-        }
-
+        public Font theFont { get; set; }
       
         public float TextHeight
         {
             get { return theFont.SizeInPoints + VERTICALSPACING; }
         }
 
-        private int _textWidth;
+        int _textWidth;
         public int TextWidth
         {
             get
             {
-                string _name =GetString();
+                string _name = GetString();
                 SizeF stringSize = new SizeF();
                 Graphics gfx = Graphics.FromImage(new Bitmap(1, 1));
                 stringSize = gfx.MeasureString(_name, theFont);
-                return (int)stringSize.Width;
+                _textWidth = (int)stringSize.Width;
+                return _textWidth;
             }
+            set { _textWidth = value; }
         }
 
-        int _width = 300;
         public int Width
         {
             get
             {
-                _width = TextWidth + RIGHTSPACING;
-                return _width;
+                return TextWidth + RIGHTSPACING;
             }
         }
-        private GDISO _Parent;
 
-        public GDISO Parent
-        {
-            get { return _Parent; }
-            set { _Parent = value; }
-        }
+        public GDISO? Parent { get; set; }
 
-
-        private string GetString()
+        public string GetString()
         {
             string str = SOevent;
             if (SOevent.Length > 0)
             {
                 str += "=>";
             }
-            return str + Name + " = " + Value;
+            if (Value.Length > 0)
+            {
+                return str + Name + " = " + Value;
+            }
+            return str + Name;
         }
         public void DrawString(float X, float Y, StringFormat format)
         {
@@ -88,8 +80,7 @@ namespace WOOOF
             {
                 sb = new SolidBrush(Color.Black);
             }
-
-            Parent.G.DrawString(GetString(), theFont, sb, X, Y, format);
+            Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
         }
 
 
@@ -109,8 +100,6 @@ namespace WOOOF
             Name = _name;
             Value = _value;
             FontSize = _qualityfontsize;
-            if (Parent.Name == "Me")
-                SOevent = "";
             SOevent = "";
             if (Parent.Name != _event )
             {
@@ -124,7 +113,7 @@ namespace WOOOF
                     SOevent = _event;
                 }
             }
-            _theFont = new Font("Verdana", FontSize);
+            theFont = new Font("Verdana", FontSize);
         }
     }
 }

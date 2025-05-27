@@ -25,13 +25,13 @@ namespace OOOCL
         public List<SensualObject> IsPartOfReference = new List<SensualObject>();
         public List<SensualQuality> qualities = new List<SensualQuality>();
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public event PropertyChangingEventHandler? PropertyChanging;
 
         //[CallerMemberName]attribute that is applied to the optional propertyName  
         // parameter causes the property name of the caller to be substituted as an argument.  
         //But also changes e.ListChangedType to ListChangedType.ItemChanged in HandleSOChanged.
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = null)
+        private void NotifyPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             if (PropertyChanged != null)
             {
