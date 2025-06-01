@@ -69,6 +69,8 @@ The output is managed using output commands at the start of the script:
 	
 	RandomWalk 30	//Print a list of SQs by starting with a random SQ then moving to an SQ with the same Name but another SO.
 					//Do this 30 times.
+					
+	WOOOF.exe has a windows forms user interface. It uses OOO3.exe to process a script, creating the output files while animating the process. 
 
 SOME OOO IDEAS:
 
@@ -85,7 +87,7 @@ Undermining means that (real) objects can't be reduced to only their parts.
 Nida the dog in the script is only sketched out with a limited number of SQs. I could go on describing or remembering her 
 but I will never get to what it is like to be a dog called Nida.
 
-Overmining means that objects can't be reduced to their effects. 
+Overmining means that an object is less than it's effects. 
  
 Two ideas from OOO analysis which play a role in the ACW script. 
 Symbiosis. 2 or a single event which causes an irreversible change in a real object.
@@ -306,8 +308,15 @@ These subroutines use similar approaches by iterating through SOs and SQs.
 
 Inheritance: I remember Fons commenting that some people with autism are not able to generalise; which could mean that every dog is a new
 SO. 
+An object is a collection of other objects. This is problematic in a practical solution. 
+The WaterDetail script describes collisions of water drops. Defining a collection of waterdrops seems to be necessary.
+Should the script describe the parts of the drop by tracing the events which resulted in its creation or should it be a list 
+of its parts? 
+Inheritance offers a short cut. It is possible to define an object WaterDrop and then define WD1 : WaterDrop, WD2 : WaterDrop, WD3 : WaterDrop etc 
+as instances of waterdrops which play a role in the script. Any detail of drop formation or water vapour creation from water in the sea and ultimately
+water creation from Hydrogen and Oxygen can be hidden or made explicit in the WaterDrop object.
 
-Juliet's immediate response was that all the output could be generated directly from the script.
+Juliet's immediate response to OOO3 was that all the output could be generated directly from the script.
 This must be True but is it a problem?
 
 1. This could also be true of humans. The hidden nature of SOs and the number of SOs in our brain coupled with memory loss makes this difficult/impossible to judge.
