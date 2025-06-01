@@ -29,12 +29,13 @@ namespace WOOOF
         public GDIPartOfRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize) : base(_Parent, _name, _value, _event, _qualityfontsize)
         {
             theFont = new Font("Verdana", FontSize);
+            SOevent = "PartOf";
             if (Parent.Parent != null)
             {
                 if (Name != Parent.Parent.Name)
                 {
                     theFont = new Font("Arial", FontSize);
-                    SOevent = "PartOf";
+                    
                 }
             }
         }
