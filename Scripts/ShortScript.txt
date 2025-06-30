@@ -29,8 +29,7 @@ Time = 2025-01-01 12:00:00.000
 			Feel
 	}
 
-Time = 2025-01-01 12:00:00.000
- Fons = visiting Me
+
  
 //another SO	
 	Place {
@@ -57,5 +56,56 @@ Init : Event			//INHERIT_SENSUALOBJECT
 		RightEar
 		Gender
 	}
+
+	Chess {
+		game
+		2players
+		64pieces
+		result
+		winner
+	}	
 	
+}
+
+ChessVisit1 : Event {
+Time = 2025-01-01 12:00:00.000
+ Fons = visiting Me
+ 	game1 : Chess {
+	Fons = white 
+	Me = black
+	}
+ }
+
+ChessVisit2 : Event {
+
+	Jasper : Person {
+			Gender = Male
+			//Another SQ without an explicit value. The default value is applied in this case and is True.
+			Emotion
+			//Another SQ with value True.
+			Feel
+	}
+	Jasper = visiting Me
+	game2 : Chess {
+	Jasper = white 
+	Me = black
+	}
+}	
+	
+ChessVisit3 : Event {
+
+	Gerrit : Person {
+			Gender = Male
+			//Another SQ without an explicit value. The default value is applied in this case and is True.
+			Emotion
+			//Another SQ with value True.
+			Feel
+	}
+	
+	Jasper = visiting Me
+	Gerrit = visiting Me
+	game3 : Chess {
+	Jasper = white 
+	Gerrit = black
+	}	
 }

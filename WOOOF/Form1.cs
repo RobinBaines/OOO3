@@ -87,6 +87,9 @@ namespace WOOOF
                     }
                 }
 
+                //Called if an SO is added to the lists of SOs. 
+                //The rewrite can be slow so don't bother reacting to creation of a new SO because changes to the
+                //property lists will reqrite it anyway.
                 if (e.ListChangedType == ListChangedType.ItemAdded)
                 {
                     SensualObject SO = BuildSOs.TheSOs[e.NewIndex];
@@ -122,32 +125,32 @@ namespace WOOOF
 
                     GDISOs.Add(SO.Name, gDISO);
 
-                    //_SO.ptrDerivedFrom is set after the SO is added to BuildSOs.TheSOs.
-                    //so update everytime an SO is added to BuildSOs.TheSOs.
-                    foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
-                    {
-                        if (_SO.ptrDerivedFrom != null)
-                            GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
-                    }
-                    Rectangle rect;
+                    ////_SO.ptrDerivedFrom is set after the SO is added to BuildSOs.TheSOs.
+                    ////so update everytime an SO is added to BuildSOs.TheSOs.
+                    //foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
+                    //{
+                    //    if (_SO.ptrDerivedFrom != null)
+                    //        GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
+                    //}
+                    //Rectangle rect;
 
-                    //work out from which Parent GDISO needs to be updated.
-                    gDISO = RedrawFrom(SO.Name);
-                    if (gDISO != null)
-                    {
-                        rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
-                        panel1.Invalidate(rect);
-                        try
-                        {
-                            Invoke(delegate
-                            {
-                                Update();
-                            });
-                        }
-                        catch
-                        {
-                        }
-                    }
+                    ////work out from which Parent GDISO needs to be updated.
+                    //gDISO = RedrawFrom(SO.Name);
+                    //if (gDISO != null)
+                    //{
+                    //    rect = new Rectangle(gDISO.X - 1, 0, this.Width, this.Height);
+                    //    panel1.Invalidate(rect);
+                    //    try
+                    //    {
+                    //        Invoke(delegate
+                    //        {
+                    //            Update();
+                    //        });
+                    //    }
+                    //    catch
+                    //    {
+                    //    }
+                    //}
                 }
             }
         }
@@ -259,6 +262,7 @@ namespace WOOOF
             {
                 GDISO.IncludesRef.Clear();
                 GDISO.IsPartOfRef.Clear();
+                GDISO.IsReferencedBy.Clear();
                 GDISO.qualities.Clear();
 
                 //add the SO.qualities to this GDISO.qualities
@@ -276,6 +280,11 @@ namespace WOOOF
                 {
                     // if (SO.SOParent == GDISO.SO)
                     GDISO.AddPartOfRef(SO.Name);
+                }
+                foreach (OOOCL.SensualObject SO in GDISO.SO.ReferencedBy.ToList())
+                {
+                    // if (SO.SOParent == GDISO.SO)
+                    GDISO.AddReferencedBy(SO.Name);
                 }
 
                 if (gDISO != null)

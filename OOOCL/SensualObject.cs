@@ -22,6 +22,8 @@ namespace OOOCL
     {
         public SensualObject? ptrDerivedFrom = null;
         public List<SensualObject> IncludesReference = new List<SensualObject>();
+        //20250628
+        public List<SensualObject> ReferencedBy = new List<SensualObject>();
         public List<SensualObject> IsPartOfReference = new List<SensualObject>();
         public List<SensualQuality> qualities = new List<SensualQuality>();
 
@@ -122,6 +124,11 @@ namespace OOOCL
                 Console.WriteLine(prefix + "SO " + this.Name + " has references.");
                 foreach (SensualObject SOReference in IncludesReference)
                 {
+                    if (SOReference.Name == "Jasper")
+                    {
+                        Console.WriteLine("");
+                    }
+
                     string str = " Includes          ";
                     if (SOReference.created != created)
                     {
@@ -134,7 +141,30 @@ namespace OOOCL
                     }
                 }
             }
-         }
+
+            //20250628
+            if (ReferencedBy.Count > 0)
+            {
+                ReferencedBy.Sort((x, y) => DateTime.Compare(x.created, y.created));
+
+                Console.WriteLine(prefix + "SO " + this.Name + " is referenced by.");
+                foreach (SensualObject SOReference in ReferencedBy)
+                {
+                  
+                    string str = " Referenced by          ";
+                    if (SOReference.created != created)
+                    {
+                        created = SOReference.created;
+                        SOReference.PrintSO("\t" + prefix, str, true);
+                    }
+                    else
+                    {
+                        SOReference.PrintSO("\t" + prefix, str, false);
+                    }
+                }
+            }
+
+        }
         public virtual void PrintIsPartOf(string prefix)
         {
             DateTime created = DateTime.MinValue;
@@ -177,6 +207,27 @@ namespace OOOCL
                     if (!IncludesReference.Exists(_SO => Equals(_SO, SO)))
                     {
                         IncludesReference.Add(SO);
+                        SO.AddReferencedBy(this);
+
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Add a reference to an SO if the reference is a new one and if it is not a self reference.
+        /// </summary>
+        /// <param name="SO"></param>
+        public virtual void AddReferencedBy(SensualObject SO)
+        {
+            if (SO != null)
+            {
+                //Check it is not a self reference.
+                if (this != SO)
+                {
+                    if (!ReferencedBy.Exists(_SO => Equals(_SO, SO)))
+                    {
+                        ReferencedBy.Add(SO);
                     }
                 }
             }
@@ -219,10 +270,13 @@ namespace OOOCL
                 //Add a quality to this SO.
                 qualities.Add(SQ);
 
-                NotifyPropertyChanged();
-                Thread.Sleep(BuildSOs.SleepTime);
+                if (qualities.Count%3 == 0)
+                {
+                    NotifyPropertyChanged();
+                    Thread.Sleep(BuildSOs.SleepTime);
+                }
 
-                //make a copy of the SQ in the Event if this not the Event.
+                //make a copy of the SQ in the Event if this is not the Event.
                 //SO Nida has qualities.
                 //2025 - 02 - 02 14:00:00.005 => MeetNida Tail = Short
                 // but also
@@ -301,6 +355,8 @@ namespace OOOCL
             Name = _name;
             this.created = _dt;
             this.SOParent = Parent;
+
+
         }
     }
 

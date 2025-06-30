@@ -1,29 +1,33 @@
 Create generated.txt by querying 'Event'.
-Created 4 new events in generated.txt from 2 qualities.
+Created 12 new events in generated.txt from 8 qualities.
 
-Print SOs. Selection from 9 SOs filtered on *
+Print SOs. Selection from 20 SOs filtered on *
 //////////////////////////////////////Init 1 //////////////////////////////////////
 2025-01-01 12:00:00.000 Init : Event
 SO Init has qualities.
 	2025-01-01 12:00:00.000 Quality Place = Home
-	                        > Place Distance = True
-	                        > Fons Feel = True
-	                        > Fons Emotion = True
-	                        > Fons Gender = Male
-	                        Quality Fons = visiting Me
-	                        > Me Feel = True
-	                        > Me Emotion = True
+	                        > Me INHERIT Person = True
 	                        > Me Gender = Male
-	                        > Me INHERIT_SENSUALOBJECT Person = True
-	                        > Fons INHERIT_SENSUALOBJECT Person = True
-	2025-01-01 13:00:00.000 > Event Place = True
+	                        > Me Emotion = True
+	                        > Me Feel = True
+	                        > Fons INHERIT Person = True
+	                        > Fons Gender = Male
+	                        > Fons Emotion = True
+	                        > Fons Feel = True
+	                        > Place Distance = True
+	2025-01-01 13:00:00.000 > Event End = True
 	                        > Event Weather = True
-	                        > Event End = True
-	2025-01-01 14:00:00.000 > Animal RightEar = True
-	                        Quality INHERIT_SENSUALOBJECT Event = True
+	                        > Event Place = True
+	2025-01-01 14:00:00.000 Quality INHERIT Event = True
 	                        > Animal Brain = True
 	                        > Animal LeftEar = True
+	                        > Animal RightEar = True
 	                        > Animal Gender = True
+	                        > Chess game = True
+	                        > Chess 2players = True
+	                        > Chess 64pieces = True
+	                        > Chess result = True
+	                        > Chess winner = True
 
 SO Init has references.
 	2025-01-01 12:00:00.000 Includes          Me
@@ -31,46 +35,74 @@ SO Init has references.
 	                        Includes          Place
 	2025-01-01 13:00:00.000 Includes          Event
 	2025-01-01 14:00:00.000 Includes          Animal
+	                        Includes          Chess
 
 //////////////////////////////////////Me 2 //////////////////////////////////////
 2025-01-01 12:00:00.000 Me
 	                       Parent SO = Init : Event
 SO Me has qualities.
-	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
+	2025-01-01 12:00:00.000 Init => INHERIT Person = True
 	                        Init => Gender = Male
 	                        Init => Emotion = True
 	                        Init => Feel = True
+	2025-06-29 14:47:53.071 GEN => black = True
+		2025-06-29 14:47:53.071 SO Reference True
 
 SO Me is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
+	2025-06-29 14:47:53.071 Is part of          GEN : Event
+SO Me has references.
+	2025-06-29 14:47:53.071 Includes          True
+SO Me is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
+	                        Referenced by          game1 : Chess
+	                        Referenced by          game2 : Chess
+	                        Referenced by          ChessVisit2 : Event
+	                        Referenced by          Fons
+	                        Referenced by          Jasper
+	                        Referenced by          Gerrit
+	2025-01-01 14:00:00.000 Referenced by          ChessVisit1 : Event
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
 
 //////////////////////////////////////Fons 3 //////////////////////////////////////
 2025-01-01 12:00:00.000 Fons
 	                       Parent SO = Init : Event
 SO Fons has qualities.
-	2025-01-01 12:00:00.000 Init => INHERIT_SENSUALOBJECT Person = True
+	2025-01-01 12:00:00.000 Init => INHERIT Person = True
 	                        Init => Gender = Male
 	                        Init => Emotion = True
 	                        Init => Feel = True
-	2025-04-20 14:50:31.904 Generated => visiting = Me
+	2025-06-29 14:47:53.071 GEN => visiting = Me
 		2025-01-01 12:00:00.000 SO Reference Me
+	                        GEN => white = True
+		2025-06-29 14:47:53.071 SO Reference True
 
 SO Fons is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
-	2025-04-20 14:50:31.904 Is part of          Generated : Event
+	2025-06-29 14:47:53.071 Is part of          GEN : Event
 SO Fons has references.
 	2025-01-01 12:00:00.000 Includes          Me
+	2025-06-29 14:47:53.071 Includes          True
+SO Fons is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
+	                        Referenced by          game1 : Chess
+	2025-01-01 14:00:00.000 Referenced by          ChessVisit1 : Event
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
 
 //////////////////////////////////////Place 4 //////////////////////////////////////
 2025-01-01 12:00:00.000 Place
 	                       Parent SO = Init : Event
 SO Place has qualities.
 	2025-01-01 12:00:00.000 Init => Distance = True
-	2025-04-20 14:50:31.904 Generated => True = True
+	2025-06-29 14:47:53.071 GEN => True = True
 
 SO Place is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
-	2025-04-20 14:50:31.904 Is part of          Generated : Event
+	2025-06-29 14:47:53.071 Is part of          GEN : Event
+SO Place is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
+	2025-01-01 13:00:00.000 Referenced by          Event
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
 
 //////////////////////////////////////Event 5 //////////////////////////////////////
 2025-01-01 13:00:00.000 Event
@@ -84,7 +116,12 @@ SO Event is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
 SO Event has references.
 	2025-01-01 12:00:00.000 Includes          Place
-	2025-04-20 14:50:31.904 Includes          Generated : Event
+	                        Includes          ChessVisit2 : Event
+	                        Includes          ChessVisit3 : Event
+	2025-01-01 14:00:00.000 Includes          ChessVisit1 : Event
+	2025-06-29 14:47:53.071 Includes          GEN : Event
+SO Event is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
 
 //////////////////////////////////////Animal 6 //////////////////////////////////////
 2025-01-01 14:00:00.000 Animal
@@ -97,44 +134,280 @@ SO Animal has qualities.
 
 SO Animal is part of other objects.
 	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
+SO Animal is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
 
-//////////////////////////////////////Generated 7 //////////////////////////////////////
-2025-04-20 14:50:31.904 Generated : Event
-SO Generated has qualities.
-	2025-04-20 14:50:31.904 Quality INHERIT_SENSUALOBJECT Event = True
-	                        > Fons visiting = Me
-	                        > visiting INHERIT_SENSUALOBJECT Verb = True
-	                        > visiting Root = visit
-	                        > Place True = True
-	                        > True INHERIT_SENSUALOBJECT Verb = True
-	                        > True Root = True
+//////////////////////////////////////Chess 7 //////////////////////////////////////
+2025-01-01 14:00:00.000 Chess
+	                       Parent SO = Init : Event
+SO Chess has qualities.
+	2025-01-01 14:00:00.000 Init => game = True
+	                        Init => 2players = True
+	                        Init => 64pieces = True
+	                        Init => result = True
+	                        Init => winner = True
 
-SO Generated has references.
+SO Chess is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = Init : Event
+SO Chess is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Init : Event
+
+//////////////////////////////////////ChessVisit1 8 //////////////////////////////////////
+2025-01-01 14:00:00.000 ChessVisit1 : Event
+SO ChessVisit1 has qualities.
+	2025-01-01 12:00:00.000 Quality Fons = visiting Me
+	                        > game1 INHERIT Chess = True
+	                        > game1 Fons = white
+	                        > game1 Me = black
+	2025-01-01 14:00:00.000 Quality INHERIT Event = True
+
+SO ChessVisit1 has references.
 	2025-01-01 12:00:00.000 Includes          Fons
-	                        Includes          Place
-	2025-04-20 14:50:31.904 Includes          visiting
+	                        Includes          game1 : Chess
+	                        Includes          Me
+SO ChessVisit1 is referenced by.
+	2025-01-01 13:00:00.000 Referenced by          Event
+
+//////////////////////////////////////game1 9 //////////////////////////////////////
+2025-01-01 12:00:00.000 game1 : Chess
+	                       Parent SO = ChessVisit1 : Event
+SO game1 has qualities.
+	2025-01-01 12:00:00.000 ChessVisit1 => INHERIT Chess = True
+	                        ChessVisit1 => Fons = white
+	                        ChessVisit1 => Me = black
+
+SO game1 is part of other objects.
+	2025-01-01 14:00:00.000 Is part of Parent = ChessVisit1 : Event
+SO game1 has references.
+	2025-01-01 12:00:00.000 Includes          Fons
+	                        Includes          Me
+SO game1 is referenced by.
+	2025-01-01 14:00:00.000 Referenced by          ChessVisit1 : Event
+
+//////////////////////////////////////ChessVisit2 10 //////////////////////////////////////
+2025-01-01 12:00:00.000 ChessVisit2 : Event
+SO ChessVisit2 has qualities.
+	2025-01-01 12:00:00.000 Quality INHERIT Event = True
+	                        > Jasper INHERIT Person = True
+	                        > Jasper Gender = Male
+	                        > Jasper Emotion = True
+	                        > Jasper Feel = True
+	                        Quality Jasper = visiting Me
+	                        > game2 INHERIT Chess = True
+	                        > game2 Jasper = white
+	                        > game2 Me = black
+
+SO ChessVisit2 has references.
+
+	2025-01-01 12:00:00.000 Includes          Jasper
+	                        Includes          game2 : Chess
+	                        Includes          Me
+SO ChessVisit2 is referenced by.
+	2025-01-01 13:00:00.000 Referenced by          Event
+
+//////////////////////////////////////Jasper 11 //////////////////////////////////////
+2025-01-01 12:00:00.000 Jasper
+	                       Parent SO = ChessVisit2 : Event
+SO Jasper has qualities.
+	2025-01-01 12:00:00.000 ChessVisit2 => INHERIT Person = True
+	                        ChessVisit2 => Gender = Male
+	                        ChessVisit2 => Emotion = True
+	                        ChessVisit2 => Feel = True
+	2025-06-29 14:47:53.071 GEN => visiting = Me
+		2025-01-01 12:00:00.000 SO Reference Me
+	                        GEN => white = True
+		2025-06-29 14:47:53.071 SO Reference True
+
+SO Jasper is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ChessVisit2 : Event
+	2025-06-29 14:47:53.071 Is part of          GEN : Event
+SO Jasper has references.
+	2025-01-01 12:00:00.000 Includes          Me
+	2025-06-29 14:47:53.071 Includes          visiting
+	                        Includes          white
 	                        Includes          True
+SO Jasper is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          ChessVisit2 : Event
+	                        Referenced by          game2 : Chess
+	                        Referenced by          ChessVisit3 : Event
+	                        Referenced by          game3 : Chess
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
 
-//////////////////////////////////////visiting 8 //////////////////////////////////////
-2025-04-20 14:50:31.904 visiting
-	                       Parent SO = Generated : Event
-SO visiting has qualities.
-	2025-04-20 14:50:31.904 Generated => INHERIT_SENSUALOBJECT Verb = True
-	                        Generated => Root = visit
+//////////////////////////////////////game2 12 //////////////////////////////////////
+2025-01-01 12:00:00.000 game2 : Chess
+	                       Parent SO = ChessVisit2 : Event
+SO game2 has qualities.
+	2025-01-01 12:00:00.000 ChessVisit2 => INHERIT Chess = True
+	                        ChessVisit2 => Jasper = white
+	                        ChessVisit2 => Me = black
 
-SO visiting is part of other objects.
-	2025-04-20 14:50:31.904 Is part of Parent = Generated : Event
+SO game2 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ChessVisit2 : Event
+SO game2 has references.
 
-//////////////////////////////////////True 9 //////////////////////////////////////
-2025-04-20 14:50:31.904 True
-	                       Parent SO = Generated : Event
+	2025-01-01 12:00:00.000 Includes          Jasper
+	                        Includes          Me
+SO game2 is referenced by.
+	                        Referenced by          ChessVisit2 : Event
+
+//////////////////////////////////////ChessVisit3 13 //////////////////////////////////////
+2025-01-01 12:00:00.000 ChessVisit3 : Event
+SO ChessVisit3 has qualities.
+	2025-01-01 12:00:00.000 Quality INHERIT Event = True
+	                        > Gerrit INHERIT Person = True
+	                        > Gerrit Gender = Male
+	                        > Gerrit Emotion = True
+	                        > Gerrit Feel = True
+	                        Quality Jasper = visiting Me
+	                        Quality Gerrit = visiting Me
+	                        > game3 INHERIT Chess = True
+	                        > game3 Jasper = white
+	                        > game3 Gerrit = black
+
+SO ChessVisit3 has references.
+	2025-01-01 12:00:00.000 Includes          Gerrit
+
+	                        Includes          Jasper
+	                        Includes          game3 : Chess
+SO ChessVisit3 is referenced by.
+	2025-01-01 13:00:00.000 Referenced by          Event
+
+//////////////////////////////////////Gerrit 14 //////////////////////////////////////
+2025-01-01 12:00:00.000 Gerrit
+	                       Parent SO = ChessVisit3 : Event
+SO Gerrit has qualities.
+	2025-01-01 12:00:00.000 ChessVisit3 => INHERIT Person = True
+	                        ChessVisit3 => Gender = Male
+	                        ChessVisit3 => Emotion = True
+	                        ChessVisit3 => Feel = True
+	2025-06-29 14:47:53.071 GEN => visiting = Me
+		2025-01-01 12:00:00.000 SO Reference Me
+	                        GEN => black = True
+		2025-06-29 14:47:53.071 SO Reference True
+
+SO Gerrit is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ChessVisit3 : Event
+	2025-06-29 14:47:53.071 Is part of          GEN : Event
+SO Gerrit has references.
+	2025-01-01 12:00:00.000 Includes          Me
+	2025-06-29 14:47:53.071 Includes          visiting
+	                        Includes          black
+	                        Includes          True
+SO Gerrit is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          ChessVisit3 : Event
+	                        Referenced by          game3 : Chess
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
+
+//////////////////////////////////////game3 15 //////////////////////////////////////
+2025-01-01 12:00:00.000 game3 : Chess
+	                       Parent SO = ChessVisit3 : Event
+SO game3 has qualities.
+	2025-01-01 12:00:00.000 ChessVisit3 => INHERIT Chess = True
+	                        ChessVisit3 => Jasper = white
+	                        ChessVisit3 => Gerrit = black
+
+SO game3 is part of other objects.
+	2025-01-01 12:00:00.000 Is part of Parent = ChessVisit3 : Event
+SO game3 has references.
+
+	2025-01-01 12:00:00.000 Includes          Jasper
+	                        Includes          Gerrit
+SO game3 is referenced by.
+	                        Referenced by          ChessVisit3 : Event
+
+//////////////////////////////////////GEN 16 //////////////////////////////////////
+2025-06-29 14:47:53.071 GEN : Event
+SO GEN has qualities.
+	2025-06-29 14:47:53.071 Quality INHERIT Event = True
+	                        > Jasper white = True
+	                        > Jasper visiting = Me
+	                        > black Root = black
+	                        > black INHERIT Verb = True
+	                        > Me black = True
+	                        > white Root = white
+	                        > Gerrit visiting = Me
+	                        > white INHERIT Verb = True
+	                        > visiting Root = visit
+	                        > visiting INHERIT Verb = True
+	                        > Fons visiting = Me
+	                        > True Root = True
+	                        > True INHERIT Verb = True
+	                        > Place True = True
+	                        > Fons white = True
+	                        > Gerrit black = True
+
+SO GEN has references.
+	2025-01-01 12:00:00.000 Includes          Place
+	                        Includes          Fons
+	                        Includes          Me
+
+	                        Includes          Jasper
+	                        Includes          Gerrit
+	2025-06-29 14:47:53.071 Includes          True
+	                        Includes          visiting
+	                        Includes          white
+	                        Includes          black
+SO GEN is referenced by.
+	2025-01-01 13:00:00.000 Referenced by          Event
+
+//////////////////////////////////////True 17 //////////////////////////////////////
+2025-06-29 14:47:53.071 True
+	                       Parent SO = GEN : Event
 SO True has qualities.
-	2025-04-20 14:50:31.904 Generated => INHERIT_SENSUALOBJECT Verb = True
-	                        Generated => Root = True
-		2025-04-20 14:50:31.904 SO Reference True
+	2025-06-29 14:47:53.071 GEN => INHERIT Verb = True
+	                        GEN => Root = True
+		2025-06-29 14:47:53.071 SO Reference True
 
 SO True is part of other objects.
-	2025-04-20 14:50:31.904 Is part of Parent = Generated : Event
+	2025-06-29 14:47:53.071 Is part of Parent = GEN : Event
+SO True is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Fons
+	                        Referenced by          Me
+	                        Referenced by          Jasper
+	                        Referenced by          Gerrit
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
+
+//////////////////////////////////////visiting 18 //////////////////////////////////////
+2025-06-29 14:47:53.071 visiting
+	                       Parent SO = GEN : Event
+SO visiting has qualities.
+	2025-06-29 14:47:53.071 GEN => INHERIT Verb = True
+	                        GEN => Root = visit
+
+SO visiting is part of other objects.
+	2025-06-29 14:47:53.071 Is part of Parent = GEN : Event
+SO visiting is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Jasper
+	                        Referenced by          Gerrit
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
+
+//////////////////////////////////////white 19 //////////////////////////////////////
+2025-06-29 14:47:53.071 white
+	                       Parent SO = GEN : Event
+SO white has qualities.
+	2025-06-29 14:47:53.071 GEN => INHERIT Verb = True
+	                        GEN => Root = white
+		2025-06-29 14:47:53.071 SO Reference white
+
+SO white is part of other objects.
+	2025-06-29 14:47:53.071 Is part of Parent = GEN : Event
+SO white is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Jasper
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
+
+//////////////////////////////////////black 20 //////////////////////////////////////
+2025-06-29 14:47:53.071 black
+	                       Parent SO = GEN : Event
+SO black has qualities.
+	2025-06-29 14:47:53.071 GEN => INHERIT Verb = True
+	                        GEN => Root = black
+		2025-06-29 14:47:53.071 SO Reference black
+
+SO black is part of other objects.
+	2025-06-29 14:47:53.071 Is part of Parent = GEN : Event
+SO black is referenced by.
+	2025-01-01 12:00:00.000 Referenced by          Gerrit
+	2025-06-29 14:47:53.071 Referenced by          GEN : Event
 
 ////////////////////////////// QuerySOs of Event//////////////////////////////////////
 Query 'Event' for 'Animal'
@@ -142,115 +415,140 @@ Query 'Event' for 'Animal'
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 2
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-	
-	SWITCH from Me.Feel using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 19
+	Using 91 qualities and starting with index = 24
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 32
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
 		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 18
-		SO Me with SQ Feel = True
-		SO Fons with SQ Feel = True
-	
-	SWITCH from Fons.Feel using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 8
-		SO Me with SQ Gender = Male
-		SO Fons with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 33
+	Using 91 qualities and starting with index = 90
+		SO black with SQ Root = black
+		SO white with SQ Root = white
 		SO visiting with SQ Root = visit
 		SO True with SQ Root = True
 	
-	SWITCH from True.Root using reference Generated to Fons.visiting
-		SO Fons with SQ visiting = Me
+	SWITCH from True.Root using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 25
+		SO Fons with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 4
+		SO Fons with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
+	
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 13
+		SO Animal with SQ RightEar = True
+	
+	SWITCH from Animal.RightEar using reference Init to Init.Place
 		SO Init with SQ Place = Home
 		SO Event with SQ Place = True
 	
@@ -263,10 +561,10 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 29
-		SO Animal with SQ LeftEar = True
+	Using 91 qualities and starting with index = 38
+		SO Chess with SQ game = True
 	
-	SWITCH from Animal.LeftEar using reference Init to Init.Place
+	SWITCH from Chess.game using reference Init to Init.Place
 		SO Init with SQ Place = Home
 		SO Event with SQ Place = True
 	
@@ -279,78 +577,78 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 27
-		SO Event with SQ End = True
+	Using 91 qualities and starting with index = 81
+		SO visiting with SQ Root = visit
+		SO black with SQ Root = black
+		SO white with SQ Root = white
+		SO True with SQ Root = True
 	
-	SWITCH from Event.End using reference Event to Event.Place
-		SO Event with SQ Place = True
-		SO Init with SQ Place = Home
+	SWITCH from True.Root using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 	
-	SWITCH from Init.Place using reference Init to Place.Distance
-		SO Place with SQ Distance = True
-	
-	SWITCH from Place.Distance using reference Init to Fons.Feel
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-	
-	SWITCH from Me.Feel using reference Init to Fons.Emotion
-		SO Fons with SQ Emotion = True
-		SO Me with SQ Emotion = True
-	
-	SWITCH from Me.Emotion using reference Init to Fons.Gender
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Fons
-		SO Init with SQ Fons = visiting Me
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Init.Fons using reference Init to Event.Weather
-		SO Event with SQ Weather = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 11
-		SO Event with SQ End = True
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Event.End using reference Event to Event.Place
-		SO Event with SQ Place = True
-		SO Init with SQ Place = Home
-	
-	SWITCH from Init.Place using reference Init to Place.Distance
-		SO Place with SQ Distance = True
-	
-	SWITCH from Place.Distance using reference Generated to Fons.visiting
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
 		SO Fons with SQ visiting = Me
-	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Fons.Feel
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-	
-	SWITCH from Me.Feel using reference Init to Fons.Emotion
-		SO Fons with SQ Emotion = True
-		SO Me with SQ Emotion = True
-	
-	SWITCH from Me.Emotion using reference Init to Init.Fons
-		SO Init with SQ Fons = visiting Me
-	
-	SWITCH from Init.Fons using reference Init to Event.Weather
-		SO Event with SQ Weather = True
+		SO Jasper with SQ visiting = Me
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 2
-		SO Fons with SQ Feel = True
+	Using 91 qualities and starting with index = 50
+		SO Jasper with SQ Feel = True
 		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Me.Feel using reference Init to Init.Place
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Emotion
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 15
+		SO Chess with SQ game = True
+	
+	SWITCH from Chess.game using reference Init to Init.Place
 		SO Init with SQ Place = Home
 		SO Event with SQ Place = True
 	
@@ -363,290 +661,474 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 10
-		SO Event with SQ Weather = True
+	Using 91 qualities and starting with index = 63
+		SO Gerrit with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Jasper with SQ Feel = True
 	
-	SWITCH from Event.Weather using reference Event to Event.Place
-		SO Event with SQ Place = True
-		SO Init with SQ Place = Home
+	SWITCH from Jasper.Feel using reference Jasper to Jasper.Gender
+		SO Jasper with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Init.Place using reference Init to Place.Distance
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.visiting
+		SO Jasper with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Gerrit with SQ visiting = Me
+	
+	SWITCH from Gerrit.visiting using reference Gerrit to Gerrit.black
+		SO Gerrit with SQ black = True
+		SO Me with SQ black = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 29
 		SO Place with SQ Distance = True
 	
-	SWITCH from Place.Distance using reference Generated to Fons.visiting
-		SO Fons with SQ visiting = Me
+	SWITCH from Place.Distance using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Fons.Feel
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-	
-	SWITCH from Me.Feel using reference Init to Fons.Emotion
-		SO Fons with SQ Emotion = True
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
 		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Me.Emotion using reference Init to Init.Fons
-		SO Init with SQ Fons = visiting Me
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Init.Fons using reference Init to Event.End
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 53
+		SO game2 with SQ Me = black
+		SO game1 with SQ Me = black
+	
+	SWITCH from game1.Me using reference game1 to game1.Fons
+		SO game1 with SQ Fons = white
+		SO ChessVisit1 with SQ Fons = visiting Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 28
+		SO Fons with SQ white = True
+		SO Jasper with SQ white = True
+	
+	SWITCH from Jasper.white using reference Jasper to Jasper.Gender
+		SO Jasper with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Gerrit with SQ Gender = Male
+	
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 21
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 42
+		SO Chess with SQ winner = True
+	
+	SWITCH from Chess.winner using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
 		SO Event with SQ End = True
 
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 33
+	Using 91 qualities and starting with index = 73
+		SO game3 with SQ Jasper = white
+		SO ChessVisit2 with SQ Jasper = visiting Me
+		SO game2 with SQ Jasper = white
+		SO ChessVisit3 with SQ Jasper = visiting Me
+	
+	SWITCH from ChessVisit3.Jasper using reference ChessVisit3 to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Emotion
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Feel
+		SO Gerrit with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Jasper with SQ Feel = True
+	
+	SWITCH from Jasper.Feel using reference Jasper to Jasper.visiting
+		SO Jasper with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Gerrit with SQ visiting = Me
+	
+	SWITCH from Gerrit.visiting using reference Gerrit to Gerrit.black
+		SO Gerrit with SQ black = True
+		SO Me with SQ black = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 77
+		SO black with SQ Root = black
+		SO white with SQ Root = white
 		SO visiting with SQ Root = visit
 		SO True with SQ Root = True
 	
-	SWITCH from True.Root using reference Generated to Fons.visiting
-		SO Fons with SQ visiting = Me
+	SWITCH from True.Root using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 24
-		SO Place with SQ True = True
-	
-	SWITCH from Place.True using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 31
-		SO Animal with SQ Gender = True
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-	
-	SWITCH from Me.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 4
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 17
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
 		SO Me with SQ Emotion = True
 		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Fons.Emotion using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 0
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 4
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 18
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
 		SO Me with SQ Feel = True
 		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Fons.Feel using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 4
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 24
-		SO Place with SQ True = True
-	
-	SWITCH from Place.True using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 4
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 9
-		SO Event with SQ Place = True
-		SO Init with SQ Place = Home
-	
-	SWITCH from Init.Place using reference Init to Place.Distance
-		SO Place with SQ Distance = True
-	
-	SWITCH from Place.Distance using reference Generated to Fons.visiting
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
 		SO Fons with SQ visiting = Me
-	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 1
 		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Fons.Feel
-		SO Fons with SQ Feel = True
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
 		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Me.Feel using reference Init to Fons.Emotion
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 45
+		SO game1 with SQ Me = black
+		SO game2 with SQ Me = black
+	
+	SWITCH from game2.Me using reference game2 to game2.Jasper
+		SO game2 with SQ Jasper = white
+		SO ChessVisit2 with SQ Jasper = visiting Me
+		SO ChessVisit3 with SQ Jasper = visiting Me
+		SO game3 with SQ Jasper = white
+	
+	SWITCH from game3.Jasper using reference game3 to game3.Gerrit
+		SO game3 with SQ Gerrit = black
+		SO ChessVisit3 with SQ Gerrit = visiting Me
+	
+	SWITCH from ChessVisit3.Gerrit using reference ChessVisit3 to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Emotion
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Feel
+		SO Gerrit with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Jasper with SQ Feel = True
+	
+	SWITCH from Jasper.Feel using reference Jasper to Jasper.visiting
+		SO Jasper with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Gerrit with SQ visiting = Me
+	
+	SWITCH from Gerrit.visiting using reference Gerrit to Gerrit.black
+		SO Gerrit with SQ black = True
+		SO Me with SQ black = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 17
+		SO Chess with SQ 64pieces = True
+	
+	SWITCH from Chess.64pieces using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 31
+		SO Event with SQ Place = True
+		SO Init with SQ Place = Home
+	
+	SWITCH from Init.Place using reference Init to Me.Gender
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
+	
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+	
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 21
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 49
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
+	
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+	
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 40
+		SO Chess with SQ 64pieces = True
+	
+	SWITCH from Chess.64pieces using reference Init to Init.Place
+		SO Init with SQ Place = Home
+		SO Event with SQ Place = True
+	
+	SWITCH from Event.Place using reference Event to Event.Weather
+		SO Event with SQ Weather = True
+	
+	SWITCH from Event.Weather using reference Event to Event.End
+		SO Event with SQ End = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 25
 		SO Fons with SQ Emotion = True
 		SO Me with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
 	
-	SWITCH from Me.Emotion using reference Init to Init.Fons
-		SO Init with SQ Fons = visiting Me
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
 	
-	SWITCH from Init.Fons using reference Init to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 18
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
 		SO Me with SQ Feel = True
 		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Fons.Feel using reference Fons to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
+	SWITCH from Jasper.visiting using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 38
+		SO Chess with SQ game = True
+	
+	SWITCH from Chess.game using reference Init to Init.Place
 		SO Init with SQ Place = Home
 		SO Event with SQ Place = True
 	
@@ -659,133 +1141,142 @@ SOs RandomSQs
 ///////////////// Random started connected walk through SQs /////////////////
 
 SOs RandomSQs 
-	Using 38 qualities and starting with index = 4
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
-	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 31
-		SO Animal with SQ Gender = True
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-	
-	SWITCH from Me.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 33
+	Using 91 qualities and starting with index = 90
+		SO black with SQ Root = black
+		SO white with SQ Root = white
 		SO visiting with SQ Root = visit
 		SO True with SQ Root = True
 	
-	SWITCH from True.Root using reference Generated to Fons.visiting
-		SO Fons with SQ visiting = Me
+	SWITCH from True.Root using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 11
-		SO Event with SQ End = True
-	
-	SWITCH from Event.End using reference Event to Event.Place
-		SO Event with SQ Place = True
-		SO Init with SQ Place = Home
-	
-	SWITCH from Init.Place using reference Init to Place.Distance
-		SO Place with SQ Distance = True
-	
-	SWITCH from Place.Distance using reference Init to Fons.Feel
-		SO Fons with SQ Feel = True
-		SO Me with SQ Feel = True
-	
-	SWITCH from Me.Feel using reference Init to Fons.Emotion
-		SO Fons with SQ Emotion = True
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
 		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Me.Emotion using reference Init to Fons.Gender
-		SO Fons with SQ Gender = Male
-		SO Me with SQ Gender = Male
-		SO Animal with SQ Gender = True
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Animal.Gender using reference Init to Init.Fons
-		SO Init with SQ Fons = visiting Me
-	
-	SWITCH from Init.Fons using reference Init to Event.Weather
-		SO Event with SQ Weather = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 28
-		SO Animal with SQ Brain = True
-	
-	SWITCH from Animal.Brain using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
-	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
-	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
-
-///////////////// Random started connected walk through SQs /////////////////
-
-SOs RandomSQs 
-	Using 38 qualities and starting with index = 24
-		SO Place with SQ True = True
-	
-	SWITCH from Place.True using reference Generated to Fons.visiting
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
 		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 83
+		SO True with SQ Root = True
+		SO black with SQ Root = black
+		SO white with SQ Root = white
+		SO visiting with SQ Root = visit
 	
-	SWITCH from Fons.visiting using reference Fons to Fons.Gender
+	SWITCH from visiting.Root using reference GEN to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
+	
+	SWITCH from Fons.white using reference Fons to Fons.Gender
 		SO Fons with SQ Gender = Male
 		SO Me with SQ Gender = Male
 		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+		SO Gerrit with SQ Gender = Male
 	
-	SWITCH from Animal.Gender using reference Init to Init.Place
-		SO Init with SQ Place = Home
-		SO Event with SQ Place = True
+	SWITCH from Gerrit.Gender using reference Gerrit to Gerrit.Emotion
+		SO Gerrit with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Jasper with SQ Emotion = True
 	
-	SWITCH from Event.Place using reference Event to Event.Weather
-		SO Event with SQ Weather = True
+	SWITCH from Jasper.Emotion using reference Jasper to Jasper.Feel
+		SO Jasper with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Gerrit with SQ Feel = True
 	
-	SWITCH from Event.Weather using reference Event to Event.End
-		SO Event with SQ End = True
+	SWITCH from Gerrit.Feel using reference Gerrit to Gerrit.visiting
+		SO Gerrit with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 73
+		SO game3 with SQ Jasper = white
+		SO ChessVisit2 with SQ Jasper = visiting Me
+		SO game2 with SQ Jasper = white
+		SO ChessVisit3 with SQ Jasper = visiting Me
+	
+	SWITCH from ChessVisit3.Jasper using reference ChessVisit3 to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Emotion
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Feel
+		SO Gerrit with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Jasper with SQ Feel = True
+	
+	SWITCH from Jasper.Feel using reference Jasper to Jasper.visiting
+		SO Jasper with SQ visiting = Me
+		SO Fons with SQ visiting = Me
+		SO Gerrit with SQ visiting = Me
+	
+	SWITCH from Gerrit.visiting using reference Gerrit to Gerrit.black
+		SO Gerrit with SQ black = True
+		SO Me with SQ black = True
+
+///////////////// Random started connected walk through SQs /////////////////
+
+SOs RandomSQs 
+	Using 91 qualities and starting with index = 82
+		SO Fons with SQ visiting = Me
+		SO Jasper with SQ visiting = Me
+		SO Gerrit with SQ visiting = Me
+	
+	SWITCH from Gerrit.visiting using reference Gerrit to Gerrit.Gender
+		SO Gerrit with SQ Gender = Male
+		SO Me with SQ Gender = Male
+		SO Fons with SQ Gender = Male
+		SO Animal with SQ Gender = True
+		SO Jasper with SQ Gender = Male
+	
+	SWITCH from Jasper.Gender using reference Jasper to Jasper.Emotion
+		SO Jasper with SQ Emotion = True
+		SO Me with SQ Emotion = True
+		SO Fons with SQ Emotion = True
+		SO Gerrit with SQ Emotion = True
+	
+	SWITCH from Gerrit.Emotion using reference Gerrit to Gerrit.Feel
+		SO Gerrit with SQ Feel = True
+		SO Me with SQ Feel = True
+		SO Fons with SQ Feel = True
+		SO Jasper with SQ Feel = True
+	
+	SWITCH from Jasper.Feel using reference Jasper to Jasper.white
+		SO Jasper with SQ white = True
+		SO Fons with SQ white = True
 

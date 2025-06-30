@@ -23,6 +23,7 @@ namespace WOOOF
         const int OBJECTSPACING = 2;
         internal List<GDIIncludesRef> IncludesRef = new List<GDIIncludesRef>();
         internal List<GDIPartOfRef> IsPartOfRef = new List<GDIPartOfRef>();
+        internal List<GDIReferencedBy> IsReferencedBy = new List<GDIReferencedBy>();
 
         internal List<GDISQ> qualities = new List<GDISQ>();
         internal List<GDISO> ChildGDISOs = new List<GDISO>();
@@ -76,6 +77,10 @@ namespace WOOOF
                 {
                     if ((SQ.Width) > _width) _width = SQ.Width;
                 }
+                foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
+                {
+                    if ((SQ.Width) > _width) _width = SQ.Width;
+                }
                 return _width;
             }
         }
@@ -96,6 +101,10 @@ namespace WOOOF
                     _height += ((int)SQ.TextHeight);
                 }
                 foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                {
+                    _height += ((int)SQ.TextHeight);
+                }
+                foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
                 {
                     _height += ((int)SQ.TextHeight);
                 }
@@ -194,6 +203,15 @@ namespace WOOOF
             GDIPartOfRef SQ = new GDIPartOfRef(this, _name, "", soevent, QualityFontsize);
             IsPartOfRef.Add(SQ);
         }
+
+        public void AddReferencedBy(string _name)
+        {
+            string soevent = "";
+            GDIReferencedBy SQ = new GDIReferencedBy(this, _name, "", soevent, QualityFontsize);
+            IsReferencedBy.Add(SQ);
+        }
+        
+
         private void CalculateY()
         {
             int y = YCOORDINATE;
@@ -218,6 +236,10 @@ namespace WOOOF
                         y += ((int)SQ.TextHeight);
                     }
                     foreach (GDIPartOfRef SQ in Parent.IsPartOfRef.ToList())
+                    {
+                        y += ((int)SQ.TextHeight);
+                    }
+                    foreach (GDIReferencedBy SQ in Parent.IsReferencedBy.ToList())
                     {
                         y += ((int)SQ.TextHeight);
                     }
@@ -287,6 +309,12 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 }
 
                 foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                {
+                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                    i++;
+                }
+
+                foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
                 {
                     SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
                     i++;
