@@ -11,7 +11,7 @@ Optional => [ ]
 
 script = {EVENT  | DATETIME }
 EVENT = String [ ':' String] '{' { OBJECT | QUALITY | DATETIME } '}'
-OBJECT = String [ ':' String] '{' { QUALITY | DATETIME } '}'
+OBJECT = String [ ':' String] '{' { OBJECT | QUALITY | DATETIME } '}'
 QUALITY = String [ '=' String ] 
 DATETIME = 'Time' [ '=' ] 'yyyy-MM-dd HH:mm:ss.fff'
 */
