@@ -407,6 +407,12 @@ namespace OOOCL
 
         public static void CreateOutput(string filepath)
         {
+            //20251019 Clear these lists everytime a script is run.
+            RandomWalk.Clear();
+            GenerateScript.Clear();
+            DisplaySOs.Clear();
+            QuerySOs.Clear();
+
             BuildSOs.ProcessFile(filepath);
 
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.

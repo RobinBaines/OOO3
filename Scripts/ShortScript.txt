@@ -30,6 +30,7 @@ Time = 2025-01-01 12:00:00.000
 	}
 
 
+
  
 //another SO	
 	Place {
@@ -66,6 +67,8 @@ Init : Event			//INHERIT_SENSUALOBJECT
 	}	
 	
 }
+
+
 
 ChessVisit1 : Event {
 Time = 2025-01-01 12:00:00.000
