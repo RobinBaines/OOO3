@@ -7,6 +7,7 @@ using System;
 using System.ComponentModel;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Linq.Expressions;
 
 namespace OOOCL
 {
@@ -17,7 +18,7 @@ namespace OOOCL
         public static List<string> RandomWalk = new List<string>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
-
+        public static bool blnNaturalText = false;
         static int _sleeptime;
         static public int SleepTime { 
             get
@@ -37,6 +38,7 @@ namespace OOOCL
         internal const string RANDOMWALK = "RandomWalk";
         internal const string DISPLAYSOS = "DisplaySOs";
         internal const string QUERYSOS = "QuerySOs";
+        internal const string NATURALTEXT = "NaturalText";
         internal static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
         /// <summary>
         /// Remove comments from a line of input.
@@ -54,18 +56,7 @@ namespace OOOCL
             return result;
         }
 
-        /// <summary>
-        /// Parse a line of input.
-        /// </summary>
-        /// <param name="result"></param>
-        /// <param name="SOName"></param>
-        /// <param name="Inherits"></param>
-        /// <param name="SQName"></param>
-        /// <param name="Value"></param>
-        /// <param name="StartOfObject"></param>
-        /// <param name="EndOfObject"></param>
-        /// <returns></returns>
-        internal static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
+        internal static string CheckCommands(string result, ref string Command)
         {
             int pos = result.IndexOf(GENERATESCRIPT);
             if (pos != -1)
@@ -75,19 +66,19 @@ namespace OOOCL
                 return result;
             }
 
-             pos = result.IndexOf(RANDOMWALK);
+            pos = result.IndexOf(RANDOMWALK);
             if (pos != -1)
             {
                 result = result.Substring(pos + RANDOMWALK.Length).Trim();
                 Command = RANDOMWALK;
                 return result;
             }
-          
+
 
             pos = result.IndexOf(DISPLAYSOS);
             if (pos != -1)
             {
-            result = result.Substring(pos + DISPLAYSOS.Length).Trim();
+                result = result.Substring(pos + DISPLAYSOS.Length).Trim();
                 Command = DISPLAYSOS;
                 return result;
             }
@@ -100,60 +91,160 @@ namespace OOOCL
                 return result;
             }
 
-            pos = result.IndexOf("Time");
+            pos = result.IndexOf(NATURALTEXT);
             if (pos != -1)
             {
-                result = result.Substring(pos + 4).Trim();
-
-                //allow Time = 2025-01-01 12:00:00.000 or
-                // Time 2025-01-01 12:00:00.000 
-                pos = result.IndexOf("=");
-                result = result.Substring(pos + 1).Trim();
-
-                dateTime = DateTime.Parse(result);
-                result = "";
-                blnDateTime = true;
+                result = result.Substring(pos + NATURALTEXT.Length).Trim();
+                Command = NATURALTEXT;
+                blnNaturalText = true;
                 return result;
             }
+            return result;
+        }
 
-            pos = result.IndexOf("}");
-            if (pos != -1)
+        internal static string GetNameNaturalText(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool EndOfObject, ref bool blnDateTime)
+        {
+            result = result.Replace(".", "");
+            result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace("a ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace(" at ", " ");
+            result = result.Replace("the ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace(" of ", " ");
+            result = result.Replace(" and ", " ");
+            result = result.Replace(" is ", " ");
+            result = result.Replace(" it ", " ");
+            result = result.Replace(" has ", " ");
+            string[] words = result.Split(' ');
+            int index = 0;
+            foreach (string word in words)
             {
-                EndOfObject = true;
-                result = "";
-            }
-
-            pos = result.IndexOf("{");
-            if (pos != -1)
-            {
-                SOName = result.Substring(0, pos).Trim();
-                StartOfObject = true;
-                result = result.Substring(0, pos).Trim();
-            }
-
-            pos = result.IndexOf(":");
-            if (pos != -1)
-            {
-                SOName = result.Substring(0, pos).Trim();
-                Inherits = result.Substring(pos + 1).Trim();
-                result = "";
-            }
-
-            pos = result.IndexOf("=");
-            if (pos != -1)
-            {
-
-                Value = result.Substring(pos + 1).Trim();
-                result = result.Substring(0, pos).Trim();
-                SQName = result;
-                result = "";
-            }
-            else
-            {
-                if (result.Length > 0 && SOName.Length == 0)
+                string wordlc = word.ToLower();
+                switch (wordlc)
                 {
-                    SQName = result;
-                    Value = "True";
+                    case "includes":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOName = words[index];
+                        }
+                        break;
+                    case "property":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SQName = words[index];
+                            if (words.Count() > index + 1)
+                            {
+                                index++;
+                                Value = words[index];
+                            }
+                        }
+                        break;
+                    case "type":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            Inherits = words[index];
+                        }
+                        break;
+                    case "":
+                        break;
+
+                    default:
+                        if (index == 0)
+                        { 
+                        SOName = words[index];
+                        }
+                        // code block
+                        break;
+                }
+                index++;
+                if (index == words.Count()) break;
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// Parse a line of input.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="SOName"></param>
+        /// <param name="Inherits"></param>
+        /// <param name="SQName"></param>
+        /// <param name="Value"></param>
+        /// <param name="StartOfObject"></param>
+        /// <param name="EndOfObject"></param>
+        /// <returns></returns>
+        internal static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool EndOfObject, ref bool blnDateTime)
+        {
+            int pos = 0;
+            result = CheckCommands(result, ref Command);
+
+            if (Command.Length == 0)
+            {
+                if (blnNaturalText)
+                {
+                   return GetNameNaturalText(result, ref Command, ref SOName, ref Inherits, ref SQName, ref Value,  ref EndOfObject, ref blnDateTime);
+                }
+                else
+                {
+                    pos = result.IndexOf("Time");
+                    if (pos != -1)
+                    {
+                        result = result.Substring(pos + 4).Trim();
+
+                        //allow Time = 2025-01-01 12:00:00.000 or
+                        // Time 2025-01-01 12:00:00.000 
+                        pos = result.IndexOf("=");
+                        result = result.Substring(pos + 1).Trim();
+
+                        dateTime = DateTime.Parse(result);
+                        result = "";
+                        blnDateTime = true;
+                        return result;
+                    }
+
+                    pos = result.IndexOf("}");
+                    if (pos != -1)
+                    {
+                        EndOfObject = true;
+                        result = "";
+                    }
+
+                    pos = result.IndexOf("{");
+                    if (pos != -1)
+                    {
+                        SOName = result.Substring(0, pos).Trim();
+                        //StartOfObject = true;
+                        result = result.Substring(0, pos).Trim();
+                    }
+
+                    pos = result.IndexOf(":");
+                    if (pos != -1)
+                    {
+                        SOName = result.Substring(0, pos).Trim();
+                        Inherits = result.Substring(pos + 1).Trim();
+                        result = "";
+                    }
+
+                    pos = result.IndexOf("=");
+                    if (pos != -1)
+                    {
+
+                        Value = result.Substring(pos + 1).Trim();
+                        result = result.Substring(0, pos).Trim();
+                        SQName = result;
+                        result = "";
+                    }
+                    else
+                    {
+                        if (result.Length > 0 && SOName.Length == 0)
+                        {
+                            SQName = result;
+                            Value = "True";
+                        }
+                    }
                 }
             }
             return result;
@@ -245,17 +336,31 @@ namespace OOOCL
 
      internal static  Stack<SensualObject> StackLastSO = new Stack<SensualObject>();
         internal static Stack<SensualObject> StackSOEvent = new Stack<SensualObject>();
-        public static void ProcessSO(int msecs, string Command, string SOName, string Inherits, string SQName, string SQValue, bool StartOfObject, bool EndOfObject)
+        public static void ProcessSO(int msecs, string Command, string SOName, string Inherits, string SQName, string SQValue,  bool EndOfObject)
         {
             if (LastSO == null)
             {
                 LastSO = SOEvent;
             }
 
+
             //A quality Nida = sleeping
             if (SQName.Length > 0 && SOEvent != null && LastSO != null)
             {
                 WriteQuality(SOEvent, LastSO,  SQName, SQValue, msecs);
+            }
+
+            //20251202
+            bool StartOfObject = true;
+            if (SOName.Length > 0)
+            {
+                //Check if this a new SO.
+                SensualObject AnSOEvent = new(SOName, dateTime, LastSO);
+                int index = TheSOs.IndexOf(AnSOEvent);
+                if (index >= 0)
+                {
+                    StartOfObject = false;
+                }
             }
 
             //An SO is created or referenced MeetSiena : Event {
@@ -374,10 +479,10 @@ namespace OOOCL
                             string Inherits = "";
                             string SQName = "";
                             string SQValue = "";
-                            bool StartOfObject = false;
+                            //bool StartOfObject = false;
                             bool EndOfObject = false;
                             bool blnDateTime = false;
-                            line = GetName(line, ref Command, ref SOName, ref Inherits, ref SQName, ref SQValue, ref StartOfObject, ref EndOfObject, ref blnDateTime);
+                            line = GetName(line, ref Command, ref SOName, ref Inherits, ref SQName, ref SQValue, ref EndOfObject, ref blnDateTime);
                             if (blnDateTime == false)
                             {
                                 if (Command != "")
@@ -393,7 +498,7 @@ namespace OOOCL
                                 }
                                 else
                                 {
-                                    ProcessSO(msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
+                                    ProcessSO(msecs, Command, SOName, Inherits, SQName, SQValue, EndOfObject);
                                 }
                             }
                         }
@@ -412,11 +517,18 @@ namespace OOOCL
             GenerateScript.Clear();
             DisplaySOs.Clear();
             QuerySOs.Clear();
+            blnNaturalText = false;
+            TheSOs.Clear();
+            SOEvent = null;
+            LastSO = null;
+            StackSOEvent.Clear();
+            StackLastSO.Clear();
 
             BuildSOs.ProcessFile(filepath);
 
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
             //SOs.QuerySOSQ("Event");
+            blnNaturalText = false;
             foreach (string s in GenerateScript)
             {
                 SOs.GenerateAScript(s);

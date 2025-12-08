@@ -24,7 +24,7 @@ namespace WOOOF
             timer1.Interval = 100;
             timer1.Enabled = true;
             timer1.Start();
-            textBox1.Text = "c:\\Projects\\OOO3\\Scripts\\Script.txt";
+            textBox1.Text = "c:\\Projects\\OOO3\\Scripts\\water_text.txt";
            
             panel1.AutoScroll = true;
             
@@ -232,7 +232,7 @@ namespace WOOOF
         {
             OpenFileDialog fileDlg = new OpenFileDialog();
             fileDlg.Filter = "Txt File txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            fileDlg.DefaultExt = "txt";
+            fileDlg.DefaultExt = "txt|scr";
             fileDlg.InitialDirectory = "c:\\Projects\\OOO3\\Scripts\\";
             if (fileDlg.InitialDirectory.Length == 0)
             {
