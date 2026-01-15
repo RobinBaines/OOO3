@@ -22,7 +22,6 @@ namespace OOOCL
     {
         public SensualObject? ptrDerivedFrom = null;
         public List<SensualObject> IncludesReference = new List<SensualObject>();
-        //20250628
         public List<SensualObject> ReferencedBy = new List<SensualObject>();
         public List<SensualObject> IsPartOfReference = new List<SensualObject>();
         public List<SensualQuality> qualities = new List<SensualQuality>();
@@ -33,19 +32,22 @@ namespace OOOCL
         //[CallerMemberName]attribute that is applied to the optional propertyName  
         // parameter causes the property name of the caller to be substituted as an argument.  
         //But also changes e.ListChangedType to ListChangedType.ItemChanged in HandleSOChanged.
+         public new SensualObject SOParent
+        {
+            get { return _SOParent; }
+            set
+            {
+                if (_SOParent != null)
+                    _SOParent.PreviousSOParents.Add(this);
+                _SOParent = value;
+            }
+        }
+
         private void NotifyPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             if (PropertyChanged != null)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-
-            }
-        }
-        private void NotifyPropertyChanging(String info)
-        {
-            if (PropertyChanging != null)
-            {
-                PropertyChanging(this, new PropertyChangingEventArgs(info));
             }
         }
 
@@ -270,7 +272,7 @@ namespace OOOCL
                 //Add a quality to this SO.
                 qualities.Add(SQ);
 
-                if (qualities.Count%3 == 0)
+                //if (qualities.Count%3 == 0)
                 {
                     NotifyPropertyChanged();
                     Thread.Sleep(BuildSOs.SleepTime);
@@ -355,8 +357,6 @@ namespace OOOCL
             Name = _name;
             this.created = _dt;
             this.SOParent = Parent;
-
-
         }
     }
 

@@ -18,7 +18,6 @@ namespace OOOCL
         public SensualObject? SOEvent;
 
         public List<SensualObject> SOReferences = new List<SensualObject>();
-
         //unicity of an SQ is SOParent and Name.
         public override int GetHashCode()
         {

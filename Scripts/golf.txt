@@ -1,0 +1,137 @@
+DisplaySOs *	//display all the SOs with SQs.
+NaturalText     //this script is defined using the more natural text language.
+GenerateScript event
+
+//The script starts with an INIT SO derived from RO_EVENT:
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+INIT Includes RO_EVENT
+INIT Includes RO_club.
+INIT Includes RO_ball.
+RO_timeline has property RO = true.
+RO_club has property RO = true. 
+RO_ball has property RO = true.
+
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+An RO_EVENT has property instance. //implies instantaneous event.
+RO_EVENT has property RO = true.
+RO_EVENT has property time = 2026-01-01 12:32:00.000.
+
+collision is a type of RO_timeline.  
+The collision has the property place and it is Bakkeveen. 
+The collision has the property weather and it is wet. 
+The collision includes club. 
+
+club is a type of RO_club. 
+club has the property mass and it is 600gm.
+club has property x = 0
+club has property y = 0
+club has property z = 0
+club has property v = 0
+
+The collision includes ball. 
+ball is a type of RO_ball.
+ball has the property mass and it is 200gm. 
+ball has property x = 1
+ball has property y = 0
+ball has property z = 0
+ball has property v = -100
+
+//Instantiate the next RO Event in SO collision.
+collision Includes RO_EVENT1.
+An RO_EVENT1 has property place. 
+An RO_EVENT1 has property weather. 
+An RO_EVENT1 has property instance. //implies instantaneous event.
+RO_EVENT1 has property RO = true.
+RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+///////////////////////End of INIT
+
+
+THE_COLLISION is a type of RO_EVENT1
+THE_COLLISION Includes RO_club_ball.
+RO_club_ball has property RO = true. 
+
+RO_club_ball has property RO_club
+RO_club_ball has property RO_ball
+
+//collision includes THE_COLLISION.
+The THE_COLLISION time is 2026-01-01 12:32:10.000.
+The THE_COLLISION includes club'. 
+The THE_COLLISION includes ball'. 
+The THE_COLLISION includes club_ball. 
+
+club' is a type of RO_club. 
+club' has the property mass and it is 600gm.
+club' has property x = 0
+club' has property y = 0
+club' has property z = 0
+club' has property v = 0
+
+ball' is a type of RO_ball.
+ball' has the property mass and it is 200gm. 
+ball' has property x = 0
+ball' has property y = 0
+ball' has property z = 0
+ball' has property v = -100
+
+club_ball is a type of RO_club_ball.
+club_ball has the property mass and it is 800gm. 
+
+club' has the property ends = true.
+ball' has the property ends = true.
+collision has the property ends = true. 
+THE_COLLISION has the property ends = true. 
+RO_EVENT1 has the property ends = true. 
+
+
+club_ball' is a type of RO_club_ball.
+club_ball' has the property mass and it is 2gm.
+
+The club_ball_contact is a type of RO_timeline.
+
+The club_ball_contact starts at RO_day time. 
+The club_ball_contact has the property place and it is Bakkeveen. 
+The club_ball_contact has the property weather and it is wet. 
+The club_ball_contact has the property weather and it is windy. 
+The club_ball_contact includes club_ball'. 
+club_ball_contact Includes RO_EVENT2.
+club_ball has the property ends = true. 
+
+An RO_EVENT2 has property place. 
+An RO_EVENT2 has property weather. 
+An RO_EVENT2 has property instance. //implies instantaneous event.
+RO_EVENT2 has property RO = true.
+
+SPLIT is a type of RO_EVENT2
+//SPLIT Includes RO_club_ball.
+//SPLIT Includes RO_club.
+//SPLIT Includes RO_ball.
+club_ball'' is a type of RO_club_ball.
+club_ball' has the property ends = true. 
+//The club_ball_contact includes SPLIT. 
+The SPLIT time is 2026-01-01_13:00:00.000.
+The SPLIT includes club_ball''. 
+ 
+club_ball'' has the property ends = true.
+RO_club_ball has the property ends = true.
+ball'' is a type of RO_ball.
+The SPLIT includes ball''. 
+ball'' has the property mass and it is 200gm. 
+club'' is a type of RO_club. 
+club'' has the property mass and it is 800gm. 
+The SPLIT includes club''. 
+
+SPLIT has the property ends = true. 
+RO_EVENT2 has the property ends = true. 
+
+The the_result is a type of RO_timeline.
+The the_result time is 2025-01-01 12:32:00.000.
+ball''' is a type of RO_ball. 
+ball''' has the property mass and it is 200gm. 
+club''' is a type of RO_club. 
+club''' has the property mass and it is 600gm. 
+the_result includes ball'''
+the_result includes club'''
+
+

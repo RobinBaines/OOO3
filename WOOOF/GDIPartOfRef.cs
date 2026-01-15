@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOOCL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace WOOOF
             sb.Dispose();
         }
 
-        public GDIPartOfRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize) : base(_Parent, _name, _value, _event, _qualityfontsize)
+        public GDIPartOfRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize, SensualQuality? SQ) : base(_Parent, _name, _value, _event, _qualityfontsize, _Parent.SOParent, SQ)
         {
             theFont = new Font("Verdana", FontSize);
             SOevent = "PartOf";
