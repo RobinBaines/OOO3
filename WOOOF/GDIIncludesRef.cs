@@ -1,4 +1,8 @@
-﻿using System;
+﻿//
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
+//
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +21,7 @@ namespace WOOOF
             sb.Dispose();
         }
 
-        public GDIIncludesRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize) : base(_Parent, _name, _value, _event, _qualityfontsize)
+        public GDIIncludesRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize) : base(_Parent, _name, _value, _event, _qualityfontsize, _Parent.SO, null)
         {
 
         }

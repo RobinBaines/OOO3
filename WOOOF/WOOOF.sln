@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOO3", "..\OOO3\OOO3.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOOCL", "..\OOOCL\OOOCL.csproj", "{49C3CDAB-EEE8-44BE-B5F9-48FB998CBD1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MLNetApp", "..\MLNetApp\MLNetApp.csproj", "{A57D4F11-DAA4-47F6-B1DC-96816598D749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{49C3CDAB-EEE8-44BE-B5F9-48FB998CBD1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49C3CDAB-EEE8-44BE-B5F9-48FB998CBD1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49C3CDAB-EEE8-44BE-B5F9-48FB998CBD1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57D4F11-DAA4-47F6-B1DC-96816598D749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57D4F11-DAA4-47F6-B1DC-96816598D749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57D4F11-DAA4-47F6-B1DC-96816598D749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57D4F11-DAA4-47F6-B1DC-96816598D749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,8 +5,11 @@
 
 using System;
 using System.ComponentModel;
+
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.ComponentModel.Design;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace OOOCL
 {
@@ -17,7 +20,7 @@ namespace OOOCL
         public static List<string> RandomWalk = new List<string>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
-
+        public static bool blnNaturalText = false;
         static int _sleeptime;
         static public int SleepTime { 
             get
@@ -30,19 +33,26 @@ namespace OOOCL
         }
 
         internal static SensualObject? LastSO = null;
+        internal static SensualObject? Context = null;
         internal static SensualObject? SOEvent = null;
-        public const string INHERITSO = "INHERIT";
+
+        internal const string INHERITSO = "INHERIT";
         internal const string GENERATESCRIPT = "GenerateScript";
+        internal const string CONTEXT = "context";
+        internal const string ENDOBJECT = "endobject";
         
+
         internal const string RANDOMWALK = "RandomWalk";
         internal const string DISPLAYSOS = "DisplaySOs";
         internal const string QUERYSOS = "QuerySOs";
+        internal const string NATURALTEXT = "NaturalText";
         internal static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
+
         /// <summary>
         /// Remove comments from a line of input.
         /// </summary>
         /// <param name="result"></param>
-        /// <returns></returns>
+        /// <returns></returns>        
         internal static string RemoveComments(string result)
         {
             int pos = result.IndexOf("//");
@@ -50,9 +60,298 @@ namespace OOOCL
             {
                 result = result.Substring(0, pos);
             }
-            result = result.Trim();
+            
             return result;
         }
+
+        /// <summary>
+        /// Check whether a line of script is a command.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        internal static bool CheckCommands(string line)
+        {
+            int pos = line.IndexOf(GENERATESCRIPT);
+            if (pos != -1)
+            {
+                line = line.Substring(pos + GENERATESCRIPT.Length).Trim();
+                GenerateScript.Add(line);
+                return true;
+            }
+
+            pos = line.IndexOf(RANDOMWALK);
+            if (pos != -1)
+            {
+                line = line.Substring(pos + RANDOMWALK.Length).Trim();
+                RandomWalk.Add(line);
+                return true;
+            }
+
+
+            pos = line.IndexOf(DISPLAYSOS);
+            if (pos != -1)
+            {
+                line = line.Substring(pos + DISPLAYSOS.Length).Trim();
+                DisplaySOs.Add(line);
+                return true;
+            }
+
+            pos = line.IndexOf(QUERYSOS);
+            if (pos != -1)
+            {
+                line = line.Substring(pos + QUERYSOS.Length).Trim();
+                  QuerySOs.Add(line);
+                return true;
+            }
+
+            pos = line.IndexOf(NATURALTEXT);
+            if (pos != -1)
+            {
+                line = line.Substring(pos + NATURALTEXT.Length).Trim();
+                blnNaturalText = true;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Parse a line of script.
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="SOName"></param>
+        /// <param name="Inherits"></param>
+        /// <param name="SQName"></param>
+        /// <param name="Value"></param>
+        /// <param name="blnDateTime"></param>
+        /// <param name="SOIncludedInSOName"></param>
+        /// <returns></returns>
+        internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName)
+        {
+            
+            result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace("a ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace(" at ", " ");
+            result = result.Replace(" the ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace("the ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace(" of ", " ");
+            result = result.Replace(" and ", " ");
+            result = result.Replace(" is ", " ");
+            result = result.Replace(" it ", " ");
+            result = result.Replace(" has ", " ");
+            result = result.Replace("=", " ");
+            result = result.Replace("   ", " ");
+            result = result.Replace("  ", " ");
+            int indexof = result.LastIndexOf('.');
+            if (indexof == (result.Length - 1)) result = result.Remove(indexof, 1);
+
+            string[] words = result.Trim().Split(' ');
+            int index = 0;
+            foreach (string word in words)
+            {
+                string wordlc = word.ToLower();
+                switch (wordlc)
+                {
+                    case CONTEXT:
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOName = words[index];
+                        }
+                        break;
+                    case ENDOBJECT:
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOName = words[index];
+                        }
+                        break;
+                    case "includes":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOIncludedInSOName = words[index];
+                        }
+                        break;
+                    case "property":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SQName = words[index];
+                            if (words.Count() > index + 1)
+                            {
+                                index++;
+                                Value = words[index];
+                            }
+                        }
+                        break;
+                    case "type":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            //EndOfObject = true;
+                            Inherits = words[index];
+                        }
+                        break;
+
+                    case "":
+                        break;
+
+                    default:
+                        if (index == 0)
+                        {
+                            SOName = words[index];
+                        }
+                        // code block
+                        break;
+                }
+                index++;
+                if (index == words.Count()) break;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Set the IsSO bit of an SQ if the SQ is an SO.
+        /// </summary>
+        /// <param name="NewSO"></param>
+        public static void QualityIsSO(SensualObject NewSO)
+        {
+            //check whether the new SO has already been defined as a property of another SO.
+            foreach (SensualObject SO in TheSOs)
+            {
+                foreach (SensualQuality SQ in SO.qualities)
+                {
+                    if (SQ.Name == NewSO.Name)
+                        SQ.IsSO = true;
+                }
+            }
+        }
+
+     /// <summary>
+     /// The Context is the SO from which a property is set in another SO.
+     /// It is set explicitely using Contect "SOName" of is set if the Includes command is used.
+     /// </summary>
+     /// <param name="ParentSO"></param>
+     /// <param name="SOIncludedInSOName"></param>
+     /// <param name="Inherits"></param>
+     /// <param name="line"></param>
+        public static void SetContext(SensualObject ParentSO, string SOIncludedInSOName, string Inherits, string line)
+        {
+            if(line.Substring(0, CONTEXT.Length).ToLower() == CONTEXT || SOIncludedInSOName.Length > 0)
+                Context = ParentSO;
+        }
+
+        public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName)
+        {
+        
+
+
+            string test2;
+            if (SQName == "ends" && SQValue == "true")
+            {
+                test2 = "test";
+            }
+
+            //An SO is created or referenced MeetSiena : Event {
+            if (SOName.Length > 0) // && StartOfObject == true)
+            {
+                msecs = 0;
+
+                //create the SO if it is a new one.
+                //The SOParent = null here because it is only set if Includes command is used to set explicitely, see below.
+                SOEvent = new(SOName, dateTime, null);
+               
+                int index = TheSOs.IndexOf(SOEvent);
+                if (index < 0)
+                {
+                    //SetLastSO(SOEvent, SOEvent, _tabs);
+                    TheSOs.Add(SOEvent);
+                }
+                
+                index = TheSOs.IndexOf(SOEvent);
+                if (index >= 0)
+                {
+                    SOEvent = TheSOs[index];
+                    SetContext(SOEvent, SOIncludedInSOName, Inherits, line);
+                   
+                    if (SOIncludedInSOName.Length > 0 && SOIncludedInSOName != SOName)
+                    {
+                        SensualObject SOInSO = new(SOIncludedInSOName, dateTime, SOEvent);
+                        int index2 = TheSOs.IndexOf(SOInSO);
+                        if (index2 >= 0)
+                        {
+                            //string test;
+                            //if (TheSOs[index2].Name == "Place")
+                            //{
+                            //    test = TheSOs[index2].Name;
+                            //}
+                            TheSOs[index2].SOParent = SOEvent;
+                           
+                            //add the reference from the parent to the child and vice versa.
+                                SOEvent.AddIncludesReference(TheSOs[index2]);
+                                TheSOs[index2].AddIsPartOfReference(SOEvent);
+                            TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
+                        }
+                        else
+                        {
+                            SOEvent.AddIncludesReference(SOInSO);
+                            SOInSO.AddIsPartOfReference(SOEvent);
+                            TheSOs.Add(SOInSO);
+                            QualityIsSO(SOInSO);
+                        }
+                        Thread.Sleep(SleepTime);
+                    }
+                }
+
+                //add the reference from the parent to the child and vice versa.
+                if (SOEvent != null && Context != null && SOEvent != Context)
+                {
+                    SOEvent.AddIsPartOfReference(Context);
+                    Context.AddIncludesReference(SOEvent);
+                }
+
+                //If the new SO inherits, MeetSiena: Event {
+                if (Inherits.Length > 0)
+                {
+                    if (SOEvent != null)
+                    {
+                        SensualObject SOInherits = new(Inherits, dateTime, SOEvent);
+                        int ind = TheSOs.IndexOf(SOInherits);
+                        if (ind >= 0)
+                        {
+                            TheSOs[ind].AddIncludesReference(SOEvent);
+                        }
+                        InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
+                    }
+                }
+            }
+
+            //A quality Nida = sleeping
+            if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
+            {
+               if (Context != null)
+                {
+                    WriteQuality(Context, SOEvent, SQName, SQValue, msecs);
+                }
+                else WriteQualityNatural(SOEvent, SQName, SQValue, msecs);
+            }
+
+            if (SOEvent != null)
+            {
+                if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT)
+                {
+                    SOEvent.Ended = true;
+                    //add the reference from the parent to the child and vice versa.
+                    if (SOEvent != null && Context != null && SOEvent != Context)
+                    {
+                        SOEvent.AddIsPartOfReference(Context);
+                        Context.AddIncludesReference(SOEvent);
+                    }
+                    return;
+                }
+            }
+        }
+
 
         /// <summary>
         /// Parse a line of input.
@@ -65,41 +364,10 @@ namespace OOOCL
         /// <param name="StartOfObject"></param>
         /// <param name="EndOfObject"></param>
         /// <returns></returns>
-        internal static string GetName(string result, ref string Command, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
+        internal static string GetName(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool StartOfObject, ref bool EndOfObject, ref bool blnDateTime)
         {
-            int pos = result.IndexOf(GENERATESCRIPT);
-            if (pos != -1)
-            {
-                result = result.Substring(pos + GENERATESCRIPT.Length).Trim();
-                Command = GENERATESCRIPT;
-                return result;
-            }
-
-             pos = result.IndexOf(RANDOMWALK);
-            if (pos != -1)
-            {
-                result = result.Substring(pos + RANDOMWALK.Length).Trim();
-                Command = RANDOMWALK;
-                return result;
-            }
-          
-
-            pos = result.IndexOf(DISPLAYSOS);
-            if (pos != -1)
-            {
-            result = result.Substring(pos + DISPLAYSOS.Length).Trim();
-                Command = DISPLAYSOS;
-                return result;
-            }
-
-            pos = result.IndexOf(QUERYSOS);
-            if (pos != -1)
-            {
-                result = result.Substring(pos + QUERYSOS.Length).Trim();
-                Command = QUERYSOS;
-                return result;
-            }
-
+            int pos = 0;
+                
             pos = result.IndexOf("Time");
             if (pos != -1)
             {
@@ -155,6 +423,7 @@ namespace OOOCL
                     SQName = result;
                     Value = "True";
                 }
+                    
             }
             return result;
         }
@@ -209,9 +478,46 @@ namespace OOOCL
                     //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
                     SO.MoveQualities(SO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
                 }
-                SO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
+                string extRef = "";
+                if (SO.Name != SOEvent.Name)
+                    extRef = "> " + SO.Name + " ";
+                SO.AddQuality(SOEvent, extRef + INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SOEvent"></param>
+        /// <param name="SQName"></param>
+        /// <param name="SQValue"></param>
+        internal static void WriteQualityNatural(SensualObject TheSO, string SQName, string SQValue, int msecs)
+        {
+            SensualObject? SOOfValue;
+            SOOfValue = GetSO(SQValue);
+            if (SOOfValue == null)
+            {
+                SensualObject SOEvent = TheSO.SOParent;
+                if (SOEvent == null)
+                    SOEvent = TheSO;
+                //Check if the Quality is an SO.
+                SensualObject? SOFrom = GetSO(SQName);
+                if (SOFrom != null)
+                    if (SOFrom == LastSO)   //do not add a self reference.
+                        SOFrom = null;
+
+                if (SOFrom == null)
+                    TheSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+                else
+                    TheSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+            }
+            else
+            {
+                TheSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs));
+                TheSO?.AddIncludesReference(SOOfValue);
+            }
+        }
+
 
         /// <summary>
         /// 
@@ -282,9 +588,6 @@ namespace OOOCL
                     SOEvent = TheSOs[index];
                     }
 
-                //if(SOEvent.Name == "TreasureIsland")
-                //    Console.WriteLine("");
-
                 //add the reference from the parent to the child and vice versa.
                 if (SOEvent != null && LastSO != null)
                 {
@@ -304,16 +607,13 @@ namespace OOOCL
                             int ind = TheSOs.IndexOf(SOInherits);
                             if (ind >= 0)
                             {
-                                //SOEvent.AddIsPartOf(TheSOs[ind]);
                                 TheSOs[ind].AddIncludesReference(SOEvent);
                             }
-                           //InheritSensualObject(SOEvent, SOName, Inherits, msecs);
                             InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
                         }
                     }
                     else
                     {
-                        //InheritSensualObject(LastSO, SOName, Inherits, msecs);
                         InheritSensualObject(LastSO, SOEvent, Inherits, msecs);
                     }
                 }
@@ -359,42 +659,46 @@ namespace OOOCL
             {
                 string? line;
                 int msecs = 0;
-
+                LastSO = null;
+                //tabs = 0;
+                SOEvent = null;
                 using (StreamReader sr = new StreamReader(filepath))
                 {
                     line = sr.ReadLine();
                     while (line != null)
                     {
-
+                        //uint tabs = CountLeadingTabs(line);
                         line = RemoveComments(line).Trim();
                         if (line.Length > 0)
                         {
                             string Command = "";
                             string SOName = "";
+                            string SOIncludedInSOName = "";
                             string Inherits = "";
                             string SQName = "";
                             string SQValue = "";
                             bool StartOfObject = false;
                             bool EndOfObject = false;
                             bool blnDateTime = false;
-                            line = GetName(line, ref Command, ref SOName, ref Inherits, ref SQName, ref SQValue, ref StartOfObject, ref EndOfObject, ref blnDateTime);
-                            if (blnDateTime == false)
+                            if (CheckCommands(line) == false)
                             {
-                                if (Command != "")
+                                if (blnNaturalText)
                                 {
-                                    if (Command == RANDOMWALK)
-                                        RandomWalk.Add(line);
-                                    if (Command == GENERATESCRIPT)
-                                        GenerateScript.Add(line);
-                                    if (Command == DISPLAYSOS)
-                                        DisplaySOs.Add(line);
-                                    if (Command == QUERYSOS)
-                                        QuerySOs.Add(line);
+                                    line = GetNameNaturalText(line, ref SOName, ref Inherits, ref SQName, ref SQValue,  ref blnDateTime, ref SOIncludedInSOName);
+                                    if (blnDateTime == false)
+                                    {
+                                        ProcessNaturalSO(msecs, line, SOName, Inherits, SQName, SQValue,  SOIncludedInSOName);
+                                    }
                                 }
                                 else
                                 {
-                                    ProcessSO(msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
+                                    line = GetName(line, ref SOName, ref Inherits, ref SQName, ref SQValue, ref StartOfObject, ref EndOfObject, ref blnDateTime);
+                                    if (blnDateTime == false)
+                                    {
+                                        ProcessSO(msecs, Command, SOName, Inherits, SQName, SQValue, StartOfObject, EndOfObject);
+                                    }
                                 }
+
                             }
                         }
                         //Read the next line
@@ -403,8 +707,7 @@ namespace OOOCL
                 }
             }
         }
-        
-
+      
         public static void CreateOutput(string filepath)
         {
             //20251019 Clear these lists everytime a script is run.
@@ -412,9 +715,16 @@ namespace OOOCL
             GenerateScript.Clear();
             DisplaySOs.Clear();
             QuerySOs.Clear();
+            blnNaturalText = false;
+            TheSOs.Clear();
+            SOEvent = null;
+            LastSO = null;
+            StackSOEvent.Clear();
+            StackLastSO.Clear();
 
             BuildSOs.ProcessFile(filepath);
 
+            blnNaturalText = false;
             //Look for SOFrom pointers in Events and create a script to add the quality to the subject.
             //SOs.QuerySOSQ("Event");
             foreach (string s in GenerateScript)

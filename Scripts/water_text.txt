@@ -1,0 +1,221 @@
+
+//Conventions: 
+//A Real Object has prefix RO_.
+//The command 'type' or 'type of' is used to derive a Sensual Object from a Real Object. 'Type of' can be compared to inheritance in OOP.  
+//When 2 SOs inherit from the same RO the name of the 2nd has a ' as suffix, for example in this script drop1, drop1', drop1'' etc
+//are all derived from RO_drop1.
+
+//Time is represented from left to right and has 2 implementations:
+//1. A time line is a Sensual Object having a finite duration. 
+//It is derived from RO_timeline, which is a single Real Object representing the time continuum. 
+//2. A discrete event derived from an RO_event. A RO_event has no duration and is unique.
+//RO_events will usually occur at the beginning and end of a time line SO.
+
+//A time line may have properties place, weather....
+//SOs will not be created or destroyed in a time line SO. 
+//SOs will interact or be created or destroyed in an event.
+//The event will have a time when it occurred and this will also be the start time of
+//the time line which follows the event. 
+//A event SO may succeed a time line SO and the time of this event is the end time of the preceding time line.
+
+//This water_text script describes an inanimate interaction.
+//2 drops of water collide to form a single drop which then divides
+//into 2 other drops some time later when a gust of wind occurs.
+//Dimensions and velocities have been chosen based on Weber numbers which correspond to coalescence of water drops on collision. 
+//The Weber number is  the ratio of dynamic forces to surface tension.
+//It is a dimensionless number used for describing phenomena such as droplet formation and liquid jets. 
+
+//In this script the SO INIT is derived from RO_Event and sets up the initial Real Objects.
+//The SO collision is a time line lasting 10 seconds and describes how 2 drops of water move.
+//The 2 drops are represented by SOs drop1 and drop2 and positions and velocity have been chosen so they will collide.
+//The dimensions and velocities of a drop are relative to the time line SO and are therefore properties of the drop SOs and not of the drop RO.
+
+//The space coordinates are chosen so that drop1 has 0 velocity and is at the origin (x=y=z=0).
+//The coordinates are also rotated so that drop2 has 0 velocity on the y and z axes and a minus velocity (v) along the x axis.
+//The initial coordinates of drop2 are y = z = 0 and +ve x so that the collision occurs at time x/v.
+
+//SO collision terminates in the event called SO THE_COLLISION. This event describes the 
+//moment when RO_drop1 and RO_drop2 coalesce to form RO_bigdrop. 
+//The 3 drops are represented by SOs drop1' and drop2' and bigdrop.
+//RO_drop1 and RO_drop2 and drop1' and drop2' end their existence in this event.
+//The RO_bigdrop and bigdrop come into existence in this event.
+
+//Using objects to describe inanimate interaction raises the question of the role of human obsevation.
+//Ideally an inanimate interaction could/should take place without the presence of a human. 
+//But that seems impossible because scripting implies human presence. 
+//Should we imagine the interactions described in the script based on our knowledge of water drops and wind?
+//Or should we imagine filming the interaction?
+//Or should we just describe a system which has the potential for the events described. And then fill in how that potential might be realised?
+//Should the script include relative velocities, an attempt to predict 2 drops colliding before they do, an attempt to define a closed space around the interaction much as engineers do in 
+//fluid dynamics?
+//Should it include the criteria for when 2 drops coalesce or SPLIT using the Weber number?
+//Density * v * v * l/surface tension.
+//v = 0.1 m/s and l = 1mm => We = 0.14
+//Ignore gravity => m * v * v /m * g * d = 0.01
+
+//OOO speculates about the existence of RO and SO. It also looks for a mediation between 2 RO as RO may not interact directly.
+//In the instance when the surface of the 2 drops is broken the 2 drops cease to exist and the 'bigdrop' is formed.
+//Later when the gust of wind causes the bigdrop to SPLIT bigdrop ceases to exist at exactly the same instance the smaller 3rd and 4th drops come into existance. 
+
+//Several commands:
+DisplaySOs *	//display all the SOs with SQs.
+//RandomWalk 30
+NaturalText     //this script is defined using the more natural text language.
+GenerateScript event
+
+//The script starts with an INIT SO derived from RO_EVENT:
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+INIT Includes RO_EVENT
+INIT Includes RO_drop1.
+INIT Includes RO_drop2.
+RO_timeline has property RO = true.
+RO_drop1 has property RO = true. 
+RO_drop2 has property RO = true.
+
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+An RO_EVENT has property instance. //implies instantaneous event.
+RO_EVENT has property RO = true.
+RO_EVENT has property time = 2026-01-01 12:32:00.000.
+
+collision is a type of RO_timeline.  
+The collision has the property place and it is Bakkeveen. 
+The collision has the property weather and it is wet. 
+//The SO drop1 is included in collision.
+The collision includes drop1. 
+
+//properties of the SO drop1 and not of RO_drop1 because they are relative to the SO collision and not to the RO_timeline.
+drop1 is a type of RO_drop1. 
+//property mass is an SO property and not an RO property because it may change.
+drop1 has the property mass and it is 1gm.
+drop1 has property x = 0
+drop1 has property y = 0
+drop1 has property z = 0
+drop1 has property v = 0
+
+The collision includes drop2. 
+drop2 is a type of RO_drop2.
+drop2 has the property mass and it is 1gm. 
+drop2 has property x = 1
+drop2 has property y = 0
+drop2 has property z = 0
+drop2 has property v = -0.1
+
+//Instantiate the next RO Event in SO collision.
+collision Includes RO_EVENT1.
+An RO_EVENT1 has property place. 
+An RO_EVENT1 has property weather. 
+An RO_EVENT1 has property instance. //implies instantaneous event.
+RO_EVENT1 has property RO = true.
+RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+
+
+THE_COLLISION is a type of RO_EVENT1
+ENDOBJECT drop1
+drop1 has the property ends = true.
+THE_COLLISION Includes RO_bigdrop.
+RO_bigdrop has property RO = true. 
+
+//collision includes THE_COLLISION.
+The THE_COLLISION time is 2026-01-01 12:32:10.000.
+The THE_COLLISION includes drop1'. 
+The THE_COLLISION includes drop2'. 
+The THE_COLLISION includes bigdrop. 
+
+drop1' is a type of RO_drop1. 
+drop1' has the property mass and it is 1gm.
+drop1' has property x = 0
+drop1' has property y = 0
+drop1' has property z = 0
+drop1' has property v = 0
+
+drop2' is a type of RO_drop2.
+drop2' has the property mass and it is 1gm. 
+drop2' has property x = 0
+drop2' has property y = 0
+drop2' has property z = 0
+drop2' has property v = -0.1
+
+bigdrop is a type of RO_bigdrop.
+
+ENDOBJECT RO_drop1
+RO_drop1 has the property ends = true.
+ENDOBJECT drop2
+drop2 has the property ends = true.
+ENDOBJECT RO_drop2
+RO_drop2 has the property ends = true.
+ENDOBJECT drop1'
+drop1' has the property ends = true.
+ENDOBJECT drop2'
+drop2' has the property ends = true.
+bigdrop has the property mass and it is 2gm. 
+ENDOBJECT collision
+collision has the property ends = true. 
+ENDOBJECT THE_COLLISION
+THE_COLLISION has the property ends = true. 
+ENDOBJECT RO_EVENT1
+RO_EVENT1 has the property ends = true. 
+
+bigdrop' is a type of RO_bigdrop.
+bigdrop' has the property mass and it is 2gm.
+The gust_of_wind is a type of RO_timeline.
+
+The gust_of_wind starts at RO_day time. 
+The gust_of_wind has the property place and it is Bakkeveen. 
+The gust_of_wind has the property weather and it is wet. 
+The gust_of_wind has the property weather and it is windy. 
+The gust_of_wind includes bigdrop'. 
+gust_of_wind Includes RO_EVENT2.
+ENDOBJECT bigdrop
+bigdrop has the property ends = true. 
+
+An RO_EVENT2 has property place. 
+An RO_EVENT2 has property weather. 
+An RO_EVENT2 has property instance. //implies instantaneous event.
+RO_EVENT2 has property RO = true.
+
+SPLIT is a type of RO_EVENT2
+SPLIT Includes RO_drop3.
+SPLIT Includes RO_drop4.
+RO_drop3 has property RO = true. 
+RO_drop4 has property RO = true. 
+bigdrop'' is a type of RO_bigdrop.
+ENDOBJECT bigdrop'
+bigdrop' has the property ends = true. 
+//The gust_of_wind includes SPLIT. 
+The SPLIT time is 2026-01-01_13:00:00.000.
+The SPLIT includes bigdrop''. 
+
+ENDOBJECT gust_of_wind
+gust_of_wind has the property ends = true.
+ENDOBJECT bigdrop''
+bigdrop'' has the property ends = true.
+
+ENDOBJECT RO_bigdrop
+RO_bigdrop has the property ends = true.
+drop3 is a type of RO_drop3.
+The SPLIT includes drop3. 
+drop3 has the property mass and it is 1gm. 
+drop4 is a type of RO_drop4. 
+drop4 has the property mass and it is 1gm. 
+The SPLIT includes drop4.
+
+ 
+ENDOBJECT SPLIT
+SPLIT has the property ends = true. 
+ENDOBJECT RO_EVENT2
+RO_EVENT2 has the property ends = true. 
+
+The the_result is a type of RO_timeline.
+The the_result time is 2025-01-01 12:32:00.000.
+drop3' is a type of RO_drop3. 
+drop3' has the property mass and it is 1gm. 
+drop4' is a type of RO_drop4. 
+drop4' has the property mass and it is 1gm. 
+ENDOBJECT drop3
+ENDOBJECT drop4
+the_result includes drop3'
+the_result includes drop4'
+
+

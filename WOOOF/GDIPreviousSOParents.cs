@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Xml.Linq;
 using OOOCL;
 namespace WOOOF
 {
-    internal class GDIReferencedBy : GDISQ
+    internal class GDIPreviousSOParents : GDISQ
     {
         public new void DrawString(float X, float Y, StringFormat format)
         {
@@ -21,18 +23,17 @@ namespace WOOOF
             {
                 if (Name != Parent.Parent.Name)
                 {
-                    sb.Color = Color.Coral;
+                    sb.Color = Color.Green;
                 }
             }
-
             Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
             sb.Dispose();
         }
 
-        public GDIReferencedBy(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize, SensualQuality SQ) : base(_Parent, _name, _value, _event, _qualityfontsize, _Parent.SO, SQ)
+        public GDIPreviousSOParents(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize, SensualQuality SQ) : base(_Parent, _name, _value, _event, _qualityfontsize, _Parent.SO, SQ)
         {
             theFont = new Font("Verdana", FontSize);
-            SOevent = "ReferencedBy";
+            SOevent = "Previously_in";
             if (Parent.Parent != null)
             {
                 if (Name != Parent.Parent.Name)

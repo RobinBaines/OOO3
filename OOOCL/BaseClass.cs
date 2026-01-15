@@ -48,11 +48,36 @@ namespace OOOCL
                 return this.Name.CompareTo(compareClass.Name);
         }
 
+        public virtual void PrintPreviousSOParents(string prefix)
+        {
+            DateTime created = DateTime.MinValue;
+            if (PreviousSOParents.Count > 0)
+            {
+          
+                Console.WriteLine("SO " + this.Name + " previously included in ");
+                foreach (SensualObject SO in PreviousSOParents)
+                {
+                SO.PrintSO("\t", "", false);
+                }
+            }
+        }
 
         public string Name { get; set; } = "BaseObject";
 
+        public bool Ended { get; set; } = false;
+
         public string Description ="";
         public DateTime created = DateTime.Now;
-        public SensualObject? SOParent;  //is the owner of this SQ.
+
+        public List<SensualObject> PreviousSOParents = new List<SensualObject>();
+        public SensualObject? _SOParent;  //is the owner of this SQ.
+        public SensualObject SOParent
+        {
+            get { return _SOParent; }
+            set
+            {
+                _SOParent = value;
+            }
+        }
     }
 }

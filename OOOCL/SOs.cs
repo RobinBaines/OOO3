@@ -12,11 +12,12 @@ namespace OOOCL
     {
         internal const string GENFILE  = "generated.txt";
         internal const string GENOBJECTNAME = "GEN";
-        /// <summary>
-        /// Display the SOs with SQs filtering on Parent.
-        /// </summary>
-        /// <param name="Parent"></param>
-        public static void DisplaySOs(string Parent)
+/// <summary>
+/// Display the SOs with SQs filtering on Parent.
+/// </summary>
+/// <param name="Parent"></param>
+
+public static void DisplaySOs(string Parent)
         {
             Console.WriteLine("Print SOs. Selection from " + BuildSOs.TheSOs.Count.ToString() + " SOs " + "filtered on " + Parent);
             int index = 1;
@@ -40,6 +41,7 @@ namespace OOOCL
                     Console.WriteLine();
                     SO.PrintIsPartOf("");
                     SO.PrintReferences("");
+                    SO.PrintPreviousSOParents("");
                     Console.WriteLine();
                 }
                 index += 1;
@@ -198,6 +200,7 @@ namespace OOOCL
                             string value = SQ.Value;
                             string value2 = "True";
                             if (index > -1)
+                 
                             {
                                 value = SQ.Value.Substring(0, index);
                                 value2 = SQ.Value.Substring(index + 1);
@@ -228,6 +231,7 @@ namespace OOOCL
                     }
                     sw.WriteLine("}");
                 }
+
                 BuildSOs.ProcessFile(theFile);
             }
             Console.WriteLine("Created " + count.ToString() + " new events in " + GENFILE + " from " + qualities.Count.ToString() + " qualities.");
