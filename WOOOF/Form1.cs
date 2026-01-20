@@ -8,6 +8,7 @@ namespace WOOOF
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
+    using System.Xml.Linq;
 
     public partial class Form1 : Form
     {
@@ -46,18 +47,11 @@ namespace WOOOF
                 {
                     if (e.ListChangedType == ListChangedType.Reset || e.ListChangedType == ListChangedType.ItemAdded)
                     {
-                        foreach (GDISO GDISO in GDISOs.Values.ToList())
-                        {
-                            GDISO.ChildGDISOs.Clear();
-                            GDISO.Parent = null;
-                            GDISO.Neighbour = null;
-                            GDISO.Inherits = null;
-                        }
-
+                        GDISOs.Clear();
                         foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
                         {
                             string test;
-                            if (_SO.Name == "Fons")
+                            if (_SO.Name == "I_SEE_NIDA_BARKING")
                             {
                                 test = "test";
                             }
@@ -65,13 +59,14 @@ namespace WOOOF
                             {
                                 //create new GDISO.
                                 gDISO = new GDISO(null, _SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value);
-                                //if (_SO.ptrDerivedFrom != null)
-                                //    gDISO.AddInherits(_SO.ptrDerivedFrom);
                                 GDISOs.Add(_SO.Name, gDISO);
                             }
 
                             if (_SO.ptrDerivedFrom != null)
                                 GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
+
+                            if (_SO.EndedBySO != null)
+                                GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
 
                             GDISOs[_SO.Name].Ended= _SO.Ended;
                         }
@@ -105,7 +100,15 @@ namespace WOOOF
                             foreach (OOOCL.SensualQuality SQ in GDISO.SO.qualities.ToList())
                             {
                                 //if (SQ.SOParent == GDISO.SO)
-                                    GDISO.AddSQ(SQ);
+                                string test;
+                                if(GDISO.SO.Name == "Nida")
+                                    test = "";
+                                if ( SQ.Name == "Running" && SQ.Value == "false")
+                                {
+                                    test = "";
+                                }
+
+                                GDISO.AddSQ(SQ);
                             }
                             foreach (OOOCL.SensualObject SO in GDISO.SO.IncludesReference.ToList())
                             {
@@ -159,6 +162,7 @@ namespace WOOOF
                         blnPaintActive = false;
                         BuildSOs.TheSOs.ResetBindings();
                         
+                        panel1.Invalidate();
                         panel1.Invalidate();
                         btnRunScript.Enabled = true;
                     }
@@ -236,37 +240,52 @@ namespace WOOOF
         }
 
         bool blnStartDrawing = false;
+
+        private void GDISO_Paint(GDISO GDISO, Graphics g)
+        {
+            if (gDISO != null)
+            {
+                if (gDISO.Name == GDISO.Name)
+                {
+                    blnStartDrawing = true;
+                }
+            }
+            if (blnStartDrawing)
+            {
+                Point point = GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
+                if (point.X > bottom_right_point.X)
+                    bottom_right_point.X = point.X;
+                if (point.Y > bottom_right_point.Y)
+                {
+                    bottom_right_point.Y = point.Y;
+                    if (blnScriptBeingProcessed == false)
+                        button1.Location = bottom_right_point;
+                }
+            }
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             if (blnStartDrawing == true) return;
             blnStartDrawing = true;
             Graphics g = e.Graphics;
-         
-           // if (gDISO == null)
+
+            //Paint the GDISO which have no parent first.
             foreach (GDISO GDISO in GDISOs.Values.ToList())
             {
-                if (gDISO != null)
+                if (GDISO.Parent == null)
                 {
-                    if (gDISO.Name == GDISO.Name)
-                    {
-                        blnStartDrawing = true;
-                    }
-                }
-                if (blnStartDrawing)
-                {
-                    Point point = GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
-                    if (point.X > bottom_right_point.X)
-                        bottom_right_point.X = point.X;
-                    if (point.Y > bottom_right_point.Y)
-                    {
-                        bottom_right_point.Y = point.Y;
-                        if (blnScriptBeingProcessed == false)
-                            button1.Location = bottom_right_point;
-                    }
+                    GDISO_Paint(GDISO, g);
                 }
             }
-            blnPaintActive = false;
+            foreach (GDISO GDISO in GDISOs.Values.ToList())
+            {
+                if (GDISO.Parent != null)
+                {
+                    GDISO_Paint(GDISO, g);
+                }
+            }
             g.Dispose();
+            blnPaintActive = false;
             blnStartDrawing = false;
         }
     }

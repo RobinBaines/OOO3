@@ -32,6 +32,8 @@ namespace WOOOF
 
         public GDISO? Parent { get; set; }
 
+        public GDISQ? EndedBySO { get; set; }
+
         public GDISO? Neighbour { get; set; }
 
         public string Inherits { get; set; }
@@ -107,7 +109,10 @@ namespace WOOOF
                 {
                     if ((SQ.Width) > _width) _width = SQ.Width;
                 }
-                
+                if (EndedBySO != null)
+                {
+                    if ((EndedBySO.Width) > _width) _width = EndedBySO.Width;
+                }
                 return _width;
             }
         }
@@ -146,6 +151,11 @@ namespace WOOOF
                 {
                     _height += ((int)SQ.TextHeight);
                 }
+                if (EndedBySO != null)
+                {
+                    _height += ((int)EndedBySO.TextHeight);
+                }
+                    
                 return _height; 
             }
         }
@@ -198,6 +208,8 @@ namespace WOOOF
         {
             Inherits = _SO.Name;
         }
+
+
         //public void AddSQ(string _name, string _value, SensualObject? SOEvent)
         public void AddSQ(SensualQuality CLSQ)
         {
@@ -240,6 +252,12 @@ namespace WOOOF
             IsPreviousSOParents.Add(SQ);
         }
 
+        public void AddEndedBySO(SensualObject _SO)
+        {
+            EndedBySO = new(this, "ENDED BY: " + _SO.Name, "", "", QualityFontsize, null, null);
+        }
+
+
         private void CalculateY()
         {
             
@@ -279,6 +297,10 @@ namespace WOOOF
                     {
                         y += ((int)SQ.TextHeight);
                     }
+                    if (Parent.EndedBySO != null)
+                    {
+                        y += (int)Parent.EndedBySO.TextHeight;
+                    }
 
                 }
             }
@@ -293,7 +315,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
             if (G != null)
             {
                 string test;
-                if (Name == "Fons")
+                if (Name == "Me" && Parent.Name == "I_SEE_NIDA_BARKING")
                     test = Name;
 
                 CalculateY();
@@ -306,7 +328,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     if (Parent != null)
                     {
-                        X = Parent.X;
+                       X = Parent.X;
                         rect = new RectangleF(_x + AutoScrollPositionX, Y + AutoScrollPositionY, Width - PARENTCHILDSPACING, Height);
                     }
                     else
@@ -323,7 +345,10 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     if (Inherits.Length > 0)
                     {
-                        _name = _name + ":" + Inherits;
+                        //if (_name == "Me" && Parent.Neighbour != null)
+                        //    _name = _name + ":" + Inherits + " " + X.ToString() + " " + Parent.Neighbour.Name;
+                        //else
+                            _name = _name + ":" + Inherits;
                     }
                 }
                 G.DrawString(_name, theFont, sb, rect, format1);
@@ -361,6 +386,11 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
                     i++;
                 }
+                if (EndedBySO != null)
+                {
+                    EndedBySO.DrawString(rect.X, rect.Y + i * EndedBySO.TextHeight, format1, EndedBySO.Name);
+                }
+
                 point.X = (int)X + AutoScrollPositionX + (int)Width;
                 point.Y = (int)Y + AutoScrollPositionY + (int)Height;
             }

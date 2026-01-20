@@ -21,6 +21,7 @@ namespace OOOCL
 
     {
         public SensualObject? ptrDerivedFrom = null;
+        public SensualObject? EndedBySO = null;
         public List<SensualObject> IncludesReference = new List<SensualObject>();
         public List<SensualObject> ReferencedBy = new List<SensualObject>();
         public List<SensualObject> IsPartOfReference = new List<SensualObject>();
@@ -255,6 +256,24 @@ namespace OOOCL
         }
 
         /// <summary>
+        /// Add an IsPartOf reference to an SO if the reference is a new one and if it is not a self reference.
+        /// </summary>
+        /// <param name="SO"></param>
+        public virtual void SetEndedBy(SensualObject Context)
+        {
+            if (Context != null)
+            {
+                //Check it is not a self reference.
+                if (this != Context)
+                {
+                    EndedBySO = Context;
+                }
+            }
+        }
+
+        
+
+        /// <summary>
         /// Add a quality SQ to this SO and if recurse = true add a copy of the SQ to the Event.
         /// </summary>
         /// <param name="SQ"></param>
@@ -357,6 +376,29 @@ namespace OOOCL
             Name = _name;
             this.created = _dt;
             this.SOParent = Parent;
+        }
+        public SensualObject(SensualObject Source)
+        {
+            Name = Source.Name;
+            ptrDerivedFrom = Source.ptrDerivedFrom;
+            if (Source.EndedBySO != null)
+                EndedBySO = Source.EndedBySO;
+            //foreach (SensualObject SO in Source.IncludesReference)
+            //{
+            //    IncludesReference.Add(SO);
+            //}
+            //foreach (SensualObject SO in Source.ReferencedBy)
+            //{
+            //    ReferencedBy.Add(SO);
+            //}
+            //foreach (SensualObject SO in Source.IsPartOfReference)
+            //{
+            //    IsPartOfReference.Add(SO);
+            //}
+            foreach (SensualQuality SQ in Source.qualities)
+            {
+                qualities.Add(SQ);
+            }
         }
     }
 

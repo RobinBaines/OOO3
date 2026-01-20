@@ -70,7 +70,7 @@ namespace WOOOF
             string test2;
             if (Value != null)
             {
-                if (Name == "Fons" && Value == "white")
+                if (this.Name == "Nida" && Name == "Running" && Value == "false")
                 {
                     test2 = "test";
                 }

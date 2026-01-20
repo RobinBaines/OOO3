@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel.Design;
 using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace OOOCL
 {
@@ -129,10 +130,12 @@ namespace OOOCL
         {
             
             result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
-            result = result.Replace("a ", " ", StringComparison.OrdinalIgnoreCase);
+            result = result.Replace(" a ", " ", StringComparison.OrdinalIgnoreCase);
             result = result.Replace(" at ", " ");
             result = result.Replace(" the ", " ", StringComparison.OrdinalIgnoreCase);
-            result = result.Replace("the ", " ", StringComparison.OrdinalIgnoreCase);
+            if(result.Substring(0, 4).ToLower() == "the ")
+                result = result.Substring(4);
+
             result = result.Replace(" of ", " ");
             result = result.Replace(" and ", " ");
             result = result.Replace(" is ", " ");
@@ -241,6 +244,16 @@ namespace OOOCL
                 Context = ParentSO;
         }
 
+        public static bool IsNotAParent(SensualObject ParentSO)
+        {
+            foreach(SensualObject SO in TheSOs)
+            {
+                if (SO.SOParent == ParentSO)
+                    return false;
+            }
+            return true;
+        }
+
         public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName)
         {
         
@@ -280,16 +293,31 @@ namespace OOOCL
                         int index2 = TheSOs.IndexOf(SOInSO);
                         if (index2 >= 0)
                         {
-                            //string test;
-                            //if (TheSOs[index2].Name == "Place")
-                            //{
-                            //    test = TheSOs[index2].Name;
-                            //}
-                            TheSOs[index2].SOParent = SOEvent;
-                           
-                            //add the reference from the parent to the child and vice versa.
+                            string test;
+                            if (TheSOs[index2].Name == "Me")
+                            {
+                                test = TheSOs[index2].Name;
+                            }
+                            if (IsNotAParent(TheSOs[index2]))
+                            {
+
+                                SOInSO = new(TheSOs[index2]);
+                                SOInSO.SOParent = SOEvent;
+                                TheSOs[index2].Name = TheSOs[index2].Name + "(" + TheSOs[index2].SOParent.Name + ")";
+                                TheSOs[index2].Ended = true;
+                                TheSOs.Add(SOInSO);
+
+                                //add the reference from the parent to the child and vice versa.
+                                SOEvent.AddIncludesReference(SOInSO);
+                                SOInSO.AddIsPartOfReference(SOEvent);
+                            }
+                            else
+                            {
+                                TheSOs[index2].SOParent = SOEvent;
                                 SOEvent.AddIncludesReference(TheSOs[index2]);
                                 TheSOs[index2].AddIsPartOfReference(SOEvent);
+                            }
+
                             TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
                         }
                         else
@@ -329,9 +357,19 @@ namespace OOOCL
             //A quality Nida = sleeping
             if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
             {
-               if (Context != null)
+                string test;
+                if (SOEvent.Name == "Nida" && SQName == "Running" && SQValue == "false")
                 {
-                    WriteQuality(Context, SOEvent, SQName, SQValue, msecs);
+                    test = "";
+                }
+                if (SOEvent.Name == "I_SEE_NIDA_BARKING" && SQName == "Running" && SQValue == "false")
+                {
+                    test = "";
+                }
+
+                if (Context != null)
+                {
+                    WriteQuality( SOEvent, Context, SQName, SQValue, msecs);
                 }
                 else WriteQualityNatural(SOEvent, SQName, SQValue, msecs);
             }
@@ -344,8 +382,7 @@ namespace OOOCL
                     //add the reference from the parent to the child and vice versa.
                     if (SOEvent != null && Context != null && SOEvent != Context)
                     {
-                        SOEvent.AddIsPartOfReference(Context);
-                        Context.AddIncludesReference(SOEvent);
+                        SOEvent.SetEndedBy(Context);
                     }
                     return;
                 }
