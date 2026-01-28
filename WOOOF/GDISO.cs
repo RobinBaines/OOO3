@@ -131,26 +131,39 @@ namespace WOOOF
                 {
                     _height += ((int)SQ.TextHeight);
                 }
-                   
-                foreach (GDIIncludesRef SQ in IncludesRef)
+
+                if (blnHideEvents == false)
                 {
-                    _height += ((int)SQ.TextHeight);
+                    foreach (GDIIncludesRef SQ in IncludesRef)
+                    {
+                        _height += ((int)SQ.TextHeight);
+                    }
                 }
 
-                foreach (GDIPreviousSOParents SQ in IsPreviousSOParents)
+                if (blnHideEvents == false)
                 {
-                    _height += ((int)SQ.TextHeight);
+                    foreach (GDIPreviousSOParents SQ in IsPreviousSOParents)
+                    {
+                        _height += ((int)SQ.TextHeight);
+                    }
                 }
 
-                
-                foreach (GDIPartOfRef SQ in IsPartOfRef)
+                if (blnHideEvents == false)
                 {
-                    _height += ((int)SQ.TextHeight);
+                    foreach (GDIPartOfRef SQ in IsPartOfRef)
+                    {
+                        _height += ((int)SQ.TextHeight);
+                    }
                 }
-                foreach (GDIReferencedBy SQ in IsReferencedBy)
+
+                if (blnHideEvents == false)
                 {
-                    _height += ((int)SQ.TextHeight);
+                    foreach (GDIReferencedBy SQ in IsReferencedBy)
+                    {
+                        _height += ((int)SQ.TextHeight);
+                    }
                 }
+
                 if (EndedBySO != null)
                 {
                     _height += ((int)EndedBySO.TextHeight);
@@ -163,6 +176,9 @@ namespace WOOOF
         public int ObjectFontsize { get; set; }
         public int QualityFontsize { get; set; }
        
+         private bool blnHideEvents { get; set; }
+
+
         public Font theFont { get; set; }
 
         public SensualObject SO;
@@ -192,8 +208,9 @@ namespace WOOOF
             } 
         }
 
-        public GDISO(GDISO? _neighbour, SensualObject _SO, int _objectfontsize, int _qualityfontsize)
+        public GDISO(GDISO? _neighbour, SensualObject _SO, int _objectfontsize, int _qualityfontsize, bool _blnHideEvents)
         {
+            blnHideEvents = _blnHideEvents;
             SO = _SO;
             Name = SO.Name;
             Neighbour = _neighbour;
@@ -281,21 +298,36 @@ namespace WOOOF
                     {
                         y += ((int)SQ.TextHeight);
                     }
-                    foreach (GDIIncludesRef SQ in Parent.IncludesRef.ToList())
+                    if (blnHideEvents == false)
                     {
-                        y += ((int)SQ.TextHeight);
+                        foreach (GDIIncludesRef SQ in Parent.IncludesRef.ToList())
+                        {
+                            y += ((int)SQ.TextHeight);
+                        }
                     }
-                    foreach (GDIPartOfRef SQ in Parent.IsPartOfRef.ToList())
+
+                    if (blnHideEvents == false)
                     {
-                        y += ((int)SQ.TextHeight);
+                        foreach (GDIPartOfRef SQ in Parent.IsPartOfRef.ToList())
+                        {
+                            y += ((int)SQ.TextHeight);
+                        }
                     }
-                    foreach (GDIReferencedBy SQ in Parent.IsReferencedBy.ToList())
+
+                    if (blnHideEvents == false)
                     {
-                        y += ((int)SQ.TextHeight);
+                        foreach (GDIReferencedBy SQ in Parent.IsReferencedBy.ToList())
+                        {
+                            y += ((int)SQ.TextHeight);
+                        }
                     }
-                    foreach (GDIPreviousSOParents SQ in Parent.IsPreviousSOParents.ToList())
+
+                    if (blnHideEvents == false)
                     {
-                        y += ((int)SQ.TextHeight);
+                        foreach (GDIPreviousSOParents SQ in Parent.IsPreviousSOParents.ToList())
+                        {
+                            y += ((int)SQ.TextHeight);
+                        }
                     }
                     if (Parent.EndedBySO != null)
                     {
@@ -363,29 +395,42 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     i++;
                 }
 
-                foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                if (blnHideEvents == false)
                 {
-                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                    i++;
+                    foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                    {
+                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                        i++;
+                    }
                 }
 
-                foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                if (blnHideEvents == false)
                 {
-                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                    i++;
+                    foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
+                    {
+                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                        i++;
+                    }
                 }
 
-                foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
+                if (blnHideEvents == false)
                 {
-                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                    i++;
+                    foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
+                    {
+                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                        i++;
+                    }
                 }
 
-                foreach (GDIPreviousSOParents SQ in IsPreviousSOParents.ToList())
+                if (blnHideEvents == false)
                 {
-                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                    i++;
+                    foreach (GDIPreviousSOParents SQ in IsPreviousSOParents.ToList())
+                    {
+                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                        i++;
+                    }
                 }
+
                 if (EndedBySO != null)
                 {
                     EndedBySO.DrawString(rect.X, rect.Y + i * EndedBySO.TextHeight, format1, EndedBySO.Name);

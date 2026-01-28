@@ -101,21 +101,27 @@ namespace WOOOF
         }
         public void DrawString(float X, float Y, StringFormat format, string _SOName)
         {
+            Color theColor = Color.Black;
+            //if(SOParent != null && SOParent.EndedBySO != null)
+            //        theColor = Color.DarkGray;
+            if(Parent.Ended)
+                theColor = Color.DarkGray;
+
             SOName = _SOName;
             SolidBrush sb;
             if (SOevent.Length > 0)
             {
-                sb = new SolidBrush(Color.Red);
+                sb = new SolidBrush(theColor);
             }
             else
             {
-                sb = new SolidBrush(Color.Black);
+                sb = new SolidBrush(theColor);
                 if (SQ != null && SQ.SOEvent != null)
                 {
                     if (SQ.SOParent.Name != SQ.SOEvent.Name)
                     {
                         if (SQ.SOEvent.Name == SOName)
-                            sb = new SolidBrush(Color.Black);
+                            sb = new SolidBrush(theColor);
                         //showing that this Object has set this Quality in another Object.
                     }
                 }

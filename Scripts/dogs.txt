@@ -1,0 +1,85 @@
+//Several commands:
+DisplaySOs *	//display all the SOs with SQs.
+//RandomWalk 30
+NaturalText     //this script is defined using the more natural text language.
+GenerateScript event
+
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+INIT Includes RO_EVENT
+RO_EVENT has property RO = true.
+RO_EVENT has property time = 2026-01-01 12:32:00.000.
+INIT Includes RO_Nida.
+INIT Includes RO_Me.
+RO_Nida has property RO = true.
+RO_Me has property RO = true.
+ 
+
+//add SOs of Me and Nida to the time_line.
+MeetNida is a type of RO_timeline. 
+The MeetNida has the property place and it is Bakkeveen. 
+The MeetNida has the property weather and it is wet.
+MeetNida includes Me
+Me is a type of RO_Me
+MeetNida includes Nida
+Nida is a type of RO_Nida
+Nida has property Running = true
+
+//Add my SO of Nida. Use inheritance to represent my SO hierarchy.
+//Should my prior knowledge be in RO_Me? Or in the SO Me?
+Me includes dog
+dog has the property 	FrontLeftLeg 
+dog has the property 	BackLeftLeg
+dog has the property 	FrontRightLeg
+dog has the property 	BackRightLeg
+Me includes My_Nida
+My_Nida is a type of dog
+
+
+I_SEE_NIDA_RUNNING is a type of RO_EVENT
+I_SEE_NIDA_RUNNING includes Nida
+I_SEE_NIDA_RUNNING includes Me
+I_SEE_NIDA_RUNNING has property time = 2026-01-01 12:35:00.000.
+//Nida has property Running = true
+My_Nida has property Running = true
+//ENDOBJECT Nida
+ENDOBJECT MeetNida
+
+MeetNida' is a type of RO_timeline. 
+MeetNida' includes Nida
+MeetNida' includes Me
+//Nida has property Running = true
+ENDOBJECT I_SEE_NIDA_RUNNING
+
+
+NIDA_BARKS is a type of RO_EVENT
+NIDA_BARKS includes Nida
+NIDA_BARKS includes Me
+
+ENDOBJECT MeetNida'
+Nida has the property Barking = true
+//Nida has property Running = true
+
+
+MeetNida'' is a type of RO_timeline. 
+MeetNida'' includes Nida
+MeetNida'' includes Me
+//Nida has property Running = true
+//Nida has property Barking = true
+ENDOBJECT NIDA_BARKS
+
+
+I_SEE_NIDA_BARKING is a type of RO_EVENT
+I_SEE_NIDA_BARKING includes Nida
+I_SEE_NIDA_BARKING includes Me
+Nida has property Running = false
+//Nida has property Barking = true
+My_Nida has property Barking = true
+
+ENDOBJECT MeetNida''
+
+
+
+
+
+

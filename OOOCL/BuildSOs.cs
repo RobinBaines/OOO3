@@ -11,6 +11,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel.Design;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
+using System.Text.RegularExpressions;
 
 namespace OOOCL
 {
@@ -142,12 +143,14 @@ namespace OOOCL
             result = result.Replace(" it ", " ");
             result = result.Replace(" has ", " ");
             result = result.Replace("=", " ");
-            result = result.Replace("   ", " ");
-            result = result.Replace("  ", " ");
+            result = Regex.Replace(result, @"\s+", " ");
+            //result = result.Replace("   ", " ");
+            //result = result.Replace("  ", " ");
             int indexof = result.LastIndexOf('.');
             if (indexof == (result.Length - 1)) result = result.Remove(indexof, 1);
 
-            string[] words = result.Trim().Split(' ');
+            char[] charSeparators = new char[] { ' ', '\t' };
+            string[] words = result.Trim().Split(charSeparators);
             int index = 0;
             foreach (string word in words)
             {
@@ -180,10 +183,16 @@ namespace OOOCL
                         {
                             index++;
                             SQName = words[index];
-                            if (words.Count() > index + 1)
+                            Value = "true";
+                            while (words.Count() > index + 1)
                             {
+                                if(words[index] !="")
+                                {
+                                    index++;
+                                    Value = words[index];
+                                    break;
+                                }
                                 index++;
-                                Value = words[index];
                             }
                         }
                         break;
@@ -246,17 +255,17 @@ namespace OOOCL
 
         public static bool IsNotAParent(SensualObject ParentSO)
         {
-            foreach(SensualObject SO in TheSOs)
-            {
-                if (SO.SOParent == ParentSO)
-                    return false;
-            }
+            //foreach (SensualObject SO in TheSOs)
+            //{
+            //    if (SO.SOParent == ParentSO)
+            //        return false;
+            //}
             return true;
         }
 
         public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName)
         {
-        
+
 
 
             string test2;
@@ -294,17 +303,15 @@ namespace OOOCL
                         if (index2 >= 0)
                         {
                             string test;
-                            if (TheSOs[index2].Name == "Me")
+                            if (TheSOs[index2].Name == "club_ball")
                             {
                                 test = TheSOs[index2].Name;
                             }
                             if (IsNotAParent(TheSOs[index2]))
                             {
-
                                 SOInSO = new(TheSOs[index2]);
                                 SOInSO.SOParent = SOEvent;
-                                TheSOs[index2].Name = TheSOs[index2].Name + "(" + TheSOs[index2].SOParent.Name + ")";
-                                TheSOs[index2].Ended = true;
+                                //TheSOs[index2].Ended = true;
                                 TheSOs.Add(SOInSO);
 
                                 //add the reference from the parent to the child and vice versa.

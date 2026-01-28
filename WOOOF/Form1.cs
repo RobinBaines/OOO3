@@ -25,11 +25,11 @@ namespace WOOOF
             timer1.Interval = 100;
             timer1.Enabled = true;
             timer1.Start();
-            textBox1.Text = "c:\\Projects\\OOO3\\Scripts\\sc.txt";
-           
+            ScriptName.Text = "c:\\Projects\\OOO3\\Scripts\\sc.txt";
+
             panel1.AutoScroll = true;
-            
-            
+
+
             BindingList<SensualObject> TheSOs = BuildSOs.TheSOs;
             TheSOs.ListChanged += HandleSOChanged;
 
@@ -40,12 +40,16 @@ namespace WOOOF
         bool blnPaintActive = false;
         void HandleSOChanged(object? sender, ListChangedEventArgs? e)
         {
+            HandleSOChanged(e.ListChangedType);
+        }
+        void HandleSOChanged(ListChangedType ListChangedType)
+        {
             if (blnPaintActive == false)
             {
                 blnPaintActive = true;
-                if (e != null)
+                //if (e != null)
                 {
-                    if (e.ListChangedType == ListChangedType.Reset || e.ListChangedType == ListChangedType.ItemAdded)
+                    if (ListChangedType == ListChangedType.Reset || ListChangedType == ListChangedType.ItemAdded)
                     {
                         GDISOs.Clear();
                         foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
@@ -58,7 +62,7 @@ namespace WOOOF
                             if (GDISOs.TryGetValue(_SO.Name, out gDISO) == false)
                             {
                                 //create new GDISO.
-                                gDISO = new GDISO(null, _SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value);
+                                gDISO = new GDISO(null, _SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value, cbHideEvents.Checked);
                                 GDISOs.Add(_SO.Name, gDISO);
                             }
 
@@ -68,7 +72,7 @@ namespace WOOOF
                             if (_SO.EndedBySO != null)
                                 GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
 
-                            GDISOs[_SO.Name].Ended= _SO.Ended;
+                            GDISOs[_SO.Name].Ended = _SO.Ended;
                         }
                         foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
                         {
@@ -101,9 +105,9 @@ namespace WOOOF
                             {
                                 //if (SQ.SOParent == GDISO.SO)
                                 string test;
-                                if(GDISO.SO.Name == "Nida")
+                                if (GDISO.SO.Name == "Nida")
                                     test = "";
-                                if ( SQ.Name == "Running" && SQ.Value == "false")
+                                if (SQ.Name == "Running" && SQ.Value == "false")
                                 {
                                     test = "";
                                 }
@@ -161,8 +165,7 @@ namespace WOOOF
                         blnScriptBeingProcessed = false;
                         blnPaintActive = false;
                         BuildSOs.TheSOs.ResetBindings();
-                        
-                        panel1.Invalidate();
+                       
                         panel1.Invalidate();
                         btnRunScript.Enabled = true;
                     }
@@ -172,9 +175,9 @@ namespace WOOOF
 
         private void btnRunScript_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text.Length > 0)
+            if (ScriptName.Text.Length > 0)
             {
-                if (File.Exists(textBox1.Text))
+                if (File.Exists(ScriptName.Text))
                 {
                     BuildSOs.TheSOs.Clear();
                     GDISOs.Clear();
@@ -186,10 +189,10 @@ namespace WOOOF
                     btnRunScript.Enabled = false;
                     blnScriptBeingProcessed = true;
                     newThread = new Thread(DoWork);
-                    newThread.Start(textBox1.Text);
+                    newThread.Start(ScriptName.Text);
                 }
                 else
-                    MessageBox.Show(textBox1.Text + " not found.");
+                    MessageBox.Show(ScriptName.Text + " not found.");
             }
         }
 
@@ -226,7 +229,7 @@ namespace WOOOF
                 fileDlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
             if (fileDlg.ShowDialog() == DialogResult.OK)
-                textBox1.Text = fileDlg.FileName;
+                ScriptName.Text = fileDlg.FileName;
         }
 
         private void Form1_Layout(object sender, LayoutEventArgs e)
@@ -287,6 +290,12 @@ namespace WOOOF
             g.Dispose();
             blnPaintActive = false;
             blnStartDrawing = false;
+        }
+
+        private void cbHideEvents_CheckedChanged(object sender, EventArgs e)
+        {
+            HandleSOChanged(ListChangedType.Reset);
+            panel1.Invalidate();
         }
     }
 }

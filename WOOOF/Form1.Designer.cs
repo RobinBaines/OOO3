@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             timer1 = new System.Windows.Forms.Timer(components);
             btnRunScript = new Button();
-            textBox1 = new TextBox();
+            ScriptName = new TextBox();
             btnSelectScript = new Button();
             SleepTimer = new NumericUpDown();
             label1 = new Label();
@@ -41,6 +41,7 @@
             numQualityFontsize = new NumericUpDown();
             panel1 = new Panel();
             button1 = new Button();
+            cbHideEvents = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)SleepTimer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numObjectFontsize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQualityFontsize).BeginInit();
@@ -61,12 +62,12 @@
             btnRunScript.UseVisualStyleBackColor = true;
             btnRunScript.Click += btnRunScript_Click;
             // 
-            // textBox1
+            // ScriptName
             // 
-            textBox1.Location = new Point(118, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(288, 23);
-            textBox1.TabIndex = 1;
+            ScriptName.Location = new Point(118, 10);
+            ScriptName.Name = "ScriptName";
+            ScriptName.Size = new Size(288, 23);
+            ScriptName.TabIndex = 1;
             // 
             // btnSelectScript
             // 
@@ -154,11 +155,23 @@
             button1.Text = "RL";
             button1.UseVisualStyleBackColor = true;
             // 
+            // cbHideEvents
+            // 
+            cbHideEvents.AutoSize = true;
+            cbHideEvents.Location = new Point(1076, 13);
+            cbHideEvents.Name = "cbHideEvents";
+            cbHideEvents.Size = new Size(88, 19);
+            cbHideEvents.TabIndex = 10;
+            cbHideEvents.Text = "Hide Events";
+            cbHideEvents.UseVisualStyleBackColor = true;
+            cbHideEvents.CheckedChanged += cbHideEvents_CheckedChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1192, 450);
+            Controls.Add(cbHideEvents);
             Controls.Add(panel1);
             Controls.Add(label3);
             Controls.Add(numQualityFontsize);
@@ -167,7 +180,7 @@
             Controls.Add(label1);
             Controls.Add(SleepTimer);
             Controls.Add(btnSelectScript);
-            Controls.Add(textBox1);
+            Controls.Add(ScriptName);
             Controls.Add(btnRunScript);
             Name = "Form1";
             Text = "Form1";
@@ -184,7 +197,7 @@
 
         private System.Windows.Forms.Timer timer1;
         private Button btnRunScript;
-        private TextBox textBox1;
+        private TextBox ScriptName;
         private Button btnSelectScript;
         private NumericUpDown SleepTimer;
         private Label label1;
@@ -194,5 +207,6 @@
         private NumericUpDown numQualityFontsize;
         private Panel panel1;
         private Button button1;
+        public CheckBox cbHideEvents;
     }
 }

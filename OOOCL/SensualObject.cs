@@ -3,6 +3,7 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -20,8 +21,18 @@ namespace OOOCL
    public class SensualObject : BaseClass, INotifyPropertyChanged, INotifyPropertyChanging
 
     {
+       static List<SensualObject> TheNewSOs = new List<SensualObject>();
+       static int iDepth = 0;
+
         public SensualObject? ptrDerivedFrom = null;
-        public SensualObject? EndedBySO = null;
+        public SensualObject? _EndedBySO = null;
+        
+        public SensualObject? EndedBySO
+        {
+            get { return _EndedBySO; }
+            set { _EndedBySO = value; Ended = true; }
+        }
+
         public List<SensualObject> IncludesReference = new List<SensualObject>();
         public List<SensualObject> ReferencedBy = new List<SensualObject>();
         public List<SensualObject> IsPartOfReference = new List<SensualObject>();
@@ -377,12 +388,21 @@ namespace OOOCL
             this.created = _dt;
             this.SOParent = Parent;
         }
+
+
         public SensualObject(SensualObject Source)
         {
+            if (iDepth == 0)
+                TheNewSOs.Clear();
             Name = Source.Name;
             ptrDerivedFrom = Source.ptrDerivedFrom;
             if (Source.EndedBySO != null)
+            {
                 EndedBySO = Source.EndedBySO;
+            }
+                
+
+
             //foreach (SensualObject SO in Source.IncludesReference)
             //{
             //    IncludesReference.Add(SO);
@@ -399,6 +419,35 @@ namespace OOOCL
             {
                 qualities.Add(SQ);
             }
+            if (Source.SOParent != null)
+                Source.Name = Source.Name + "(" + Source.SOParent.Name + ")";
+            else
+                Source.Name = Source.Name + "(" + Source + ")";
+            
+            Source.Ended = true;
+
+            foreach (SensualObject SO in BuildSOs.TheSOs)
+            {
+                if (SO.SOParent == Source) // && SO.Name != Source.Name)
+                {
+                    iDepth++;
+                    SensualObject newSO = new SensualObject(SO);
+                    newSO.SOParent = this;
+                    iDepth--;
+                    TheNewSOs.Add(newSO);
+                }
+            }
+
+            if (iDepth == 0)
+            {
+                foreach (SensualObject SO in TheNewSOs)
+                {
+                    BuildSOs.TheSOs.Add(SO);
+                }
+            }
+
+
+
         }
     }
 
