@@ -183,7 +183,7 @@
             Controls.Add(ScriptName);
             Controls.Add(btnRunScript);
             Name = "Form1";
-            Text = "Form1";
+            Text = "WOOOF";
             Layout += Form1_Layout;
             ((System.ComponentModel.ISupportInitialize)SleepTimer).EndInit();
             ((System.ComponentModel.ISupportInitialize)numObjectFontsize).EndInit();
