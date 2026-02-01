@@ -2,16 +2,8 @@
 // @Copyright 2025 Robin Baines
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.DataFormats;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using OOOCL;
+
 namespace WOOOF
 {
    /// <summary>
@@ -127,9 +119,11 @@ namespace WOOOF
                 {
                     _height += (GDISO.Height + 10);
                 }
+
                 foreach (GDISQ SQ in qualities)
                 {
-                    _height += ((int)SQ.TextHeight);
+                    if (SQ.GetString(blnHideEvents, this.Name).Length > 0)
+                        _height += ((int)SQ.TextHeight);
                 }
 
                 if (blnHideEvents == false)
@@ -175,8 +169,8 @@ namespace WOOOF
 
         public int ObjectFontsize { get; set; }
         public int QualityFontsize { get; set; }
-       
-         private bool blnHideEvents { get; set; }
+
+        public bool blnHideEvents { get; set; }
 
 
         public Font theFont { get; set; }
@@ -296,8 +290,10 @@ namespace WOOOF
                     }
                     foreach (GDISQ SQ in Parent.qualities.ToList())
                     {
-                        y += ((int)SQ.TextHeight);
+                        if(SQ.GetString(blnHideEvents, Parent.Name).Length > 0)
+                            y += ((int)SQ.TextHeight);
                     }
+
                     if (blnHideEvents == false)
                     {
                         foreach (GDIIncludesRef SQ in Parent.IncludesRef.ToList())
@@ -391,8 +387,12 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 int i = 1;
                 foreach (GDISQ SQ in qualities.ToList())
                 {
-                    SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1, this.Name);
-                    i++;
+                    string str = SQ.GetString(blnHideEvents, this.Name);
+                    if (str.Length > 0)
+                    {
+                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1, this.Name);
+                        i++;
+                    }
                 }
 
                 if (blnHideEvents == false)
@@ -436,8 +436,8 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     EndedBySO.DrawString(rect.X, rect.Y + i * EndedBySO.TextHeight, format1, EndedBySO.Name);
                 }
 
-                point.X = (int)X + AutoScrollPositionX + (int)Width;
-                point.Y = (int)Y + AutoScrollPositionY + (int)Height;
+                point.X = (int)X + (int)Width;
+                point.Y = (int)Y + (int)Height;
             }
             return point;
         }

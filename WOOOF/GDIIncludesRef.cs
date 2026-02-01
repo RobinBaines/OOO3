@@ -17,7 +17,7 @@ namespace WOOOF
         {
             SolidBrush sb;
             sb = new SolidBrush(Color.Coral);
-            Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
+            Parent?.G?.DrawString(GetString(false), theFont, sb, X, Y, format);
             sb.Dispose();
         }
 

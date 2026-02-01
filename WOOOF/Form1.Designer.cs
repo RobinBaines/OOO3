@@ -41,7 +41,7 @@
             numQualityFontsize = new NumericUpDown();
             panel1 = new Panel();
             button1 = new Button();
-            cbHideEvents = new CheckBox();
+            cbHideConnections = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)SleepTimer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numObjectFontsize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQualityFontsize).BeginInit();
@@ -81,7 +81,7 @@
             // 
             // SleepTimer
             // 
-            SleepTimer.Location = new Point(618, 10);
+            SleepTimer.Location = new Point(582, 10);
             SleepTimer.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             SleepTimer.Name = "SleepTimer";
             SleepTimer.Size = new Size(67, 23);
@@ -91,7 +91,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(544, 14);
+            label1.Location = new Point(508, 14);
             label1.Name = "label1";
             label1.Size = new Size(68, 15);
             label1.TabIndex = 4;
@@ -100,7 +100,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(712, 14);
+            label2.Location = new Point(663, 14);
             label2.Name = "label2";
             label2.Size = new Size(88, 15);
             label2.TabIndex = 6;
@@ -108,7 +108,7 @@
             // 
             // numObjectFontsize
             // 
-            numObjectFontsize.Location = new Point(810, 10);
+            numObjectFontsize.Location = new Point(753, 10);
             numObjectFontsize.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numObjectFontsize.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
             numObjectFontsize.Name = "numObjectFontsize";
@@ -119,7 +119,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(895, 14);
+            label3.Location = new Point(838, 14);
             label3.Name = "label3";
             label3.Size = new Size(91, 15);
             label3.TabIndex = 8;
@@ -127,7 +127,7 @@
             // 
             // numQualityFontsize
             // 
-            numQualityFontsize.Location = new Point(992, 10);
+            numQualityFontsize.Location = new Point(935, 10);
             numQualityFontsize.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numQualityFontsize.Minimum = new decimal(new int[] { 5, 0, 0, 0 });
             numQualityFontsize.Name = "numQualityFontsize";
@@ -155,23 +155,23 @@
             button1.Text = "RL";
             button1.UseVisualStyleBackColor = true;
             // 
-            // cbHideEvents
+            // cbHideConnections
             // 
-            cbHideEvents.AutoSize = true;
-            cbHideEvents.Location = new Point(1076, 13);
-            cbHideEvents.Name = "cbHideEvents";
-            cbHideEvents.Size = new Size(88, 19);
-            cbHideEvents.TabIndex = 10;
-            cbHideEvents.Text = "Hide Events";
-            cbHideEvents.UseVisualStyleBackColor = true;
-            cbHideEvents.CheckedChanged += cbHideEvents_CheckedChanged;
+            cbHideConnections.AutoSize = true;
+            cbHideConnections.Location = new Point(1019, 13);
+            cbHideConnections.Name = "cbHideConnections";
+            cbHideConnections.Size = new Size(159, 19);
+            cbHideConnections.TabIndex = 10;
+            cbHideConnections.Text = "Hide Object Connections";
+            cbHideConnections.UseVisualStyleBackColor = true;
+            cbHideConnections.CheckedChanged += cbHideEvents_CheckedChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1192, 450);
-            Controls.Add(cbHideEvents);
+            Controls.Add(cbHideConnections);
             Controls.Add(panel1);
             Controls.Add(label3);
             Controls.Add(numQualityFontsize);
@@ -207,6 +207,6 @@
         private NumericUpDown numQualityFontsize;
         private Panel panel1;
         private Button button1;
-        public CheckBox cbHideEvents;
+        public CheckBox cbHideConnections;
     }
 }

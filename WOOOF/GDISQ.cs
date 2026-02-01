@@ -44,7 +44,7 @@ namespace WOOOF
         {
             get
             {
-                string _name = GetString();
+                string _name = GetString(false);
                 SizeF stringSize = new SizeF();
                 Graphics gfx = Graphics.FromImage(new Bitmap(1, 1));
                 stringSize = gfx.MeasureString(_name, theFont);
@@ -64,7 +64,14 @@ namespace WOOOF
 
         public GDISO? Parent { get; set; }
 
-        public string GetString()
+        public string GetString(bool blnHideEvents, string _SOName)
+        {
+            SOName = _SOName;
+            return GetString(blnHideEvents);
+        }
+        
+
+        public string GetString(bool blnHideEvents)
         {
             string str = SOevent;
             string test2;
@@ -81,23 +88,35 @@ namespace WOOOF
                 if (SQ.SOParent.Name != SQ.SOEvent.Name)
                 {
                     if (SQ.SOEvent.Name == SOName)
+                    {
                         //showing that this Object has set this Quality in another Object.
-                        str = SQ.SOParent.Name + " > ";
+                        if (blnHideEvents == false)
+                        {
+                            str = SQ.SOParent.Name + " > ";
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    }
                     else
+                    {
                         str = " => " + SQ.SOEvent.Name + ".";
+                    }
                 }
             }
-
+            
             if (SOevent.Length > 0 && ! str.Contains(" => "))
             {
                str += " => ";
             }
 
-            if (Value.Length > 0)
+            if (Value.Length > 0 && str.Length > 0)
             {
                 return str + Name + " = " + Value;
             }
-            return str + Name;
+
+            return str += Name;
         }
         public void DrawString(float X, float Y, StringFormat format, string _SOName)
         {
@@ -126,7 +145,10 @@ namespace WOOOF
                     }
                 }
             }
-            Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
+
+            string str = GetString(false);
+            if (str.Length > 0) 
+                Parent?.G?.DrawString(str, theFont, sb, X, Y, format);
         }
 
 

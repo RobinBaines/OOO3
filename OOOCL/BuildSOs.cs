@@ -183,17 +183,21 @@ namespace OOOCL
                         {
                             index++;
                             SQName = words[index];
-                            Value = "true";
+                            Value = "";
                             while (words.Count() > index + 1)
                             {
-                                if(words[index] !="")
+                                if(words[index] != "")
                                 {
+                                    //START_CLOCK has property time is 2026-01-01 12:32:00.000.
+                                    if (Value != "")
+                                        Value += " ";
                                     index++;
-                                    Value = words[index];
-                                    break;
+                                    Value += words[index];
+                                    //break;
                                 }
-                                index++;
+                                //index++;
                             }
+                            if (Value == "") Value = "true";
                         }
                         break;
                     case "type":
@@ -365,7 +369,7 @@ namespace OOOCL
             if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
             {
                 string test;
-                if (SOEvent.Name == "Nida" && SQName == "Running" && SQValue == "false")
+                if (SQName == "start_clock" && SQValue == "Robin")
                 {
                     test = "";
                 }
