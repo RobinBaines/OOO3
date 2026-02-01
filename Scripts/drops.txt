@@ -1,3 +1,7 @@
+//This script describes inanimate interaction between drops of water.
+//2 drops of water collide to form a single drop which then divides
+//into 2 other drops some time later when a gust of wind occurs.
+
 
 //Conventions: 
 //A Real Object has prefix RO_.
@@ -17,14 +21,7 @@
 //the time line SO which follows the event. 
 //An SO_Event may succeed a time line SO and the time of this SO_Event is the end time of the preceding time line SO.
 
-//This water_text script describes an inanimate interaction.
-//2 drops of water collide to form a single drop which then divides
-//into 2 other drops some time later when a gust of wind occurs.
-//Dimensions and velocities have been chosen based on Weber numbers which correspond to coalescence of water drops on collision. 
-//The Weber number is  the ratio of dynamic forces to surface tension.
-//It is a dimensionless number used for describing phenomena such as droplet formation and liquid jets. 
-
-//In this script the SO INIT is derived from RO_Event and sets up the initial Real Objects.
+//The SO INIT is derived from RO_Event and sets up the initial Real Objects.
 //The SO collision is a time line lasting 10 seconds and contains 2 drops one of which is moving towards the other.
 //The 2 drops are represented by SOs drop1 and drop2 and positions and velocity have been chosen so they will collide.
 //The dimensions and velocities of a drop are relative to the time line SO and are therefore properties of the drop SOs and not of the drop ROs.
@@ -38,6 +35,10 @@
 //The 3 drops are represented by SOs drop1 and drop2 and bigdrop.
 //RO_drop1 and RO_drop2 and drop1 and drop2 end their existence in this event.
 //The RO_bigdrop and bigdrop come into existence in this event.
+
+//Dimensions and velocities have been chosen based on Weber numbers which correspond to coalescence of water drops on collision. 
+//The Weber number is  the ratio of dynamic forces to surface tension.
+//It is a dimensionless number used for describing phenomena such as droplet formation and liquid jets. 
 
 //Using objects to describe inanimate interaction raises the question of the role of human obsevation.
 //Ideally an inanimate interaction could/should take place without the presence of a human. 

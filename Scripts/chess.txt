@@ -1,3 +1,18 @@
+//This script describes a chess game.
+//It stops after the first 2 moves.
+//To simplify further the clock, board and pieces have not been represented by objects.
+//The timeline objects ChessVisit1 to ChessVisit5 are punctuated by events in capital letters.
+//Events have time stamps. The duration of a timeline is the difference between timestamps in preceding 
+//and succeeding events.
+//Time proceeds from left to right.
+//The games1 object moves from left to right as property changes occur in the Events.
+
+//The Events represent instantaneous changes in a single property. Potentially there could be a none countable infinite 
+//number of  events. 
+//In practice an event is instantiated when a relevent property changes.
+//The script could show pieces being taken as the game proceeds; it could show the results of the analysis of a chess engine
+//it could show changes in the facial expression of the players.
+//No attempt has been made to represent the internal state of the players.
 
 DisplaySOs *	//display all the SOs with SQs.
 //RandomWalk 30
@@ -39,9 +54,9 @@ ChessVisit1 is a type of RO_timeline.
 ChessVisit1 Includes game1
 
 
-	game1 is a type of Chess
-	game1 has property Fons = white
-	game1 has property Me = black
+game1 is a type of Chess
+game1 has property Fons = white
+game1 has property Me = black
 
 
 START_CLOCK is a type of RO_EVENT
