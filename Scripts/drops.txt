@@ -1,46 +1,28 @@
-//This script describes inanimate interaction between drops of water.
+//This script describes interaction between drops of water.
 //2 drops of water collide to form a single drop which then divides
 //into 2 other drops some time later when a gust of wind occurs.
+//See Readme.md for conventions used in this script. 
 
-
-//Conventions: 
-//A Real Object has prefix RO_.
-//The command 'type' or 'type of' is used to derive a Sensual Object from a Real Object. 
-//'Type of' can be compared to inheritance in Object Oriented Programming.  
-
-//Time is represented from left to right and has 2 implementations:
-//1. A time line is a Sensual Object having a finite duration. 
-//It is derived from RO_timeline, which is a single Real Object representing the time continuum. 
-//2. A discrete SO_Event is derived from an RO_event. An SO_Event has no duration and is unique.
-//RO_events/SO_Events will usually occur at the beginning and end of a time line SO.
-
-//A time line may have properties place, weather....
-//SOs will not be created or destroyed in a time line SO. 
-//SOs will interact or be created or destroyed in an SO_Event.
-//The SO_Event will have a time when it occurred and this will also be the start time of
-//the time line SO which follows the event. 
-//An SO_Event may succeed a time line SO and the time of this SO_Event is the end time of the preceding time line SO.
-
-//The SO INIT is derived from RO_Event and sets up the initial Real Objects.
-//The SO collision is a time line lasting 10 seconds and contains 2 drops one of which is moving towards the other.
+//The SO 'collision' is a timeline SO lasting 10 seconds and contains 2 drops one of which is moving towards the other.
 //The 2 drops are represented by SOs drop1 and drop2 and positions and velocity have been chosen so they will collide.
-//The dimensions and velocities of a drop are relative to the time line SO and are therefore properties of the drop SOs and not of the drop ROs.
+//The dimensions and velocities of a drop are relative to the time line SO and are therefore properties of the drop SOs 
+//and not of the drop ROs.
 
 //The space coordinates are chosen so that drop1 has 0 velocity and is at the origin (x=y=z=0).
 //The coordinates are also rotated so that drop2 has 0 velocity on the y and z axes and a minus velocity (v) along the x axis.
 //The initial coordinates of drop2 are y = z = 0 and +ve x so that the collision occurs at time x/v.
 
-//SO collision terminates in the event called SO THE_COLLISION. This event describes the 
+//SO 'collision' terminates in the event called SO THE_COLLISION. This event describes the 
 //moment when RO_drop1 and RO_drop2 coalesce to form RO_bigdrop. 
 //The 3 drops are represented by SOs drop1 and drop2 and bigdrop.
 //RO_drop1 and RO_drop2 and drop1 and drop2 end their existence in this event.
 //The RO_bigdrop and bigdrop come into existence in this event.
 
-//Dimensions and velocities have been chosen based on Weber numbers which correspond to coalescence of water drops on collision. 
-//The Weber number is  the ratio of dynamic forces to surface tension.
+//Dimensions and velocities have been chosen based on Weber numbers which correspond to coalescence of water drops when they collide. 
+//The Weber number is the ratio of dynamic forces to surface tension.
 //It is a dimensionless number used for describing phenomena such as droplet formation and liquid jets. 
 
-//Using objects to describe inanimate interaction raises the question of the role of human obsevation.
+//Using objects to describe inanimate interaction raises the question of the role of observation.
 //Ideally an inanimate interaction could/should take place without the presence of a human. 
 //But that seems impossible because scripting implies human presence. 
 //Should we imagine the interactions described in the script based on our knowledge of water drops and wind?
@@ -48,21 +30,15 @@
 //Or should we just describe a system which has the potential for the events described. And then fill in how that potential might be realised?
 //Should the script include relative velocities, an attempt to predict 2 drops colliding before they do, an attempt to define a closed space around the interaction much as engineers do in 
 //fluid dynamics?
-//Should it include the criteria for when 2 drops coalesce or SPLIT using the Weber number?
+//Should it include the criteria for when 2 drops coalesce or split using the Weber number?
 //Density * v * v * l/surface tension.
 //v = 0.1 m/s and l = 1mm => We = 0.14
-//Ignore gravity => m * v * v /m * g * d = 0.01
-
-//OOO speculates about the existence of RO and SO. It also looks for a mediation between 2 RO as RO may not interact directly.
-//In the instance when the surface of the 2 drops is broken the 2 drops cease to exist and the 'bigdrop' is formed.
-//Later when the gust of wind causes the bigdrop to SPLIT bigdrop ceases to exist at exactly the same instance the smaller 3rd 
-//and 4th drops come into existance. 
+//We ignore gravity => m * v * v /m * g * d = 0.01
 
 //Several commands:
-DisplaySOs *	//display all the SOs with SQs.
+DisplaySOs *	//display all the objects.
 //RandomWalk 30
 NaturalText     //this script is defined using the more natural text language.
-GenerateScript event
 
 //The script starts with an INIT SO derived from RO_EVENT:
 INIT is a type of RO_EVENT.

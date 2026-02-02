@@ -1,22 +1,23 @@
 //This script describes a golf ball being hit by a golfclub.
-//It uses conventions described in drops.txt.
+//See Readme.md for conventions used in this script. 
 //Objects are initialised in the Event INIT.
 //The timeline object called the_swing describes the relative position of club and ball and the velocity of the club.
 //The club hits the ball and a new club_ball object is created in the Event called THE_COLLISION.
 //The club and ball objects are part of the club_ball object.
-//Energy is transferred from club to ball during the existence of the club_ball object in the Timeline object called club_ball_contact.
+//Energy is transferred from club to ball during the existence of the club_ball object in the timeline object called club_ball_contact.
 //While not described in the script the kinetic energy of the club is converted to potential energy by deformation of club and ball 
-//before the potential energy is converted to changes in kintetic energy of club and ball.
-//Potentially there could be a none countable infinite number of  events. 
+//before the potential energy is converted to changes in kinetic energy of club and ball.
+//The club_ball_contact Timeline object ends in Event SPLIT.
+//In SPLIT the club_ball object ends and club and ball objects become independent objects.
+
+//Potentially there could be a none countable infinite number of events. 
 //In practice an event is instantiated when a relevent property changes. 
 //We could for example split the timeline club_ball_contact with an event to capture the moment when the potential energy is a maximum. 
 
-//In the script the club_ball_contact Timeline object ends in Event SPLIT.
-//In SPLIT the club_ball object ends and club and ball objects become independent objects.
 
-DisplaySOs *	//display all the SOs with SQs.
+DisplaySOs *	//display all the objects.
 NaturalText     //this script is defined using the more natural text language.
-GenerateScript event
+
 
 //The script starts with an INIT SO derived from RO_EVENT:
 INIT is a type of RO_EVENT.
