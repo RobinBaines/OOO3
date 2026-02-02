@@ -13,7 +13,6 @@ INIT Includes RO_Nida.
 INIT Includes RO_Me.
 RO_Nida has property RO = true.
 RO_Me has property RO = true.
- 
 
 //add SOs of Me and Nida to the time_line.
 MeetNida is a type of RO_timeline. 
