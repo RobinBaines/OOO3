@@ -269,9 +269,6 @@ namespace OOOCL
 
         public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName)
         {
-
-
-
             string test2;
             if (SQName == "ends" && SQValue == "true")
             {
@@ -279,7 +276,7 @@ namespace OOOCL
             }
 
             //An SO is created or referenced MeetSiena : Event {
-            if (SOName.Length > 0) // && StartOfObject == true)
+            if (SOName.Length > 0) 
             {
                 msecs = 0;
 
@@ -341,14 +338,6 @@ namespace OOOCL
                         Thread.Sleep(SleepTime);
                     }
                 }
-
-                //add the reference from the parent to the child and vice versa.
-                if (SOEvent != null && Context != null && SOEvent != Context)
-                {
-                    SOEvent.AddIsPartOfReference(Context);
-                    Context.AddIncludesReference(SOEvent);
-                }
-
                 //If the new SO inherits, MeetSiena: Event {
                 if (Inherits.Length > 0)
                 {
@@ -363,16 +352,22 @@ namespace OOOCL
                         InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
                     }
                 }
+                else
+                {
+                    //only add the reference from the parent to the child and vice versa if not inherits command.
+                    if (SOEvent != null && Context != null && SOEvent != Context)
+                    {
+                        SOEvent.AddIsPartOfReference(Context);
+                        Context.AddIncludesReference(SOEvent);
+                    }
+                }
+
             }
 
             //A quality Nida = sleeping
             if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
             {
                 string test;
-                if (SQName == "start_clock" && SQValue == "Robin")
-                {
-                    test = "";
-                }
                 if (SOEvent.Name == "I_SEE_NIDA_BARKING" && SQName == "Running" && SQValue == "false")
                 {
                     test = "";

@@ -1,0 +1,86 @@
+
+DisplaySOs *	//display all the SOs with SQs.
+//RandomWalk 30
+NaturalText
+GenerateScript event
+QuerySOs Event, Animal //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
+RandomWalk 30
+
+INIT is a type of RO_EVENT.
+INIT Includes Fons.
+INIT Includes RO_timeline
+RO_timeline has property RO = true.
+INIT Includes RO_EVENT
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+RO_EVENT has property RO = true.
+INIT Includes Person.
+INIT Includes Me.
+
+INIT Includes Chess
+INIT Includes RO_EVENT
+
+Chess has property game = true
+Chess has property 2players
+Chess has property 64pieces
+Chess has property	result
+Chess has property	winner
+	
+Person has property Gender
+Fons is a type of Person
+Me is a type of Person
+Fons has property Gender = Male. 
+Me has property Gender = Male.
+
+ChessVisit1 is a type of RO_timeline.
+ChessVisit1 Includes game1
+
+	game1 is a type of Chess
+	game1 has property Fons = white
+	game1 has property Me = black
+
+game1 includes START_CLOCK
+START_CLOCK is a type of RO_EVENT
+START_CLOCK has property time is 2026-01-01 12:32:00.000.
+CONTEXT START_CLOCK
+game1 has property start_clock = Robin.
+ 
+game1 includes MOVE1_TOUCHES_PIECE 
+MOVE1_TOUCHES_PIECE is a type of RO_EVENT
+MOVE1_TOUCHES_PIECE has property time is 2026-01-01 12:32:10.000.
+CONTEXT MOVE1_TOUCHES_PIECE
+game1 has property touches = Fons.
+game1 has property touches = pawn_e2.
+
+game1 includes MOVE1_PLACES_PIECE
+MOVE1_PLACES_PIECE is a type of RO_EVENT
+MOVE1_PLACES_PIECE has property time is 2026-01-01 12:32:11.000.
+CONTEXT MOVE1_PLACES_PIECE
+game1 has property move1 = Fons.
+game1 has property move1 = pawn_e4.
+
+game1 includes MOVE1_STOP_CLOCK
+MOVE1_STOP_CLOCK is a type of RO_EVENT
+MOVE1_STOP_CLOCK has property time is 2026-01-01 12:32:12.000.
+CONTEXT MOVE1_STOP_CLOCK
+game1 has property move1 = Fons.
+game1 has property move1 = pawn_e4.
+
+game1 includes MOVE2
+MOVE2 is a type of RO_EVENT
+MOVE2 has property time is 2026-01-01 12:32:12.000.
+CONTEXT MOVE2
+game1 has property move1 = Robin.
+game1 has property move1 = c7c5.
+
+
+
+
+
+
+
+
+
+
+
+

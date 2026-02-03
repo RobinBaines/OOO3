@@ -30,6 +30,45 @@ namespace WOOOF
       
         public SensualQuality SQ { get; set; }
 
+        public bool SQSetsOtherSQ {
+            get
+            {
+                if (SQ != null && SQ.SOEvent != null)
+                {
+                    if (SQ.SOParent.Name != SQ.SOEvent.Name)
+                    {
+                        if (SQ.SOEvent.Name == SOName)
+                        {
+                            return true;
+                        }
+                        
+                    }
+                }
+                return false;
+            }
+        }
+
+        public bool SQSetByOtherSO
+        {
+            get
+            {
+                if (SQ != null && SQ.SOEvent != null)
+                {
+                    if (SQ.SOParent.Name != SQ.SOEvent.Name)
+                    {
+                        //
+                        if (SQ.SOEvent.Name != SOName)
+                        {
+                            return true;
+                        }
+
+                    }
+                }
+                return false;
+            }
+        }
+
+
         //the name of the SO which is displaying the SQ
         public string SOName { get; set; }
 
@@ -83,29 +122,15 @@ namespace WOOOF
                 }
             }
 
-            if (SQ != null && SQ.SOEvent != null)
+            if (SQSetsOtherSQ)
             {
-                if (SQ.SOParent.Name != SQ.SOEvent.Name)
-                {
-                    if (SQ.SOEvent.Name == SOName)
-                    {
-                        //showing that this Object has set this Quality in another Object.
-                        if (blnHideEvents == false)
-                        {
-                            str = SQ.SOParent.Name + " > ";
-                        }
-                        else
-                        {
-                            return "";
-                        }
-                    }
-                    else
-                    {
-                        str = " => " + SQ.SOEvent.Name + ".";
-                    }
-                }
+            str = SQ.SOParent.Name + " > ";
             }
-            
+            if (SQSetByOtherSO)
+            {
+            str = " => " + SQ.SOEvent.Name + ".";
+            }
+
             if (SOevent.Length > 0 && ! str.Contains(" => "))
             {
                str += " => ";
@@ -122,7 +147,8 @@ namespace WOOOF
         {
             Color theColor = Color.Black;
             //if(SOParent != null && SOParent.EndedBySO != null)
-            //        theColor = Color.DarkGray;
+            if (SQSetsOtherSQ)
+                theColor = Color.DarkGray;
             if(Parent.Ended)
                 theColor = Color.DarkGray;
 
