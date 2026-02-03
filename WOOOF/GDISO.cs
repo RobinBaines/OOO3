@@ -343,7 +343,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
             if (G != null)
             {
                 string test;
-                if (Name == "Me" && Parent.Name == "I_SEE_NIDA_BARKING")
+                if (Name == "game1") // && Parent.Name == "I_SEE_NIDA_BARKING")
                     test = Name;
 
                 CalculateY();

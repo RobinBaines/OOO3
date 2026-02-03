@@ -77,7 +77,7 @@ namespace WOOOF
             string test2;
             if (Value != null)
             {
-                if (this.Name == "Nida" && Name == "Running" && Value == "false")
+                if (this.Name == "move1") // && Name == "Running" && Value == "false")
                 {
                     test2 = "test";
                 }
@@ -111,7 +111,7 @@ namespace WOOOF
                str += " => ";
             }
 
-            if (Value.Length > 0 && str.Length > 0)
+            if (Value.Length > 0) // && str.Length > 0)
             {
                 return str + Name + " = " + Value;
             }
