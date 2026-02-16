@@ -15,19 +15,52 @@ using System.Xml.Linq;
 
 namespace WOOOF
 {
+    abstract internal class GDISQFont : BaseClass
+    {
+        public const int RIGHTSPACING = 15;
+        public const int VERTICALSPACING = 10;
+
+        public int FontSize { get; set; }
+
+        public Font theFont { get; set; }
+        public float TextHeight
+        {
+
+            get { return theFont.SizeInPoints + VERTICALSPACING; }
+        }
+        public abstract string GetString();
+
+
+        public int _textWidth;
+        public int TextWidth
+        {
+            get
+            {
+                string _name = GetString();
+                SizeF stringSize = new SizeF();
+                Graphics gfx = Graphics.FromImage(new Bitmap(1, 1));
+                stringSize = gfx.MeasureString(_name, theFont);
+                _textWidth = (int)stringSize.Width;
+                return _textWidth;
+            }
+            set { _textWidth = value; }
+        }
+        public int Width
+        {
+            get
+            {
+                return TextWidth + RIGHTSPACING;
+            }
+        }
+    }
+
     /// <summary>
     /// Display a SensualQuality.
     /// </summary>
-    internal class GDISQ : BaseClass
+    internal class GDISQ : GDISQFont
     {
-        const int RIGHTSPACING = 15;
-        const int VERTICALSPACING = 10;
-
-        public int FontSize { get; set; }
         public string Value { get; set; }
-
-        public Font theFont { get; set; }
-      
+        //public string Preposition { get; set; }
         public SensualQuality SQ { get; set; }
 
         public bool SQSetsOtherSQ {
@@ -41,7 +74,6 @@ namespace WOOOF
                         {
                             return true;
                         }
-                        
                     }
                 }
                 return false;
@@ -56,12 +88,10 @@ namespace WOOOF
                 {
                     if (SQ.SOParent.Name != SQ.SOEvent.Name)
                     {
-                        //
                         if (SQ.SOEvent.Name != SOName)
                         {
                             return true;
                         }
-
                     }
                 }
                 return false;
@@ -72,48 +102,20 @@ namespace WOOOF
         //the name of the SO which is displaying the SQ
         public string SOName { get; set; }
 
-        public float TextHeight
-        {
-
-            get { return theFont.SizeInPoints + VERTICALSPACING; }
-        }
-
-        int _textWidth;
-        public int TextWidth
-        {
-            get
-            {
-                string _name = GetString(false);
-                SizeF stringSize = new SizeF();
-                Graphics gfx = Graphics.FromImage(new Bitmap(1, 1));
-                stringSize = gfx.MeasureString(_name, theFont);
-                _textWidth = (int)stringSize.Width;
-                return _textWidth;
-            }
-            set { _textWidth = value; }
-        }
-
-        public int Width
-        {
-            get
-            {
-                return TextWidth + RIGHTSPACING;
-            }
-        }
-
         public GDISO? Parent { get; set; }
 
         public string GetString(bool blnHideEvents, string _SOName)
         {
             SOName = _SOName;
-            return GetString(blnHideEvents);
+            return GetString();
         }
         
 
-        public string GetString(bool blnHideEvents)
+        public override string GetString()
         {
             string str = SOevent;
             string test2;
+
             if (Value != null)
             {
                 if (this.Name == "move1") // && Name == "Running" && Value == "false")
@@ -138,7 +140,7 @@ namespace WOOOF
 
             if (Value.Length > 0) // && str.Length > 0)
             {
-                return str + Name + " = " + Value;
+                return str + Name + " " + SQ.Preposition + " " + Value;
             }
 
             return str += Name;
@@ -146,7 +148,6 @@ namespace WOOOF
         public void DrawString(float X, float Y, StringFormat format, string _SOName)
         {
             Color theColor = Color.Black;
-            //if(SOParent != null && SOParent.EndedBySO != null)
             if (SQSetsOtherSQ)
                 theColor = Color.DarkGray;
             if(Parent.Ended)
@@ -172,7 +173,7 @@ namespace WOOOF
                 }
             }
 
-            string str = GetString(false);
+            string str = GetString();
             if (str.Length > 0) 
                 Parent?.G?.DrawString(str, theFont, sb, X, Y, format);
         }
@@ -193,6 +194,7 @@ namespace WOOOF
             Parent = _Parent;
             Name = _name;
             Value = _value;
+            
             FontSize = _qualityfontsize;
             theFont = new Font("Verdana", FontSize);
             SOParent = _SOParent;
@@ -207,7 +209,6 @@ namespace WOOOF
                 }
                 else
                 {
-
                     SOevent = _event;
                 }
             }

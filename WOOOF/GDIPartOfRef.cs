@@ -8,9 +8,17 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace WOOOF
 {
-    internal class GDIPartOfRef : GDISQ
+    internal class GDIPartOfRef : GDISQFont
     {
-        public new void DrawString(float X, float Y, StringFormat format)
+        SensualObject SO;
+        GDISO Parent;
+
+        public override string GetString()
+        {
+            string str = "PartOf => " + SO.Name;
+            return str;
+        }
+        public void DrawString(float X, float Y, StringFormat format)
         {
             SolidBrush sb;
             sb = new SolidBrush(Color.CadetBlue);
@@ -23,22 +31,16 @@ namespace WOOOF
                 }
             }
 
-            Parent?.G?.DrawString(GetString(false), theFont, sb, X, Y, format);
+            Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
             sb.Dispose();
         }
-
-        public GDIPartOfRef(GDISO _Parent, string _name, string _value, string _event, int _qualityfontsize, SensualQuality? SQ) : base(_Parent, _name, _value, _event, _qualityfontsize, _Parent.SOParent, SQ)
+        public GDIPartOfRef(GDISO _Parent, SensualObject _SO, int _qualityfontsize)
         {
+            FontSize = _qualityfontsize;
+            Parent = _Parent;
+            SO = _SO;
             theFont = new Font("Verdana", FontSize);
-            SOevent = "PartOf";
-            if (Parent.Parent != null)
-            {
-                if (Name != Parent.Parent.Name)
-                {
-                    theFont = new Font("Arial", FontSize);
-                    
-                }
-            }
         }
+
     }
 }

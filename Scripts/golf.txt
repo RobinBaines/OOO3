@@ -112,18 +112,20 @@ RO_EVENT2 has property RO = true.
 SPLIT is a type of RO_EVENT2
 The SPLIT time is 2026-01-01_13:00:00.000.
 The SPLIT includes club_ball. 
+
+
 ENDOBJECT club_ball_contact
 ENDOBJECT club_ball
 ENDOBJECT RO_club_ball
 The SPLIT includes ball. 
 The SPLIT includes club. 
 
-
 The the_result is a type of RO_timeline.
-ENDOBJECT SPLIT
-ENDOBJECT RO_EVENT2  
+ 
 the_result includes ball
 the_result includes club
+ENDOBJECT SPLIT
+ENDOBJECT RO_EVENT2 
 ball has property v = 140
 
 

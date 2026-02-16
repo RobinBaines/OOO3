@@ -156,7 +156,7 @@ public static void DisplaySOs(string Parent)
             {
                 if (SO.ptrDerivedFrom != null)
                 {
-                    if (SO.ptrDerivedFrom.Name == _parent)
+                    if (SO.ptrDerivedFrom.Name == _parent || _parent == "*")
                     {
                         foreach (SensualQuality SQ in SO.qualities)
                         {
@@ -166,6 +166,15 @@ public static void DisplaySOs(string Parent)
                             if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)) )
                                 {
                                 qualities.Add(SQ);
+                                }
+                            }
+
+                            //20260206
+                            if (SQ.ValueIsSO)
+                            {
+                                if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)))
+                                {
+                                    qualities.Add(SQ);
                                 }
                             }
                         }
@@ -192,7 +201,7 @@ public static void DisplaySOs(string Parent)
                     sw.WriteLine(GENOBJECTNAME + " : Event {");
                     foreach (SensualQuality SQ in qualities)
                     {
-                        if (SQ.IsSO)
+                        if (SQ.IsSO || SQ.ValueIsSO)
                         {
                             //	2025-02-03 14:00:00.011 Quality Nida = playing Siena
                             int index = SQ.Value.IndexOf(" ");

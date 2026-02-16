@@ -8,6 +8,7 @@ namespace WOOOF
     using System;
     using System.ComponentModel;
     using System.Windows.Forms;
+    using static System.Net.Mime.MediaTypeNames;
 
     public partial class Form1 : Form
     {
@@ -16,6 +17,10 @@ namespace WOOOF
         bool blnScriptBeingProcessed = false;
         int ticks = 0;
         Thread? newThread;
+
+        /// <summary>
+        /// Initialise the Form1.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -23,15 +28,21 @@ namespace WOOOF
             timer1.Interval = 100;
             timer1.Enabled = true;
             timer1.Start();
-            ScriptName.Text = "c:\\Projects\\OOO3\\Scripts\\sc.txt";
+            ScriptName.Text = Properties.Settings.Default.ScriptFolder + Properties.Settings.Default.DefaultScript; 
             panel1.AutoScroll = true;
             BindingList<SensualObject> TheSOs = BuildSOs.TheSOs;
             TheSOs.ListChanged += HandleSOChanged;
         }
 
-        GDISO? LastNeighbourGDISO = null;
+
         GDISO? gDISO = null;
         bool blnPaintActive = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void HandleSOChanged(object? sender, ListChangedEventArgs? e)
         {
             HandleSOChanged(e.ListChangedType);
@@ -62,6 +73,7 @@ namespace WOOOF
 
                         GDISOs[_SO.Name].Ended = _SO.Ended;
                     }
+
                     foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
                     {
                         if (_SO.SOParent != null)
@@ -70,6 +82,11 @@ namespace WOOOF
                             {
                                 GDISOs[_SO.Name].Parent = GDISOs[_SO.SOParent.Name];
                                 GDISOs[_SO.SOParent.Name].ChildGDISOs.Add(GDISOs[_SO.Name]);
+                                string test;
+                                if (_SO.SOParent.Name == "club_ball")
+                                {
+                                    test = _SO.SOParent.Name;
+                                }
                             }
                         }
                     }
@@ -83,6 +100,8 @@ namespace WOOOF
                             GDISONeighbour = GDISO;
                         }
                         GDISO.IncludesRef.Clear();
+
+                        
                         GDISO.IsPartOfRef.Clear();
                         GDISO.IsReferencedBy.Clear();
                         GDISO.IsPreviousSOParents.Clear();
@@ -95,30 +114,36 @@ namespace WOOOF
                         }
                         foreach (OOOCL.SensualObject SO in GDISO.SO.IncludesReference.ToList())
                         {
-                            GDISO.AddIncludesRef(SO.Name);
+                            GDIIncludesRef SORef = new GDIIncludesRef(GDISO, SO, GDISO.QualityFontsize);
+                            GDISO.IncludesRef.Add(SORef);
+
                         }
                         foreach (OOOCL.SensualObject SO in GDISO.SO.IsPartOfReference.ToList())
                         {
-                            GDISO.AddPartOfRef(SO.Name);
+                            GDIPartOfRef SORef = new GDIPartOfRef(GDISO, SO, GDISO.QualityFontsize);
+                            GDISO.IsPartOfRef.Add(SORef);
                         }
                         foreach (OOOCL.SensualObject SO in GDISO.SO.ReferencedBy.ToList())
                         {
-                            GDISO.AddReferencedBy(SO.Name);
+                            GDIReferencedBy SORef = new GDIReferencedBy(GDISO, SO, GDISO.QualityFontsize);
+                            GDISO.IsReferencedBy.Add(SORef);
                         }
                         foreach (OOOCL.SensualObject SO in GDISO.SO.PreviousSOParents.ToList())
                         {
-                            GDISO.AddPreviousSOParents(SO.Name);
+                            GDIPreviousSOParents SORef = new GDIPreviousSOParents(GDISO, SO, GDISO.QualityFontsize);
+                            GDISO.IsPreviousSOParents.Add(SORef);
                         }
+
+
                     }
                 }
-              
+            
                 panel1.Invalidate();
             }
         }
 
-
         /// <summary>
-        /// Check if the Thread has finished and Invalidate.
+        /// Check if the Thread has finished and Invalidate the form to trigger a repaint.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -138,13 +163,18 @@ namespace WOOOF
                         blnScriptBeingProcessed = false;
                         blnPaintActive = false;
                         BuildSOs.TheSOs.ResetBindings();
-                       
                         panel1.Invalidate();
                         btnRunScript.Enabled = true;
                     }
                 }
             }
         }
+
+        /// <summary>
+        ///  Handle the RunScript button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void btnRunScript_Click(object sender, EventArgs e)
         {
@@ -157,7 +187,7 @@ namespace WOOOF
                     bottom_right_point.X = 0;
                     bottom_right_point.Y = 0;
                     button1.Location = new Point(panel1.Height - button1.Height, panel1.Width - button1.Width);
-                    LastNeighbourGDISO = null;
+
                     BuildSOs.SleepTime = (int)SleepTimer.Value;
                     btnRunScript.Enabled = false;
                     blnScriptBeingProcessed = true;
@@ -171,7 +201,7 @@ namespace WOOOF
 
         /// <summary>
         /// Run the script processing from a Thread so that it can be delayed when SOs and SQs are
-        /// added without interferring with the Form updates.
+        /// added without interfering with the Form updates.
         /// </summary>
         /// <param name="data"></param>
         public static void DoWork(object? data)
@@ -191,43 +221,56 @@ namespace WOOOF
                 sw.Close();
             }
         }
+
+        /// <summary>
+        /// Handle the SelectScript button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectScript_Click(object sender, EventArgs e)
         {
             OpenFileDialog fileDlg = new OpenFileDialog();
             fileDlg.Filter = "Txt File txt files (*.txt)|*.txt|All files (*.*)|*.*";
             fileDlg.DefaultExt = "txt|scr";
-            fileDlg.InitialDirectory = "c:\\Projects\\OOO3\\Scripts\\";
+            fileDlg.InitialDirectory = Properties.Settings.Default.ScriptFolder;
             if (fileDlg.InitialDirectory.Length == 0)
             {
                 fileDlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
             if (fileDlg.ShowDialog() == DialogResult.OK)
                 ScriptName.Text = fileDlg.FileName;
+
+            Properties.Settings.Default.ScriptFolder = fileDlg.FileName.Substring(0, fileDlg.FileName.LastIndexOf("\\")) + "\\";
+            Properties.Settings.Default.DefaultScript = fileDlg.SafeFileName;
+            Properties.Settings.Default.Save();
         }
 
+        /// <summary>
+        /// Repaint if the Form changes size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Layout(object sender, LayoutEventArgs e)
         {
             if (blnScriptBeingProcessed)
             {
-                gDISO = null;
-                blnPaintActive = true;
-                panel1.Invalidate();
+                if (blnPaintActive == false)
+                {
+                    gDISO = null;
+                    blnPaintActive = true;
+                    panel1.Invalidate();
+                }
+
             }
         }
 
-        bool blnStartDrawing = false;
-
+        /// <summary>
+        /// Paint the GDISO and store the bottom right point.
+        /// </summary>
+        /// <param name="GDISO"></param>
+        /// <param name="g"></param>
         private void GDISO_Paint(GDISO GDISO, Graphics g)
         {
-            if (gDISO != null)
-            {
-                if (gDISO.Name == GDISO.Name)
-                {
-                    blnStartDrawing = true;
-                }
-            }
-            if (blnStartDrawing)
-            {
                 //bottom_right_point is used to position a control on the form which
                 //turns on the scroll bars if they are necessary.
                 Point point = GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
@@ -240,16 +283,20 @@ namespace WOOOF
                 {
                     bottom_right_point.Y = point.Y;
                 }
-             }
         }
+
+        /// <summary>
+        /// Paint the objects which have no parent first.
+        /// Then paint the rest of the objects.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            if (blnStartDrawing == true) return;
-            blnStartDrawing = true;
             bottom_right_point.Y = bottom_right_point.X = 0;
             Graphics g = e.Graphics;
 
-            //Paint the GDISO which have no parent first.
+            //Paint the objects which have no parent first.
             foreach (GDISO GDISO in GDISOs.Values.ToList())
             {
                 if (GDISO.Parent == null)
@@ -266,13 +313,19 @@ namespace WOOOF
                 }
             }
             g.Dispose();
-            blnPaintActive = false;
-            blnStartDrawing = false;
+            
 
             //position this control on the bottom right to switch on the scroll bars.
             button1.Location = bottom_right_point;
+
+            blnPaintActive = false;
         }
 
+        /// <summary>
+        /// Repaint when the HideEvents checkbox changes state.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbHideEvents_CheckedChanged(object sender, EventArgs e)
         {
             HandleSOChanged(ListChangedType.Reset);

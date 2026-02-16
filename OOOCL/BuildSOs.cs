@@ -127,12 +127,12 @@ namespace OOOCL
         /// <param name="blnDateTime"></param>
         /// <param name="SOIncludedInSOName"></param>
         /// <returns></returns>
-        internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName)
+        internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName, ref string Preposition)
         {
             
             result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
             result = result.Replace(" a ", " ", StringComparison.OrdinalIgnoreCase);
-            result = result.Replace(" at ", " ");
+            //result = result.Replace(" at ", " ");
             result = result.Replace(" the ", " ", StringComparison.OrdinalIgnoreCase);
             if(result.Substring(0, 4).ToLower() == "the ")
                 result = result.Substring(4);
@@ -142,10 +142,11 @@ namespace OOOCL
             result = result.Replace(" is ", " ");
             result = result.Replace(" it ", " ");
             result = result.Replace(" has ", " ");
-            result = result.Replace("=", " ");
+            //result = result.Replace("=", " ");
+            
+            //replace a number of spaces with a single space.
             result = Regex.Replace(result, @"\s+", " ");
-            //result = result.Replace("   ", " ");
-            //result = result.Replace("  ", " ");
+
             int indexof = result.LastIndexOf('.');
             if (indexof == (result.Length - 1)) result = result.Remove(indexof, 1);
 
@@ -188,14 +189,20 @@ namespace OOOCL
                             {
                                 if(words[index] != "")
                                 {
-                                    //START_CLOCK has property time is 2026-01-01 12:32:00.000.
-                                    if (Value != "")
-                                        Value += " ";
-                                    index++;
-                                    Value += words[index];
-                                    //break;
+                                    if (Preposition == "")
+                                    {
+                                        index++;
+                                        Preposition = words[index];
+                                    }
+                                    else
+                                    {
+                                        //START_CLOCK has property time is 2026-01-01 12:32:00.000.
+                                        if (Value != "")
+                                            Value += " ";
+                                        index++;
+                                        Value += words[index];
+                                    }
                                 }
-                                //index++;
                             }
                             if (Value == "") Value = "true";
                         }
@@ -239,6 +246,8 @@ namespace OOOCL
                 {
                     if (SQ.Name == NewSO.Name)
                         SQ.IsSO = true;
+                    if (SQ.Value == NewSO.Name)
+                        SQ.ValueIsSO = true;
                 }
             }
         }
@@ -267,7 +276,7 @@ namespace OOOCL
             return true;
         }
 
-        public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName)
+        public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName, string Preposition)
         {
             string test2;
             if (SQName == "ends" && SQValue == "true")
@@ -287,7 +296,6 @@ namespace OOOCL
                 int index = TheSOs.IndexOf(SOEvent);
                 if (index < 0)
                 {
-                    //SetLastSO(SOEvent, SOEvent, _tabs);
                     TheSOs.Add(SOEvent);
                 }
                 
@@ -304,15 +312,14 @@ namespace OOOCL
                         if (index2 >= 0)
                         {
                             string test;
-                            if (TheSOs[index2].Name == "club_ball")
+                            if (SOEvent.Name == "SPLIT")
                             {
-                                test = TheSOs[index2].Name;
+                                test = SOEvent.Name;
                             }
                             if (IsNotAParent(TheSOs[index2]))
                             {
                                 SOInSO = new(TheSOs[index2]);
                                 SOInSO.SOParent = SOEvent;
-                                //TheSOs[index2].Ended = true;
                                 TheSOs.Add(SOInSO);
 
                                 //add the reference from the parent to the child and vice versa.
@@ -326,7 +333,7 @@ namespace OOOCL
                                 TheSOs[index2].AddIsPartOfReference(SOEvent);
                             }
 
-                            TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
+                           // TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
                         }
                         else
                         {
@@ -368,16 +375,17 @@ namespace OOOCL
             if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
             {
                 string test;
-                if (SOEvent.Name == "I_SEE_NIDA_BARKING" && SQName == "Running" && SQValue == "false")
+                //SOEvent.Name == "I_SEE_NIDA_BARKING" &&
+                if (SQName == "Barking" && SQValue == "Me")
                 {
-                    test = "";
+                    test = Preposition;
                 }
 
                 if (Context != null)
                 {
-                    WriteQuality( SOEvent, Context, SQName, SQValue, msecs);
+                    WriteQuality( SOEvent, Context, SQName, SQValue, msecs, Preposition);
                 }
-                else WriteQualityNatural(SOEvent, SQName, SQValue, msecs);
+                else WriteQualityNatural(SOEvent, SQName, SQValue, msecs, Preposition);
             }
 
             if (SOEvent != null)
@@ -508,7 +516,7 @@ namespace OOOCL
                     //Move default qualities from the Child (LastSO) to the Parent (ptrDerivedFrom). 
                     SO.MoveQualities(SO.ptrDerivedFrom, dateTime.AddMilliseconds(msecs));
                 }
-                SO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
+                SO.AddQuality(SOEvent, INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs), "");
             }
         }
         internal static void InheritSensualObject(SensualObject SOEvent, SensualObject SO, string Inherits, int msecs)
@@ -524,7 +532,7 @@ namespace OOOCL
                 string extRef = "";
                 if (SO.Name != SOEvent.Name)
                     extRef = "> " + SO.Name + " ";
-                SO.AddQuality(SOEvent, extRef + INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs));
+                SO.AddQuality(SOEvent, extRef + INHERITSO + " " + Inherits, "True", "", dateTime.AddMilliseconds(msecs), "");
             }
         }
 
@@ -534,7 +542,7 @@ namespace OOOCL
         /// <param name="SOEvent"></param>
         /// <param name="SQName"></param>
         /// <param name="SQValue"></param>
-        internal static void WriteQualityNatural(SensualObject TheSO, string SQName, string SQValue, int msecs)
+        internal static void WriteQualityNatural(SensualObject TheSO, string SQName, string SQValue, int msecs, string Preposition)
         {
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
@@ -550,13 +558,13 @@ namespace OOOCL
                         SOFrom = null;
 
                 if (SOFrom == null)
-                    TheSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+                    TheSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs), Preposition);
                 else
-                    TheSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+                    TheSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs), Preposition);
             }
             else
             {
-                TheSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs));
+                TheSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs), Preposition);
                 TheSO?.AddIncludesReference(SOOfValue);
             }
         }
@@ -568,7 +576,7 @@ namespace OOOCL
         /// <param name="SOEvent"></param>
         /// <param name="SQName"></param>
         /// <param name="SQValue"></param>
-        internal static void WriteQuality(SensualObject LastSO, SensualObject SOEvent, string SQName, string SQValue, int msecs)
+        internal static void WriteQuality(SensualObject LastSO, SensualObject SOEvent, string SQName, string SQValue, int msecs, string Preposition)
         {
             SensualObject? SOOfValue;
             SOOfValue = GetSO(SQValue);
@@ -581,13 +589,13 @@ namespace OOOCL
                         SOFrom = null;
 
                 if (SOFrom == null)
-                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+                    LastSO?.AddQuality(SOEvent, SQName, SQValue, "", dateTime.AddMilliseconds(msecs), Preposition);
                 else
-                    LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs));
+                    LastSO?.AddQuality(SOEvent, SOFrom, SQName, SQValue, "", dateTime.AddMilliseconds(msecs), Preposition);
             }
             else
             {
-                LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs));
+                LastSO?.AddQuality(SOEvent, SQName, SQValue, "", SOOfValue, dateTime.AddMilliseconds(msecs), Preposition);
                 LastSO?.AddIncludesReference(SOOfValue);
             }
         }
@@ -604,7 +612,7 @@ namespace OOOCL
             //A quality Nida = sleeping
             if (SQName.Length > 0 && SOEvent != null && LastSO != null)
             {
-                WriteQuality(SOEvent, LastSO,  SQName, SQValue, msecs);
+                WriteQuality(SOEvent, LastSO,  SQName, SQValue, msecs, "");
             }
 
             //An SO is created or referenced MeetSiena : Event {
@@ -720,6 +728,7 @@ namespace OOOCL
                             string Inherits = "";
                             string SQName = "";
                             string SQValue = "";
+                             string Preposition = "";
                             bool StartOfObject = false;
                             bool EndOfObject = false;
                             bool blnDateTime = false;
@@ -727,10 +736,10 @@ namespace OOOCL
                             {
                                 if (blnNaturalText)
                                 {
-                                    line = GetNameNaturalText(line, ref SOName, ref Inherits, ref SQName, ref SQValue,  ref blnDateTime, ref SOIncludedInSOName);
+                                    line = GetNameNaturalText(line, ref SOName, ref Inherits, ref SQName, ref SQValue,  ref blnDateTime, ref SOIncludedInSOName, ref Preposition);
                                     if (blnDateTime == false)
                                     {
-                                        ProcessNaturalSO(msecs, line, SOName, Inherits, SQName, SQValue,  SOIncludedInSOName);
+                                        ProcessNaturalSO(msecs, line, SOName, Inherits, SQName, SQValue,  SOIncludedInSOName, Preposition);
                                     }
                                 }
                                 else

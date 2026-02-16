@@ -7,8 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OOOCL
 {
@@ -282,8 +285,6 @@ namespace OOOCL
             }
         }
 
-        
-
         /// <summary>
         /// Add a quality SQ to this SO and if recurse = true add a copy of the SQ to the Event.
         /// </summary>
@@ -302,10 +303,12 @@ namespace OOOCL
                 //Add a quality to this SO.
                 qualities.Add(SQ);
 
+                //Remove the following as there is too much noise on the screen when updating after
+                //every change of a quality.
                 //if (qualities.Count%3 == 0)
                 {
-                    NotifyPropertyChanged();
-                    Thread.Sleep(BuildSOs.SleepTime);
+                  //  NotifyPropertyChanged();
+                  //  Thread.Sleep(BuildSOs.SleepTime);
                 }
 
                 //make a copy of the SQ in the Event if this is not the Event.
@@ -321,26 +324,26 @@ namespace OOOCL
                 }
             }
         }
-        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, DateTime _dt, bool recurse)
+        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, DateTime _dt, bool recurse, string Preposition)
         {
-            SensualQuality? SQ = new(_SOEvent, this, false, _name, _value, _description, _dt);
+            SensualQuality? SQ = new(_SOEvent, this, false, _name, _value, _description, _dt, Preposition);
             AddQuality(SQ, recurse);
         }
-        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, DateTime _dt)
+        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, DateTime _dt, string Preposition)
         {
-            SensualQuality? SQ = new(_SOEvent, this, false, _name, _value, _description, _dt);
+            SensualQuality? SQ = new(_SOEvent, this, false, _name, _value, _description, _dt, Preposition);
             AddQuality(SQ, true);
         }
 
         //if the Value is an SO.
-        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, SensualObject _SOOfValue, DateTime _dt)
+        public virtual void AddQuality(SensualObject _SOEvent, string _name, string _value, string _description, SensualObject _SOOfValue, DateTime _dt, string Preposition)
         {
-            SensualQuality? SQ = new(_SOEvent, this, _name, _value, _description, _SOOfValue, _dt);
+            SensualQuality? SQ = new(_SOEvent, this, _name, _value, _description, _SOOfValue, _dt, Preposition);
             AddQuality(SQ, true);
         }
 
         /// <summary>
-        /// 
+        /// Called if SOFrom is defined meaning that the SQ.Name refers to an object.
         /// </summary>
         /// <param name="_SOEvent"></param>
         /// <param name="_SOFrom"></param>
@@ -348,10 +351,10 @@ namespace OOOCL
         /// <param name="_value"></param>
         /// <param name="_description"></param>
         /// <param name="_dt"></param>
-        public virtual void AddQuality(SensualObject _SOEvent, SensualObject _SOFrom, string _name, string _value, string _description, DateTime _dt)
+        public virtual void AddQuality(SensualObject _SOEvent, SensualObject _SOFrom, string _name, string _value, string _description, DateTime _dt, string Preposition)
         {
             AddIncludesReference(_SOFrom);
-            SensualQuality? SQ = new(_SOEvent,this, true, _name, _value, _description, _dt);
+            SensualQuality? SQ = new(_SOEvent, this, true, _name, _value, _description, _dt, Preposition);
             AddQuality(SQ, true);
         }
 
@@ -370,7 +373,7 @@ namespace OOOCL
                 //add the quality to DerivedFrom if it is not already in DerivedFrom.
                 if (index < 0 && SQ.SOEvent != null && SQ.SOParent == this && SQ.IsSO == false)
                 {
-                    DerivedFrom.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false);
+                    DerivedFrom.AddQuality(SQ.SOEvent, SQ.Name, "True", SQ.Description, _dt, false, "");
                     if(SQ.Value == "True")
                         MovedQualities.Add(SQ);
                 }
@@ -389,7 +392,25 @@ namespace OOOCL
             this.SOParent = Parent;
         }
 
+        /// <summary>
+        /// Get the name of the top level parent.
+        /// </summary>
+        /// <param name="SO"></param>
+        /// <returns></returns>
+        public string NewName(SensualObject SO)
+        {
+            string strNewName = "";
+            if (SO.SOParent != null)
+                strNewName = NewName(SO.SOParent);
+            else
+                strNewName= "(" + SO.Name + ")";
+            return strNewName;
+        }
 
+        /// <summary>
+        /// Copy an SO without including the references.
+        /// </summary>
+        /// <param name="Source"></param>
         public SensualObject(SensualObject Source)
         {
             if (iDepth == 0)
@@ -400,9 +421,14 @@ namespace OOOCL
             {
                 EndedBySO = Source.EndedBySO;
             }
-                
 
+           string test;
+            if (Source.Name.Length >= 3 && Source.Name.Substring(0,3) == "dog")
+            {
+                test = Source.Name;
+            }
 
+            //do not copy the references.
             //foreach (SensualObject SO in Source.IncludesReference)
             //{
             //    IncludesReference.Add(SO);
@@ -415,17 +441,32 @@ namespace OOOCL
             //{
             //    IsPartOfReference.Add(SO);
             //}
+
             foreach (SensualQuality SQ in Source.qualities)
             {
                 qualities.Add(SQ);
             }
-            if (Source.SOParent != null)
-                Source.Name = Source.Name + "(" + Source.SOParent.Name + ")";
-            else
-                Source.Name = Source.Name + "(" + Source + ")";
-            
+
+            string strNewName = Source.Name + NewName(Source);
+            SensualObject _SO = new(strNewName, new DateTime(2025, 01, 01, 12, 0, 0, 0), null);
+            while (BuildSOs.TheSOs.IndexOf(_SO) >= 0)
+            {
+                strNewName = strNewName + "_";
+                _SO.Name = strNewName;
+            }
+                
+
+            Source.Name = strNewName;
+
+ 
+            if (Source.Name == "ball(SPLIT)")
+            {
+                test = Source.Name;
+            }
+
             Source.Ended = true;
 
+            //identify children of the Source and replicate in the copy.
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
                 if (SO.SOParent == Source) // && SO.Name != Source.Name)
@@ -434,20 +475,22 @@ namespace OOOCL
                     SensualObject newSO = new SensualObject(SO);
                     newSO.SOParent = this;
                     iDepth--;
+
+                    //do not add to TheSOs here because the collection will change creating an exeception.
                     TheNewSOs.Add(newSO);
                 }
             }
 
+           
+
             if (iDepth == 0)
             {
-                foreach (SensualObject SO in TheNewSOs)
+                //add in the reverse order as this matters for the presentation in the form.
+                for (int i = TheNewSOs.Count - 1; i >= 0; i--)
                 {
-                    BuildSOs.TheSOs.Add(SO);
+                    BuildSOs.TheSOs.Add(TheNewSOs[i]);
                 }
             }
-
-
-
         }
     }
 

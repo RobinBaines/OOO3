@@ -1,9 +1,9 @@
-WOOOF animates creation of an object model using a scenario.
+WOOOF converts a scenario into an object model.
 A scenario is a sequence of sentences in a text file written in a simple language.
 The object model is shown as nested rectangles with properties in text and a network of relationships. 
-A text file is produced with the objects and experimental output representing Random walks through the model and queries on parts of the model.
+A text file is produced with the objects and experimental output representing Random walks through the model and queries.
 
-To use:
+To use (only on Windows):
 	Download the executable files and several examples of scenarios from https://github.com/RobinBaines/OOO3/releases/tag/v1.0.4
 	Run WOOOF.exe from the command line.
 	Select a scenario, for example drops.txt, and press command button 'run script'.
@@ -17,48 +17,50 @@ Several Object Oriented Ontology (OOO) ideas are:
 OOO speculates about the existence of Real Objects (ROs) with Real Qualities (RQs) and Sensual Objects (SOs) with Sensual Qualities (SQs).
 A flat ontology, implying that interaction between inanimate objects without an observer is valid. 
 Vicarious causation: an SO is needed to facilitate interaction between objects. 
-Undermining which means that (real) objects cannot be reduced to only their parts. 
-Overmining which means that an object is less than its effects. 
+Undermining; which means that (real) objects cannot be reduced to only their parts. 
+Overmining; which means that an object is less than its effects. 
 
 Several OOP concepts are supported in WOOOF: Inheritance, visibility of properties, containment.
 
 These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt and chess.txt.
-Aside from the question of whether they are related to reality they have been useful in directing 
-an iterative series of experiments. Alternatives to the approach in drops.txt, golf.txt, dogs.txt and chess.txt are possible.
-An alternative but in my opinion less convincing is in chess_alternative.txt.
+They have been useful in directing an iterative series of experiments. 
+Alternatives to the approach in drops.txt, golf.txt, dogs.txt and chess.txt are possible.
+An alternative, but in my opinion less convincing one, is in chess_alternative.txt.
 
 Several conventions have been used in the scripts: 
 
 A Real Object has prefix RO_.
 
 INHERITANCE
-WOOOF supports inheritance using the command 'type' or 'type of'. 
-Inheritance has been used in 2 mutually exclusive ways:
-1. One or more SO can inherit from an RO. An SO is the way a RO presents itself to the world. Inheritance works well because an SO 
-may inherit some but not all of the RO properties and may add new properties not present in the RO. There may also be multiple SO derived
-from the same RO as the context changes.
-2. An SO can inherit from a generic SO within another SO. For example in the dogs.txt script the dog called My_Nida 
-is an SO contained within an SO called Me. My_Nida inherits from the SO dog. The SO dog represents my knowledge of dogs 
-and that I know My_Nida is a type of dog. This 2nd way of inheriting is confined to the representation
-of knowledge in an SO representing an observer. 
+WOOOF supports inheritance using the command 'type' or 'type of'.
+One or more SO can inherit from an RO. Inheritance works well because an SO 
+may inherit some but not all of the RO properties and may add new properties not present in the RO. 
 
-	My_Nida is a type of dog
+
+In some experiments on representing knowledge of an observer, an SO inherits from a generic SO. 
+For example in the dogs.txt script the dog called My_Nida could have inherited from SO 'dog'. 
+The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
+However in the dogs.txt script it is more convincing to let My_Nida inherit from RO_Nida.
+While multiple inheritance could be implemented (My_Nida is a type of dog and a type of RO_Nida), containment has been used.
+	
+	dog includes My_Nida
+	
+	and 
+	
+	My_Nida is a type of RO_Nida.
+
+If a 2nd dog should arrive on the scene then it can also be included in dog.
 
 VISIBILITY OF PROPERTIES
 In OOP properties of an inherited class may be Private and therefore not accessible from the inheriting class.  
 Related is that Public Properties in an inherited class are accessible from the inheriting class. 
 At this time there is no explicit private/public modifier in WOOOF however something similar may be implied.
 
-	dog has the property BackLeftLeg
-	dog has the property Tail
-	My_Nida is a type of dog
-	dog has the property Tail = Short
-
 CONTAINMENT
 Containment is supported using the command Includes.
 
 	Me Includes dog
-	Me Includes My_Nida 
+	dog includes My_Nida
 	
 TIME and EVENTS
 Time is represented from left to right and has 2 implementations:
@@ -84,4 +86,14 @@ INIT
 The SO INIT is derived from RO_Event and sets up the initial Objects. This convention avoids having to describe how each 
 object has come into existence. For example it would be tedious to have to describe how the 2 drops in drops.txt came into 
 existence via a series of events involving nucleation, condensation and collisions.
+
+Inanimate interaction and Observers.
+The drops and golf scripts represent ineteractions without an explicit observer.
+Having made the drops and golf scripts it seemed natural to include an SO in the MeetNida timeline. This SO is called Nida.
+
+	MeetNida includes Nida
+	Nida is a type of RO_Nida
+	
+However the dogs script goes a step further by introducing an observer who also instantiates a Nida SO called My_Nida.
+This SO resides in the brain of the observer. It seems most logical to let my_Nida inherit from RO_Nida and not for example from the SO Nida.
 

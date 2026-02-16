@@ -2,8 +2,9 @@
 DisplaySOs *	//display all the SOs with SQs.
 //RandomWalk 30
 NaturalText     //this script is defined using the more natural text language.
-GenerateScript event
+GenerateScript *
 
+//initialise the real objects.
 INIT is a type of RO_EVENT.
 INIT Includes RO_timeline
 INIT Includes RO_EVENT
@@ -12,70 +13,98 @@ RO_EVENT has property time = 2026-01-01 12:32:00.000.
 INIT Includes RO_Nida.
 INIT Includes RO_Me.
 RO_Nida has property RO = true.
+RO_Nida has property Sitting = true.
 RO_Me has property RO = true.
 
-//add SOs of Me and Nida to the time_line.
+//Set up the initial steady state with Nida Sitting.
 MeetNida is a type of RO_timeline. 
 The MeetNida has the property place and it is Bakkeveen. 
 The MeetNida has the property weather and it is wet.
-MeetNida includes Me
-Me is a type of RO_Me
+MeetNida includes RO_Nida
 MeetNida includes Nida
+MeetNida includes Me
 Nida is a type of RO_Nida
-Nida has property Running = true
+Me is a type of RO_Me
+Nida has property  Sitting = true
 
-//Add my SO of Nida. Use inheritance to represent my SO hierarchy.
-//Should my prior knowledge be in RO_Me? Or in the SO Me?
+//Define my idea of a generic dog.
 Me includes dog
 dog has the property 	FrontLeftLeg 
 dog has the property 	BackLeftLeg
 dog has the property 	FrontRightLeg
 dog has the property 	BackRightLeg
-Me includes My_Nida
-My_Nida is a type of dog
+//Add my SO of Nida within My generic dog.
+dog includes My_Nida
+//And use inheritance to indicate that My_Nida is derived from the RO_Nida.
+My_Nida is a type of RO_Nida
+//And in this initial state show that I have realised Nida is sitting.
+My_Nida has property Sitting = true
 
-
-I_SEE_NIDA_RUNNING is a type of RO_EVENT
-I_SEE_NIDA_RUNNING includes Nida
-I_SEE_NIDA_RUNNING includes Me
-I_SEE_NIDA_RUNNING has property time = 2026-01-01 12:35:00.000.
-//Nida has property Running = true
-My_Nida has property Running = true
-//ENDOBJECT Nida
+//Nida starts running.
+//The time it takes for Nida to start running could be broken up into several events but to keep things simple 
+//NIDA_RUNS is an instantaneous event associated with Nida starting to run and therefore no longer sitting.
+//The relevant point is that the observer Me does not register that Nida is running.
+//And for this reason Me is not included in the event.
+NIDA_RUNS is a type of RO_EVENT
+NIDA_RUNS includes RO_Nida
+NIDA_RUNS includes Nida
+NIDA_RUNS has property time = 2026-01-01 12:35:00.000.
+RO_Nida has property Sitting = false
+Nida has property Sitting = false
+RO_Nida has property Running = true.
+Nida has property  Running = true
 ENDOBJECT MeetNida
 
-MeetNida' is a type of RO_timeline. 
-MeetNida' includes Nida
-MeetNida' includes Me
-//Nida has property Running = true
-ENDOBJECT I_SEE_NIDA_RUNNING
+//We enter a steady state in which Nida is running but the observer has not realised that yet.
+Nida_running is a type of RO_timeline. 
+Nida_running includes RO_Nida
+Nida_running includes Nida
+Nida_running includes Me
+ENDOBJECT NIDA_RUNS
 
+//The observer realises that Nida is running.
+SEE_NIDA_RUN is a type of RO_EVENT
+SEE_NIDA_RUN includes Me
+SEE_NIDA_RUN has property time = 2026-01-01 12:35:00.000.
+My_Nida has property Running = true
+My_Nida has property Sitting = false
+ENDOBJECT Nida_running
 
+//A steady state is reached with Nida running and the observer is also aware of that.
+See_Nida_running is a type of RO_timeline.
+See_Nida_running includes RO_Nida 
+See_Nida_running includes Nida
+See_Nida_running includes Me
+ENDOBJECT SEE_NIDA_RUN
+
+//Nida starts barking.
 NIDA_BARKS is a type of RO_EVENT
+NIDA_BARKS includes RO_Nida
 NIDA_BARKS includes Nida
-NIDA_BARKS includes Me
-
-ENDOBJECT MeetNida'
+//NIDA_BARKS includes Me
+RO_Nida has the property Barking = true
 Nida has the property Barking = true
-//Nida has property Running = true
+ENDOBJECT See_Nida_running
 
-
-MeetNida'' is a type of RO_timeline. 
-MeetNida'' includes Nida
-MeetNida'' includes Me
-//Nida has property Running = true
-//Nida has property Barking = true
+//We enter a steady state in which Nida is running and barking but the observer has not realised that she is barking.
+Nida_barking is a type of RO_timeline. 
+Nida_barking includes RO_Nida
+Nida_barking includes Nida
+Nida_barking includes Me
 ENDOBJECT NIDA_BARKS
 
+//The observer realises that Nida is barking.
+SEE_NIDA_BARK is a type of RO_EVENT
+SEE_NIDA_BARK includes Me
+My_Nida has property Barking at Me
+ENDOBJECT Nida_barking
 
-I_SEE_NIDA_BARKING is a type of RO_EVENT
-I_SEE_NIDA_BARKING includes Nida
-I_SEE_NIDA_BARKING includes Me
-Nida has property Running = false
-//Nida has property Barking = true
-My_Nida has property Barking = true
-
-ENDOBJECT MeetNida''
+//A steady state is reached with Nida running and barking and the observer is also aware of that.
+See_Nida_barking is a type of RO_timeline.
+See_Nida_barking includes RO_Nida 
+See_Nida_barking includes Nida
+See_Nida_barking includes Me
+ENDOBJECT SEE_NIDA_BARK
 
 
 

@@ -85,10 +85,12 @@ namespace WOOOF
                 {
                     if ((SQ.Width) > _width) _width = SQ.Width;
                 }
-                foreach (GDIIncludesRef SQ in IncludesRef)
+
+                foreach (GDIIncludesRef SO in IncludesRef)
                 {
-                    if ((SQ.Width) > _width) _width = SQ.Width;
+                    if ((SO.Width) > _width) _width = SO.Width;
                 }
+
                 foreach (GDIPartOfRef SQ in IsPartOfRef)
                 {
                     if ((SQ.Width) > _width) _width = SQ.Width;
@@ -128,9 +130,9 @@ namespace WOOOF
 
                 if (blnHideEvents == false)
                 {
-                    foreach (GDIIncludesRef SQ in IncludesRef)
+                    foreach (GDIIncludesRef SO in IncludesRef)
                     {
-                        _height += ((int)SQ.TextHeight);
+                        _height += ((int)SO.TextHeight);
                     }
                 }
 
@@ -232,43 +234,10 @@ namespace WOOOF
             GDISQ SQ = new GDISQ(this, CLSQ.Name, CLSQ.Value, soevent, QualityFontsize, CLSQ.SOEvent,CLSQ);
             qualities.Add(SQ);
         }
-
-        public void AddIncludesRef(string _name)
-        {
-            string soevent = "";
-            GDIIncludesRef SQ = new GDIIncludesRef(this, _name, "", soevent, QualityFontsize);
-
-            IncludesRef.Add(SQ);
-        }
-
-        public void AddPartOfRef(string _name)
-        {
-            string soevent = "";
-            GDIPartOfRef SQ = new GDIPartOfRef(this, _name, "", soevent, QualityFontsize, null);
-            IsPartOfRef.Add(SQ);
-        }
-
-        public void AddReferencedBy(string _name)
-        {
-            string soevent = "";
-            GDIReferencedBy SQ = new GDIReferencedBy(this, _name, "", soevent, QualityFontsize, null);
-            IsReferencedBy.Add(SQ);
-        }
-
-        public void AddPreviousSOParents(string _name)
-        {
-            string soevent = "";
-            GDIPreviousSOParents SQ = new GDIPreviousSOParents(this, _name, "", soevent, QualityFontsize, null);
-
-            IsPreviousSOParents.Add(SQ);
-        }
-
         public void AddEndedBySO(SensualObject _SO)
         {
             EndedBySO = new(this, "ENDED BY: " + _SO.Name, "", "", QualityFontsize, null, null);
         }
-
-
         private void CalculateY()
         {
             
@@ -296,9 +265,9 @@ namespace WOOOF
 
                     if (blnHideEvents == false)
                     {
-                        foreach (GDIIncludesRef SQ in Parent.IncludesRef.ToList())
+                        foreach (GDIIncludesRef SO in Parent.IncludesRef.ToList())
                         {
-                            y += ((int)SQ.TextHeight);
+                            y += ((int)SO.TextHeight);
                         }
                     }
 
@@ -397,9 +366,9 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
 
                 if (blnHideEvents == false)
                 {
-                    foreach (GDIIncludesRef SQ in IncludesRef.ToList())
+                    foreach (GDIIncludesRef SO in IncludesRef.ToList())
                     {
-                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
+                        SO.DrawString(rect.X, rect.Y + i * SO.TextHeight, format1);
                         i++;
                     }
                 }
