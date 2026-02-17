@@ -129,8 +129,11 @@ namespace OOOCL
         /// <returns></returns>
         internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName, ref string Preposition)
         {
-            
-            result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
+
+            //result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
+            if (result.Substring(0, 3).ToLower() == "an ")
+                result = result.Substring(3);
+
             result = result.Replace(" a ", " ", StringComparison.OrdinalIgnoreCase);
             //result = result.Replace(" at ", " ");
             result = result.Replace(" the ", " ", StringComparison.OrdinalIgnoreCase);

@@ -94,6 +94,6 @@ Having made the drops and golf scripts it seemed natural to include an SO in the
 	MeetNida includes Nida
 	Nida is a type of RO_Nida
 	
-However the dogs script goes a step further by introducing an observer who also instantiates a Nida SO called My_Nida.
-This SO resides in the brain of the observer. It seems most logical to let my_Nida inherit from RO_Nida and not for example from the SO Nida.
+The dogs script goes a step further by introducing an observer who also instantiates a Nida SO called My_Nida.
+This SO resides in the brain of the observer. It seems most logical to let My_Nida inherit from RO_Nida and not for example from the SO Nida.
 
