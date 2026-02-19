@@ -240,9 +240,12 @@ namespace WOOOF
             if (fileDlg.ShowDialog() == DialogResult.OK)
                 ScriptName.Text = fileDlg.FileName;
 
-            Properties.Settings.Default.ScriptFolder = fileDlg.FileName.Substring(0, fileDlg.FileName.LastIndexOf("\\")) + "\\";
-            Properties.Settings.Default.DefaultScript = fileDlg.SafeFileName;
-            Properties.Settings.Default.Save();
+            if(fileDlg.FileName.Length> 0)
+            {
+                Properties.Settings.Default.ScriptFolder = fileDlg.FileName.Substring(0, fileDlg.FileName.LastIndexOf("\\")) + "\\";
+                Properties.Settings.Default.DefaultScript = fileDlg.SafeFileName;
+                Properties.Settings.Default.Save();
+            }
         }
 
         /// <summary>

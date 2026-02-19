@@ -101,8 +101,7 @@ A FIRST CONCLUSION
 The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.
 The division of the timeline into 'timelines' with finite duraction and instantaneous events has the potential for introducing ever more detail.
 In a similar manner objects can be split into ever more detail potentially down to atoms and further.
-For this reason the object approach to ontology seems to be driven by an analytical approach: 
-The degree to which time and objects are detailed depends on the aim of analysis.
+The aim of analysis seems to the drive the degree to which time and objects are detailed.
  
   
 
