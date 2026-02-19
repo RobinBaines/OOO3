@@ -1,358 +1,300 @@
-GenerateScript Event
-DisplaySOs OOO_Analysis
-DisplaySOs *
+//Several commands:
+DisplaySOs *	//display all the SOs with SQs.
 RandomWalk 30
+NaturalText     //this script is defined using the more natural text language.
+//GenerateScript *
+QuerySOs Battle
 
-//DisplaySOs Confed_victory
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+RO_timeline has property Place
+RO_timeline has property Weather
+RO_timeline has property time = 2026-01-01 12:32:00.000.
 
 
-QuerySOs Battle, General
+INIT Includes EVENT
 
-Time 2025-01-01 12:00:00.000
+EVENT has property Place
+EVENT has property Weather
+EVENT has property time = 2026-01-01 12:32:00.000.
 
 
-///////////////////////////////////////////
-//An SO is defined by a name followed by {.
-	Event {
-	Place
-	Weather
-	End
-	}
+INIT Includes Battle.
+Battle is a type of EVENT
+Battle has property CWSAC	//Civil War Sites Advisory Commission  Battle Rating A = Decisive - D
+Battle has property State
 
-//////////////////////////////////////
-//Define some inheritable objects in an Init Event.
-Init : Event {
+INIT Includes Confed_victory.
+Confed_victory is a type of Battle
 
-	Battle : Event {
-	CWSAC	//Civil War Sites Advisory Commission  Battle Rating A = Decisive - D
-	Place
-	State
-	Weather
-	End
-	}
-	
-	Confed_victory : Battle {
-	}
-	
-	Union_victory : Battle {
-	}
-	
-	Inconclusive : Battle {
-	}	
-	
-	Person : Animal {
-		LeftLeg
-		RightLeg
-		LeftArm
-		RightArm
-	}
-	
-	General : Person {
-		 
-		}
-		
-	Confed : General {
-		 
-		}
-		
-	Union : General {
-	 
-		}
+INIT Includes Union_victory.
+Union_victory is a type of Battle
 
-	President : Person {
-		 
-		}
-		
-	Executive Order  {
-		}		
-		
-}	
+INIT Includes Inconclusive.
+Inconclusive is a type of Battle
 
-//////////////////////////////////////
-//Create the main Event called ACW (American Civil War). 
-//Because I already new something about this war I have used https://en.wikipedia.org/wiki/List_of_American_Civil_War_battles to create an ACW SO with referenced 
-//SOs as a very abbreviated summary.	
-//The CWSAC (the Civil War Sites Advisory Commission ) rating is as follows:  A – Decisive, Class B – Major, Class C – Formative, Class D – Limited
-//There are about 45 'A' (decisive) battles in the list on the above site!
+INIT Includes Person.
+INIT Includes General.
+General is a type of Person
 
-ACW : Event {
-Place = USA
-Time 1861-04-12 17:00:00.000
+INIT Includes General.
+General is a type of Person
+INIT Includes Confed.
+Confed is a type of General
+
+INIT Includes Union.
+Union is a type of General
+
+
+INIT Includes President.
+President is a type of Person
+
+INIT Includes Executive_Order.
+
+
+ACW is a type of RO_timeline. 
+ACW has property Place = USA
 
 	//A list of generals. Their exact rank changed during the war and I have not tried to summarize accurately. 
-	Beauregard : Confed {
-		}
-	Price : Confed {
-		}
-	McCulloch : Confed {
-		}	
-	Jackson : Confed {
-		}
-	Buckner : Confed {
-		}
-	Johnston : Confed {
-		}	
-	Bragg	 : Confed {
-		}
-	Lee : Confed {
-		}
-	Pemberton : Confed {
-		}	
+ACW Includes Beauregard 
+	Beauregard is a type of Confed	
 		
-	Anderson : Union {
-		}	
-	McDowell : Union {
-		}		
-	Sturgis : Union {
-		}
-	Lyon : Union {
-		}
-	Grant : Union {
-		}	
-	Buell : Union {
-		}		
-	McClellan : Union {
-		}
-	Hooker : Union {
-		}
-	Thomas : Union {
-		}	
-	Meade : Union {
-		}	
-						
-
-	//Presidents. 			
-	Time 1857-03-04 17:00:00.000	
-	Buchanen : President	{
-	InOffice = 1857-1861
-	NrPresident = 15th
-	End
-	Time 1861-03-04 17:00:00.000
-	}
+ACW Includes Price  
+Price is a type of Confed
+		
+ACW Includes 	McCulloch  
+McCulloch is a type of Confed		
+		
+ACW Includes 	Jackson  
+Jackson is a type of Confed
+		
+ACW Includes 	Buckner  
+Buckner is a type of Confed
+		
+ACW Includes 	Johnston  
+Johnston is a type of Confed
 			
-	Time 1860-11-06 17:00:00.000		
-	Lincoln : President	{
-	InOffice =  1861-1865
-	NrPresident = 16th
-	End
-	Time 1865-04-15 17:00:00.000
-	}
-}
+ACW Includes 	Bragg	  
+Bragg is a type of Confed
+		
+ACW Includes 	Lee  
+Lee is a type of Confed
+		
+ACW Includes 	Pemberton 
+Pemberton is a type of Confed 
 
 
-//ACWBattles : Event {
-	//Place = USA
-	//A list of battles.	
-	Time 1861-04-12 17:00:00.000	
-	Fort Sumter : Confed_victory {
-			CWSAC = Decisive
-			Place = Charleston
-			State = South Carolina
-			General = Beauregard
-			General = Anderson
-			//use of nested objects.
-			Day1 : Event {
-				Weather = good
-				Hour1 : Event {
-								Weather = raining
-								Minute1 : Event {
-									Weather = dryer
-									}
-								}
-			}
-			Day2 : Event {
-			Weather = sunny
-			}
-		Time 1861-04-13 17:00:00.000
-			End = Yes
-		}
-
-	//a nested object called (Fort Sumter.Day1.Hour1) Minute1 can be referenced from another object.
-	Minute1 {
-	 Weather = wetter
-	} 
-		
-	Time 1861-07-21 17:00:00.000	
-	First Battle of Bull Run  : Confed_victory {
-			CWSAC = Decisive
-			Place = Manassas
-			State = Virginia
-			General = Beauregard
-			General = McDowell
-			General = Jackson
-			Time 1861-07-21 18:00:00.000			
-			End 
-		}	
-		Time 1861-07-21 17:00:00.000	
-	Wilsons Creek  : Confed_victory {
-			CWSAC = Decisive
-			Place = Manassas
-			State = Missouri
-			General = Price
-			General = McCulloch
-			General = Sturgis
-			General = Lyon
-			Time 1861-07-21 18:00:00.000			
-			End 
-		}
-		
-	Time 1862-02-11 17:00:00.000		
-	Fort Donelson : Union_victory {
-			CWSAC = Decisive
-			Place = Donelson
-			State = Tennessee
-			General = Buckner
-			General = Grant
-			Time 1862-02-16 18:00:00.000			
-			End 
-		}
-		
-	Time  1862-04-06 17:00:00.000		
-	Shiloh : Union_victory {
-			CWSAC = Decisive
-			Place = Pittsburg Landing
-			State = Tennessee
-			General = Buell
-			General = Grant
-			General = Beauregard
-			General = Johnston
-			Time  1862-04-07 17:00:00.000		
-			End 
-		}	
-		
-	Time  1862-09-17 17:00:00.000	
-	Antietam : Union_victory {
-			CWSAC = Decisive
-			Place = Sharpsburg
-			State = Maryland
-			General = McClellan
-			General = Lee
-			End 
-		}	
-		
-	Time  1863-05-18 17:00:00.000	
-	Siege of Vicksburg : Union_victory {
-			CWSAC = Decisive
-			Place = Vicksburg
-			State = Mississippi
-			General = Grant
-			General = Pemberton
-	Time  1863-07-04 17:00:00.000		
-			End 
-		}	
-
-	Time  1863-07-01 17:00:00.000	
-	Gettysburg : Union_victory {
-			CWSAC = Decisive
-			Place = Gettysburg
-			State = Pennsylvania
-			General = Meade
-			General = Lee
-	Time  1863-07-03 17:00:00.000	
-			End 
-		}		
+ACW Includes 	Anderson 
+Anderson is a type of Union
 			
+ACW Includes 	McDowell  
+McDowell is a type of Union
+				
+ACW Includes 	Sturgis  
+Sturgis is a type of Union
 		
-	Time  1863-11-24 17:00:00.000	
+ACW Includes 	Lyon  
+Lyon is a type of Union
+		
+ACW Includes 	Grant  
+Grant is a type of Union
+			
+ACW Includes 	Buell  
+Buell is a type of Union
+				
+ACW Includes McClellan 
+McClellan is a type of Union 
+		
+ACW Includes 	Hooker  
+Hooker is a type of Union
+		
+ACW Includes 	Thomas  
+Thomas is a type of Union
+			
+ACW Includes 	Meade  
+Meade is a type of Union
+
+ACW Includes 	Buchanen 
+Buchanen is a type of President
+Buchanen has property InOffice = 1857-1861
+Buchanen has property NrPresident = 15th
+Buchanen has property Time 1861-03-04 17:00:00.000
+
+ACW Includes 	Lincoln 
+Lincoln is a type of President
+Lincoln has property InOffice = 1861-1865
+Lincoln has property NrPresident = 16th
+Lincoln has property Time 1861-03-04 17:00:00.000
+
+Lincoln includes Proclamation 
+Proclamation is a type of Executive_Order
+Proclamation has property Emancipation = True
+
+
+//A list of battles.
+CONTEXT Fort_Sumter
+Fort_Sumter  is a type of  Confed_victory 
+
+Fort_Sumter has property CWSAC = Decisive
+Fort_Sumter has property 			Place = Charleston
+Fort_Sumter has property 			State = South Carolina
+Fort_Sumter has property 			General = Beauregard
+Fort_Sumter has property 			General = Anderson
+Fort_Sumter has property 	Time = 1861-04-12 17:00:00.000	
+Fort_Sumter Includes Day1 
+Day1  is a type of  EVENT 
+Day1 has property Weather = good
+
+Day1 Includes Hour1 
+Hour1  is a type of  EVENT 
+Hour1 has property Weather = raining
+
+Hour1 Includes Minute1 
+Minute1  is a type of  EVENT 
+Minute1 has property Weather = dryer
+
+Fort_Sumter Includes Day2 
+Day2  is a type of  EVENT 
+Day2 has property Weather = sunny
+Day2 has property Time = 1861-04-13 17:00:00.000
+
+CONTEXT First_Battle_of_Bull_Run
+First_Battle_of_Bull_Run  is a type of  Confed_victory 
+First_Battle_of_Bull_Run has property CWSAC = Decisive
+First_Battle_of_Bull_Run has property 			Place = Manassas
+First_Battle_of_Bull_Run has property 			State = Virginia
+First_Battle_of_Bull_Run has property 			General = Beauregard
+First_Battle_of_Bull_Run has property 			General = McDowell
+First_Battle_of_Bull_Run has property 			General = Jackson
+First_Battle_of_Bull_Run has property 	Time = 1861-07-21 17:00:00.000
+
+CONTEXT Wilsons_Creek
+Wilsons_Creek  is a type of  Confed_victory 
+Wilsons_Creek has property CWSAC = Decisive
+Wilsons_Creek has property 			Place = Manassas
+Wilsons_Creek has property 			State = Virginia
+Wilsons_Creek has property 			General = Price
+Wilsons_Creek has property 			General = McCulloch
+Wilsons_Creek has property 			General = Sturgis
+Wilsons_Creek has property 			General = Lyon
+Wilsons_Creek has property 	Time = 1861-07-21 18:00:00.000	
+
+CONTEXT Fort_Donelson
+Fort_Donelson  is a type of  Union_victory 
+Fort_Donelson has property CWSAC = Decisive
+Fort_Donelson has property 			Place = Donelson
+Fort_Donelson has property 			State = Tennessee
+Fort_Donelson has property 			General = Buckner
+Fort_Donelson has property 			General = Grant
+Fort_Donelson has property 	Time =  1862-02-16 18:00:00.000	
+
+CONTEXT Shiloh
+Shiloh  is a type of  Confed_victory 
+Shiloh has property CWSAC = Decisive
+Shiloh has property 			Place = Pittsburg Landing
+Shiloh has property 			State = Tennessee
+Shiloh has property 			General = Buell
+Shiloh has property 			General = Grant
+Shiloh has property 			General = Beauregard
+Shiloh has property 			General = Johnston
+Shiloh has property 	Time = 1862-04-07 17:00:00.000	
+
+CONTEXT Antietam
+Antietam  is a type of   Union_victory
+Antietam has property 			CWSAC = Decisive
+Antietam has property 			Place = Sharpsburg
+Antietam has property 			State = Maryland
+Antietam has property			General = McClellan
+Antietam has property			General = Lee	
+Antietam has property 	Time = 1862-09-17 17:00:00.000		
+
+CONTEXT Siege_of_Vicksburg
+	Siege_of_Vicksburg   is a type of  Union_victory 
+	Siege_of_Vicksburg  has property CWSAC = Decisive
+	Siege_of_Vicksburg  has property 		Place = Vicksburg
+	Siege_of_Vicksburg  has property 		State = Mississippi
+	Siege_of_Vicksburg  has property 		General = Grant
+	Siege_of_Vicksburg  has property 		General = Pemberton
+	Siege_of_Vicksburg  has property Time = 1863-07-04 17:00:00.000			
+
+
+CONTEXT Gettysburg
+	Gettysburg   is a type of  Union_victory
+	Gettysburg	 has property 	CWSAC = Decisive
+	Gettysburg	 has property 	Place = Gettysburg
+	Gettysburg	 has property 			State = Pennsylvania
+	Gettysburg	 has property 			General = Meade
+	Gettysburg	 has property 			General = Lee
+	Gettysburg	 has property 	Time = 1863-07-03 17:00:00.000
+
 	//also known as Battle of Chattanooga (and the 3rd one there).
 	//Note: combined with the Battle of Lookout Mountain as Chattanooga III in the CWSAC report.
-	ChattanoogaIII : Union_victory {
-			CWSAC = Decisive
-			Place = Missionary Ridge
-			State = Tennessee
-			General = Grant
-			General = Hooker //Battle of Lookout Mountain
-			General = Bragg
-			Time  1863-11-25 17:00:00.000	
-			End 
-		}	
-		
-	Time  1864-05-05 17:00:00.000	
-	Wilderness : Inconclusive {
-			CWSAC = Decisive
-			Place = Locust Grove
-			State = Virginia
-			General = Grant
-			General = Lee
-			Time  1864-05-07 17:00:00.000		
-			End 
-		}
-		
-	Time  1865-05-09 17:00:00.000	
-	Appomattox : Union {
-			CWSAC = Decisive
-			Place = Locust Grove
-			State = Virginia
-			General = Grant
-			General = Lee
-			End 
-		}	
+	CONTEXT ChattanoogaIII
+	ChattanoogaIII   is a type of  Union_victory
+	ChattanoogaIII 	 has property 	CWSAC = Decisive
+	ChattanoogaIII 	 has property 		Place = Missionary Ridge
+	ChattanoogaIII 	 has property 		State = Tennessee
+	ChattanoogaIII 	 has property 		General = Grant
+	ChattanoogaIII 	 has property 		General = Hooker //Battle of Lookout Mountain
+	ChattanoogaIII 	 has property 		General = Bragg
+	ChattanoogaIII 	 has property 		Time = 1863-11-25 17:00:00.000		
+	
+	
+	CONTEXT Wilderness
+	Wilderness    is a type of  Inconclusive 
+	Wilderness	has property CWSAC = Decisive
+	Wilderness	has property 		Place = Locust Grove
+	Wilderness	has property 		State = Virginia
+	Wilderness	has property 		General = Grant
+	Wilderness	has property 		General = Lee
+	Wilderness	has property 		Time =  1864-05-07 17:00:00.000	
+	
+	CONTEXT Appomattox
+	Appomattox		has property Time = 1865-05-09 17:00:00.000	
+	Appomattox    is a type of  Union_victory
+	Appomattox		has property 		CWSAC = Decisive
+	Appomattox		has property 		Place = Locust Grove
+	Appomattox		has property 		State = Virginia
+	Appomattox		has property 		General = Grant
+	Appomattox		has property 		General = Lee
+	
+	
+	CONTEXT GH
+	GH is a type of Person
+	GH includes a Symbiosis
+	GH includes a Development
+	GH includes a Mature
+	GH includes a Mature2nd
+	GH includes a Decadence
+	GH includes a Death
+	CONTEXT Symbiosis
+Symbiosis has property SO1
+Symbiosis has property SO2
+
+
+CONTEXT Development
+Development is a type of Symbiosis
+Development  has property SO1  = Proclamation
+Development  has property SO2  = False
+Development	has property 		Time = 1863-01-01 17:00:00.000
+
+CONTEXT Mature
+Mature is a type of Symbiosis
+Mature  has property SO1  = Siege_of_Vicksburg
+Mature  has property SO2  = ChattanoogaIII
+Mature	has property 		Time = 1863-11-24 17:00:00.000
+
+CONTEXT Mature2nd
+Mature2nd is a type of Symbiosis
+Mature2nd  has property SO1  = Grant commander all union armies
+Mature2nd  has property SO2  = Lee: Army of Northern Virginia commander (June 1862 – June 1863)
+Mature2nd	has property 		Time = 1864-03-02 17:00:00.000
+
+CONTEXT Decadence
+Decadence is a type of Symbiosis
+CONTEXT Death
+Death is a type of Symbiosis
+
 
 	
-}
-
-///////////////////////////////////////////////////////////////////////
-//I read section from GH book Object Oriented Ontology on the ACW.
-//I have tried to follow his analysis by augmenting the above SOs.
-//This is my interpretation of his analysis and some of the assumptions I made are in the comments.
-OOO_Analysis : Event {
-
-//Symbiosis is one or several SOs which combine and cause irreversibe and transformative changes to the main SO, in this case the ACW. 
-//They do not/should not be a literal combination. A half failed combination is also a good symbiosis.
-Symbiosis {
-SO1 = True
-SO2 = True
-}
-
-//The main Object undergoes several state changes as it progresses from starting to its death.
-//After the start the Object ripens or as alternative state; develops.
-//At a certain stage it is Mature. The Object is mature when there is no room for further symbiosis.
-//Decadence and Death follow.
-
-//I was ot able to work out exactly which sy
-ACW {
-Start = Fort Sumter
-}
-ACW {
-End = Appomattox
-}
-
-//Real changes only occur five or six times in an object's lifetime, according to Graham Harman. 
-//Development/ripening
-
-//January 1, 1863, the Emancipation Proclamation
-Time 1863-01-01 17:00:00.000
 	
-Proclamation : Executive Order  {
-By = Lincoln
-Emancipation = True
-}
-
-Symbiosis1 : Symbiosis {
-	SO1 = Emancipation Proclamation
-	SO2 = False
-	ACW = Development
-}
-
---Time  1863-11-24 17:00:00.000	
-Symbiosis2 : Symbiosis {
-	SO1 = Siege of Vicksburg
-	SO2 = ChattanoogaIII
-	ACW = Mature
-}
-
-
-//Time 1864-03-02 17:00:00.000	
-//Mature //Grant commander all union armies
-//Object is mature when there is no room for further symbiosis.
-//Lee: Army of Northern Virginia commander (June 1862 – June 1863)
-Symbiosis3 : Symbiosis {
-	SO1 = Grant
-	SO2 = Lee
-	ACW = Mature
-}
-
-//Decadence and 
-//Death
-}
-

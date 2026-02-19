@@ -87,8 +87,6 @@ club_ball has property z = 0
 club_ball has property v = 0
 
 //club and ball are a part of club_ball
-//club_ball has property club
-//club_ball has property ball
 The club_ball includes club. 
 club has property x = 0
 The club_ball includes ball.
@@ -113,17 +111,18 @@ SPLIT is a type of RO_EVENT2
 The SPLIT time is 2026-01-01_13:00:00.000.
 The SPLIT includes club_ball. 
 
-
 ENDOBJECT club_ball_contact
 ENDOBJECT club_ball
 ENDOBJECT RO_club_ball
-The SPLIT includes ball. 
+
 The SPLIT includes club. 
+The SPLIT includes ball. 
 
 The the_result is a type of RO_timeline.
  
-the_result includes ball
 the_result includes club
+the_result includes ball
+
 ENDOBJECT SPLIT
 ENDOBJECT RO_EVENT2 
 ball has property v = 140

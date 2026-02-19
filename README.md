@@ -3,14 +3,14 @@ A scenario is a sequence of sentences in a text file written in a simple languag
 The object model is shown as nested rectangles with properties in text and a network of relationships. 
 A text file is produced with the objects and experimental output representing Random walks through the model and queries.
 
-To use (only on Windows):
+WOOF is a Windows program. To use on Windows:
 	Download the executable files and several examples of scenarios from https://github.com/RobinBaines/OOO3/releases/tag/v1.0.4
 	Run WOOOF.exe from the command line.
-	Select a scenario, for example drops.txt, and press command button 'run script'.
+	Select a script, for example drops.txt, and press command button 'run script'.
 	Create or modify scenarios using an ascii text editor.
 
 
-Ideas related to Object-oriented Ontology (see the book Object-oriented Ontology by Graham Harman) can also be tested.
+Ideas related to Object-oriented Ontology, see the book Object-oriented Ontology by Graham Harman (GH) can also be tested.
 This version is called WOOOF because I started with a script describing walking the dogs.
 
 Several Object Oriented Ontology (OOO) ideas are:
@@ -20,12 +20,14 @@ Vicarious causation: an SO is needed to facilitate interaction between objects.
 Undermining; which means that (real) objects cannot be reduced to only their parts. 
 Overmining; which means that an object is less than its effects. 
 
-Several OOP concepts are supported in WOOOF: Inheritance, visibility of properties, containment.
+Several Object Oriented Programming (OOP) concepts are supported: Inheritance, visibility of properties, containment.
 
 These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt and chess.txt.
 They have been useful in directing an iterative series of experiments. 
-Alternatives to the approach in drops.txt, golf.txt, dogs.txt and chess.txt are possible.
+Alternatives to the approach in these scripts are possible.
 An alternative, but in my opinion less convincing one, is in chess_alternative.txt.
+An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
+illustrates GH's idea of object development using symbiosis. 
 
 Several conventions have been used in the scripts: 
 
@@ -35,7 +37,6 @@ INHERITANCE
 WOOOF supports inheritance using the command 'type' or 'type of'.
 One or more SO can inherit from an RO. Inheritance works well because an SO 
 may inherit some but not all of the RO properties and may add new properties not present in the RO. 
-
 
 In some experiments on representing knowledge of an observer, an SO inherits from a generic SO. 
 For example in the dogs.txt script the dog called My_Nida could have inherited from SO 'dog'. 
@@ -49,9 +50,9 @@ While multiple inheritance could be implemented (My_Nida is a type of dog and a 
 	
 	My_Nida is a type of RO_Nida.
 
-If a 2nd dog should arrive on the scene then it can also be included in dog.
+If a 2nd dog is known to the observer then it can also be included in dog.
 
-VISIBILITY OF PROPERTIES
+PROPERTY VISIBILITY
 In OOP properties of an inherited class may be Private and therefore not accessible from the inheriting class.  
 Related is that Public Properties in an inherited class are accessible from the inheriting class. 
 At this time there is no explicit private/public modifier in WOOOF however something similar may be implied.
@@ -89,11 +90,15 @@ existence via a series of events involving nucleation, condensation and collisio
 
 Inanimate interaction and Observers.
 The drops and golf scripts represent ineteractions without an explicit observer.
-Having made the drops and golf scripts it seemed natural to include an SO in the MeetNida timeline. This SO is called Nida.
+The dogs script introduces an observer, called Me. Me instantiates an SO of a dog called My_Nida.
+This SO resides in the brain of the observer in an SO called dog. The SO dog is Me's idea of a generic dog; 4 legs, a bark etc. 
+It seems most logical to let My_Nida inherit from RO_Nida and not for example from the SO Nida.
 
-	MeetNida includes Nida
-	Nida is a type of RO_Nida
-	
-The dogs script goes a step further by introducing an observer who also instantiates a Nida SO called My_Nida.
-This SO resides in the brain of the observer. It seems most logical to let My_Nida inherit from RO_Nida and not for example from the SO Nida.
+The ACW script is an early version of GH's American Civil War chapter.
+It introduces generals, 2 presidents and several battles.
+At the end of the script, GH's symbiosis idea is added showing how the ACW state changes from Development to Maturity.
+Decadence and Death still need to be added.
+
+
+
 

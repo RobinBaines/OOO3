@@ -485,11 +485,12 @@ namespace OOOCL
 
             if (iDepth == 0)
             {
-                //add in the reverse order as this matters for the presentation in the form.
-                for (int i = TheNewSOs.Count - 1; i >= 0; i--)
+                //add in this order as this matters for the presentation in the form.
+                for (int i = 0; i < TheNewSOs.Count; i++)
                 {
                     BuildSOs.TheSOs.Add(TheNewSOs[i]);
                 }
+
             }
         }
     }
