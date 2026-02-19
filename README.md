@@ -1,17 +1,16 @@
 WOOOF converts a scenario into an object model.
-A scenario is a sequence of sentences in a text file written in a simple language.
+A scenario is defined in a script which is a sequence of sentences in a text file written in a simple language.
 The object model is shown as nested rectangles with properties in text and a network of relationships. 
-A text file is produced with the objects and experimental output representing Random walks through the model and queries.
+A text file is produced with the objects and experimental output representing random walks through the model and queries.
 
 WOOF is a Windows program. To use on Windows:
 	Download the executable files and several examples of scenarios from https://github.com/RobinBaines/OOO3/releases/tag/v1.0.4
 	Run WOOOF.exe from the command line.
 	Select a script, for example drops.txt, and press command button 'run script'.
-	Create or modify scenarios using an ascii text editor.
-
+	Create or modify scripts using an ascii text editor.
 
 Ideas related to Object-oriented Ontology, see the book Object-oriented Ontology by Graham Harman (GH) can also be tested.
-This version is called WOOOF because I started with a script describing walking the dogs.
+This version is called WOOOF because the first script was one describing walking the dogs.
 
 Several Object Oriented Ontology (OOO) ideas are:
 OOO speculates about the existence of Real Objects (ROs) with Real Qualities (RQs) and Sensual Objects (SOs) with Sensual Qualities (SQs).
@@ -23,8 +22,7 @@ Overmining; which means that an object is less than its effects.
 Several Object Oriented Programming (OOP) concepts are supported: Inheritance, visibility of properties, containment.
 
 These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt and chess.txt.
-They have been useful in directing an iterative series of experiments. 
-Alternatives to the approach in these scripts are possible.
+They are the result of a series of experiments with different approaches to structuring objects. 
 An alternative, but in my opinion less convincing one, is in chess_alternative.txt.
 An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
 illustrates GH's idea of object development using symbiosis. 
@@ -35,14 +33,14 @@ A Real Object has prefix RO_.
 
 INHERITANCE
 WOOOF supports inheritance using the command 'type' or 'type of'.
-One or more SO can inherit from an RO. Inheritance works well because an SO 
-may inherit some but not all of the RO properties and may add new properties not present in the RO. 
+The example scripts use inheritance to express the relationship between an SO and an RO; one or more SO's inherit from an RO. 
+Inheritance works well because an SO may inherit some but not all of the RO properties and may add new properties not present in the RO. 
 
-In some experiments on representing knowledge of an observer, an SO inherits from a generic SO. 
-For example in the dogs.txt script the dog called My_Nida could have inherited from SO 'dog'. 
+In some ealier experiments on representing knowledge of an observer, an SO inherited from a generic SO. 
+For example in first version od the dogs.txt script, the dog called My_Nida inherited from SO 'dog'. 
 The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
-However in the dogs.txt script it is more convincing to let My_Nida inherit from RO_Nida.
-While multiple inheritance could be implemented (My_Nida is a type of dog and a type of RO_Nida), containment has been used.
+However in the last version of the dogs.txt script it is more convincing to let My_Nida inherit from RO_Nida and to use containment of 
+My_Nida within the SO dog to show that My_Nida is an example of a dog.
 	
 	dog includes My_Nida
 	
@@ -50,7 +48,7 @@ While multiple inheritance could be implemented (My_Nida is a type of dog and a 
 	
 	My_Nida is a type of RO_Nida.
 
-If a 2nd dog is known to the observer then it can also be included in dog.
+If a 2nd dog is known to the observer it can also be included in dog.
 
 PROPERTY VISIBILITY
 In OOP properties of an inherited class may be Private and therefore not accessible from the inheriting class.  
@@ -71,7 +69,7 @@ Potentially there could be a none countable infinite number of events. In practi
 when a relevent property changes or objects are destroyed or become part of new objects.
 For example in the drops script 2 drops of water collide and form a new drop in the event called THE_COLLISION.
 In the golf script the club and ball make contact in an event which is also called THE_COLLISION and form a new SO called club_ball. 
-'club_ball' contains the club and ball but also includes more than that (avoiding undermining).
+'club_ball' contains the club and ball but also includes more than that, avoiding undermining.
 
 SO_Events occur at the beginning and end of a timeline SO.
 The time stamp of the SO_Event at the beginning of the timeline is the start time of the time line SO.
@@ -91,13 +89,22 @@ existence via a series of events involving nucleation, condensation and collisio
 Inanimate interaction and Observers.
 The drops and golf scripts represent ineteractions without an explicit observer.
 The dogs script introduces an observer, called Me. Me instantiates an SO of a dog called My_Nida.
-This SO resides in the brain of the observer in an SO called dog. The SO dog is Me's idea of a generic dog; 4 legs, a bark etc. 
+This SO resides in the observer in an SO called dog. The SO dog is Me's idea of a generic dog; 4 legs, a bark etc. 
 It seems most logical to let My_Nida inherit from RO_Nida and not for example from the SO Nida.
 
-The ACW script is an early version of GH's American Civil War chapter.
+The ACW script is an early version of GH's chapter on the American Civil War.
 It introduces generals, 2 presidents and several battles.
 At the end of the script, GH's symbiosis idea is added showing how the ACW state changes from Development to Maturity.
 Decadence and Death still need to be added.
+
+A FIRST CONCLUSION
+The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.
+The division of the timeline into 'timelines' with finite duraction and instantaneous events has the potential for introducing ever more detail.
+In a similar manner objects can be split into ever more detail potentially down to atoms and further.
+For this reason the object approach to ontology seems to be driven by an analytical approach: 
+The degree to which time and objects are detailed depends on the aim of analysis.
+ 
+  
 
 
 
