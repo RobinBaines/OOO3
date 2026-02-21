@@ -25,7 +25,6 @@ namespace WOOOF
         public Font theFont { get; set; }
         public float TextHeight
         {
-
             get { return theFont.SizeInPoints + VERTICALSPACING; }
         }
         public abstract string GetString();

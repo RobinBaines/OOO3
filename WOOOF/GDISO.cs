@@ -312,7 +312,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
             if (G != null)
             {
                 string test;
-                if (Name == "game1") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                if (Name == "My_Nida(SEE_NIDA_BARK)") // && Parent.Name == "I_SEE_NIDA_BARKING")
                     test = Name;
 
                 CalculateY();
@@ -353,14 +353,17 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 Pen pn = new Pen(theColour);
                 G.DrawRectangle(pn, rect);
 
-                int i = 1;
+      
+                float TextPosition = this.TextHeight; 
                 foreach (GDISQ SQ in qualities.ToList())
                 {
                     string str = SQ.GetString(blnHideEvents, this.Name);
                     if (str.Length > 0)
                     {
-                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1, this.Name);
-                        i++;
+                        
+                        SQ.DrawString(rect.X, rect.Y + TextPosition, format1, this.Name);
+                        TextPosition += SQ.TextHeight;
+
                     }
                 }
 
@@ -368,8 +371,9 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     foreach (GDIIncludesRef SO in IncludesRef.ToList())
                     {
-                        SO.DrawString(rect.X, rect.Y + i * SO.TextHeight, format1);
-                        i++;
+                        SO.DrawString(rect.X, rect.Y + TextPosition, format1);
+                        TextPosition += SO.TextHeight;
+   
                     }
                 }
 
@@ -377,8 +381,9 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     foreach (GDIPartOfRef SQ in IsPartOfRef.ToList())
                     {
-                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                        i++;
+                        SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
+                        TextPosition += SQ.TextHeight;
+          
                     }
                 }
 
@@ -386,8 +391,9 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     foreach (GDIReferencedBy SQ in IsReferencedBy.ToList())
                     {
-                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                        i++;
+                        SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
+                        TextPosition += SQ.TextHeight;
+   
                     }
                 }
 
@@ -395,14 +401,15 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     foreach (GDIPreviousSOParents SQ in IsPreviousSOParents.ToList())
                     {
-                        SQ.DrawString(rect.X, rect.Y + i * SQ.TextHeight, format1);
-                        i++;
+                        SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
+                        TextPosition += SQ.TextHeight;
+         
                     }
                 }
 
                 if (EndedBySO != null)
                 {
-                    EndedBySO.DrawString(rect.X, rect.Y + i * EndedBySO.TextHeight, format1, EndedBySO.Name);
+                    EndedBySO.DrawString(rect.X, rect.Y + TextPosition, format1, EndedBySO.Name);
                 }
 
                 point.X = (int)X + (int)Width;

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
@@ -467,12 +468,17 @@ namespace OOOCL
             Source.Ended = true;
 
             //identify children of the Source and replicate in the copy.
-            foreach (SensualObject SO in BuildSOs.TheSOs)
-            {
-                if (SO.SOParent == Source) // && SO.Name != Source.Name)
+
+            //  foreach (SensualObject SO in BuildSOs.TheSOs)
+            //Add the new SOs in reverse order so that adding them below in the reverse order retains the same order 
+            //at the same depth.
+            // A [B [C, D] results in TheNewSOs D, C, B, A and BuildSOs.TheSOs.Add adds them to the array as A, B, C, D.
+            for (int i = BuildSOs.TheSOs.Count - 1; i >= 0; i--)
+                {
+                if (BuildSOs.TheSOs[i].SOParent == Source) // && SO.Name != Source.Name)
                 {
                     iDepth++;
-                    SensualObject newSO = new SensualObject(SO);
+                    SensualObject newSO = new SensualObject(BuildSOs.TheSOs[i]);
                     newSO.SOParent = this;
                     iDepth--;
 
@@ -481,16 +487,13 @@ namespace OOOCL
                 }
             }
 
-           
-
             if (iDepth == 0)
             {
-                //add in this order as this matters for the presentation in the form.
-                for (int i = 0; i < TheNewSOs.Count; i++)
+                //add in reverse order as this matters for the presentation in the form.
+                for (int i = TheNewSOs.Count - 1; i >=0; i--)
                 {
                     BuildSOs.TheSOs.Add(TheNewSOs[i]);
                 }
-
             }
         }
     }
