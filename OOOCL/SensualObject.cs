@@ -283,6 +283,15 @@ namespace OOOCL
                 {
                     EndedBySO = Context;
                 }
+
+                //propagate to children.
+                foreach (SensualObject SO in BuildSOs.TheSOs)
+                {
+                   if(SO.SOParent == this)
+                    {
+                        SO.EndedBySO = Context;
+                    }
+                }
             }
         }
 

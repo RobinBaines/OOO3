@@ -99,9 +99,34 @@ Decadence and Death still need to be added.
 
 A FIRST CONCLUSION
 The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.
+Scripting inanimate interactions requires or is more convincing with definitions of coordinates, velocities and closed systems. 
+This is a limitation of scripting rather than real interactions.
+
 The division of the timeline into 'timelines' with finite duraction and instantaneous events has the potential for introducing ever more detail.
 In a similar manner objects can be split into ever more detail potentially down to atoms and further.
-The aim of analysis seems to the drive the degree to which time and objects are detailed.
+The aim of analysis seems to drive the degree to which time and objects are detailed.
+
+Considering the scripts drops and golf: 
+Defining the moment an event takes place is similar to defining a maximum or minimum using differentiation: we know there is a maximum and can 
+choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the line on which the maximum must
+be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one but have trouble defining it. 
+We can choose an instant when there are 2 objects and another when there is one and then move in both directions to isolate the exact instant.
+However in this case finding the exact moment is elusive because of the complexity of the contact.
+In some ways contact is better replaced by the moment that energy transfer starts. 
+
+Brownian motion and a drops script with atomisation instead of coalescence would be scripted using multiple events separated by (short) timelines, 
+the assumption being that no 2 events occur in the same instance. This assumption looks safe enough and was perhaps the insight which 
+resulted in the correct analysis of Brownian Motion (by Albert E).
+
+
+
+
+
+
+
+
+
+
  
   
 

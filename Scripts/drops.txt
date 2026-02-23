@@ -22,18 +22,21 @@
 //The Weber number is the ratio of dynamic forces to surface tension.
 //It is a dimensionless number used for describing phenomena such as droplet formation and liquid jets. 
 
-//Using objects to describe inanimate interaction raises the question of the role of observation.
+//Using objects to describe inanimate interaction raises the question of the role of observation in a script.
 //Ideally an inanimate interaction could/should take place without the presence of a human. 
 //But that seems impossible because scripting implies human presence. 
 //Should we imagine the interactions described in the script based on our knowledge of water drops and wind?
 //Or should we imagine filming the interaction?
-//Or should we just describe a system which has the potential for the events described. And then fill in how that potential might be realised?
-//Should the script include relative velocities, an attempt to predict 2 drops colliding before they do, an attempt to define a closed space around the interaction much as engineers do in 
-//fluid dynamics?
-//Should it include the criteria for when 2 drops coalesce or split using the Weber number?
+//Or should we just describe a system which has the potential for the events described. 
+//And then fill in how that potential might be realised?
+//Should the script include relative velocities, an attempt to predict 2 drops colliding before they do, 
+//an attempt to define a closed system around the interaction much as engineers do in fluid dynamics?
+//Should it include the criteria for coalescence or atomisation using the Weber number?
 //Density * v * v * l/surface tension.
 //v = 0.1 m/s and l = 1mm => We = 0.14
 //We ignore gravity => m * v * v /m * g * d = 0.01
+//While these questions apply to scripting they do not influence the real collision and coalescence.
+
 
 //Several commands:
 DisplaySOs *	//display all the objects.
@@ -94,7 +97,7 @@ THE_COLLISION Includes RO_bigdrop.
 RO_bigdrop has property RO = true. 
 
 //collision includes THE_COLLISION.
-The THE_COLLISION time is 2026-01-01 12:32:10.000.
+The THE_COLLISION  has property time =  2026-01-01 12:32:10.000.
 The THE_COLLISION includes drop1. 
 The THE_COLLISION includes drop2. 
 The THE_COLLISION includes bigdrop. 
@@ -116,7 +119,6 @@ ENDOBJECT RO_EVENT1
 
 The gust_of_wind is a type of RO_timeline.
 
-The gust_of_wind starts at RO_day time. 
 The gust_of_wind has the property place and it is Bakkeveen. 
 The gust_of_wind has the property weather and it is wet. 
 The gust_of_wind has the property weather and it is windy. 
@@ -134,7 +136,7 @@ SPLIT Includes RO_drop4.
 RO_drop3 has property RO = true. 
 RO_drop4 has property RO = true. 
 
-The SPLIT time is 2026-01-01_13:00:00.000.
+The SPLIT  has property time =  2026-01-01_13:00:00.000.
 The SPLIT includes bigdrop. 
 The SPLIT includes drop3. 
 drop3 is a type of RO_drop3.
@@ -153,7 +155,6 @@ ENDOBJECT bigdrop
 The the_result is a type of RO_timeline.
 ENDOBJECT SPLIT
 ENDOBJECT RO_EVENT2
-The the_result time is 2025-01-01 12:32:00.000.
 The the_result includes drop3.
 The the_result includes drop4.
 

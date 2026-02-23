@@ -1,0 +1,125 @@
+//Initially the stone is immersed in air and can be considered a composite of stone and air.
+//The air SO is a volume of air at the front of the volume of the SO water wave. The air is a mirror image of the wave.
+//The Reynolds number of approx 5500 refelects the dominance of dynamic forces over viscosity implying that the reduction in velocity of the stone is 
+//insignificant in the couple of seconds before collision with the front of the wave.
+
+//The wave SO is a volume of water from the front of the wave back into the wave (20cm * 20cm * 20cm). 
+//The stone contacts the front of the wave and is at that moment a composite object of air, stone and water.
+//The stone proceeds into the wave and at a certain moment is no longer in the air; it is fully immersed in the water.
+//It is a that moment a composite with the wave.
+//The Reynolds number of approx 100 reflects the relative importance of viscosity implying that the reduction in velocity of the stone is 
+//significant in the couple of seconds after collision with the front of the wave.
+
+
+//The wave and the air are continua and therefore infinite ROs in the sense that they can be endlessly divided while remaining a wave or air.
+//For the purposes of the script a closed system is created by choosing SOs which enclose any effects of the stone wave interaction. 
+//The script and perhaps reality accept that the wave and air SOs are finite.
+
+DisplaySOs *	//display all the objects.
+//RandomWalk 30
+NaturalText     //this script is defined using the more natural text language.
+
+//The script starts with an INIT SO derived from RO_EVENT:
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+INIT Includes RO_EVENT
+INIT Includes RO_wave.
+INIT Includes RO_stone.
+INIT Includes RO_stone_air
+RO_timeline has property RO = true.
+RO_wave has property RO = true. 
+RO_stone_air has property RO = true. 
+RO_stone_air includes RO_stone
+RO_stone has property RO = true.  
+RO_stone_air includes RO_air
+RO_air has property RO = true.  
+ 
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+An RO_EVENT has property instance. //implies instantaneous event.
+RO_EVENT has property RO = true.
+RO_EVENT has property time = 2026-01-01 12:32:00.000.
+
+collision is a type of RO_timeline.  
+The collision has the property place and it is Schiermonnikoog. 
+The collision has the property weather and it is wet. 
+The collision includes stone_air. 
+stone_air includes air
+stone_air is a type of RO_stone_air
+air is a type of RO_air
+stone_air includes stone
+stone_air has property Re_air = 5500   //viscosity is insignificant
+
+stone is a type of RO_stone.
+stone has the property diameter and it is 0.02 m. 
+//the stone approaches the coordinate origin from a position 20 cms in front of and perpendicular to the wave.
+stone has property x = 0.2 m
+stone has property y = 0
+stone has property z = 0
+//the stone velocity is relative to the origin of the coordinate system.
+stone has property v = -0.2 m/sec
+
+The collision includes wave. 
+
+//properties of the SO drop1 and not of RO_drop1 because they are relative to the SO collision and not to the RO_timeline.
+wave is a type of RO_wave. 
+//The point of contact of stone and wave is taken as the coordinate origin.
+//The coordinate system has the same velocity as the wave front.
+wave has property x = 0
+wave has property y = 0
+wave has property z = 0
+wave has property v = 0
+wave has property width = 0.2 m
+wave has property depth = 0.5 m
+wave has property height = 0.2 m
+
+//Instantiate the next RO Event in SO collision.
+collision Includes RO_EVENT1.
+An RO_EVENT1 has property place. 
+An RO_EVENT1 has property weather. 
+An RO_EVENT1 has property instance. //implies instantaneous event.
+RO_EVENT1 has property RO = true.
+RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+
+THE_COLLISION is a type of RO_EVENT1
+ENDOBJECT collision
+
+THE_COLLISION includes wave_stone
+wave_stone has property Re_water = 100	//velocity * diameter / dynamic viscosity. Viscosity is significant
+The THE_COLLISION  has property time  is 2026-01-01 12:32:02.000.
+The THE_COLLISION includes stone_air. 
+The THE_COLLISION includes wave_air_stone. 
+wave_air_stone includes air
+wave_air_stone includes stone
+wave_air_stone includes wave
+ENDOBJECT stone_air
+
+The stone_enters_wave is a type of RO_timeline.
+The stone_enters_wave includes wave_air_stone.
+stone_enters_wave Includes RO_EVENT2.
+
+An RO_EVENT2 has property place. 
+An RO_EVENT2 has property weather. 
+An RO_EVENT2 has property instance. //implies instantaneous event.
+RO_EVENT2 has property RO = true.
+ENDOBJECT THE_COLLISION
+ENDOBJECT RO_EVENT1
+
+STONE_LEAVES_AIR is a type of RO_EVENT2
+STONE_LEAVES_AIR Includes wave_air_stone.
+STONE_LEAVES_AIR Includes wave_stone.
+wave_stone Includes air
+wave_stone Includes wave
+The STONE_LEAVES_AIR  has property time = 2026-01-01_12:32:03.000.
+ENDOBJECT stone_enters_wave
+ENDOBJECT wave_air_stone
+
+The stone_in_wave is a type of RO_timeline.
+ENDOBJECT STONE_LEAVES_AIR
+
+ENDOBJECT RO_EVENT2
+
+The stone_in_wave includes wave_stone.
+
+
+
