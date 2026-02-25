@@ -3,7 +3,7 @@ A scenario is written in a text file using a simple language.
 The object model is shown as nested rectangles with properties in text and a network of relationships. 
 A text file is produced with the objects and experimental output representing random walks through the model and queries.
 
-WOOF is a Windows program. To use on Windows:
+WOOOF is a Windows program. To use on Windows:
 	Download the executable files and several examples of scenarios from https://github.com/RobinBaines/OOO3/releases/tag/v1.0.4
 	Run WOOOF.exe from the command line.
 	Select a script, for example drops.txt, and press command button 'run script'.
