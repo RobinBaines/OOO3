@@ -63,7 +63,13 @@ namespace OOOCL
         }
 
         public string Name { get; set; } = "BaseObject";
-
+        public string OriginalName { get {
+                int pos = Name.IndexOf("(");
+                if(pos != -1)
+                    return Name.Substring(0, pos);
+                return Name;
+            } 
+        } 
         public bool Ended { get; set; } = false;
 
         public string Description ="";

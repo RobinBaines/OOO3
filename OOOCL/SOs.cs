@@ -50,59 +50,6 @@ public static void DisplaySOs(string Parent)
         }
 
         /// <summary>
-        /// Look for a referenced SO called Child.
-        /// </summary>
-        /// <param name="SOParent"></param>
-        /// <param name="Name"></param>
-        private static void QueryReferences(SensualObject? SOParent, string Name)
-        {
-            if (SOParent != null)
-            {
-                foreach (SensualObject SO in SOParent.IncludesReference)
-                {
-                    if (SO.Name == Name)
-                    {
-                        Console.Write(" Parent: " + SOParent.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + " " + SOParent.Name);
-                        Console.WriteLine(" Child: " + SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + " " + SO.Name);
-                        //SO.PrintQualities("\t");
-                    }
-                    else
-                    {
-                        if (CheckParents(SO, Name) != null)
-                        { 
-                        Console.Write(" Parent: " + SOParent.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + " " + SOParent.Name);
-                        Console.WriteLine(" Child: " + SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
-                                            CultureInfo.InvariantCulture) + " " + SO.Name);
-                            //SO.PrintQualities("\t");
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// recursive call looking for inherited SO called Name.
-        /// </summary>
-        /// <param name="SOParent"></param>
-        /// <param name="Name"></param>
-        /// <returns></returns>
-        private static SensualObject? CheckParents(SensualObject SOParent, string Name)
-        {
-            if (SOParent.ptrDerivedFrom == null)
-            {
-                return null;
-            }
-            if (SOParent.ptrDerivedFrom.Name == Name)
-            {
-                return SOParent.ptrDerivedFrom;
-            }
-            return CheckParents(SOParent.ptrDerivedFrom, Name);
-        }
-
-        /// <summary>
         /// Query SOs for example SOs.QuerySOs("Event", "Dog");
         /// It looks for SOs with a Parent = "Event" and referenced SOs with a Parent = "Dog".
         /// </summary>
@@ -113,26 +60,29 @@ public static void DisplaySOs(string Parent)
             Console.WriteLine("////////////////////////////// QuerySOs of " + Parent + "//////////////////////////////////////");
 
             Console.WriteLine("Query \'" + Parent + "\' for \'" + Child + "\'");
-            SensualObject? SOParent;
-            
+            //SensualObject? SOParent;
+            SensualObject? _SO;
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
-                if(SO.Name ==  Parent)
+                //look for the child.
+                if (SO.OriginalName == Child)
                 {
-                    SOParent = SO;
-                    QueryReferences(SO, Child);
-                }
-                else
-                {
-                    //check whether the SO has a Parent SO with name _parent.
-                    //Is a recursive call so it will return Nida if _parent = Animal.
-                    SOParent = CheckParents(SO, Parent);
-                    if (SOParent != null)
+                    _SO = SO;
+                    //look for a SOParent of the child and its SOParents with the name Parent.
+                    while (_SO.SOParent != null && _SO.SOParent.ptrDerivedFrom!= null && _SO.SOParent.ptrDerivedFrom.OriginalName != Parent)
                     {
-                        QueryReferences(SO, Child);
+                        _SO = _SO.SOParent;
+                    }
+                    if (_SO.SOParent != null && _SO.SOParent.ptrDerivedFrom != null)
+                    {
+                        Console.Write(" Parent: " + _SO.SOParent.ptrDerivedFrom.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                                                                   CultureInfo.InvariantCulture) + " " + _SO.SOParent.ptrDerivedFrom.Name);
+                        Console.WriteLine(" Child: " + SO.created.ToString("yyyy-MM-dd HH:mm:ss.fff",
+                                            CultureInfo.InvariantCulture) + " " + SO.Name);
                     }
                 }
-            }
+            }              
+
         }
 
         /// <summary>

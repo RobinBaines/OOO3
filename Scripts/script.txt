@@ -3,6 +3,7 @@ GenerateScript Event
 //Output commands.
 DisplaySOs *	//display all the SOs with SQs.
 DisplaySOs Dog  //display the SOs with SQs which inherit from Dog.
+ORIGINAL_LANGUAGE
 
 //An output command.
 QuerySOs Event, Dog  //display all the SOs which inherit from Event and which include an SO which inherits from Dog.

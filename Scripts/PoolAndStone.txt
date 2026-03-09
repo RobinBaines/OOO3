@@ -1,0 +1,198 @@
+//A stone is falling into a large pool of water.
+//Initially the stone is immersed in air.
+//The stone has reached its terminal velocity in the air implying that drag (due to viscosity) balances the
+//the pull of gravity.
+
+//When the stone touches the water surface, waves form on the surface. These waves are mirrored by waves in the air.
+//By analogy with golf and drops scripts we define SOs. The first is a discrete object and is all the air which is in motion due to the passage of the stone.
+//The 2nd is also a discrete object and is all the water which is in motion due to the passage of the stone.
+//The air and water are continua except for these 2 SOs. 
+//The air SO grows as the stone approaches the water surface and starts to shrink when the stone is fully immersed in the water.
+
+//Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
+//When the stone touches the water the air SO, water SO and stone form a new composite object called stone_water_air. 
+//The water SO is 0 size when it is created, it grows rapidly as the stone moves into and through the water. 
+//Although the size is changing we consider it to be a single SO.
+
+//When the stone is just fully immersed the air SO becomes a solitary SO and water and stone continue as a new composite SO called stone_water.
+//If the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stones SOs are separate.
+//The water SO begins to shrink as viscosity damps out the disturbances caused by passage of the stone.
+//At a given instance the water is completly at rest and the water SO ends: All the water in the pool is again part of the continuum.
+//We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
+//the stone and the water.
+
+DisplaySOs *	//display all the objects.
+//RandomWalk 30
+
+
+//The script starts with an INIT SO derived from RO_EVENT:
+INIT is a type of RO_EVENT.
+INIT Includes RO_timeline
+INIT Includes RO_EVENT
+INIT Includes RO_water.
+
+INIT Includes RO_stone_air
+
+RO_timeline has property RO = true.
+RO_water has property RO = true. 
+
+
+  
+RO_stone_air has property RO = true. 
+RO_stone_air includes RO_air
+RO_air has property RO = true.
+RO_stone_air includes RO_stone
+RO_stone has property RO = true.
+ 
+
+ 
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+An RO_EVENT has property instance. //implies instantaneous event.
+RO_EVENT has property RO = true.
+RO_EVENT has property time = 2026-01-01 12:32:00.000.
+
+collision is a type of RO_timeline.  
+The collision has the property place and it is Schiermonnikoog. 
+The collision has the property weather and it is wet. 
+The collision includes stone_air. 
+stone_air includes air
+stone_air is a type of RO_stone_air
+air is a type of RO_air
+stone_air includes stone
+stone_air has property Re_air = 5500   //dynamic forces dominate viscosity.
+
+stone is a type of RO_stone.
+stone has the property diameter and it is 0.02 m. 
+//the stone approaches the coordinate origin from a position 20 cms in front of and perpendicular to the water.
+stone has property x = 0.2 m
+stone has property y = 0
+stone has property z = 0
+//the stone velocity is relative to the origin of the coordinate system.
+stone has property v = -40 m/sec
+
+The collision includes water. 
+
+//properties of the SO drop1 and not of RO_drop1 because they are relative to the SO collision and not to the RO_timeline.
+water is a type of RO_water. 
+//The point of contact of stone and water is taken as the coordinate origin.
+water has property x = 0
+water has property y = 0
+water has property z = 0
+water has property v = 0
+//water has property width = 0.2 m
+//water has property depth = 0.5 m
+//water has property height = 0.2 m
+
+//Instantiate the next RO Event in SO collision.
+collision Includes RO_EVENT1.
+An RO_EVENT1 has property place. 
+An RO_EVENT1 has property weather. 
+RO_EVENT1 has property RO = true.
+RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+
+THE_COLLISION is a type of RO_EVENT1
+ENDOBJECT collision
+
+THE_COLLISION includes stone_water
+stone_water has property Re_water = 100	//velocity * diameter / dynamic viscosity. Viscosity is significant
+The THE_COLLISION  has property time  is 2026-01-01 12:32:02.000.
+The THE_COLLISION includes stone_air. 
+The THE_COLLISION includes RO_stone_water_air. 
+RO_stone_water_air includes RO_air
+RO_stone_water_air includes RO_stone
+RO_stone_water_air includes RO_water
+
+The THE_COLLISION includes stone_water_air. 
+stone_water_air is a type of RO_stone_water_air
+stone_water_air includes air
+stone_water_air includes stone
+stone_water_air includes water
+ENDOBJECT stone_air
+
+The stone_enters_water is a type of RO_timeline.
+The stone_enters_water includes stone_water_air.
+stone_enters_water Includes RO_EVENT2.
+
+An RO_EVENT2 has property place. 
+An RO_EVENT2 has property weather. 
+RO_EVENT2 has property RO = true.
+ENDOBJECT THE_COLLISION
+ENDOBJECT RO_EVENT1
+
+STONE_LEAVES_AIR is a type of RO_EVENT2
+STONE_LEAVES_AIR Includes stone_water_air.
+STONE_LEAVES_AIR Includes stone_water.
+stone_water Includes stone
+stone_water Includes water
+The STONE_LEAVES_AIR  has property time = 2026-01-01_12:32:03.000.
+ENDOBJECT stone_enters_water
+ENDOBJECT stone_water_air
+ENDOBJECT RO_stone_water_air
+
+
+pl1 is a type of Placeholder
+pl1 includes stone_in_water
+pl1 includes air_motion_damps_out
+
+The stone_in_water is a type of RO_timeline.
+ENDOBJECT STONE_LEAVES_AIR
+ENDOBJECT RO_EVENT2
+
+The stone_in_water includes stone_water.
+The stone_in_water includes RO_EVENT3.
+An RO_EVENT3 has property place. 
+An RO_EVENT3 has property weather. 
+
+The air_motion_damps_out is a type of RO_timeline.
+air_motion_damps_out Includes air.
+air_motion_damps_out Includes RO_EVENT4.
+
+An RO_EVENT4 has property place. 
+An RO_EVENT4 has property weather. 
+
+pl2 is a type of Placeholder
+pl2 includes STONE_TO_REST
+pl2 includes AIR_TO_REST
+
+STONE_TO_REST is a type of RO_EVENT3
+STONE_TO_REST Includes stone_water.
+ENDOBJECT stone_water
+STONE_TO_REST Includes water.
+
+AIR_TO_REST is a type of RO_EVENT4
+ENDOBJECT STONE_TO_REST
+ENDOBJECT RO_EVENT3
+AIR_TO_REST Includes air.
+ENDOBJECT air
+
+
+The water_motion_damps_out is a type of RO_timeline.
+water_motion_damps_out Includes water.
+water_motion_damps_out Includes RO_EVENT5.
+water_motion_damps_out Includes stone.
+
+An RO_EVENT5 has property place. 
+An RO_EVENT5 has property weather. 
+WATER_TO_REST is a type of RO_EVENT5
+WATER_TO_REST Includes water.
+//WATER_TO_REST Includes stone.	
+//the stone is still there but it does not seem logical to include in an event
+//which has nothing to do with it. 
+
+ENDOBJECT water
+ENDOBJECT water_motion_damps_out
+
+The stone_in_pool is a type of RO_timeline.
+stone_in_pool Includes stone.	
+ENDOBJECT RO_EVENT5
+ENDOBJECT WATER_TO_REST
+
+
+
+
+
+
+ 
+
+

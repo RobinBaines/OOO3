@@ -22,7 +22,7 @@ namespace OOOCL
         public static List<string> RandomWalk = new List<string>();
         public static List<string> DisplaySOs = new List<string>();
         public static List<string> QuerySOs = new List<string>();
-        public static bool blnNaturalText = false;
+        public static bool blnNaturalText = true;
         static int _sleeptime;
         static public int SleepTime { 
             get
@@ -47,7 +47,8 @@ namespace OOOCL
         internal const string RANDOMWALK = "RandomWalk";
         internal const string DISPLAYSOS = "DisplaySOs";
         internal const string QUERYSOS = "QuerySOs";
-        internal const string NATURALTEXT = "NaturalText";
+        //internal const string NATURALTEXT = "NaturalText";
+        internal const string ORIGINAL_LANGUAGE = "ORIGINAL_LANGUAGE";
         internal static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
 
         /// <summary>
@@ -106,11 +107,11 @@ namespace OOOCL
                 return true;
             }
 
-            pos = line.IndexOf(NATURALTEXT);
+            pos = line.IndexOf(ORIGINAL_LANGUAGE);
             if (pos != -1)
             {
-                line = line.Substring(pos + NATURALTEXT.Length).Trim();
-                blnNaturalText = true;
+                line = line.Substring(pos + ORIGINAL_LANGUAGE.Length).Trim();
+                blnNaturalText = false;
                 return true;
             }
             return false;
@@ -396,6 +397,7 @@ namespace OOOCL
                 if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT)
                 {
                     SOEvent.Ended = true;
+
                     //add the reference from the parent to the child and vice versa.
                     if (SOEvent != null && Context != null && SOEvent != Context)
                     {
@@ -731,7 +733,7 @@ namespace OOOCL
                             string Inherits = "";
                             string SQName = "";
                             string SQValue = "";
-                             string Preposition = "";
+                            string Preposition = "";
                             bool StartOfObject = false;
                             bool EndOfObject = false;
                             bool blnDateTime = false;
@@ -770,10 +772,11 @@ namespace OOOCL
             GenerateScript.Clear();
             DisplaySOs.Clear();
             QuerySOs.Clear();
-            blnNaturalText = false;
+            blnNaturalText = true;
             TheSOs.Clear();
             SOEvent = null;
             LastSO = null;
+            
             StackSOEvent.Clear();
             StackLastSO.Clear();
 

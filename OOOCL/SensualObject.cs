@@ -276,20 +276,24 @@ namespace OOOCL
         /// <param name="SO"></param>
         public virtual void SetEndedBy(SensualObject Context)
         {
-            if (Context != null)
-            {
-                //Check it is not a self reference.
-                if (this != Context)
+            if(EndedBySO == null)
+            { 
+                if (Context != null)
                 {
-                    EndedBySO = Context;
-                }
-
-                //propagate to children.
-                foreach (SensualObject SO in BuildSOs.TheSOs)
-                {
-                   if(SO.SOParent == this)
+                    //Check it is not a self reference.
+                    if (this != Context)
                     {
-                        SO.EndedBySO = Context;
+                        EndedBySO = Context;
+                    }
+
+                    //propagate to children.
+                    foreach (SensualObject SO in BuildSOs.TheSOs)
+                    {
+                       if(SO.SOParent == this)
+                        {
+                            if (SO.EndedBySO == null)
+                                SO.EndedBySO = Context;
+                        }
                     }
                 }
             }
@@ -429,7 +433,7 @@ namespace OOOCL
             ptrDerivedFrom = Source.ptrDerivedFrom;
             if (Source.EndedBySO != null)
             {
-                EndedBySO = Source.EndedBySO;
+                //EndedBySO = Source.EndedBySO;
             }
 
            string test;

@@ -16,8 +16,7 @@
 
 
 DisplaySOs *	//display all the objects.
-NaturalText     //this script is defined using the more natural text language.
-
+QuerySOs RO_timeline, club
 
 //The script starts with an INIT SO derived from RO_EVENT:
 INIT is a type of RO_EVENT.

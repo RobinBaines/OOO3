@@ -1,7 +1,8 @@
 //This is a comment.
 //Output commands.
 GenerateScript Event
-DisplaySOs *	//display all the SOs with SQs.
+DisplaySOs *	//display all the SOs with SQs
+ORIGINAL_LANGUAGE.
 
 //An output command.
 QuerySOs Event, Animal //display all the SOs which inherit from Event and which include an SO which inherits from Dog.

@@ -1,23 +1,27 @@
-//Initially the stone is immersed in air and can be considered a composite of stone and air.
+//Initially the stone is immersed in air and could be considered a composite of stone and air.
 //The air SO is a volume of air at the front of the volume of the SO water wave. The air is a mirror image of the wave.
-//The Reynolds number of approx 5500 refelects the dominance of dynamic forces over viscosity implying that the reduction in velocity of the stone is 
-//insignificant in the couple of seconds before collision with the front of the wave.
+//The Reynolds number of approx 5500 reflects the dominance of dynamic forces over viscosity implying that the reduction in velocity of the stone is 
+//insignificant in the period before collision with the front of the wave.
 
 //The wave SO is a volume of water from the front of the wave back into the wave (20cm * 20cm * 20cm). 
 //The stone contacts the front of the wave and is at that moment a composite object of air, stone and water.
 //The stone proceeds into the wave and at a certain moment is no longer in the air; it is fully immersed in the water.
-//It is a that moment a composite with the wave.
+//It is at that moment a composite with the wave.
 //The Reynolds number of approx 100 reflects the relative importance of viscosity implying that the reduction in velocity of the stone is 
 //significant in the couple of seconds after collision with the front of the wave.
+//This scenario is similar to dropping a stone into a pool of water. Gravity plays a more important role and
+//wave forming on the pool of water is easier to envisage than the waves which must also be present on the face of the wave as the stone enters it.
 
 
-//The wave and the air are continua and therefore infinite ROs in the sense that they can be endlessly divided while remaining a wave or air.
+//Before the stone hits the wave is it a continuum and in the sense that it can be endlessly divided while remaining a wave.
+//This is no longer the case when the stone collides with the wave.
+
 //For the purposes of the script a closed system is created by choosing SOs which enclose any effects of the stone wave interaction. 
 //The script and perhaps reality accept that the wave and air SOs are finite.
 
 DisplaySOs *	//display all the objects.
 //RandomWalk 30
-NaturalText     //this script is defined using the more natural text language.
+
 
 //The script starts with an INIT SO derived from RO_EVENT:
 INIT is a type of RO_EVENT.
@@ -48,7 +52,7 @@ stone_air includes air
 stone_air is a type of RO_stone_air
 air is a type of RO_air
 stone_air includes stone
-stone_air has property Re_air = 5500   //viscosity is insignificant
+stone_air has property Re_air = 5500   //dynamic forces dominate viscosity.
 
 stone is a type of RO_stone.
 stone has the property diameter and it is 0.02 m. 
@@ -77,49 +81,47 @@ wave has property height = 0.2 m
 collision Includes RO_EVENT1.
 An RO_EVENT1 has property place. 
 An RO_EVENT1 has property weather. 
-An RO_EVENT1 has property instance. //implies instantaneous event.
 RO_EVENT1 has property RO = true.
 RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
 
 THE_COLLISION is a type of RO_EVENT1
 ENDOBJECT collision
 
-THE_COLLISION includes wave_stone
-wave_stone has property Re_water = 100	//velocity * diameter / dynamic viscosity. Viscosity is significant
+THE_COLLISION includes stone_wave
+stone_wave has property Re_water = 100	//velocity * diameter / dynamic viscosity. Viscosity is significant
 The THE_COLLISION  has property time  is 2026-01-01 12:32:02.000.
 The THE_COLLISION includes stone_air. 
-The THE_COLLISION includes wave_air_stone. 
-wave_air_stone includes air
-wave_air_stone includes stone
-wave_air_stone includes wave
+The THE_COLLISION includes stone_wave_air. 
+stone_wave_air includes air
+stone_wave_air includes stone
+stone_wave_air includes wave
 ENDOBJECT stone_air
 
 The stone_enters_wave is a type of RO_timeline.
-The stone_enters_wave includes wave_air_stone.
+The stone_enters_wave includes stone_wave_air.
 stone_enters_wave Includes RO_EVENT2.
 
 An RO_EVENT2 has property place. 
 An RO_EVENT2 has property weather. 
-An RO_EVENT2 has property instance. //implies instantaneous event.
 RO_EVENT2 has property RO = true.
 ENDOBJECT THE_COLLISION
 ENDOBJECT RO_EVENT1
 
 STONE_LEAVES_AIR is a type of RO_EVENT2
-STONE_LEAVES_AIR Includes wave_air_stone.
-STONE_LEAVES_AIR Includes wave_stone.
-wave_stone Includes air
-wave_stone Includes wave
+STONE_LEAVES_AIR Includes stone_wave_air.
+STONE_LEAVES_AIR Includes stone_wave.
+stone_wave Includes stone
+stone_wave Includes wave
 The STONE_LEAVES_AIR  has property time = 2026-01-01_12:32:03.000.
 ENDOBJECT stone_enters_wave
-ENDOBJECT wave_air_stone
+ENDOBJECT stone_wave_air
 
 The stone_in_wave is a type of RO_timeline.
 ENDOBJECT STONE_LEAVES_AIR
 
 ENDOBJECT RO_EVENT2
 
-The stone_in_wave includes wave_stone.
+The stone_in_wave includes stone_wave.
 
 
 

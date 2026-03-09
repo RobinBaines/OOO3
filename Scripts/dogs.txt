@@ -1,7 +1,7 @@
 //Several commands:
 DisplaySOs *	//display all the SOs with SQs.
 //RandomWalk 30
-NaturalText     //this script is defined using the more natural text language.
+
 GenerateScript *
 
 //initialise the real objects.

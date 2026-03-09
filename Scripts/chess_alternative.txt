@@ -1,7 +1,7 @@
 
 DisplaySOs *	//display all the SOs with SQs.
 //RandomWalk 30
-NaturalText
+
 GenerateScript event
 QuerySOs Event, Animal //display all the SOs which inherit from Event and which include an SO which inherits from Dog.
 RandomWalk 30
