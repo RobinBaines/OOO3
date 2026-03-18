@@ -55,7 +55,7 @@ At this time there is no explicit private/public modifier in WOOOF however somet
 
 TIME and EVENTS Time is represented from left to right and has 2 implementations:
 1. A Timeline is a Sensual Object having a finite duration. It is derived from RO_timeline, which is a single RO representing the time continuum. 
-2. A discrete Event. An Event has no duration, has a time stamp and is unique.
+2. A discrete Event. An Event SO has no duration, has a time stamp and is unique.
 Potentially there could be a none countable infinite number of Events. In practice an Event is instantiated when a relevant property changes 
 or the life of an object ends or an object becomes part of a new object.
 For example in the drops script 2 drops of water collide and form a new drop in the event called THE_COLLISION.
@@ -66,6 +66,16 @@ In the WaveAndStone script the Event, also called THE_COLLISION, is the moment t
 Events SOs occur at the beginning and end of a Timeline SO.
 The time stamp of the Event at the beginning of the Timeline is the start time of the Timeline SO.
 The time stamp of the Event at the end of the Timeline is the end time of the Timeline SO.
+
+Defining the moment an event takes place, for example in the scripts drops, PoolAndStone and golf, 
+has some similarity with finding a maximum or minimum on a smooth curve without using differentiation: We know there is a maximum and can 
+choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the line on which the maximum must
+be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one and the original 2 objects cease to exist,
+but have trouble finding it (and defining it because the timestamp is likely to be infinitely long!). 
+In some ways contact is better replaced by the moment the rate of energy transfer changes. 
+Brownian motion and a drops script with atomisation instead of coalescence would be scripted using many Events separated by short Timelines, 
+the assumption being that no 2 events occur in the same instant. This assumption looks safe enough and was perhaps one of the insights which 
+resulted in the correct analysis of Brownian Motion (by Albert E).
 
 OBJECT LIFETIME.
 If an SO, for example game1 in chess.txt, has been included in a Timeline SO and is then included in the next Event SO, 
@@ -91,28 +101,14 @@ Nida during the interactions, present in a Timeline if Nida is visible, ending i
 
 FIRST CONCLUSIONS
 The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.
-Scripts of inanimate interactions includes definitions of coordinates, velocities and closed systems. In retrospect this looks like an artifact 
-of scripting; and an engineering background(?). It looks safe to conclude this is a limitation of scripting rather than real interactions, 
+Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact 
+of scripting; (and an engineering background). It looks safe to conclude this is a limitation of scripting rather than real interactions, 
 which have no need of this sort of decoration.
 
 The division of the timeline into 'Timelines' and instantaneous Events, has the potential for introducing ever more detail.
 In a similar way objects can be split into ever more detail, potentially to atoms and further.
-The aim of any analysis drives the degree to which time and objects are detailed. 
 OOO is concerned with objects which interact with each other so a macroscopic approach seems more convincing than trying to explain things from the 
 bottom up. 
-
-Defining the moment an event takes place, for example in the scripts drops, PoolAndStone and golf, 
-has some similarity with finding a maximum or minimum on a smooth curve without using differentiation: We know there is a maximum and can 
-choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the line on which the maximum must
-be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one and the original 2 objects cease to exist,
-but have trouble finding it (and defining it because the timestamp is likely to be infinitely long!). 
-We can choose an instant when there are 2 objects and another when there is one and then move in both directions 
-to try to isolate the exact instant. However finding the exact instant is elusive because of the complexity of the contact and because 
-an 'instant' cannot be defined.
-In some ways contact is better replaced by the moment the rate of energy transfer changes. 
-Brownian motion and a drops script with atomisation instead of coalescence would be scripted using many Events separated by short Timelines, 
-the assumption being that no 2 events occur in the same instant. This assumption looks safe enough and was perhaps the insight which 
-resulted in the correct analysis of Brownian Motion (by Albert E).
 
 'Composite' objects with different characteristics are formed in the drops, golf and PoolAndStone scripts. 
 The composite drop formed when 2 smaller drops coalesce looks convincing. The original 2 drops are mixed into the new drop; 
@@ -122,26 +118,23 @@ It seems reasonable to consider the club and ball a single object although club 
 
 Composite objects in the PoolAndStone script just about work but it took some time to work out how.
 A stone falls through air towards a pool of water. It touches the water and moves into it until it is fully immersed.
-It then falls to the bottom of the pool.
+It then falls to the bottom of the pool. Water and air motion damps out.
 By analogy with other scripts the SO water and SO air are defined as the volumes in motion because of the passage of the stone.
 Here is the PoolAndStone scenario with these SOs:
-
-Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
-When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_water_air. 
-The water SO is has no volume when it is created and grows rapidly as the stone moves into and through the water. 
+1. Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
+2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_water_air. 
+3. The water SO has no volume when it is created and grows rapidly as the stone moves into and through the water. 
 Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
 becomes a discrete increasing volume as the stone enters and moves through the water. 
-
-When the stone is just fully immersed the air SO separates from the composite and becomes an independent SO.
+4. When the stone is just fully immersed the air SO separates from the composite and becomes an independent SO.
 SOs water and stone continue as a new composite SO called stone_water.
-The air SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone. 
-Eventually the air is at rest and the air SO has zero volume and ends.
-
-When the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stone SOs are separate.
+5. The air SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone. (Interaction between air and water at the water surface is ignored here).
+6. Eventually the air is at rest and the air SO has zero volume and ends.
+7. When the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stone SOs are separate.
 We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
 stone and water.
-The water SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone.
-Eventually the water is at rest and the water SO ends: All the water in the pool is again part of the continuum.
+8. The water SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone.
+9. Eventually the water is at rest and the water SO ends: All the water in the pool is again part of the continuum.
 
 In the instant that the stone is fully immersed 2 independent, parallel timeline/event trajects start:
 1. the air Timeline as the motion damps out and 
@@ -173,14 +166,16 @@ The script language allows the following but they are all removed before process
 " and "
 " is "
 " has "
-any number of consequetive spaces is replaced by a singel space.
+any number of consecutive spaces is replaced by a singel space.
 "." at the end of a line.
 "the " at the start of a line.
 "an " at the start of a line.
 
 After removal of the above a line is split based on separators space and tab.
 
-Object includes object
+Object includes object  //an object in the root is added to the right of the other root objects. A nested object is added at the bottom of the parent.
+Object include_right object  ///an object in the root is added to the right of the other root objects. A nested object is added at the right handside of the parent.
+							 //See PoolAndStone script for an example of how include_right can be used. 	
 
 [An ]Object [has] property property =  {string}
 Object property property is {string}
