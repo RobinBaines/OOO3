@@ -30,7 +30,14 @@ namespace OOOCL
 
         public SensualObject? ptrDerivedFrom = null;
         public SensualObject? _EndedBySO = null;
-        
+
+        bool _IncludeRight = false;
+        public bool IncludeRight
+        {
+            get { return _IncludeRight; }
+            set { _IncludeRight = value; }
+        }
+
         public SensualObject? EndedBySO
         {
             get { return _EndedBySO; }
@@ -284,6 +291,7 @@ namespace OOOCL
                     if (this != Context)
                     {
                         EndedBySO = Context;
+                        Ended = true;
                     }
 
                     //propagate to children.
@@ -291,8 +299,11 @@ namespace OOOCL
                     {
                        if(SO.SOParent == this)
                         {
-                            if (SO.EndedBySO == null)
-                                SO.EndedBySO = Context;
+                            SO.SetEndedBy(Context);
+                            //if (SO.EndedBySO == null)
+                            //    SO.EndedBySO = Context;
+
+                            //SO.Ended = true;
                         }
                     }
                 }
@@ -477,8 +488,12 @@ namespace OOOCL
             {
                 test = Source.Name;
             }
+            if (Source.Name == "RO_water(INIT)")
+            {
+                test = Source.Name;
+            }
 
-            Source.Ended = true;
+            //Source.Ended = true;
 
             //identify children of the Source and replicate in the copy.
 
@@ -491,6 +506,10 @@ namespace OOOCL
                 if (BuildSOs.TheSOs[i].SOParent == Source) // && SO.Name != Source.Name)
                 {
                     iDepth++;
+                    //20260313
+                    BuildSOs.TheSOs[i].EndedBySO = Source.EndedBySO;
+                    BuildSOs.TheSOs[i].Ended = true;
+
                     SensualObject newSO = new SensualObject(BuildSOs.TheSOs[i]);
                     newSO.SOParent = this;
                     iDepth--;

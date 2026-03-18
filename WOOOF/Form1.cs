@@ -72,6 +72,10 @@ namespace WOOOF
                             GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
 
                         GDISOs[_SO.Name].Ended = _SO.Ended;
+                        string test;
+                        if (_SO.Name == "AIR_TO_REST") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                            test = _SO.Name;
+                        GDISOs[_SO.Name].IncludeRight = _SO.IncludeRight;
                     }
 
                     foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())

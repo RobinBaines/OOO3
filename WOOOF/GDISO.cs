@@ -24,6 +24,13 @@ namespace WOOOF
 
         public GDISO? Parent { get; set; }
 
+        public bool _IncludeRight = false;
+        public bool IncludeRight
+        {
+            get { return _IncludeRight; }
+            set { _IncludeRight = value; }
+        }
+
         public GDISQ? EndedBySO { get; set; }
 
         public GDISO? Neighbour { get; set; }
@@ -50,6 +57,17 @@ namespace WOOOF
                 {
                     if (Neighbour != null)
                         _x = Neighbour._x + Neighbour.Width + OBJECTSPACING;
+                    //20260316
+                    if (IncludeRight == true && Parent != null)
+                    {
+                        foreach (GDISO GDISO in Parent.ChildGDISOs)
+                        {
+                            if (GDISO != this)
+                                _x += (GDISO.Width + 10);
+                            else break;
+                        }
+                    }
+
                 }
                 catch (Exception ex) { 
 
@@ -78,7 +96,14 @@ namespace WOOOF
                 }
                 foreach (GDISO GDISO in ChildGDISOs.ToList())
                 {
-                    if (GDISO.Width + OBJECTSPACING > _width) _width = GDISO.Width + OBJECTSPACING;
+                    if (GDISO.IncludeRight == true)
+                    {
+                        _width += GDISO.Width + OBJECTSPACING;
+                    }
+                    else
+                    {
+                        if (GDISO.Width + OBJECTSPACING > _width) _width = GDISO.Width + OBJECTSPACING;
+                    }
                 }
 
                 foreach (GDISQ SQ in qualities)
@@ -115,12 +140,19 @@ namespace WOOOF
         public int Height
         {
             get {
-                _height = (int)TextHeight;
+                _height = 0;
 
                 foreach (GDISO GDISO in ChildGDISOs)
                 {
-                    _height += (GDISO.Height + 10);
+                    if(GDISO.IncludeRight == true)
+                    {
+                        if ((GDISO.Height + 10) > _height)
+                            _height = GDISO.Height + 10;
+                    }
+                    else
+                        _height += (GDISO.Height + 10);
                 }
+                _height += (int)TextHeight;
 
                 foreach (GDISQ SQ in qualities)
                 {
@@ -250,13 +282,19 @@ namespace WOOOF
                 {
                     Parent.CalculateY();
                     y = (Parent.Y);
-                    y += ((int)TextHeight + 5); 
-                    foreach (GDISO GDISO in Parent.ChildGDISOs)
+                    y += ((int)TextHeight + 5);
+
+                    //20260316
+                    if (this.IncludeRight == false)
                     {
-                        if(GDISO != this)
-                            y += (GDISO.Height + 10);
-                        else break;
+                        foreach (GDISO GDISO in Parent.ChildGDISOs)
+                        {
+                            if (GDISO != this && GDISO.IncludeRight == false)
+                                y += (GDISO.Height + 10);
+                            else break;
+                        }
                     }
+
                     foreach (GDISQ SQ in Parent.qualities.ToList())
                     {
                         if(SQ.GetString(blnHideEvents, Parent.Name).Length > 0)
@@ -312,7 +350,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
             if (G != null)
             {
                 string test;
-                if (Name == "My_Nida(SEE_NIDA_BARK)") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                if (Name == "stone_in_pool") // && Parent.Name == "I_SEE_NIDA_BARKING")
                     test = Name;
 
                 CalculateY();
@@ -325,8 +363,9 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     if (Parent != null)
                     {
-                       X = Parent.X;
-                        rect = new RectangleF(_x + AutoScrollPositionX, Y + AutoScrollPositionY, Width - PARENTCHILDSPACING, Height);
+                       //X = Parent.X;
+                       //20260316 
+                        rect = new RectangleF(X + AutoScrollPositionX, Y + AutoScrollPositionY, Width - PARENTCHILDSPACING, Height);
                     }
                     else
                     {

@@ -1,6 +1,6 @@
 WOOOF converts a scenario into an object model.
 A scenario is written in a text file using a simple language.
-On cnversion the objects are shown as nested rectangles with their properties, including references to the object which set the property. 
+On conversion the objects are shown as nested rectangles with their properties, including references to the object which set the property. 
 
 In addition to the graphical presentation, the objects with their properties are written to a text file. 
 There are also several more experimental and optional output forms such as the result of random walks through the model.
@@ -22,7 +22,7 @@ Several Object Oriented Ontology (OOO) ideas are:
 
 Several Object Oriented Programming (OOP) concepts are supported: Inheritance, visibility of properties, containment.
 
-These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, WaveAndStone.txt and chess.txt.
+These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt, WaveAndStone.txt and chess.txt.
 They are the result of a series of experiments with different approaches to structuring objects. 
 An alternative, but in my opinion less convincing one, is in chess_alternative.txt.
 An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
@@ -79,7 +79,7 @@ object has come into existence. For example it would be tedious to have to descr
 existence via a series of events involving nucleation, condensation and collisions.
 
 Inanimate interaction and Observers.
-The WaveAndStone, drops and golf scripts represent interactions without an explicit observer.
+The PoolAndStone, WaveAndStone, drops and golf scripts represent interactions without an explicit observer.
 The dogs script introduces an observer, called Me. Me contains an SO called dog which contains My_Nida.
 The SO 'dog' is Me's idea of a generic dog; 4 legs, a bark etc. 
 It seems logical to let My_Nida inherit from RO_Nida.
@@ -101,41 +101,55 @@ The aim of any analysis drives the degree to which time and objects are detailed
 OOO is concerned with objects which interact with each other so a macroscopic approach seems more convincing than trying to explain things from the 
 bottom up. 
 
-Defining the moment an event takes place, for example in the scripts drops, WaveAndStone and golf, 
-is similar to defining a maximum or minimum without using differentiation: We know there is a maximum and can 
+Defining the moment an event takes place, for example in the scripts drops, PoolAndStone and golf, 
+has some similarity with finding a maximum or minimum on a smooth curve without using differentiation: We know there is a maximum and can 
 choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the line on which the maximum must
 be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one and the original 2 objects cease to exist,
-but have trouble finding it. We can choose an instant when there are 2 objects and another when there is one and then move in both directions 
+but have trouble finding it (and defining it because the timestamp is likely to be infinitely long!). 
+We can choose an instant when there are 2 objects and another when there is one and then move in both directions 
 to try to isolate the exact instant. However finding the exact instant is elusive because of the complexity of the contact and because 
-an 'instantanous instant' cannot be defined.
-In some ways contact is better replaced by the moment that energy transfer starts. 
-
+an 'instant' cannot be defined.
+In some ways contact is better replaced by the moment the rate of energy transfer changes. 
 Brownian motion and a drops script with atomisation instead of coalescence would be scripted using many Events separated by short Timelines, 
 the assumption being that no 2 events occur in the same instant. This assumption looks safe enough and was perhaps the insight which 
 resulted in the correct analysis of Brownian Motion (by Albert E).
 
-'Composite' objects with different characteristics are formed in the drops, golf and WaveStone scripts. 
-The composite drop formed when 2 smaller drops coalesce looks convincing. The original 2 drops are mixed into the new drop and 
-reconstitution of the original drops is not possible.
+'Composite' objects with different characteristics are formed in the drops, golf and PoolAndStone scripts. 
+The composite drop formed when 2 smaller drops coalesce looks convincing. The original 2 drops are mixed into the new drop; 
+the original drops can no longer be recovered.
 In the golf script club and ball both start deforming and energy starts to be transferred at the instant of contact. 
 It seems reasonable to consider the club and ball a single object although club and ball are still recognisable. 
-In a flat ontology then we have to accept that such a loosely formed, temporary, composite, object is not special.
 
-The WavesAndStone scenario raises questions about the stone when it is fully immersed in water, and when it, prior to the 
-collision, is fully immersed in air. It seems arbitary to treat water-stone as a composite object but not air-stone. There is a sort of symmetry between  
-the passage of the stone through the air and through water. 
-Before contact with the stone, the wave is a continuum; it can be endlessly sliced into waves using a vertical cut. On contact with the stone the continuum
-becomes a discrete area which increases in size as the stone enters the water. 
-A similar scenario is dropping a stone into a pool of water. The same composite object problems arise.
+Composite objects in the PoolAndStone script just about work but it took some time to work out how.
+A stone falls through air towards a pool of water. It touches the water and moves into it until it is fully immersed.
+It then falls to the bottom of the pool.
+By analogy with other scripts the SO water and SO air are defined as the volumes in motion because of the passage of the stone.
+Here is the PoolAndStone scenario with these SOs:
 
+Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
+When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_water_air. 
+The water SO is has no volume when it is created and grows rapidly as the stone moves into and through the water. 
+Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
+becomes a discrete increasing volume as the stone enters and moves through the water. 
+
+When the stone is just fully immersed the air SO separates from the composite and becomes an independent SO.
+SOs water and stone continue as a new composite SO called stone_water.
+The air SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone. 
+Eventually the air is at rest and the air SO has zero volume and ends.
+
+When the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stone SOs are separate.
+We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
+stone and water.
+The water SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone.
+Eventually the water is at rest and the water SO ends: All the water in the pool is again part of the continuum.
+
+In the instant that the stone is fully immersed 2 independent, parallel timeline/event trajects start:
+1. the air Timeline as the motion damps out and 
+2. a Timeline as the stone falls to the bottom of the pool, followed by an Event when the stone comes to rest followed by a Timeline 
+while the motion of the water SO damps out.
+
+The WavesAndStone scenario can be approached in a similar way.
 Another variation is a drop of water being dropped on to a pool of water with the well known column and new drop formation. 
-The initial drop merges into the pool to form a single object; and calling this 'composite' the original pool object looks fine to me. Any changes
-could be considered property changes.
-Later a new drop may form and the original pool object remains. 
-
-
- 
-
 
 A DECRIPTION OF THE LANGUAGE USED IN THE SCRIPTS.
 {COMMAND}

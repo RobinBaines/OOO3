@@ -42,7 +42,9 @@ namespace OOOCL
         internal const string GENERATESCRIPT = "GenerateScript";
         internal const string CONTEXT = "context";
         internal const string ENDOBJECT = "endobject";
-        
+        internal const string INCLUDERIGHT = "include_right";
+
+
 
         internal const string RANDOMWALK = "RandomWalk";
         internal const string DISPLAYSOS = "DisplaySOs";
@@ -183,6 +185,13 @@ namespace OOOCL
                             SOIncludedInSOName = words[index];
                         }
                         break;
+                    case INCLUDERIGHT:
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOIncludedInSOName = words[index];
+                        }
+                        break;
                     case "property":
                         if (words.Count() > index + 1)
                         {
@@ -258,7 +267,7 @@ namespace OOOCL
 
      /// <summary>
      /// The Context is the SO from which a property is set in another SO.
-     /// It is set explicitely using Contect "SOName" of is set if the Includes command is used.
+     /// It is set explicitly using Contect "SOName" of is set if the Includes command is used.
      /// </summary>
      /// <param name="ParentSO"></param>
      /// <param name="SOIncludedInSOName"></param>
@@ -322,8 +331,18 @@ namespace OOOCL
                             }
                             if (IsNotAParent(TheSOs[index2]))
                             {
+                                //20260313
+                                TheSOs[index2].EndedBySO = Context;
+                                TheSOs[index2].Ended = true;
                                 SOInSO = new(TheSOs[index2]);
+                              
+
                                 SOInSO.SOParent = SOEvent;
+
+                                //SOInSO.IncludeRight = false;
+                                if (line.Contains(INCLUDERIGHT))
+                                    SOInSO.IncludeRight = true;
+
                                 TheSOs.Add(SOInSO);
 
                                 //add the reference from the parent to the child and vice versa.
@@ -343,6 +362,10 @@ namespace OOOCL
                         {
                             SOEvent.AddIncludesReference(SOInSO);
                             SOInSO.AddIsPartOfReference(SOEvent);
+                            //SOInSO.IncludeRight = false;
+                            if (line.Contains(INCLUDERIGHT))
+                                SOInSO.IncludeRight = true;
+
                             TheSOs.Add(SOInSO);
                             QualityIsSO(SOInSO);
                         }
@@ -394,14 +417,28 @@ namespace OOOCL
 
             if (SOEvent != null)
             {
-                if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT)
+                if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT && SOEvent != null)
                 {
-                    SOEvent.Ended = true;
-
-                    //add the reference from the parent to the child and vice versa.
-                    if (SOEvent != null && Context != null && SOEvent != Context)
+                    //End all the objects.
+                    foreach (SensualObject SO in BuildSOs.TheSOs)
                     {
-                        SOEvent.SetEndedBy(Context);
+                        if (Context.Name == "WATER_TO_REST" && SO.OriginalName == "RO_water")
+                        {
+                            string test = Preposition;
+                        }
+                        if (SOEvent.OriginalName == "RO_stone_water_air")
+                        {
+                            string test = Preposition;
+                        }
+
+                        if (SO.OriginalName == SOEvent.OriginalName && (SO.Ended == false || SO.EndedBySO == null))
+                        {
+                            SO.Ended = true;
+                            if (Context != null && SO != Context)
+                            {
+                                SO.SetEndedBy(Context);
+                            }
+                        }
                     }
                     return;
                 }
