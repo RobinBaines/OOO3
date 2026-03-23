@@ -184,7 +184,6 @@ and the observer noticing it has happened. It looks promising to introduce an ob
 
 Scripting and visualisation of the script using WOOOF are 2 ways of looking at the same thing. On the otherhand it is a good deal easier to develop a 
 convincing script, iteratively, if it can be checked using the WOOOF output. 
-I will be sticking with it because to quote Johan Cruijf again "je gaat het pas zien als je het doorhebt". "You only see it when you get it". 
 
 
 A DECRIPTION OF THE LANGUAGE USED IN THE SCRIPTS.
