@@ -22,11 +22,11 @@ Several Object Oriented Ontology (OOO) ideas are:
 
 Several Object Oriented Programming (OOP) concepts are supported: Inheritance, properties, containment.
 
-These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt, WaveAndStone.txt and chess.txt.
-They are the result of a series of experiments with different approaches to structuring objects. 
+These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt and chess.txt.
+They are the result of a series of experiments with different approaches. 
 An alternative, but less convincing one, is in chess_alternative.txt.
 An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
-is based on Graham Harman's analysis and his idea of object development using symbiosis. 
+is based on Graham Harman's analysis and his ideas on object development using symbiosis. 
 
 Several conventions have been used in the scripts: 
 
@@ -148,7 +148,7 @@ In the instant that the stone is fully immersed 2 independent, parallel Timeline
 2. a Timeline as the stone falls to the bottom of the pool, followed by an Event when the stone comes to rest followed by a Timeline 
 while the motion of the water SO damps out and the Event when the motion has ended.
 
-The WavesAndStone scenario is similar.
+A Waves and Stone scenario has not been made because it would be very similar to the Pool and Stone scenario.
 Another variation is a drop of water being dropped on to a pool of water with the well known column and new drop formation. 
 
 PROPERTIES.

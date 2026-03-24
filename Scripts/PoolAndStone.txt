@@ -17,7 +17,7 @@
 //When the stone is just fully immersed the air SO becomes a solitary SO and water and stone continue as a new composite SO called stone_water.
 //If the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stones SOs are separate.
 //The water SO begins to shrink as viscosity damps out the disturbances caused by passage of the stone.
-//At a given instance the water is completly at rest and the water SO ends: All the water in the pool is again part of the continuum.
+//At a given instance the water is at rest and the water SO ends: All the water in the pool is again part of the continuum.
 //We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
 //the stone and the water.
 
