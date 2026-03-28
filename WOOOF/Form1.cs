@@ -166,7 +166,8 @@ namespace WOOOF
                         button1.Location = bottom_right_point;
                         blnScriptBeingProcessed = false;
                         blnPaintActive = false;
-                        BuildSOs.TheSOs.ResetBindings();
+                       //BuildSOs.TheSOs.ResetBindings();
+                        HandleSOChanged(ListChangedType.Reset);
                         panel1.Invalidate();
                         btnRunScript.Enabled = true;
                     }

@@ -130,7 +130,7 @@ namespace OOOCL
         /// <param name="blnDateTime"></param>
         /// <param name="SOIncludedInSOName"></param>
         /// <returns></returns>
-        internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName, ref string Preposition)
+        internal static string GetNameNaturalText(string result, ref string SOName, ref string Inherits, ref string SQName, ref string Value, ref bool blnDateTime, ref string SOIncludedInSOName, ref string SOExcludedInSOName, ref string Preposition)
         {
 
             //result = result.Replace("an ", " ", StringComparison.OrdinalIgnoreCase);
@@ -185,6 +185,14 @@ namespace OOOCL
                             SOIncludedInSOName = words[index];
                         }
                         break;
+                    case "excludes":
+                        if (words.Count() > index + 1)
+                        {
+                            index++;
+                            SOExcludedInSOName = words[index];
+                        }
+                        break;
+
                     case INCLUDERIGHT:
                         if (words.Count() > index + 1)
                         {
@@ -289,158 +297,180 @@ namespace OOOCL
             return true;
         }
 
-        public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName, string Preposition)
+        public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName, string SOExcludedInSOName, string Preposition)
         {
-            string test2;
-            if (SQName == "ends" && SQValue == "true")
+            if (SOExcludedInSOName.Length > 0)
             {
-                test2 = "test";
-            }
-
-            //An SO is created or referenced MeetSiena : Event {
-            if (SOName.Length > 0) 
-            {
-                msecs = 0;
-
-                //create the SO if it is a new one.
-                //The SOParent = null here because it is only set if Includes command is used to set explicitely, see below.
-                SOEvent = new(SOName, dateTime, null);
-               
-                int index = TheSOs.IndexOf(SOEvent);
-                if (index < 0)
+                if (SOName.Length > 0)
                 {
-                    TheSOs.Add(SOEvent);
-                }
-                
-                index = TheSOs.IndexOf(SOEvent);
-                if (index >= 0)
-                {
-                    SOEvent = TheSOs[index];
-                    SetContext(SOEvent, SOIncludedInSOName, Inherits, line);
-                   
-                    if (SOIncludedInSOName.Length > 0 && SOIncludedInSOName != SOName)
+                    //int index = TheSOs.IndexOf(SOEvent);
+                    foreach (SensualObject SO in TheSOs)
                     {
-                        SensualObject SOInSO = new(SOIncludedInSOName, dateTime, SOEvent);
-                        int index2 = TheSOs.IndexOf(SOInSO);
-                        if (index2 >= 0)
+                        if(SO.OriginalName == SOExcludedInSOName && SO.SOParent.OriginalName == SOName && SO.SOParent.SOParent.OriginalName == SOEvent.OriginalName)
                         {
-                            string test;
-                            if (SOEvent.Name == "SPLIT")
+                           
+                            string test3;
                             {
-                                test = SOEvent.Name;
+                                test3 = "test";
                             }
-                            if (IsNotAParent(TheSOs[index2]))
+                            SO.SOParent = SOEvent;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                string test2;
+                if (SQName == "ends" && SQValue == "true")
+                {
+                    test2 = "test";
+                }
+
+                //An SO is created or referenced MeetSiena : Event {
+                if (SOName.Length > 0)
+                {
+                    msecs = 0;
+
+                    //create the SO if it is a new one.
+                    //The SOParent = null here because it is only set if Includes command is used to set explicitly, see below.
+                    SOEvent = new(SOName, dateTime, null);
+
+                    int index = TheSOs.IndexOf(SOEvent);
+                    if (index < 0)
+                    {
+                        TheSOs.Add(SOEvent);
+                    }
+
+                    index = TheSOs.IndexOf(SOEvent);
+                    if (index >= 0)
+                    {
+                        SOEvent = TheSOs[index];
+                        SetContext(SOEvent, SOIncludedInSOName, Inherits, line);
+
+                        if (SOIncludedInSOName.Length > 0 && SOIncludedInSOName != SOName)
+                        {
+                            SensualObject SOInSO = new(SOIncludedInSOName, dateTime, SOEvent);
+                            int index2 = TheSOs.IndexOf(SOInSO);
+                            if (index2 >= 0)
                             {
-                                //20260313
-                                TheSOs[index2].EndedBySO = Context;
-                                TheSOs[index2].Ended = true;
-                                SOInSO = new(TheSOs[index2]);
-                              
+                                string test;
+                                if (SOEvent.Name == "SPLIT")
+                                {
+                                    test = SOEvent.Name;
+                                }
+                                if (IsNotAParent(TheSOs[index2]))
+                                {
+                                    //20260313
+                                    TheSOs[index2].EndedBySO = Context;
+                                    TheSOs[index2].Ended = true;
+                                    SOInSO = new(TheSOs[index2]);
 
-                                SOInSO.SOParent = SOEvent;
 
+                                    SOInSO.SOParent = SOEvent;
+
+                                    //SOInSO.IncludeRight = false;
+                                    if (line.Contains(INCLUDERIGHT))
+                                        SOInSO.IncludeRight = true;
+
+                                    TheSOs.Add(SOInSO);
+
+                                    //add the reference from the parent to the child and vice versa.
+                                    SOEvent.AddIncludesReference(SOInSO);
+                                    SOInSO.AddIsPartOfReference(SOEvent);
+                                }
+                                else
+                                {
+                                    TheSOs[index2].SOParent = SOEvent;
+                                    SOEvent.AddIncludesReference(TheSOs[index2]);
+                                    TheSOs[index2].AddIsPartOfReference(SOEvent);
+                                }
+
+                                // TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
+                            }
+                            else
+                            {
+                                SOEvent.AddIncludesReference(SOInSO);
+                                SOInSO.AddIsPartOfReference(SOEvent);
                                 //SOInSO.IncludeRight = false;
                                 if (line.Contains(INCLUDERIGHT))
                                     SOInSO.IncludeRight = true;
 
                                 TheSOs.Add(SOInSO);
-
-                                //add the reference from the parent to the child and vice versa.
-                                SOEvent.AddIncludesReference(SOInSO);
-                                SOInSO.AddIsPartOfReference(SOEvent);
+                                QualityIsSO(SOInSO);
                             }
-                            else
+                            Thread.Sleep(SleepTime);
+                        }
+                    }
+                    //If the new SO inherits, MeetSiena: Event {
+                    if (Inherits.Length > 0)
+                    {
+                        if (SOEvent != null)
+                        {
+                            SensualObject SOInherits = new(Inherits, dateTime, SOEvent);
+                            int ind = TheSOs.IndexOf(SOInherits);
+                            if (ind >= 0)
                             {
-                                TheSOs[index2].SOParent = SOEvent;
-                                SOEvent.AddIncludesReference(TheSOs[index2]);
-                                TheSOs[index2].AddIsPartOfReference(SOEvent);
+                                TheSOs[ind].AddIncludesReference(SOEvent);
                             }
-
-                           // TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
+                            InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
                         }
-                        else
-                        {
-                            SOEvent.AddIncludesReference(SOInSO);
-                            SOInSO.AddIsPartOfReference(SOEvent);
-                            //SOInSO.IncludeRight = false;
-                            if (line.Contains(INCLUDERIGHT))
-                                SOInSO.IncludeRight = true;
-
-                            TheSOs.Add(SOInSO);
-                            QualityIsSO(SOInSO);
-                        }
-                        Thread.Sleep(SleepTime);
                     }
-                }
-                //If the new SO inherits, MeetSiena: Event {
-                if (Inherits.Length > 0)
-                {
-                    if (SOEvent != null)
+                    else
                     {
-                        SensualObject SOInherits = new(Inherits, dateTime, SOEvent);
-                        int ind = TheSOs.IndexOf(SOInherits);
-                        if (ind >= 0)
+                        //only add the reference from the parent to the child and vice versa if not inherits command.
+                        if (SOEvent != null && Context != null && SOEvent != Context)
                         {
-                            TheSOs[ind].AddIncludesReference(SOEvent);
+                            SOEvent.AddIsPartOfReference(Context);
+                            Context.AddIncludesReference(SOEvent);
                         }
-                        InheritSensualObject(SOEvent, SOEvent, Inherits, msecs);
                     }
+
                 }
-                else
+
+                //A quality Nida = sleeping
+                if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
                 {
-                    //only add the reference from the parent to the child and vice versa if not inherits command.
-                    if (SOEvent != null && Context != null && SOEvent != Context)
+                    string test;
+                    //SOEvent.Name == "I_SEE_NIDA_BARKING" &&
+                    if (SQName == "Barking" && SQValue == "Me")
                     {
-                        SOEvent.AddIsPartOfReference(Context);
-                        Context.AddIncludesReference(SOEvent);
+                        test = Preposition;
                     }
-                }
 
-            }
-
-            //A quality Nida = sleeping
-            if (SQName.Length > 0 && SOEvent != null && SOName.Length > 0) // && LastSO != null)
-            {
-                string test;
-                //SOEvent.Name == "I_SEE_NIDA_BARKING" &&
-                if (SQName == "Barking" && SQValue == "Me")
-                {
-                    test = Preposition;
-                }
-
-                if (Context != null)
-                {
-                    WriteQuality( SOEvent, Context, SQName, SQValue, msecs, Preposition);
-                }
-                else WriteQualityNatural(SOEvent, SQName, SQValue, msecs, Preposition);
-            }
-
-            if (SOEvent != null)
-            {
-                if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT && SOEvent != null)
-                {
-                    //End all the objects.
-                    foreach (SensualObject SO in BuildSOs.TheSOs)
+                    if (Context != null)
                     {
-                        if (Context.Name == "WATER_TO_REST" && SO.OriginalName == "RO_water")
-                        {
-                            string test = Preposition;
-                        }
-                        if (SOEvent.OriginalName == "RO_stone_water_air")
-                        {
-                            string test = Preposition;
-                        }
+                        WriteQuality(SOEvent, Context, SQName, SQValue, msecs, Preposition);
+                    }
+                    else WriteQualityNatural(SOEvent, SQName, SQValue, msecs, Preposition);
+                }
 
-                        if (SO.OriginalName == SOEvent.OriginalName && (SO.Ended == false || SO.EndedBySO == null))
+                if (SOEvent != null)
+                {
+                    if (line.Substring(0, ENDOBJECT.Length).ToLower() == ENDOBJECT && SOEvent != null)
+                    {
+                        //End all the objects.
+                        foreach (SensualObject SO in BuildSOs.TheSOs)
                         {
-                            SO.Ended = true;
-                            if (Context != null && SO != Context)
+                            if (Context.Name == "WATER_TO_REST" && SO.OriginalName == "RO_water")
                             {
-                                SO.SetEndedBy(Context);
+                                string test = Preposition;
+                            }
+                            if (SOEvent.OriginalName == "RO_stone_water_air")
+                            {
+                                string test = Preposition;
+                            }
+
+                            if (SO.OriginalName == SOEvent.OriginalName && (SO.Ended == false || SO.EndedBySO == null))
+                            {
+                                SO.Ended = true;
+                                if (Context != null && SO != Context)
+                                {
+                                    SO.SetEndedBy(Context);
+                                }
                             }
                         }
+                        return;
                     }
-                    return;
                 }
             }
         }
@@ -767,6 +797,7 @@ namespace OOOCL
                             string Command = "";
                             string SOName = "";
                             string SOIncludedInSOName = "";
+                            string SOExcludedInSOName = "";
                             string Inherits = "";
                             string SQName = "";
                             string SQValue = "";
@@ -778,10 +809,10 @@ namespace OOOCL
                             {
                                 if (blnNaturalText)
                                 {
-                                    line = GetNameNaturalText(line, ref SOName, ref Inherits, ref SQName, ref SQValue,  ref blnDateTime, ref SOIncludedInSOName, ref Preposition);
+                                    line = GetNameNaturalText(line, ref SOName, ref Inherits, ref SQName, ref SQValue,  ref blnDateTime, ref SOIncludedInSOName,ref SOExcludedInSOName, ref Preposition);
                                     if (blnDateTime == false)
                                     {
-                                        ProcessNaturalSO(msecs, line, SOName, Inherits, SQName, SQValue,  SOIncludedInSOName, Preposition);
+                                        ProcessNaturalSO(msecs, line, SOName, Inherits, SQName, SQValue,  SOIncludedInSOName, SOExcludedInSOName, Preposition);
                                     }
                                 }
                                 else

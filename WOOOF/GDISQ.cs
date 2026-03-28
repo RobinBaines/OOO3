@@ -149,11 +149,12 @@ namespace WOOOF
             Color theColor = Color.Black;
             if (SQSetsOtherSQ)
                 theColor = Color.DarkGray;
-            if(Parent.Ended)
-                theColor = Color.DarkGray;
+            if (Parent.Ended)
+                theColor = Color.SlateGray; //.SlateGray SteelBlue;
 
             SOName = _SOName;
             SolidBrush sb;
+            
             if (SOevent.Length > 0)
             {
                 sb = new SolidBrush(theColor);

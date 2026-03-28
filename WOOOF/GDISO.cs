@@ -74,7 +74,7 @@ namespace WOOOF
                 }
 
                 if (Parent != null)
-                    _x += (Parent._x); // + OBJECTSPACING);
+                    _x += (Parent.X); // + OBJECTSPACING);
                 return _x;
             }
             set { _x = value; }
@@ -381,9 +381,6 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 {
                     if (Inherits.Length > 0)
                     {
-                        //if (_name == "Me" && Parent.Neighbour != null)
-                        //    _name = _name + ":" + Inherits + " " + X.ToString() + " " + Parent.Neighbour.Name;
-                        //else
                             _name = _name + ":" + Inherits;
                     }
                 }
@@ -391,8 +388,14 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
 
                 Pen pn = new Pen(theColour);
                 G.DrawRectangle(pn, rect);
+                Color customColor = Color.FromArgb(10, Color.SlateBlue);
+                SolidBrush brush = new SolidBrush(customColor);
 
-      
+                G.FillRectangle(brush, rect);
+
+
+
+
                 float TextPosition = this.TextHeight; 
                 foreach (GDISQ SQ in qualities.ToList())
                 {
