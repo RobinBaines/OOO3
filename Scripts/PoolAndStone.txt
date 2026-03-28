@@ -128,7 +128,10 @@ INPUT2 Includes stone_water_air.
 STONE_LEAVES_AIR includes OUTPUT2
 OUTPUT2 is a type of Placeholder
 OUTPUT2 Includes RO_stone_water.
+RO_stone_water includes stone
+RO_stone_water includes water
 OUTPUT2 Includes stone_water.
+OUTPUT2 Includes air.
 ENDOBJECT stone_entering_water
 
 stone_water is a type of RO_stone_water
