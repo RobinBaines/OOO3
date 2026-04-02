@@ -122,7 +122,7 @@ Composite objects in the PoolAndStone script just about work but it took some ti
 By analogy with other scripts the SO water and SO air are defined as the volumes in motion because of the passage of the stone.
 Here is the PoolAndStone scenario with these SOs:
 1. Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
-2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_water_air. 
+2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_air_water. 
 3. The water SO has no volume when it is created and grows rapidly as the stone moves into and through the water. 
 Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
 becomes a discrete increasing volume as the stone enters and moves through the water. 
@@ -146,12 +146,17 @@ another 2 independent trajects start:
 The script uses "placeholders" to contain time trajects.
 
 A Waves and Stone scenario would be very similar to the Pool and Stone scenario.
-Another variation is a drop of water being dropped on to a pool of water with the well known column and new drop formation. 
+Another variation is a drop of water being dropped on to a pool of water with a column of water and simetimes formation of a new drop. 
 
 The PoolAndStoneObject.txt script is a variation on PoolAndStone.txt.
-Instead of making compsite objects, stone_air, stone_water_air, stone_water and stone, the stone is given a leading role.
+Instead of making composite objects, stone_air, stone_air_water, stone_water and stone, the stone is given a 'leading role'.
 The stone retains its identity as a stone and air and water are included and excluded as the script progresses. 
-This approach is more simple and feels natural because the stone includes entrained air and water and which is still in contact with the stone.
+This approach simplifies and feels natural because the stone includes entrained air and water when they are still in contact with the stone.
+On the otherhand if the air - water interaction at the surface of the pool were included in the script complications would arise
+if these damped out after the stone came to rest at the bottom of the pool.
+Similar complications occur when trying to make SO air or water play this 'leading role'.
+This logic seems to imply that composite objects should be created by combining other objects into a new composite.
+Giving one existing object a leading role by including the other objects leads to complications. 
 
 PROPERTIES.
 The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.

@@ -1,9 +1,22 @@
+//See Readme.md for conventions used in this script. 
+//Initially the dog called Nida is sitting.
+//Timeline: I (Me) observes her sitting.
+//Event: Nida starts running but I haven't noticed yet.
+//Timeline: Nida is running but I still think she is sitting.
+//Event: I notice she is running.
+//Timeline: Nida is running but I think she is running.
+//Event: Nida starts barking.
+//Timeline: Nida is barking but I have not realised yet.
+//Event: I notice she is barking.
+//Timeline: Nida is running and barking and I see that too.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //Several commands:
 DisplaySOs *	//display all the SOs with SQs.
 //RandomWalk 30
+//GenerateScript *
 
-GenerateScript *
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //initialise the real objects.
 INIT is a type of RO_EVENT.
 INIT Includes RO_timeline
@@ -16,6 +29,7 @@ RO_Nida has property RO = true.
 RO_Nida has property Sitting = true.
 RO_Me has property RO = true.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //Set up the initial steady state with Nida Sitting.
 MeetNida is a type of RO_timeline. 
 The MeetNida has the property place and it is Bakkeveen. 
@@ -40,6 +54,7 @@ My_Nida is a type of RO_Nida
 //And in this initial state show that I have realised Nida is sitting.
 My_Nida has property Sitting = true
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //Nida starts running.
 //The time it takes for Nida to start running could be broken up into several events but to keep things simple 
 //NIDA_RUNS is an instantaneous event associated with Nida starting to run and therefore no longer sitting.
@@ -55,6 +70,7 @@ RO_Nida has property Running = true.
 Nida has property  Running = true
 ENDOBJECT MeetNida
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //We enter a steady state in which Nida is running but the observer has not realised that yet.
 Nida_running is a type of RO_timeline. 
 Nida_running includes RO_Nida
@@ -62,6 +78,7 @@ Nida_running includes Nida
 Nida_running includes Me
 ENDOBJECT NIDA_RUNS
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //The observer realises that Nida is running.
 SEE_NIDA_RUN is a type of RO_EVENT
 SEE_NIDA_RUN includes Me
@@ -70,6 +87,7 @@ My_Nida has property Running = true
 My_Nida has property Sitting = false
 ENDOBJECT Nida_running
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //A steady state is reached with Nida running and the observer is also aware of that.
 See_Nida_running is a type of RO_timeline.
 See_Nida_running includes RO_Nida 
@@ -77,6 +95,7 @@ See_Nida_running includes Nida
 See_Nida_running includes Me
 ENDOBJECT SEE_NIDA_RUN
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //Nida starts barking.
 NIDA_BARKS is a type of RO_EVENT
 NIDA_BARKS includes RO_Nida
@@ -86,6 +105,7 @@ RO_Nida has the property Barking = true
 Nida has the property Barking = true
 ENDOBJECT See_Nida_running
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //We enter a steady state in which Nida is running and barking but the observer has not realised that she is barking.
 Nida_barking is a type of RO_timeline. 
 Nida_barking includes RO_Nida
@@ -93,12 +113,14 @@ Nida_barking includes Nida
 Nida_barking includes Me
 ENDOBJECT NIDA_BARKS
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //The observer realises that Nida is barking.
 SEE_NIDA_BARK is a type of RO_EVENT
 SEE_NIDA_BARK includes Me
 My_Nida has property Barking at Me
 ENDOBJECT Nida_barking
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //A steady state is reached with Nida running and barking and the observer is also aware of that.
 See_Nida_barking is a type of RO_timeline.
 See_Nida_barking includes RO_Nida 

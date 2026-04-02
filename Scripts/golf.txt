@@ -1,27 +1,25 @@
-//This script describes a golf ball being hit by a golfclub.
-//See Readme.md for conventions used in this script. 
+//This script describes a golf ball being hit by a golf club.
+//See Readme.md for conventions. 
 //Objects are initialised in the Event INIT.
-//The timeline object called the_swing describes the relative position of club and ball and the velocity of the club.
-//The club hits the ball and a new club_ball object is created in the Event called THE_COLLISION.
-//The club and ball objects are part of the club_ball object.
-//Energy is transferred from club to ball during the existence of the club_ball object in the timeline object called club_ball_contact.
+//In Timeline the_swing the club and ball move towards each other.
+//In Event THE_COLLISION the club makes contact with the ball and a new club_ball object is created.
+//In Timeline club_ball_contact the club and ball objects are part of the club_ball object and
+//energy is transferred from club to ball.
 //While not described in the script the kinetic energy of the club is converted to potential energy by deformation of club and ball 
 //before the potential energy is converted to changes in kinetic energy of club and ball.
-//The club_ball_contact Timeline object ends in Event SPLIT.
-//In SPLIT the club_ball object ends and club and ball objects become independent objects.
+//In the Event SPLIT, the club_ball object ends and club and ball objects become independent objects.
 
-//Potentially there could be a none countable infinite number of events. 
-//In practice an event is instantiated when a relevent property changes. 
-//We could for example split the timeline club_ball_contact with an event to capture the moment when the potential energy is a maximum. 
-
-
+//The placeholders INPUT1, OUTPUT1 in THE_COLLISION and  INPUT2, OUTPUT2 in SPLIT clarify the event processes.
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 DisplaySOs *	//display all the objects.
 QuerySOs RO_timeline, club
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //The script starts with an INIT SO derived from RO_EVENT:
 INIT is a type of RO_EVENT.
 INIT Includes RO_timeline
 INIT Includes RO_EVENT
+INIT Includes Placeholder
 INIT Includes RO_club.
 INIT Includes RO_ball.
 RO_timeline has property RO = true.
@@ -32,9 +30,8 @@ An RO_EVENT has property place.
 An RO_EVENT has property weather. 
 RO_EVENT has property RO = true.
 RO_EVENT has property time = 2026-01-01 12:32:00.000.
-///////////////////////End of INIT
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 the_swing is a type of RO_timeline.  
 The the_swing has the property place and it is Bakkeveen. 
 The the_swing has the property weather and it is wet. 
@@ -61,23 +58,29 @@ An RO_EVENT1 has property place.
 An RO_EVENT1 has property weather. 
 RO_EVENT1 has property RO = true.
 RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
-///////////////////////End of the_swing
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 THE_COLLISION is a type of RO_EVENT1
 ENDOBJECT the_swing
-THE_COLLISION Includes RO_club_ball.
+
+
+//the_swing includes THE_COLLISION.
+The THE_COLLISION time is 2026-01-01 12:32:10.000.
+THE_COLLISION includes INPUT1
+INPUT1 is a type of Placeholder
+
+
+The INPUT1 includes club. 
+The INPUT1 includes ball. 
+
+THE_COLLISION includes OUTPUT1
+OUTPUT1 is a type of Placeholder
+OUTPUT1 Includes RO_club_ball
 RO_club_ball has property RO = true. 
 RO_club_ball has property RO_club
 RO_club_ball has property RO_ball
 
-//the_swing includes THE_COLLISION.
-The THE_COLLISION time is 2026-01-01 12:32:10.000.
-//The THE_COLLISION includes club. 
-//The THE_COLLISION includes ball. 
-
-
-The THE_COLLISION includes club_ball.
+The OUTPUT1 includes club_ball.
 club_ball is a type of RO_club_ball.
 club_ball has the property mass and it is 800gm. 
 club_ball has property x = 0
@@ -90,7 +93,7 @@ The club_ball includes club.
 club has property x = 0
 The club_ball includes ball.
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 The club_ball_contact is a type of RO_timeline.
 ENDOBJECT RO_EVENT1
 ENDOBJECT THE_COLLISION
@@ -106,17 +109,24 @@ An RO_EVENT2 has property weather.
 An RO_EVENT2 has property instance. //implies instantaneous event.
 RO_EVENT2 has property RO = true.
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 SPLIT is a type of RO_EVENT2
 The SPLIT time is 2026-01-01_13:00:00.000.
-The SPLIT includes club_ball. 
+SPLIT includes INPUT2
+INPUT2 is a type of Placeholder
+The INPUT2 includes club_ball. 
+The INPUT2 includes RO_club_ball. 
 
 ENDOBJECT club_ball_contact
 ENDOBJECT club_ball
 ENDOBJECT RO_club_ball
 
-The SPLIT includes club. 
-The SPLIT includes ball. 
+SPLIT includes OUTPUT2
+OUTPUT2 is a type of Placeholder
+The OUTPUT2 includes club. 
+The OUTPUT2 includes ball. 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 The the_result is a type of RO_timeline.
  
 the_result includes club

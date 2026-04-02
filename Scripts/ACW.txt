@@ -1,10 +1,11 @@
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //Several commands:
 DisplaySOs *	//display all the SOs with SQs.
 RandomWalk 30
-NaturalText     //this script is defined using the more natural text language.
-//GenerateScript *
 QuerySOs Battle
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 INIT is a type of RO_EVENT.
 INIT Includes RO_timeline
 RO_timeline has property Place
@@ -51,7 +52,7 @@ President is a type of Person
 
 INIT Includes Executive_Order.
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 ACW is a type of RO_timeline. 
 ACW has property Place = USA
 
@@ -130,7 +131,7 @@ Lincoln includes Proclamation
 Proclamation is a type of Executive_Order
 Proclamation has property Emancipation = True
 
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 //A list of battles.
 CONTEXT Fort_Sumter
 Fort_Sumter  is a type of  Confed_victory 
@@ -258,7 +259,8 @@ CONTEXT Gettysburg
 	Appomattox		has property 		General = Grant
 	Appomattox		has property 		General = Lee
 	
-	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////	
 	CONTEXT GH
 	GH is a type of Person
 	GH includes a Symbiosis
