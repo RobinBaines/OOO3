@@ -1,6 +1,7 @@
 WOOOF converts a scenario into an object model.
 A scenario is written in a text file using a simple language.
-On conversion the objects are shown as nested rectangles with their properties, including references to the object which set the property. 
+On conversion the objects are shown as nested rectangles with their properties, including references to the objects which set the properties. 
+See WOOOFNotes.odp for an example of the output.
 
 The objects with their properties are also written to a text file. 
 There are several experimental types of output such as the result of random walks through the model.
@@ -22,7 +23,7 @@ Several Object Oriented Ontology (OOO) ideas are:
 
 The WOOOF language uses several Object Oriented Programming (OOP) ideas: Inheritance, properties, containment.
 
-These ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt and chess.txt.
+OOO and OOP ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt and chess.txt.
 They are the result of a series of experiments with different approaches. 
 Chess_alternative.txt is an alternative, but less convincing approach.
 An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
@@ -99,7 +100,7 @@ object has come into existence. For example it would be tedious to have to descr
 existence via a series of events involving nucleation, condensation and collisions.
 
 INSTANTIATION.
-Instantiation of a class in OOP is used for processing data. Consider a class describing an invoice (unique invoice number,
+Instantiation of a class in OOP can be used for processing data. Consider a class describing an invoice (unique invoice number,
 date, sender, receiver, a list of products being billed, ...). As each new invoice is created an object is instantiated from the class 
 using parameters (invoice number, date...). The resulting invoices would all have the structure defined in the class.
 A similar approach works in OOO. Imagine many pairs of drops colliding and coalescing in a thunder storm. 
@@ -107,61 +108,71 @@ The drops script could be converted into a class with parameters (drop sizes, co
 could be instantiated for each of the pairs of colliding drops.
 
 'Composite' OBJECTS.
-'Composite' objects with different characteristics are formed in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
+'Composite' objects are formed from 2 or more other object and occur in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
 The composite drop formed when 2 smaller drops coalesce looks convincing. The original 2 drops are mixed into the new drop; 
-the original drops can no longer be recovered. The drops have similar sizes and therefore letting drop2 merge into an altered drop1 looks arbitrary.
-In the golf script club and ball both start deforming and energy starts to be transferred at the instant of contact. 
-It seems reasonable to consider the club and ball a single object while they have contact and energy transfer is taking place, although club and ball are still recognisable. 
+the original drops can no longer be recovered. The drops have similar sizes and therefore letting drop2 merge into drop1 
+or the other way around looks arbitrary.
+To avoid an arbritary cut-off point, any coalescing drops should always form a new drop even when one drop is significantly larger than the other.
 
-Composite objects in the PoolAndStone script just about work but it took some time to work out how.
+In the golf script club and ball both start deforming and energy starts to be transferred at the moment contact is made. 
+It seems reasonable to consider the club and ball a single new object while they have contact and energy transfer is taking place.
+Alternatives are to let the club include the ball or the ball the club. Again choosing one or the other looks arbitrary. 
+
+Composite objects in the PoolAndStone script just about work.
 1. A stone falls through air towards a pool of water. 
 2. It touches the water and moves into it until it is fully immersed.
 3. It falls to the bottom of the pool. 
 4. Water and air motion caused by the passage of the stone damp out.
 
 By analogy with other scripts the SO water and SO air are defined as the volumes in motion because of the passage of the stone.
-Here is the PoolAndStone scenario with these SOs:
+Here is the PoolAndStone scenario with these SOs included:
 1. Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
 2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_air_water. 
 3. The water SO has no volume when it is created and grows rapidly as the stone moves into and through the water. 
 Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
 becomes a discrete increasing volume as the stone enters and moves through the water. 
-4. When the stone is just fully immersed the air SO separates from the composite and becomes an independent SO.
+4. When the stone is just fully immersed, the air SO separates from the composite and becomes an independent SO.
 SOs water and stone continue as a new composite SO called stone_water.
 5. The air SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone. 
-(Interaction between air and water at the water surface is ignored here).
+(Interaction between air and water at the water surface is ignored).
 6. Eventually the air is at rest and the air SO has zero volume and ends.
-7. When the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stone SOs are separate.
+7. When the stone comes to rest at the bottom of the pool the stone_water composite object ends and the water and stone SOs are separate.
 We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
-stone and water. Or to put it another way the stone no longer transfers energy to the water.
+these 2 objects. Or to put it another way the stone no longer transfers energy to the water.
 8. The water SO begins to shrink as viscosity damps out the motion caused by the passage of the stone.
 9. Eventually the water is at rest and the water SO ends: All the water in the pool is again part of the continuum.
 
-In the instant that the stone is fully immersed 2 independent, parallel time trajects start:
+When the stone is fully immersed 2 independent, parallel, time trajects start:
 1. the air Timeline as the motion damps out and the Event when the air motion has ended and 
 2. a Timeline as the stone falls to the bottom of the pool and an Event when the stone comes to rest. At this point
 another 2 independent trajects start:
 	2a. the motion of the water SO damps out and the Event when the motion ends.
 	2b. the stone remains stationary at the bottom of the pool.
-The script uses "placeholders" to contain time trajects.
-
+The script uses "placeholders" to contain independent time trajects, see WOOOFNotes.odp.
 A Waves and Stone scenario would be very similar to the Pool and Stone scenario.
-Another variation is a drop of water being dropped on to a pool of water with a column of water and simetimes formation of a new drop. 
 
 The PoolAndStoneObject.txt script is a variation on PoolAndStone.txt.
 Instead of making composite objects, stone_air, stone_air_water, stone_water and stone, the stone is given a 'leading role'.
 The stone retains its identity as a stone and air and water are included and excluded as the script progresses. 
 This approach simplifies and feels natural because the stone includes entrained air and water when they are still in contact with the stone.
 On the otherhand if the air - water interaction at the surface of the pool were included in the script complications would arise
-if these damped out after the stone came to rest at the bottom of the pool.
-Similar complications occur when trying to make SO air or water play this 'leading role'.
-This logic seems to imply that composite objects should be created by combining other objects into a new composite.
+if these damped out after the stone came to rest at the bottom of the pool. 
+In a shallow pool it is likely that energy transfer between water and air, as ripples spread across the pool, 
+is significant after the stone has come to rest.
+
+Similar complications occur when trying to make SO air or water play a 'leading role'.
+Comparable is including stone_air as a composite object in the object stone_air_water. This would lead to problems if properties depend only on 
+air and water or stone and water. 
+A radical approach but even more complicated is to allow composite objects to contain sensual objects with all combinations of contained objects. 
+
+This logic seems to imply that composite objects should be created by combining other objects to form a new object.
 Giving one existing object a leading role by including the other objects leads to complications. 
+This logic also seems closer to the OOO idea of a flat ontology. 
 
 PROPERTIES.
-The scripts are representations of how objects could relate to each other and for this reason properties have been reduced to a minimum.
+The scripts are representations of how objects could relate to each other and to keep the scripts short and simple properties have been kept to a minimum.
 Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact 
-of scripting; (and caused by an engineering background). It looks safe to conclude this is a limitation of scripting rather than real interactions, 
+of scripting. It looks safe to conclude this is a limitation of scripting rather than real interactions, 
 which have no need of this sort of decoration.
 
 SOME NOTES.
@@ -170,22 +181,23 @@ In a similar way other objects can be split into ever more detail, potentially t
 When considering inanimate scripts it looks difficult to fix this granularity without slipping an observer into the picture to define the intention of the analysis. 
 On the otherhand having made several scripts the changes in the structure of objects and step changes in the rate of energy transfer seem to be concrete pointers to 
 a consistent level of granularity. 
-
 Is there any point in creating Events for the arrival of every photon on the surface of a pollen particle when looking at Brownian motion?
 It is the collision of a molecule of water with the pollen which transfers sufficient energy to the pollen to alter its velocity. 
 Photon collision could influence the motion but is not discernable or relevant!?
 
 When scripting inanimate interactions are we imagining the collision of 2 drops using knowledge of physics, or has it been filmed or is it a 
-template-class for any 2 drop interaction?
+template-class for any 2 drop interaction (see discussion of instantiation, above)? 
 
 Consistency between different scenarios looks like a requirement for objects existing outside human perception.
 Dividing time into Timeline and Event SOs and the use of less obvious types of SO in the PoolAndStone script both contribute to a generic approach to 
 inanimate interactions.
 
+When 2 or more objects combine a new object should be created instead of giving one of the objects a leading role.
+
 The Timelines have been implemented as SOs and as chunks of time derived (inherited) from the single Real continuous Timeline. 
 This looks logical particularily when Timeline SOs overlap when parallel independent trajects are part of an interaction.
 The relationship between the Real continuous Timeline and Events is less clear. The golf script uses Real and Sensual Events for the same Event but as this  
-complicates the script while adding little only Sensual Events have been used in PoolsAndStone script. 
+complicates the script while adding little only Sensual Events have been used in PoolsAndStone script.
 
 Extending these approaches to scenarios where human and animal observers interact with each other and inanimate objects is the next step.
 The dogs script introduces the idea of a time delay between something real happening and the observer noticing it has happened. 
