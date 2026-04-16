@@ -18,56 +18,52 @@ Several Object Oriented Ontology (OOO) ideas are:
 1. Real Objects (ROs) with Real Qualities (RQs) and Sensual Objects (SOs) with Sensual Qualities (SQs) exist.
 2. A flat ontology implying, amoung other things, that interaction between inanimate objects without an observer is valid. 
 3. Vicarious causation: an SO is needed to facilitate interaction between objects. 
-4. Undermining; (real) objects cannot be reduced to only their parts. 
+4. Undermining; (real) objects cannot be reduced to only their parts. The sum is more than the parts. 
 5. Overmining; an object is less than its effects. 
 
-The WOOOF language uses several Object Oriented Programming (OOP) ideas: Inheritance, properties, containment.
+The WOOOF language uses Object Oriented Programming (OOP) ideas Inheritance, Properties and Containment.
 
 OOO and OOP ideas are illustrated in the scripts drops.txt, golf.txt, dogs.txt, PoolAndStone.txt and chess.txt.
 They are the result of a series of experiments with different approaches. 
 Chess_alternative.txt is an alternative, but less convincing approach.
 An early script called ACW.txt has been included in the release. ACW stands for the American Civil War and 
-is based on Graham Harman's analysis and his ideas on object development using symbiosis. 
+is inspired by Graham Harman's analysis and ideas on object development using symbiosis. 
 
-Several conventions have been used in the scripts: 
+//////////////CONVENTIONS///////////////////////////
+Several conventions have been used in the scripts. 
 
 A Real Object has prefix RO_.
 
 INHERITANCE and CONTAINMENT. WOOOF supports inheritance using the command 'type' or 'type of' and containment using 'includes'. 
-The example scripts use inheritance to express the relationship between an SO and an RO; an SO is a type of RO and one or more SOs can inherit from an RO. 
-Inheritance works well because an SO may inherit some but not all of the RO properties and may add new properties not present in the RO. See * below for alternatives.
-
-	My_Nida is a type of RO_Nida  //inheritance
+The example scripts use inheritance to express the relationship between an SO and an RO implying that an SO is a type of RO and that one or more SOs can inherit from the same RO. 
+Inheritance also works well because an SO may inherit some but not all of the RO properties and may add new properties not present in the RO. See * below for alternatives.
+	Nida is a type of RO_Nida  //inheritance
 
 Containment is used to represent generic 'dog' knowledge: In the dogs script the object 'Me' includes a 'dog' SO representing my knowledge of dogs (4 legs, barks..).
-
 	Me includes dog
 	dog has property bark = true 	
 	
 The SO My_Nida is an example of a 'dog' and is contained in 'dog'.
-	
 	dog includes My_Nida  //containment
 
 If a 2nd dog is known to the observer it can be included/contained in dog.
-
 	dog includes Another_dog
 	
-PROPERTY VISIBILITY. In OOP properties of an inherited class may be Private; they are not accessible from the inheriting class.  
+PROPERTY VISIBILITY. In OOP properties of an inherited class may be Private or Public. Private properties are not accessible from the inheriting class.  
 Public Properties in an inherited class are accessible from the inheriting class. 
-At this time there is no explicit private/public modifier in WOOOF but properties can be overridden:
-
+At this time there is no explicit Private/Public modifier in WOOOF but properties can be overridden:
 	Another_dog has property bark = false	//override dog.Barks = true if Me thinks Another_dog does not bark. 
 
 TIME and EVENTS. Time is represented from top to bottom in a script and from left to right in the WOOOF output. 
-
 Time has 2 implementations:
-1. A Timeline is a Sensual Object having a finite duration. It is derived from RO_timeline, which is a single RO representing the time continuum. 
-2. A discrete Event is an Object with no duration, has a time stamp and is unique. ("un momento dado"; Johan Cruiff).
+1. A 'Timeline' is a Sensual Object having a finite duration. It is derived from RO_timeline, which is a single RO representing the time continuum. 
+2. A discrete Event is an Object with no duration, has a time stamp and is unique. ("un momento dado"; Johan Cruyff).
 Potentially there could be a none countable infinite number of Events. In practice an Event is instantiated when 
-an object ends or an object becomes part of a new object. 
-An Event has input and may have output. The scripts may use objects which are called INPUTx and OUTPUTx by convention to emphasize the input and output; see PoolsAndStone for examples.
+an object ends or an object becomes part of a new object or if a property of an object changes. 
+An Event has input and may have output. 
+The scripts use objects which are called INPUTx and OUTPUTx, by convention, to emphasize the Event input and output; see PoolsAndStone for examples.
 By convention Events are given names in capital letters.
-
+Examples of Events:
 In the drops script 2 drops of water collide and form a new drop in the Event called THE_COLLISION.
 In the golf script the club and ball make contact in an Event which is also called THE_COLLISION and form a new SO called club_ball. 
 'club_ball' contains the club and ball and is a composite object which, to avoid undermining, will include more than that.
@@ -79,20 +75,20 @@ The time stamp of the Event at the end of the Timeline is the end time of the Ti
 
 Defining the moment an Event takes place, for example in the scripts drops, PoolAndStone and golf, 
 has some similarity with finding a maximum or minimum on a smooth curve without using differentiation: We know there is a maximum and can 
-choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the line on which the maximum must
+choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the curve on which the maximum must
 be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one and the original 2 objects cease to exist,
 but have trouble finding it (and defining it because the timestamp is likely to be infinitely long!). 
-Events seem to be associated with a step change in the rate of energy transfer. 
+Events seem also to be associated with a step change in the rate of energy transfer. 
 
 Brownian motion and a drops script with atomisation instead of coalescence would be scripted using many Events separated by short Timelines, 
 the assumption being that no 2 events occur in the same instant. This assumption looks safe enough and was perhaps one of the insights which 
-resulted in the "random walk" and the correct analysis of Brownian Motion (by Albert E).
+resulted in the "random walk" and the correct analysis of Brownian Motion by Albert Einstein.
 
 OBJECT LIFETIME.
 If an SO, for example game1 in chess.txt, has been included in a Timeline SO and is then included in the next Event SO, 
 the game1 SO is reproduced by the WOOOF program and the version in the Timeline SO is ended (by showing it greyed out). 
 As the SO proceeds through the Timelines and Events its properties change but the copies in preceding Timelines and Events SOs do not. 
-We can think of these SOs as 'snapshots' made at the moment the containing SO Timeline or Event ends. 
+We can think of these SOs as 'snapshots' made at the moment the containing SO Timeline ends or the Event occurs. 
 
 INIT
 The SO INIT is derived from RO_Event and it is used to initialise objects. This convention avoids having to describe how each 
@@ -106,16 +102,19 @@ using parameters (invoice number, date...). The resulting invoices would all hav
 A similar approach works in OOO. Imagine many pairs of drops colliding and coalescing in a thunder storm. 
 The drops script could be converted into a class with parameters (drop sizes, collision time, coordinates, velocities etc) and 
 could be instantiated for each of the pairs of colliding drops.
+//////////////END OF CONVENTIONS///////////////////////////
 
+//////////////COMPOSITE OBJECTS///////////////////////////
 'Composite' OBJECTS.
-'Composite' objects are formed from 2 or more other object and occur in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
+'Composite' objects are formed from 2 or more other objects and occur in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
 The composite drop formed when 2 smaller drops coalesce looks convincing. The original 2 drops are mixed into the new drop; 
-the original drops can no longer be recovered. The drops have similar sizes and therefore letting drop2 merge into drop1 
+the original drops can no longer be recovered. The drops have similar sizes and alternatives by for example letting drop2 merge into drop1 
 or the other way around looks arbitrary.
-To avoid an arbritary cut-off point, any coalescing drops should always form a new drop even when one drop is significantly larger than the other.
+A logical consequence is that any coalescing drops should always form a new drop even when one drop is 
+significantly larger than the other.
 
 In the golf script club and ball both start deforming and energy starts to be transferred at the moment contact is made. 
-It seems reasonable to consider the club and ball a single new object while they have contact and energy transfer is taking place.
+It seems reasonable to consider the club and ball a single new object in the short period they have contact and energy transfer is taking place.
 Alternatives are to let the club include the ball or the ball the club. Again choosing one or the other looks arbitrary. 
 
 Composite objects in the PoolAndStone script just about work.
@@ -165,26 +164,31 @@ Comparable is including stone_air as a composite object in the object stone_air_
 air and water or stone and water. 
 A radical approach but even more complicated is to allow composite objects to contain sensual objects with all combinations of contained objects. 
 
-This logic seems to imply that composite objects should be created by combining other objects to form a new object.
+This discussion of composite objects seems to imply that composite objects should be created by combining other objects to form a new object without a hierarchy.
 Giving one existing object a leading role by including the other objects leads to complications. 
-This logic also seems closer to the OOO idea of a flat ontology. 
 
-PROPERTIES.
+
+///////////////////////////CONCLUSION/////////////////////////
+Properties.
 The scripts are representations of how objects could relate to each other and to keep the scripts short and simple properties have been kept to a minimum.
-Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact 
-of scripting. It looks safe to conclude this is a limitation of scripting rather than real interactions, 
-which have no need of this sort of decoration.
+Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact of scripting. 
+It looks safe to conclude this is a limitation of scripting; real interactions have no need of this sort of decoration.
 
-SOME NOTES.
+Timelines and Events.
 The division of time into Timelines and instantaneous Events, has the potential for introducing ever more detail.
-In a similar way other objects can be split into ever more detail, potentially to atoms and further.
+In a similar way none time objects can be split into ever more detail, potentially to atoms and further.
 When considering inanimate scripts it looks difficult to fix this granularity without slipping an observer into the picture to define the intention of the analysis. 
 On the otherhand having made several scripts the changes in the structure of objects and step changes in the rate of energy transfer seem to be concrete pointers to 
 a consistent level of granularity. 
 Is there any point in creating Events for the arrival of every photon on the surface of a pollen particle when looking at Brownian motion?
 It is the collision of a molecule of water with the pollen which transfers sufficient energy to the pollen to alter its velocity. 
 Photon collision could influence the motion but is not discernable or relevant!?
+The Timelines have been implemented as SOs and as chunks of time derived (inherited) from the single Real continuous Timeline. 
+This looks logical particularily when Timeline SOs overlap when parallel independent trajects are part of an interaction.
+The relationship between the Real continuous Timeline and Events is less clear. The golf script uses Real and Sensual Events for the same Event but as this  
+complicates the script while adding little, only Sensual Events have been used in PoolsAndStone script.
 
+A Generic Approach to Inanimate Interactions.
 When scripting inanimate interactions are we imagining the collision of 2 drops using knowledge of physics, or has it been filmed or is it a 
 template-class for any 2 drop interaction (see discussion of instantiation, above)? 
 
@@ -192,23 +196,28 @@ Consistency between different scenarios looks like a requirement for objects exi
 Dividing time into Timeline and Event SOs and the use of less obvious types of SO in the PoolAndStone script both contribute to a generic approach to 
 inanimate interactions.
 
-When 2 or more objects combine a new object should be created instead of giving one of the objects a leading role.
+Composite Objects.
+When 2 or more objects combine a new object should be created without a internal hierarchy.
+This approach also seems closer to the OOO idea of a flat ontology.
 
-The Timelines have been implemented as SOs and as chunks of time derived (inherited) from the single Real continuous Timeline. 
-This looks logical particularily when Timeline SOs overlap when parallel independent trajects are part of an interaction.
-The relationship between the Real continuous Timeline and Events is less clear. The golf script uses Real and Sensual Events for the same Event but as this  
-complicates the script while adding little only Sensual Events have been used in PoolsAndStone script.
-
+Scripts with Observers.
 Extending these approaches to scenarios where human and animal observers interact with each other and inanimate objects is the next step.
 The dogs script introduces the idea of a time delay between something real happening and the observer noticing it has happened. 
 It looks promising to introduce an observer and this idea into the PoolAndStone script.
 Also imagine an observer anticipating a stone touching the surface of a pool of water and claiming that the event occurred before it did, instead of afterwards. 
 
+WOOOF as a Tool.
 Scripting and visualisation of the script using WOOOF are 2 ways of looking at the same thing. On the otherhand it is easier to develop a 
 convincing script, iteratively, if it can be checked using the WOOOF output. 
+*The scripting is useful for testing alternatives approaches. In some earlier experiments on representing knowledge of an observer, an SO inherited from a generic SO. 
+For example in first version of the dogs.txt script, the dog called My_Nida inherited from SO 'dog'. 
+The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
+However in the last version of the dogs.txt script it is more convincing to let SO My_Nida inherit from RO_Nida and to use containment of 
+My_Nida within the SO dog to show that My_Nida is an example of a dog.
+///////////////////////////END OF CONCLUSION/////////////////////////
 
+///////////////////////////THE LANGUAGE USED IN THE SCRIPTS./////////////////////////
 
-THE LANGUAGE USED IN THE SCRIPTS.
 {COMMAND}
 COMMAND = RandomWalk x | DisplaySOs * | QuerySOs | NaturalText | GenerateScript
 
@@ -265,12 +274,7 @@ context Object		//If a property is set in an object a reference property is adde
 
 
 
-*The scripting is useful for testing alternatives approaches.
-In some earlier experiments on representing knowledge of an observer, an SO inherited from a generic SO. 
-For example in first version of the dogs.txt script, the dog called My_Nida inherited from SO 'dog'. 
-The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
-However in the last version of the dogs.txt script it is more convincing to let SO My_Nida inherit from RO_Nida and to use containment of 
-My_Nida within the SO dog to show that My_Nida is an example of a dog.
+
 
 
 
