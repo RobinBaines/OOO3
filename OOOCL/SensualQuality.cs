@@ -8,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace OOOCL
 {
@@ -112,6 +113,11 @@ namespace OOOCL
             this.created = _dt;
             SOParent = _SOparent;
             SOEvent = _SOEvent;
+
+            if (this.Name == "Sitting" && SOEvent.Name.Substring(0,3) == "dog") // && Name == "Running" && Value == "false")
+            {
+                string test2 = "test";
+            }
         }
 
         public SensualQuality(SensualObject _SOEvent, SensualObject _SOparent, string _name, string _value, string _description, SensualObject _SOOfValue, DateTime _dt, string _preposition)

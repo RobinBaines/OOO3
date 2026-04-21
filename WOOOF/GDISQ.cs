@@ -12,6 +12,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using OOOCL;
 using System.Xml;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
+using Font = System.Drawing.Font;
 
 namespace WOOOF
 {
@@ -115,9 +117,9 @@ namespace WOOOF
             string str = SOevent;
             string test2;
 
-            if (Value != null)
+            //if (Value != null)
             {
-                if (this.Name == "move1") // && Name == "Running" && Value == "false")
+                if (this.Name == "Sitting") // && Name == "Running" && Value == "false")
                 {
                     test2 = "test";
                 }
@@ -171,6 +173,11 @@ namespace WOOOF
                         //showing that this Object has set this Quality in another Object.
                     }
                 }
+            }
+
+            if (this.Name == "Sitting" && SOName == "dog(pl0)") // && Name == "Running" && Value == "false")
+            {
+                string test2 = "test";
             }
 
             string str = GetString();

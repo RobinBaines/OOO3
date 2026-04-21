@@ -72,9 +72,7 @@ namespace WOOOF
                             GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
 
                         GDISOs[_SO.Name].Ended = _SO.Ended;
-                        string test;
-                        if (_SO.Name == "AIR_TO_REST") // && Parent.Name == "I_SEE_NIDA_BARKING")
-                            test = _SO.Name;
+
                         GDISOs[_SO.Name].IncludeRight = _SO.IncludeRight;
                     }
 
@@ -98,6 +96,10 @@ namespace WOOOF
                     GDISO GDISONeighbour = null;
                     foreach (GDISO GDISO in GDISOs.Values.ToList())
                     {
+                        string test;
+                        if (GDISO.Name == "dog(pl0)") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                            test = GDISO.Name;
+
                         if (GDISO.Parent == null)
                         {
                             GDISO.Neighbour = GDISONeighbour;

@@ -344,8 +344,8 @@ namespace OOOCL
                 //2025 - 02 - 02 14:00:00.005 => Nida Tail = Short
                 if (this != SQ.SOEvent && recurse == true)
                 {
-                    SensualQuality? SQNew = new(SQ);
-                    SQ.SOEvent.AddQuality(SQNew, false);
+                    //SensualQuality? SQNew = new(SQ);
+                    //SQ.SOEvent.AddQuality(SQNew, false);
                 }
             }
         }
