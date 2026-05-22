@@ -193,6 +193,7 @@ The scripts are representations of how objects could relate to each other and to
 Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact of scripting and 
 real interactions would not need this sort of decoration.
 
+Timelines and Events.
 The Timelines have been implemented as SOs and as chunks of time derived (inherited) from the single Real continuous Timeline. 
 This looks logical particularily when Timeline SOs overlap when parallel independent trajects are part of an interaction.
 The relationship between the Real continuous Timeline and Events is less clear. The golf script uses Real and Sensual Events for the same Event but as this  
@@ -224,18 +225,7 @@ would record this using an Event and I could then update MyNida, in another Even
 It looks promising to introduce an observer into the PoolAndStone script. We could imagine an observer anticipating a stone touching the surface of a pool of water 
 and the observer claiming that the event occurred before it did, instead of afterwards. 
 
-Object hierarchy inside an Observer.
-A difference between objects outside and inside an observer is the hierarchy in the latter, see the object dog which stores generic dog properties 
-in the dogs script. Storing generic information about animals which applies to dogs and other animals, and information about dogs which applies to a dog called Nida 
-is an efficient way to store information and makes it available for a quick interpretation of new experiences.
-I have discussed this with Fons who works with autists. He feels that some autists are not able to create these type of object
-resulting in confusion if a new dog appears or that they are sometimes unable to use previous knowledge about, for example, a red bus when they see a yellow one.
-
-Objects outside and inside an observer seem both to be useful for analysing interactions and events and that raises the question, 
-why objects with the same OOO characteristics should work in both cases?
-If objects work in an observer while we know that neural networks are the underlying brain architecture then we would expect a mapping between the networks and objects.
-Trying to define this mapping looks useful because objects offer an accessible interface for humans while neural networks are often difficult to analyse.
-
+Scripts without Observers.
 An observer has knowledge from direct experience and knowledge aquired from sources such as books, influencers, teachers..... For example I experience a yellow daffodil
 and I also know that what I call yellow is my way of experiencing a narrow band of wavelengths of the electromagnetic spectrum.
 Some observers are not inclined to consider inanimate interactions such as those in the PoolAndStone script. This is based on the idea that everything we 
@@ -243,10 +233,29 @@ consider in this type of interaction depends on the interpretation of an observe
 Embracing the speculative qualifier of OOO I am inclined to apply aquired knowledge to these interactions. In my case this would be scientific  
 knowlegde as opposed to, for example, magic or the influence of a god.
 
-It seems unlikely that there is a real abstract object which is inherited by all objects. However the OOO idea that real objects interact using sensual 
-objects is a very useful tool for analysis. 
+Object hierarchy inside an Observer.
+A difference between objects outside and inside an observer is the hierarchy in the latter, see the object dog which stores generic dog properties 
+in the dogs script. Storing generic information about animals which applies to dogs and other animals, and information about dogs which applies to a dog called Nida 
+is an efficient way to store information and makes it available for a quick interpretation of new experiences.
+I have discussed this with Fons who works with autists. He feels that some autists are not able to create these type of object
+resulting in confusion if a new dog appears or that they are sometimes unable to use previous knowledge about, for example, a red bus when they see a yellow one.
+
+Why do Objects seem to work outside and inside an observer?
+Objects outside and inside an observer seem both to be useful for analysing interactions and events and that raises the question, 
+why objects with the same OOO characteristics should work in both cases?
+If objects work in an observer while we know that neural networks are the underlying brain architecture then we could expect a mapping between the networks and objects.
+Trying to define this mapping looks useful because objects offer an accessible interface for humans while neural networks are often difficult to analyse.
+
+In OOP an "abstract" object, meaning an object which cannot be instantiated, is often used to define functions, properties and interfaces all objects have (to have).
+In OOO a real abstract object which is inherited by all real objects will not exist although it may be possible to imagine one. 
+However the OOO idea that real objects interact using different, context sensitive sensual objects is a very useful tool for analysis. 
+
 Could there be a mapping onto an 'interface' object which observers use when interpreting reality, see note above on the dogs script? 
-This could be the reason why external objects are reflected in the internal object mapping which lies over neural networks.
+This object could be responsible for preparing existing SOs for use when a new experience occurs: The Nida-Bakkeveen object is derived from what the observer (Me) knows
+about Nida and Bakkeveen. It could also be responsible for updating existing SOs should a new property occur during an experience: see above Nida can "jump 2 meters into the air".
+It is probably going too far to call this a "sentience" object and I am finding it difficult to imagine how this could work in inanimate objects like a water drop.
+
+An 'interface' object could process external real objects and properties into the observer objects which map to neural networks.
 Are the characteristics of objects described in OOO such as under and over mining be a logical consquence of the mapping implied in the above?
 
 WOOOF as a Tool.
