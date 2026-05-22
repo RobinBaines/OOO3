@@ -38,7 +38,7 @@ Me is a type of RO_Me
 //And use inheritance to indicate that My_Nida is derived from the RO_Nida.
 //Define my idea of a generic dog.
 Me includes dog
-dog has the property 	FrontLeftLeg 
+dog has the property FrontLeftLeg 
 //etc
 //dog has the property 	BackLeftLeg
 //dog has the property 	FrontRightLeg
