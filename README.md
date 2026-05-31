@@ -1,13 +1,13 @@
 WOOOF converts a scenario into an object model.
 A scenario is sequence of events written in a text file using a simple language.
-On conversion the objects are shown as nested rectangles with their properties, including references to the objects which set the properties. 
+WOOOF shows the objects as nested rectangles with their properties, including references to the objects which set the properties. 
 See WOOOFNotes.odp for an example of the output.
 
-The objects with their properties are also written to a text file. 
-There are several experimental types of output such as the result of random walks through the model.
+WOOOF also wrhites the objects with their properties to a text file. 
+WOOOF has several experimental types of output such as the result of random walks through the object model.
 This version of the program is called WOOOF because the first script described walking the dogs.
 
-WOOOF is a Windows program. To use on Windows:
+WOOOF is a Windows program and includes several example scenario scripts. To use on Windows:
 	Download the executable files and several examples of scenarios from https://github.com/RobinBaines/OOO3/releases/tag/v1.0.4
 	Run WOOOF.exe from the command line.
 	Select a script, for example drops.txt, and press command button 'run script'.
@@ -18,7 +18,7 @@ Several Object Oriented Ontology (OOO) ideas are:
 1. Real Objects (ROs) with Real Qualities (RQs) and Sensual Objects (SOs) with Sensual Qualities (SQs) exist.
 2. A flat ontology implying, amoung other things, that interaction between inanimate objects without an observer is valid. 
 3. Vicarious causation: an SO is needed to facilitate interaction between objects. 
-4. Undermining; real objects cannot be reduced to only their parts (the sum is more than the parts). 
+4. Undermining; real objects cannot be reduced to only their parts or to put it another way the sum is more than the parts. 
 5. Overmining; a real object is less than its effects. 
 
 The WOOOF language uses Object Oriented Programming (OOP) ideas; Inheritance, Properties and Containment.
@@ -36,10 +36,9 @@ Several conventions have been used in the scripts.
 2. INHERITANCE. WOOOF supports inheritance using the 'type' or 'type of' command. 
 The drops, golf, dogs, PoolAndStone and chess scripts use inheritance to express the relationship between an SO and an RO implying that an SO is a type of RO 
 and that one or more SOs can inherit from the same RO. 
-See * below for alternatives.
 Inheritance works well because an SO may inherit some but not all of the RO properties and may add new properties not present in the RO. 
 	Nida is a type of RO_Nida  //inheritance
-
+	
 3. CONTAINMENT. WOOOF supports containment using the 'includes' command. 
 Containment is used to represent generic knowledge in an observer: In the dogs script the object 'Me' includes a 'dog' SO representing my knowledge of dogs (4 legs, barks..).
 	Me includes dog
@@ -47,19 +46,27 @@ Containment is used to represent generic knowledge in an observer: In the dogs s
 	
 The SO My_Nida is an example of a 'dog' and is contained in 'dog'.
 	dog includes My_Nida  //containment
-
-If a 2nd dog is known to the observer it can be included/contained in dog.
-	dog includes Another_dog
 	
-4. PROPERTY VISIBILITY. In OOP properties of an inherited class may be Private or Public. Private properties are not accessible from the inheriting class.  
-Public Properties in an inherited class are accessible from the inheriting class. 
+If a 2nd dog is known to the observer it can be included/contained in dog.
+	dog includes Another_dog	
+	
+WOOOF is useful for testing alternative approaches to Inheritance and containment. 
+In some earlier experiments on representing knowledge of an observer, an SO inherited from a generic SO. 
+For example in first version of the dogs.txt script, the dog called My_Nida inherited from SO 'dog'. 
+The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
+However in the last version of the dogs.txt script it is more convincing to let SO My_Nida inherit from RO_Nida and to use containment of 
+My_Nida within the SO dog to show that the observer thinks My_Nida is an example of a dog.
+An alternative is to use inheritance in an observer to represent a knowledge hierarchy such as animal - dog - MyNida and to use inheritance for RO - SO outside observers.	
+
+4. PROPERTY VISIBILITY. In OOP languages such as C# properties of an inherited class may be Private or Public. 
+Private properties are not accessible from the inheriting class.  Public Properties in an inherited class are accessible from the inheriting class. 
 At this time there is no explicit Private/Public modifier in WOOOF but properties can be overridden:
 	Another_dog has property bark = false	//override dog.Barks = true if Me thinks Another_dog does not bark. 
 
 5. TIME and EVENTS. Time is represented from top to bottom in a script and from left to right in the WOOOF output. 
 Time has 2 implementations:
-1. A 'Timeline' is a Sensual Object having a finite duration. It is derived from RO_timeline, which is a single RO representing the time continuum. 
-2. A discrete Event is an Object with no duration, has a time stamp and is unique. ("un momento dado"; Johan Cruyff).
+1. A 'Timeline' is a Sensual Object with a finite duration. It is derived from RO_timeline, which is a single RO representing the time continuum. 
+2. A discrete Event is an Object with no duration, with a time stamp and is unique. ("un momento dado"; Johan Cruyff).
 Potentially there could be a none countable infinite number of Events. In practice an Event is instantiated when 
 an object ends or an object becomes part of a new object or if a property of an object changes. 
 An Event has input and may have output. 
@@ -78,8 +85,8 @@ The time stamp of the Event at the end of the Timeline is the end time of the Ti
 Defining the moment an Event takes place, for example in the scripts drops, PoolAndStone and golf, 
 has some similarity with finding a maximum or minimum on a smooth curve without using differentiation: We know there is a maximum and can 
 choose a position on a curve before the maximum and another after. Then by stepping from both directions the length of the curve on which the maximum must
-be gets shorter and shorter. In a similar way we know there must be an instant when 2 objects become one and the original 2 objects cease to exist,
-but have trouble finding it (and defining it because the exact timestamp is likely to be infinitely long!). 
+be gets shorter and shorter. In a similar way, in the drops script, we know there must be an instant when 2 drops coalesce to form a single drop,
+but have trouble finding it and defining the exact timestamp as it is likely to be infinitely long! 
 Events seem also to be associated with a step change in the rate of energy transfer. 
 
 Brownian motion and a drops script with atomisation instead of coalescence would be scripted using many Events separated by short Timelines, 
@@ -90,17 +97,17 @@ resulted in the "random walk" and the correct analysis of Brownian Motion by Alb
 If an SO, for example game1 in chess.txt, has been included in a Timeline SO and is then included in the next Event SO, 
 the game1 SO is reproduced by the WOOOF program and the version in the Timeline SO is ended by showing it greyed out. 
 As the SO proceeds through the Timelines and Events its properties change but the copies in preceding Timelines and Events SOs do not. 
-We can think of these SOs as 'snapshots' made at the moment the containing SO Timeline ends. 
+We can think of SOs as 'snapshots' made at the moment the containing SO Timeline ends. 
 
 7. INIT
 The SO INIT is derived from RO_Event and it is used to initialise objects. This convention avoids having to describe how each 
 object has come into existence. For example it would be tedious to have to describe how the 2 drops in drops.txt came into 
-existence; via a series of events involving nucleation, condensation and collisions.
+existence via a series of events involving nucleation, condensation and collisions.
 
 8. PLACEHOLDERS.
 Placeholders are used to contain independent time trajects. This idea is well illustrated in the PoolAndStone and dogs scripts.
-The dogs script introduces a human observer and the idea of a delay between real events occurring in one placeholder and the observer noticing the events
-in another placeholder.
+The dogs script introduces a human observer. Real events occur in one placeholder and the observer notices these events
+with a time delay in another placeholder.
 
 //////////////COMPOSITE OBJECTS///////////////////////////
 'Composite' objects are formed from 2 or more other objects and occur in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
@@ -127,7 +134,7 @@ Here is the above PoolAndStone scenario with these SOs included:
 2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_air_water. 
 3. The water SO has no volume when it is created and grows rapidly as the stone moves into and through the water. 
 Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
-becomes a discrete, increasing volume as the stone enters and moves through the water. 
+becomes a discrete, increasing, volume as the stone enters and moves through the water. 
 4. When the stone is just fully immersed, the air SO separates from the composite and becomes an independent SO.
 SOs water and stone continue as a new composite SO called stone_water.
 5. The air SO begins to shrink as viscosity damps the disturbances caused by the passage of the stone. 
@@ -158,13 +165,12 @@ In a shallow pool it is likely that energy transfer between water and air, as ri
 is significant after the stone has come to rest.
 
 Similar complications occur when trying to make SO air or water play a 'leading role'.
-Comparable is including stone_air as a composite object in the object stone_air_water. This would lead to problems if properties depend only on 
+An alternative is including stone_air as a composite object in the object stone_air_water. This would lead to problems if properties depend only on 
 air and water or stone and water. 
 A radical approach but even more complicated is to allow composite objects to contain sensual objects with all combinations of contained objects. 
 
-This discussion of composite objects seems to imply that composite objects should be created by combining other objects to form a new object without an internal 
-hierarchy of composite objects.
-Giving one existing object a leading role by including the other objects leads to complications. 
+This discussion of composite objects implies that composite objects should be created by combining other objects to form a new object without any internal 
+hierarchy. 
 
 //////////////INSTANTIATION///////////////////////////
 Instantiation of a class in OOP can be used for processing data. Consider a class describing an invoice (unique invoice number,
@@ -172,7 +178,7 @@ date, sender, receiver, a list of products being billed, ...). As each new invoi
 using parameters (invoice number, date...). The resulting invoices would all have the structure defined in the class.
 A similar approach works in OOO. Imagine many pairs of drops colliding and coalescing in a thunder storm and a simplified version of the drops script 
 with only coalescence and no drop splitting. 
-This simplified drops script could be converted into a class with parameters (drop sizes, collision time, coordinates, velocities etc) and 
+This simplified 'drops' script could be converted into a class with parameters (drop sizes, collision time, coordinates, velocities etc) and 
 could be instantiated for each of the pairs of colliding drops. It is also possible to imagine the output of two of these scripts being used as the input for 
 another script, creating a chain reaction of small drops coalesing to form 'rain' drops.
 
@@ -202,7 +208,7 @@ complicates the script while adding little, only Sensual Events have been used i
 A Generic Approach to Inanimate Interactions.
 Dividing time into Timeline and Event SOs and the use of less obvious types of SO in the PoolAndStone script both contribute to a generic approach to 
 inanimate interactions. In OOP the idea of a Pattern is used to make the generic aspects of similar processes explicit.  
-A generic approach to scenarios looks like a requirement for objects existing outside an observer.
+A generic approach to inanimate scenarios looks like a requirement for OOO.
 
 Composite Objects.
 When 2 or more objects combine a new object should be created without a internal hierarchy.
@@ -220,24 +226,24 @@ A human observer object could be introduced to simulate the delay between someth
 	Change the state/property of MyNida to running.
 It also looks reasonable to introduce a MyNida dog object which captures everything I already knew about Nida and a separate Bakkeveen-MyNida which tracks my experiences
 of the visit to Bakkeveen (a place in Friesland). If I see Nida do something for the first time, for example jump 2 meters into the air, the Bakkeveen-MyNida 
-would record this using an Event and I could then update MyNida, in another Event, with a new property: "can jump 2 meters into the air".
+would record this using an Event and I would then update MyNida, in another Event, with a new property: "can jump 2 meters into the air".
 
 It looks promising to introduce an observer into the PoolAndStone script. We could imagine an observer anticipating a stone touching the surface of a pool of water 
 and the observer claiming that the event occurred before it did, instead of afterwards. 
 
-Scripts without Observers.
+Scripts with Observers.
 An observer has knowledge from direct experience and knowledge aquired from sources such as books, influencers, teachers..... For example I experience a yellow daffodil
 and I also know that what I call yellow is my way of experiencing a narrow band of wavelengths of the electromagnetic spectrum.
 Some observers are not inclined to consider inanimate interactions such as those in the PoolAndStone script. This is based on the idea that everything we 
 consider in this type of interaction depends on the interpretation of an observer.
-Embracing the speculative qualifier of OOO I am inclined to apply aquired knowledge to these interactions. In my case this would be scientific  
+Embracing the speculative nature of OOO I am inclined to apply aquired knowledge to these interactions. In my case this would be scientific  
 knowlegde as opposed to, for example, magic or the influence of a god.
 
 Object hierarchy inside an Observer.
 A difference between objects outside and inside an observer is the hierarchy in the latter, see the object dog which stores generic dog properties 
 in the dogs script. Storing generic information about animals which applies to dogs and other animals, and information about dogs which applies to a dog called Nida 
 is an efficient way to store information and makes it available for a quick interpretation of new experiences.
-I have discussed this with Fons who works with autists. He feels that some autists are not able to create these type of object
+I have discussed this with Fons who works with autists. He feels that some autists are not able to create these generic information objects
 resulting in confusion if a new dog appears or that they are sometimes unable to use previous knowledge about, for example, a red bus when they see a yellow one.
 
 Why do Objects seem to work outside and inside an observer?
@@ -246,7 +252,7 @@ why objects with the same OOO characteristics should work in both cases?
 If objects work in an observer while we know that neural networks are the underlying brain architecture then we could expect a mapping between the networks and objects.
 Trying to define this mapping looks useful because objects offer an accessible interface for humans while neural networks are often difficult to analyse.
 
-In OOP an "abstract" object, meaning an object which cannot be instantiated, is often used to define functions, properties and interfaces all objects have (to have).
+In the OOP C# language an "abstract" object, meaning an object which cannot be instantiated, is often used to define functions, properties and interfaces all objects have (to have).
 In OOO a real abstract object which is inherited by all real objects will not exist although it may be possible to imagine one. 
 However the OOO idea that real objects interact using different, context sensitive sensual objects is a very useful tool for analysis. 
 
@@ -256,7 +262,7 @@ about Nida and Bakkeveen. It could also be responsible for updating existing SOs
 It is probably going too far to call this a "sentience" object and I am finding it difficult to imagine how this could work in inanimate objects like a water drop.
 
 An 'interface' object could process external real objects and properties into the observer objects which map to neural networks.
-Are the characteristics of objects described in OOO such as under and over mining be a logical consquence of the mapping implied in the above?
+Are the characteristics of OOO objects, such as under and over mining, be a logical consquence of the mapping implied in the above?
 
 WOOOF as a Tool.
 Scripting and visualisation of the script using WOOOF are 2 ways of looking at the same thing. On the otherhand it is easier to develop a 
