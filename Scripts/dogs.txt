@@ -1,14 +1,18 @@
 //See Readme.md for conventions used in this script. 
+//The following 3 events occur in a placeholder.
 //Initially the dog called Nida is sitting.
-//Timeline: I (Me) observes her sitting.
-//Event: Nida starts running but I haven't noticed yet.
-//Timeline: Nida is running but I still think she is sitting.
-//Event: I notice she is running.
-//Timeline: Nida is running but I think she is running.
-//Event: Nida starts barking.
-//Timeline: Nida is barking but I have not realised yet.
-//Event: I notice she is barking.
-//Timeline: Nida is running and barking and I see that too.
+//Nida starts running.
+//Sometime later Nida starts barking.
+
+//While this is happening an observer called Me sees something black running.
+//The observer realises that it is a running dog.
+//The observer realises that the running dog is Nida.
+//The observer notices Nida barking.
+
+//The observer has parent object animal.
+//The child objects human and dog both have the parent animal.
+//My_Nida is the memory Me has of Nida. My_Nida has parent object dog.
+//Me 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Several commands:
@@ -33,10 +37,13 @@ INIT Includes Nida.
 Nida is a type of RO_Nida
 Nida has property  Sitting = true
 INIT includes Me
-Me is a type of RO_Me
 
-//And use inheritance to indicate that My_Nida is derived from the RO_Nida.
+//And use inheritance to indicate that My_Nida is derived from the dog.
 //Define my idea of a generic dog.
+Me includes animal
+Me includes human
+human is a type of animal
+Me is a type of human
 Me includes dog
 dog has the property FrontLeftLeg 
 //etc
@@ -44,26 +51,24 @@ dog has the property FrontLeftLeg
 //dog has the property 	FrontRightLeg
 //dog has the property 	BackRightLeg
 //Add my SO of Nida within My generic dog.
-dog includes My_Nida
-My_Nida is a type of RO_Nida
-//And in this initial state show that I have realised Nida is sitting.
-My_Nida has property Sitting = true
+dog is type of animal
 
-pl0 is a type of Placeholder
-pl0 includes pl1
-pl0 includes Observer0
+Me includes My_Nida
+My_Nida is type of dog
 
+//My_Nida is a type of RO_Nida
+My_Nida has property Can Sit = true
+
+MeetNida includes pl1
 pl1 is a type of Placeholder
-pl1 includes MeetNida
+MeetNida includes Me
 
+pl1 includes Nida
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Set up the initial steady state with Nida Sitting.
 MeetNida is a type of RO_timeline. 
 The MeetNida has the property place and it is Bakkeveen. 
 The MeetNida has the property weather and it is wet.
-MeetNida includes Nida
-//MeetNida includes Me
-
 pl1 include_right NIDA_RUNS
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Nida starts running.
@@ -76,16 +81,13 @@ NIDA_RUNS has property time = 2026-01-01 12:35:00.000.
 NIDA_RUNS includes INPUT1
 INPUT1 is a type of Placeholder
 The INPUT1 includes Nida.
-
 NIDA_RUNS includes OUTPUT1
 OUTPUT1 is a type of Placeholder
 OUTPUT1 includes Nida
-
 RO_Nida has property Sitting = false
 Nida has property Sitting = false
 RO_Nida has property Running = true.
 Nida has property  Running = true
-ENDOBJECT MeetNida
 
 pl1 include_right Nida_running
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -94,38 +96,75 @@ Nida_running is a type of RO_timeline.
 Nida_running includes Nida
 ENDOBJECT NIDA_RUNS
 
-Observer0 is a type of Placeholder
-Observer0 includes ObserverMeetNida
-Observer0 include_right SEE_NIDA_RUN
+Me include_right MeInBakkeveen
+MeInBakkeveen is a type of Placeholder
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Set up the initial steady state with Nida Sitting.
-ObserverMeetNida is a type of RO_timeline. 
-The ObserverMeetNida has the property place and it is Bakkeveen. 
-The ObserverMeetNida has the property weather and it is wet.
-ObserverMeetNida includes Me
+//ObserverMeetNida is a type of RO_timeline. 
+The MeInBakkeveen has the property place and it is Bakkeveen. 
+The MeInBakkeveen has the property weather and it is wet.
 
+MeInBakkeveen include_right SEE_SOMETHING
+SEE_SOMETHING is a type of RO_EVENT
+SEE_SOMETHING has property time = 2026-01-01 12:35:00.000.
+SEE_SOMETHING includes INPUTa
+INPUTa is a type of Placeholder
+
+SEE_SOMETHING includes OUTPUTa
+OUTPUTa is a type of Placeholder
+OUTPUTa includes something
+something has property black = true
+something has property moving = true
+
+MeInBakkeveen include_right something_running
+something_running is a type of RO_timeline. 
+something_running includes something
+ENDOBJECT SEE_SOMETHING
+
+MeInBakkeveen include_right SEE_RUNNING_DOG
+SEE_RUNNING_DOG is a type of RO_EVENT
+SEE_RUNNING_DOG has property time = 2026-01-01 12:35:00.000.
+SEE_RUNNING_DOG includes INPUTb
+INPUTb is a type of Placeholder
+INPUTb includes something
+
+SEE_RUNNING_DOG includes OUTPUTb
+OUTPUTb is a type of Placeholder
+OUTPUTb includes something
+something is type of dog
+ENDOBJECT something_running
+
+MeInBakkeveen include_right dog_running
+dog_running is a type of RO_timeline. 
+dog_running includes something
+ENDOBJECT SEE_RUNNING_DOG
+
+MeInBakkeveen include_right SEE_NIDA_RUN
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //The observer realises that Nida is running.
 SEE_NIDA_RUN is a type of RO_EVENT
 SEE_NIDA_RUN has property time = 2026-01-01 12:35:00.000.
 SEE_NIDA_RUN includes INPUT2
 INPUT2 is a type of Placeholder
-INPUT2 includes Me
+INPUT2 includes My_Nida
 
 SEE_NIDA_RUN includes OUTPUT2
 OUTPUT2 is a type of Placeholder
-The OUTPUT2 includes Me.
-My_Nida has property Sitting = false
-My_Nida has property Running = true
-ENDOBJECT Nida_running
+The OUTPUT2 includes My_Nida.
+My_Nida includes Today_Nida
+Today_Nida is a type of My_Nida
+Today_Nida has property Running = true
 
+//If we didn't know it already we conclude that My_Nida can Run.
+My_Nida has property Can Run = true
+ENDOBJECT dog_running
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-Observer0 include_right See_Nida_running
+MeInBakkeveen include_right See_Nida_running
 //A steady state is reached with Nida running and the observer is also aware of that.
 See_Nida_running is a type of RO_timeline.
-See_Nida_running includes Me
+See_Nida_running includes My_Nida
 ENDOBJECT SEE_NIDA_RUN
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -141,7 +180,7 @@ OUTPUT3 is a type of Placeholder
 The OUTPUT3 includes Nida.
 RO_Nida has the property Barking = true
 Nida has the property Barking = true
-ENDOBJECT See_Nida_running
+ENDOBJECT Nida_running
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //We enter a steady state in which Nida is running and barking but the observer has not realised that she is barking.
@@ -151,28 +190,23 @@ Nida_barking includes Nida
 ENDOBJECT NIDA_BARKS
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-Observer0 include_right SEE_NIDA_BARK
+MeInBakkeveen include_right SEE_NIDA_BARK
 //The observer realises that Nida is barking.
 SEE_NIDA_BARK is a type of RO_EVENT
 SEE_NIDA_BARK includes INPUT4
 INPUT4 is a type of Placeholder
-INPUT4 includes Me
+INPUT4 includes My_Nida
 
 SEE_NIDA_BARK includes OUTPUT4
 OUTPUT4 is a type of Placeholder
-OUTPUT4 includes Me
-My_Nida has property Barking at Me
-//ENDOBJECT Nida_barking
+OUTPUT4 includes My_Nida
+Today_Nida has property Barking at Me
+My_Nida has property Can Bark = true
+ENDOBJECT See_Nida_running
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //A steady state is reached with Nida running and barking and the observer is also aware of that.
-Observer0 include_right See_Nida_barking
+MeInBakkeveen include_right See_Nida_barking
 See_Nida_barking is a type of RO_timeline.
-See_Nida_barking includes Me
+See_Nida_barking includes My_Nida
 ENDOBJECT SEE_NIDA_BARK
-
-
-
-
-
-

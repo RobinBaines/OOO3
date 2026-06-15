@@ -114,9 +114,13 @@ namespace OOOCL
             SOParent = _SOparent;
             SOEvent = _SOEvent;
 
-            if (this.Name == "Sitting" && SOEvent.Name.Substring(0,3) == "dog") // && Name == "Running" && Value == "false")
+            //20260605
+            if (SOEvent.Name.Length >= 3)
             {
-                string test2 = "test";
+                if (this.Name == "Sitting" && SOEvent.Name.Substring(0, 3) == "dog") // && Name == "Running" && Value == "false")
+                {
+                    string test2 = "test";
+                }
             }
         }
 

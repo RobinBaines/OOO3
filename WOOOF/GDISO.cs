@@ -3,6 +3,7 @@
 // Licensed under the MIT license. See MITLicense.txt file in the project root for details.
 //
 using OOOCL;
+using System.Diagnostics.Eventing.Reader;
 
 namespace WOOOF
 {
@@ -55,18 +56,33 @@ namespace WOOOF
                 _x = OBJECTSPACING;
                 try
                 {
-                    if (Neighbour != null)
-                        _x = Neighbour._x + Neighbour.Width + OBJECTSPACING;
+                    
                     //20260316
                     if (IncludeRight == true && Parent != null)
                     {
                         foreach (GDISO GDISO in Parent.ChildGDISOs)
                         {
+
                             if (GDISO != this)
-                                _x += (GDISO.Width + 10);
+                            {
+                                //08062026 check IncludeRight 
+                                if (GDISO.IncludeRight)
+                                {
+                                    _x += (GDISO.Width + OBJECTSPACING);
+                                }
+                                else
+                                {
+                                    if((GDISO.Width + 2 * OBJECTSPACING) > _x )
+                                        _x = (GDISO.Width + 2 * OBJECTSPACING);
+                                }
+                                    
+                            }
+                               
                             else break;
                         }
                     }
+                    if (Neighbour != null)
+                        _x = Neighbour._x + Neighbour.Width + OBJECTSPACING;
 
                 }
                 catch (Exception ex) { 
@@ -350,7 +366,7 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
             if (G != null)
             {
                 string test;
-                if (Name == "stone_in_pool") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                if (Name == "MeInBakkeveen") // && Parent.Name == "I_SEE_NIDA_BARKING")
                     test = Name;
 
                 CalculateY();
