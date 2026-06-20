@@ -1,10 +1,8 @@
-﻿using OOOCL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+﻿//
+// @Copyright 2025 Robin Baines
+// Licensed under the MIT license. See MITLicense.txt file in the project root for details.
+//
+using OOOCL;
 
 namespace WOOOF
 {

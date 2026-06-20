@@ -22,7 +22,6 @@ namespace WOOOF
         internal List<GDISQ> qualities = new List<GDISQ>();
         internal List<GDISO> ChildGDISOs = new List<GDISO>();
         public Graphics? G { get; set; }
-
         public GDISO? Parent { get; set; }
 
         public bool _IncludeRight = false;
@@ -31,13 +30,9 @@ namespace WOOOF
             get { return _IncludeRight; }
             set { _IncludeRight = value; }
         }
-
         public GDISQ? EndedBySO { get; set; }
-
         public GDISO? Neighbour { get; set; }
-
         public string Inherits { get; set; }
-
         public Color theColour
         {
             get
@@ -75,15 +70,12 @@ namespace WOOOF
                                     if((GDISO.Width + 2 * OBJECTSPACING) > _x )
                                         _x = (GDISO.Width + 2 * OBJECTSPACING);
                                 }
-                                    
                             }
-                               
                             else break;
                         }
                     }
                     if (Neighbour != null)
                         _x = Neighbour._x + Neighbour.Width + OBJECTSPACING;
-
                 }
                 catch (Exception ex) { 
 
@@ -95,7 +87,6 @@ namespace WOOOF
             }
             set { _x = value; }
         }
-
         public int Y { get; set; }
 
         int _width = 300;
@@ -216,22 +207,16 @@ namespace WOOOF
                 return _height; 
             }
         }
-
         public int ObjectFontsize { get; set; }
         public int QualityFontsize { get; set; }
-
         public bool blnHideEvents { get; set; }
-
-
         public Font theFont { get; set; }
 
         public SensualObject SO;
-
         public float TextHeight
         {
             get { return theFont.SizeInPoints + 10; }
         }
-
         public int TextWidth
         {
             get
@@ -251,7 +236,6 @@ namespace WOOOF
                 return (int)stringSize.Width;
             } 
         }
-
         public GDISO(GDISO? _neighbour, SensualObject _SO, int _objectfontsize, int _qualityfontsize, bool _blnHideEvents)
         {
             blnHideEvents = _blnHideEvents;
@@ -264,14 +248,10 @@ namespace WOOOF
 
             Inherits = "";
         }
-
         public void AddInherits(SensualObject _SO)
         {
             Inherits = _SO.Name;
         }
-
-
-        //public void AddSQ(string _name, string _value, SensualObject? SOEvent)
         public void AddSQ(SensualQuality CLSQ)
         {
             string soevent ="";
@@ -288,9 +268,7 @@ namespace WOOOF
         }
         private void CalculateY()
         {
-            
             int y = YCOORDINATE;
-            //return;
 
             if ((Neighbour != null || Parent != null) && Parent != this)
             {
@@ -408,20 +386,14 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                 SolidBrush brush = new SolidBrush(customColor);
 
                 G.FillRectangle(brush, rect);
-
-
-
-
                 float TextPosition = this.TextHeight; 
                 foreach (GDISQ SQ in qualities.ToList())
                 {
                     string str = SQ.GetString(blnHideEvents, this.Name);
                     if (str.Length > 0)
                     {
-                        
                         SQ.DrawString(rect.X, rect.Y + TextPosition, format1, this.Name);
                         TextPosition += SQ.TextHeight;
-
                     }
                 }
 
@@ -431,7 +403,6 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     {
                         SO.DrawString(rect.X, rect.Y + TextPosition, format1);
                         TextPosition += SO.TextHeight;
-   
                     }
                 }
 
@@ -441,7 +412,6 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     {
                         SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
                         TextPosition += SQ.TextHeight;
-          
                     }
                 }
 
@@ -451,7 +421,6 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     {
                         SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
                         TextPosition += SQ.TextHeight;
-   
                     }
                 }
 
@@ -461,7 +430,6 @@ public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPosit
                     {
                         SQ.DrawString(rect.X, rect.Y + TextPosition, format1);
                         TextPosition += SQ.TextHeight;
-         
                     }
                 }
 

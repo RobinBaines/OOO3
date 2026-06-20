@@ -16,13 +16,11 @@ namespace WOOOF
     {
         SensualObject SO;
         GDISO Parent;
-
         public override string GetString()
         {
             string str = "IncludeRef => " + SO.Name;
             return str;
         }
-
         public void DrawString(float X, float Y, StringFormat format)
         {
             SolidBrush sb;
@@ -30,7 +28,6 @@ namespace WOOOF
             Parent?.G?.DrawString(GetString(), theFont, sb, X, Y, format);
             sb.Dispose();
         }
-
         public GDIIncludesRef(GDISO _Parent, SensualObject _SO, int _qualityfontsize)  
         {
             FontSize = _qualityfontsize;

@@ -39,7 +39,7 @@ namespace WOOOF
         bool blnPaintActive = false;
 
         /// <summary>
-        /// 
+        /// Called if the TheSOs List Changes.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -168,7 +168,6 @@ namespace WOOOF
                         button1.Location = bottom_right_point;
                         blnScriptBeingProcessed = false;
                         blnPaintActive = false;
-                       //BuildSOs.TheSOs.ResetBindings();
                         HandleSOChanged(ListChangedType.Reset);
                         panel1.Invalidate();
                         btnRunScript.Enabled = true;
@@ -182,7 +181,6 @@ namespace WOOOF
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void btnRunScript_Click(object sender, EventArgs e)
         {
             if (ScriptName.Text.Length > 0)

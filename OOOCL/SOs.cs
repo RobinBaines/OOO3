@@ -16,7 +16,6 @@ namespace OOOCL
 /// Display the SOs with SQs filtering on Parent.
 /// </summary>
 /// <param name="Parent"></param>
-
 public static void DisplaySOs(string Parent)
         {
             Console.WriteLine("Print SOs. Selection from " + BuildSOs.TheSOs.Count.ToString() + " SOs " + "filtered on " + Parent);
@@ -46,7 +45,6 @@ public static void DisplaySOs(string Parent)
                 }
                 index += 1;
             }
-        
         }
 
         /// <summary>
@@ -60,7 +58,6 @@ public static void DisplaySOs(string Parent)
             Console.WriteLine("////////////////////////////// QuerySOs of " + Parent + "//////////////////////////////////////");
 
             Console.WriteLine("Query \'" + Parent + "\' for \'" + Child + "\'");
-            //SensualObject? SOParent;
             SensualObject? _SO;
             foreach (SensualObject SO in BuildSOs.TheSOs)
             {
@@ -82,7 +79,6 @@ public static void DisplaySOs(string Parent)
                     }
                 }
             }              
-
         }
 
         /// <summary>
@@ -113,9 +109,9 @@ public static void DisplaySOs(string Parent)
                             //	2025-02-03 14:00:00.011 Quality Nida = playing Siena
                             if(SQ.IsSO)
                             {
-                            if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)) )
+                                if (!qualities.Exists(_SQ => Equals(_SQ, SQ) && Equals(_SQ.Value, SQ.Value)) )
                                 {
-                                qualities.Add(SQ);
+                                    qualities.Add(SQ);
                                 }
                             }
 

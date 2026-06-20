@@ -44,12 +44,9 @@ namespace OOOCL
         internal const string ENDOBJECT = "endobject";
         internal const string INCLUDERIGHT = "include_right";
 
-
-
         internal const string RANDOMWALK = "RandomWalk";
         internal const string DISPLAYSOS = "DisplaySOs";
         internal const string QUERYSOS = "QuerySOs";
-        //internal const string NATURALTEXT = "NaturalText";
         internal const string ORIGINAL_LANGUAGE = "ORIGINAL_LANGUAGE";
         internal static DateTime dateTime = new DateTime(2025, 01, 01, 12, 0, 0, 0);
 
@@ -91,7 +88,6 @@ namespace OOOCL
                 RandomWalk.Add(line);
                 return true;
             }
-
 
             pos = line.IndexOf(DISPLAYSOS);
             if (pos != -1)
@@ -138,7 +134,6 @@ namespace OOOCL
                 result = result.Substring(3);
 
             result = result.Replace(" a ", " ", StringComparison.OrdinalIgnoreCase);
-            //result = result.Replace(" at ", " ");
             result = result.Replace(" the ", " ", StringComparison.OrdinalIgnoreCase);
             if(result.Substring(0, 4).ToLower() == "the ")
                 result = result.Substring(4);
@@ -148,7 +143,6 @@ namespace OOOCL
             result = result.Replace(" is ", " ");
             result = result.Replace(" it ", " ");
             result = result.Replace(" has ", " ");
-            //result = result.Replace("=", " ");
             
             //replace a number of spaces with a single space.
             result = Regex.Replace(result, @"\s+", " ");
@@ -286,17 +280,6 @@ namespace OOOCL
             if(line.Substring(0, CONTEXT.Length).ToLower() == CONTEXT || SOIncludedInSOName.Length > 0)
                 Context = ParentSO;
         }
-
-        public static bool IsNotAParent(SensualObject ParentSO)
-        {
-            //foreach (SensualObject SO in TheSOs)
-            //{
-            //    if (SO.SOParent == ParentSO)
-            //        return false;
-            //}
-            return true;
-        }
-
         public static void ProcessNaturalSO(int msecs, string line, string SOName, string Inherits, string SQName, string SQValue,  string SOIncludedInSOName, string SOExcludedInSOName, string Preposition)
         {
             if (SOExcludedInSOName.Length > 0)
@@ -358,40 +341,29 @@ namespace OOOCL
                                 {
                                     test = SOEvent.Name;
                                 }
-                                if (IsNotAParent(TheSOs[index2]))
-                                {
-                                    //20260313
-                                    TheSOs[index2].EndedBySO = Context;
-                                    TheSOs[index2].Ended = true;
-                                    SOInSO = new(TheSOs[index2]);
+
+                                //20260313
+                                TheSOs[index2].EndedBySO = Context;
+                                TheSOs[index2].Ended = true;
+                                SOInSO = new(TheSOs[index2]);
 
 
-                                    SOInSO.SOParent = SOEvent;
+                                SOInSO.SOParent = SOEvent;
 
-                                    //SOInSO.IncludeRight = false;
-                                    if (line.Contains(INCLUDERIGHT))
-                                        SOInSO.IncludeRight = true;
+                                //SOInSO.IncludeRight = false;
+                                if (line.Contains(INCLUDERIGHT))
+                                    SOInSO.IncludeRight = true;
 
-                                    TheSOs.Add(SOInSO);
+                                TheSOs.Add(SOInSO);
 
-                                    //add the reference from the parent to the child and vice versa.
-                                    SOEvent.AddIncludesReference(SOInSO);
-                                    SOInSO.AddIsPartOfReference(SOEvent);
-                                }
-                                else
-                                {
-                                    TheSOs[index2].SOParent = SOEvent;
-                                    SOEvent.AddIncludesReference(TheSOs[index2]);
-                                    TheSOs[index2].AddIsPartOfReference(SOEvent);
-                                }
-
-                                // TheSOs.ResetBindings(); //HandleSOChanged with  ListChangedType.Reset
+                                //add the reference from the parent to the child and vice versa.
+                                SOEvent.AddIncludesReference(SOInSO);
+                                SOInSO.AddIsPartOfReference(SOEvent);
                             }
                             else
                             {
                                 SOEvent.AddIncludesReference(SOInSO);
                                 SOInSO.AddIsPartOfReference(SOEvent);
-                                //SOInSO.IncludeRight = false;
                                 if (line.Contains(INCLUDERIGHT))
                                     SOInSO.IncludeRight = true;
 
@@ -424,7 +396,6 @@ namespace OOOCL
                             Context.AddIncludesReference(SOEvent);
                         }
                     }
-
                 }
 
                 //A quality Nida = sleeping
@@ -474,7 +445,6 @@ namespace OOOCL
                 }
             }
         }
-
 
         /// <summary>
         /// Parse a line of input.
@@ -546,7 +516,6 @@ namespace OOOCL
                     SQName = result;
                     Value = "True";
                 }
-                    
             }
             return result;
         }
@@ -858,7 +827,6 @@ namespace OOOCL
                 SOs.GenerateAScript(s);
             }
 
-
             //BuildSOs.DisplaySOs is a list of output commands read from the script
             //string s is the DisplaySOs parameter for example
             //* or Dog.
@@ -893,6 +861,5 @@ namespace OOOCL
                 }
             }
         }
-
     }
 }

@@ -328,14 +328,6 @@ namespace OOOCL
                 //Add a quality to this SO.
                 qualities.Add(SQ);
 
-                //Remove the following as there is too much noise on the screen when updating after
-                //every change of a quality.
-                //if (qualities.Count%3 == 0)
-                {
-                  //  NotifyPropertyChanged();
-                  //  Thread.Sleep(BuildSOs.SleepTime);
-                }
-
                 //make a copy of the SQ in the Event if this is not the Event.
                 //SO Nida has qualities.
                 //2025 - 02 - 02 14:00:00.005 => MeetNida Tail = Short
@@ -409,7 +401,6 @@ namespace OOOCL
             }
             //qualities.RemoveAll(SQ => SQ.Value == "True");
         }
-
         public SensualObject(string _name, DateTime _dt, SensualObject Parent)
         {
             Name = _name;
@@ -479,10 +470,8 @@ namespace OOOCL
                 strNewName = strNewName + "_";
                 _SO.Name = strNewName;
             }
-                
 
             Source.Name = strNewName;
-
  
             if (Source.Name == "ball(SPLIT)")
             {
@@ -493,11 +482,6 @@ namespace OOOCL
                 test = Source.Name;
             }
 
-            //Source.Ended = true;
-
-            //identify children of the Source and replicate in the copy.
-
-            //  foreach (SensualObject SO in BuildSOs.TheSOs)
             //Add the new SOs in reverse order so that adding them below in the reverse order retains the same order 
             //at the same depth.
             // A [B [C, D] results in TheNewSOs D, C, B, A and BuildSOs.TheSOs.Add adds them to the array as A, B, C, D.
@@ -529,5 +513,4 @@ namespace OOOCL
             }
         }
     }
-
 }

@@ -123,7 +123,6 @@ namespace OOOCL
                 }
             }
         }
-
         public SensualQuality(SensualObject _SOEvent, SensualObject _SOparent, string _name, string _value, string _description, SensualObject _SOOfValue, DateTime _dt, string _preposition)
         {
             SensualQualityInit(_SOEvent, _SOparent, false,  _name, _value, _description, _dt, _preposition);
@@ -132,18 +131,14 @@ namespace OOOCL
                 SOReferences.Add(_SOOfValue);
             }
         }
-
         public SensualQuality(SensualObject _SOEvent, SensualObject _SOparent, bool _IsSO, string _name, string _value, string _description, DateTime _dt, string _preposition)
         {
             SensualQualityInit(_SOEvent, _SOparent, _IsSO, _name, _value, _description, _dt, _preposition);
         }
-
         public SensualQuality(SensualQuality SQ)
         {
             if (SQ.SOEvent != null && SQ.SOParent != null)
                 SensualQualityInit(SQ.SOEvent, SQ.SOParent, SQ.IsSO, SQ.Name, SQ.Value, SQ.Description, SQ.created, SQ.Preposition);
         }
-
     }
-
 }

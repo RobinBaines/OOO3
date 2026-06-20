@@ -31,7 +31,6 @@ namespace WOOOF
         }
         public abstract string GetString();
 
-
         public int _textWidth;
         public int TextWidth
         {
@@ -63,7 +62,6 @@ namespace WOOOF
         public string Value { get; set; }
         //public string Preposition { get; set; }
         public SensualQuality SQ { get; set; }
-
         public bool SQSetsOtherSQ {
             get
             {
@@ -80,7 +78,6 @@ namespace WOOOF
                 return false;
             }
         }
-
         public bool SQSetByOtherSO
         {
             get
@@ -99,32 +96,17 @@ namespace WOOOF
             }
         }
 
-
         //the name of the SO which is displaying the SQ
         public string SOName { get; set; }
-
         public GDISO? Parent { get; set; }
-
         public string GetString(bool blnHideEvents, string _SOName)
         {
             SOName = _SOName;
             return GetString();
         }
-        
-
         public override string GetString()
         {
             string str = SOevent;
-            string test2;
-
-            //if (Value != null)
-            {
-                if (this.Name == "Sitting") // && Name == "Running" && Value == "false")
-                {
-                    test2 = "test";
-                }
-            }
-
             if (SQSetsOtherSQ)
             {
             str = SQ.SOParent.Name + " > ";
@@ -185,7 +167,6 @@ namespace WOOOF
                 Parent?.G?.DrawString(str, theFont, sb, X, Y, format);
         }
 
-
         public string _SOevent = "";
         public string SOevent
         {
@@ -195,7 +176,6 @@ namespace WOOOF
             }
             set { _SOevent = value; }
         }
-
         public GDISQ(GDISO _Parent, string _name, string _value, string _event,  int _qualityfontsize, SensualObject? _SOParent, SensualQuality _SQ)
         {
             Parent = _Parent;
