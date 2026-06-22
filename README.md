@@ -208,7 +208,7 @@ Another approach is to include stone_air as a composite object in the object sto
 air and water or stone and water. 
 A radical approach but even more complicated is to allow composite objects to contain sensual objects with all combinations of contained objects. 
 
-This discussion of composite objects implies that composite objects should be created by combining other objects to form a new object without any 
+This discussion implies that composite objects should be created by combining other objects to form a new object without any 
 internal hierarchy. 
 
 //////////////INSTANTIATION///////////////////////////
