@@ -1,6 +1,6 @@
 WOOOF converts a scenario into an object model.
 A scenario is sequence of events written in a text file using a simple language.
-WOOOF shows the objects as nested rectangles with their properties, including references to the objects which set the properties. 
+WOOOF display the objects in the object model as nested rectangles with their properties, including references to the objects which set the properties. 
 See WOOOFNotes.odp for an example of the output.
 
 WOOOF also writes the objects with their properties to a text file and has several experimental types of output such as the result of random walks 
@@ -105,7 +105,7 @@ Time has 2 implementations:
 2. A discrete Event is an Object with no duration, with a time stamp and is unique. ("un momento dado"; Johan Cruyff).
 Potentially there could be a none countable, infinite number of Events. In practice an Event is instantiated when 
 an object ends or an object becomes part of a new object or if a property of an object changes. 
-By convention Events are given names in capital letters.
+By convention Events names are in capital letters.
 
 An Event may have an input and/or an output object. 
 The scripts use objects which are called INPUTx and OUTPUTx, by convention, to emphasize the Event input and output; see PoolsAndStone for examples.
@@ -146,13 +146,13 @@ existence via a series of events involving nucleation, condensation and collisio
 Placeholders are used to contain independent scenarios within a scenario. This idea is illustrated in the PoolAndStone and dogs scripts.
 At a certain moment in the PoolAndStone script, the stone is fully submerged and it continues to fall through the water. 
 The air above the water comes to rest in a separate independent timeline.
-The dogs script introduces a human observer. Real events occur in one placeholder and the observer notices these events
-with a time delay in another placeholder/independent scenario.
+The dogs script introduces a human observer. Real events occur in one placeholder and the observer notices these events,
+with a time delay, in another placeholder/independent scenario.
 
 //////////////COMPOSITE OBJECTS///////////////////////////
 'Composite' objects are formed from 2 or more other objects and occur in the drops, golf, PoolAndStone and PoolAndStoneObject scripts. 
-The composite drop formed when 2 smaller drops of similar size, coalesce looks convincing. The original 2 drops are mixed into the new drop; 
-the original drops can no longer be recovered. Alternatives, for example letting drop2 merge into drop1 
+The composite drop formed when 2 smaller drops of similar size, coalesce looks convincing. The original 2 drops are mixed into the new drop 
+and the original drops can no longer be recovered. Alternatives, for example letting drop2 merge into drop1 
 or the other way around, look arbitrary. A logical consequence is that any coalescing drops should always form a new drop even when one drop is 
 significantly larger than the other. If this were not the case then an arbitrary, relative size would be needed to mark the point at which the larger drop 
 is so much larger that it absorbs the smaller one.
@@ -234,7 +234,7 @@ the collision of a molecule of water with the pollen.
 Photon collision could influence the motion but is not discernable or relevant.
 
 Properties.
-The scripts are representations of how objects could relate to each other and to keep the scripts short and simple properties have been kept to a minimum.
+The scripts are representations of how objects could relate to each other and to keep the scripts short, properties have been kept to a minimum.
 Scripts of inanimate interactions include coordinate and velocity properties. In retrospect this looks like an artifact of scripting and 
 real interactions would not need this sort of decoration.
 
@@ -248,21 +248,21 @@ A Generic Approach to Inanimate Interactions.
 Dividing time into Timeline and Event SOs and the use of less obvious types of SO in the PoolAndStone script both contribute to a generic approach to 
 inanimate interactions. 
 A generic approach to inanimate scenarios looks like a requirement for OOO.
-In OOP the idea of a Pattern is used to make the generic aspects of similar processes explicit. 
+In OOP the idea of a Pattern is used to emphasise the generic aspects of similar processes. 
 
 Composite Objects.
 When 2 or more objects combine a new object should be created without a internal hierarchy.
 This approach is close to the OOO idea of a flat ontology.
 
 Scripts with Observers.
-The dogs script introduces a human observer and the idea of a delay between something real happening and the observer noticing it has happened. 
+The dogs script introduces a human observer and the idea of a delay between something happening and the observer noticing it has happened. 
 The 'external' scenario of a dog sitting, running and then barking occurs with Timelines and Events and with no observer interaction.
 The human observer sees the dog running and then barking but in a separate 'placeholder' with Timelines and Events 
 which mirror the external Timelines and Events but with a delay to represent the observer seeing these Events shortly after they have actually occurred.
 An observer object is used to simulate the delay between something happening and the observer seeing it: 
 	See something black moving.
 	Identify it as a running dog.
-	Identify it as my dog Nida.
+	Identify it as the dog called Nida.
 	Change the state/property of 'Today_Nida' to running.
 The script uses a My_Nida object which captures everything I already knew about Nida and a Today_Nida 
 which tracks my experiences of the visit to Bakkeveen (a place in Friesland). Today_Nida is included in My_Nida instead of being a type of
@@ -276,10 +276,10 @@ and the observer claiming that the event occurred before it did, instead of afte
 
 Object hierarchy inside an Observer.
 Outside an observer inheritance is used only to couple one or more SOs to an RO. The child SOs inherit from the parent RO.
-Inside an observer inheritance is used to represent generic knowledge inside an observer.
-In the dogs script the object dog stores properties which apply to all dogs. Storing generic information about animals which applies to dogs and other animals 
-and information about dogs which applies to any dog including one called Nida is an efficient way to store information 
-and makes it available for a quick interpretation of new experiences.
+Inside an observer inheritance is used to represent the observers generic knowledge.
+In the dogs script the object 'dog' stores properties which apply to all dogs. Storing generic information about animals which applies to dogs and other animals 
+and information about dogs which applies to any dog, including one called Nida, is an efficient way to store information 
+and makes it available for rapid interpretation of new experiences.
 I have discussed this with Fons who works with autists. He feels that some autists are not able to create these generic information objects
 resulting in confusion if a new dog appears or that they are sometimes unable to use previous knowledge about, for example, a red bus when they see a yellow one.
 
@@ -312,13 +312,6 @@ It looks improbable that this could work in inanimate objects like a water drop.
 WOOOF as a Tool.
 Scripting and visualisation of the script using WOOOF are 2 ways of looking at the same thing. On the otherhand it is easier to develop a 
 convincing script, iteratively, if it can be checked using the WOOOF output. 
-
-*The scripting is useful for testing alternatives approaches. In some earlier experiments on representing knowledge of an observer, an SO inherited from a generic SO. 
-For example in first version of the dogs.txt script, the dog called My_Nida inherited from SO 'dog'. 
-The SO 'dog' represents the observers knowledge of dogs and having recognised that My_Nida is a dog, he/she applies this knowledge to My_Nida.
-However in the last version of the dogs.txt script it is more convincing to let SO My_Nida inherit from RO_Nida and to use containment of 
-My_Nida within the SO dog to show that the observer thinks My_Nida is an example of a dog.
-An alternative is to use inheritance in an observer to represent a knowledge hierarchy such as animal - dog - MyNida and to use inheritance for RO - SO outside observers.
 
 ///////////////////////////THE LANGUAGE USED IN THE SCRIPTS./////////////////////////
 

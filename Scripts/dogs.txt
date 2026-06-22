@@ -32,7 +32,7 @@ INIT Includes RO_Nida.
 INIT Includes RO_Me.
 RO_Nida has property RO = true.
 RO_Nida has property Sitting = true.
-RO_Me has property RO = true.
+//RO_Me has property RO = true.
 INIT Includes Nida.
 Nida is a type of RO_Nida
 Nida has property  Sitting = true
