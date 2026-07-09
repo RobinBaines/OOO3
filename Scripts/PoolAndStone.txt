@@ -7,17 +7,17 @@
 
 //By analogy with other scripts the SO water and SO air are defined as the volumes in motion because of the passage of the stone.
 //Here is the PoolAndStone scenario with these SOs:
-//1. Before the stone touches the water, the air and stone are a composite SO called stone_air and the water SO does not exist.
-//2. When the stone touches the water, the air SO, water SO and stone form a new composite object called stone_air_water. 
+//1. Before the stone touches the water, the air and stone are a Compound SO called stone_air and the water SO does not exist.
+//2. When the stone touches the water, the air SO, water SO and stone form a new Compound object called stone_air_water. 
 //3. The water SO has no volume when it is created and grows rapidly as the stone moves into and through the water. 
 //Before contact with the stone, the pool is a continuum. On contact with the stone the water SO
 //becomes a discrete increasing volume as the stone enters and moves through the water. 
-//4. When the stone is just fully immersed the air SO separates from the composite and becomes an independent SO.
-//SOs water and stone continue as a new composite SO called stone_water.
+//4. When the stone is just fully immersed the air SO separates from the Compound and becomes an independent SO.
+//SOs water and stone continue as a new Compound SO called stone_water.
 //5. The air SO begins to shrink as viscosity damps out the disturbances caused by the passage of the stone. 
 //(Interaction between air and water at the water surface is ignored here).
 //6. Eventually the air is at rest and the air SO has zero volume and ends.
-//7. When the stone comes to rest at the bottom of the pool the stone_water composite ends and the water and stone SOs are separate.
+//7. When the stone comes to rest at the bottom of the pool the stone_water Compound ends and the water and stone SOs are separate.
 //We choose the moment the stone comes to rest to separate water and stone because there is no longer interaction between 
 //stone and water. Or to put it another way the stone no longer transfers energy to the water.
 //8. The water SO begins to shrink as viscosity damps out the motion caused by the passage of the stone.
@@ -38,111 +38,122 @@ DisplaySOs *	//display all the objects.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //The script starts with an INIT SO derived from RO_EVENT:
-INIT Includes RO_timeline
-INIT Includes RO_EVENT
-An RO_EVENT has property place. 
-An RO_EVENT has property weather. 
-RO_EVENT has property RO = true.
-RO_EVENT has property time = 2026-01-01 12:32:00.000.
+INIT Includes SO_timeline
+SO_timeline Includes RO_timeline
 
-//do this after INIT Includes RO_EVENT.
-INIT is a type of RO_EVENT.
-
+INIT Includes SO_EVENT
+INIT Includes SO
+SO Includes RO
 INIT Includes Placeholder
 INIT Includes RO_stone_air
-RO_timeline has property RO = true.
- 
-RO_stone_air has property RO = true. 
+INIT is a type of RO_EVENT.
+
 
 //after this the context is RO_stone_air
-RO_stone_air includes RO_air
-RO_stone_air includes RO_stone
+RO_stone_air includes air
+RO_stone_air includes stone
+RO_stone_air is a type of RO
+
+air includes RO_air
+stone includes RO_stone
+air is a type of SO
+stone is a type of SO
+RO_air is a type of RO
+RO_stone is a type of RO
+SO_EVENT has property time
+SO_EVENT includes RO_EVENT
+
+An RO_EVENT has property place. 
+An RO_EVENT has property weather. 
+An RO_EVENT has property instance. //implies instantaneous event.
 
 //This demonstrates switching the context back to INIT to set the properties.
 CONTEXT INIT
-RO_air has property RO = true.
-RO_stone has property RO = true.
 //the diameter does not change and looks reasonalbe to make it property of RO_stone.
 RO_stone has the property diameter and it is 0.02 m. 
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////  
-stone_falling_in_air is a type of RO_timeline.  
+stone_falling_in_air is a type of SO_timeline.  
 The stone_falling_in_air has the property place and it is Schiermonnikoog. 
 The stone_falling_in_air has the property weather and it is wet. 
 The stone_falling_in_air includes stone_air. 
 
 //after this the context is stone_air
-stone_air includes air
-stone_air is a type of RO_stone_air
-air is a type of RO_air
-stone_air includes stone
+stone_air includes RO_stone_air
+stone_air is a type of SO
 stone_air has property Re_air = 5500   //dynamic forces dominate viscosity.
 
-stone is a type of RO_stone.
 //the stone approaches the coordinate origin from a position 20 cms in front of and perpendicular to the water.
 //The context is stone_air and that looks reasonable; the coordinates are relative to air in stone_air.
-stone has property x = 0.2 m
-stone has property y = 0
-stone has property z = 0
+stone_air has property x = 0.2 m
+stone_air has property y = 0
+stone_air has property z = 0
 //the stone velocity is relative to the origin of the coordinate system.
-stone has property v = -40 m/sec
+stone_air has property v = -40 m/sec
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Instantiate the next RO Event in SO stone_falling_in_air.
-STONE_TOUCHES_WATER is a type of RO_EVENT
+STONE_TOUCHES_WATER includes RO_STONE_TOUCHES_WATER
+STONE_TOUCHES_WATER is a type of SO_EVENT
+RO_STONE_TOUCHES_WATER is a type of RO_EVENT
+
 ENDOBJECT stone_falling_in_air
 
 The STONE_TOUCHES_WATER  has property time  is 2026-01-01 12:32:02.000.
-STONE_TOUCHES_WATER includes INPUT1
+RO_STONE_TOUCHES_WATER includes INPUT1
 INPUT1 is a type of Placeholder
 The INPUT1 includes stone_air. 
 
-STONE_TOUCHES_WATER includes OUTPUT1
+RO_STONE_TOUCHES_WATER includes OUTPUT1
 OUTPUT1 is a type of Placeholder
-OUTPUT1 includes RO_water
-RO_water has property RO = true. 
-The OUTPUT1 includes RO_stone_air_water. 
-RO_stone_air_water includes RO_stone
-RO_stone_air_water includes RO_air
-RO_stone_air_water includes RO_water
-
-The OUTPUT1 includes stone_air_water. 
+OUTPUT1 includes stone_air_water
 stone_air_water is a type of RO_stone_air_water
-stone_air_water includes stone
-stone has property x = 0
-stone_air_water includes air
-stone_air_water includes water
+stone_air_water has property x = 0
+
 //The point of contact of stone and water is taken as the coordinate origin.
-water has property x = 0
-water has property y = 0
-water has property z = 0
-water has property v = 0
+
+stone_air_water has property y = 0
+stone_air_water has property z = 0
+stone_air_water has property v = 0
+
+stone_air_water is a type of SO
+stone_air_water includes RO_stone_air_water. 
+RO_stone_air_water is a type of RO
+RO_stone_air_water includes stone
+RO_stone_air_water includes air
+RO_stone_air_water includes water
+water is a type of SO
+water includes RO_water
+RO_water is a type of RO
 
 ENDOBJECT stone_air
-ENDOBJECT RO_stone_air
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The stone_entering_water is a type of RO_timeline.
+The stone_entering_water is a type of SO_timeline.
 The stone_entering_water includes stone_air_water.
 ENDOBJECT STONE_TOUCHES_WATER
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-STONE_LEAVES_AIR is a type of RO_EVENT
-STONE_LEAVES_AIR includes INPUT2
+
+STONE_LEAVES_AIR includes RO_STONE_LEAVES_AIR
+STONE_LEAVES_AIR is a type of SO_EVENT
+STONE_LEAVES_AIR  has property time =  2026-01-01 12:32:10.000.
+RO_STONE_LEAVES_AIR is a type of RO_EVENT
+RO_STONE_LEAVES_AIR includes INPUT2
 INPUT2 is a type of Placeholder
 INPUT2 Includes stone_air_water.
-STONE_LEAVES_AIR includes OUTPUT2
+RO_STONE_LEAVES_AIR includes OUTPUT2
 OUTPUT2 is a type of Placeholder
-OUTPUT2 Includes RO_stone_water.
-RO_stone_water includes RO_stone
-RO_stone_water includes RO_water
 OUTPUT2 Includes stone_water.
-OUTPUT2 Includes air.
+stone_water is a type of SO
+stone_water Includes RO_stone_water
+RO_stone_water includes stone
+RO_stone_water includes water
+
+OUTPUT2 Includes air
+air is a type of SO
 ENDOBJECT stone_entering_water
 
-stone_water is a type of RO_stone_water
-stone_water Includes stone
-stone_water Includes water
 stone_water has property Re_water = 100	//velocity * diameter / dynamic viscosity. Viscosity is significant
 
 The STONE_LEAVES_AIR  has property time = 2026-01-01_12:32:03.000.
@@ -157,17 +168,20 @@ pl0 includes pl2
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 pl1 is a type of Placeholder
 pl1 includes air_motion_damps_out
-The air_motion_damps_out is a type of RO_timeline.
+The air_motion_damps_out is a type of SO_timeline.
 air_motion_damps_out Includes air.
 
 //20260316
 pl1 include_right AIR_STOPS_MOVING
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-AIR_STOPS_MOVING is a type of RO_EVENT
-AIR_STOPS_MOVING includes INPUT3
+AIR_STOPS_MOVING includes RO_AIR_STOPS_MOVING
+AIR_STOPS_MOVING is a type of SO_EVENT
+AIR_STOPS_MOVING  has property time =  2026-01-01 12:32:10.000.
+RO_AIR_STOPS_MOVING is a type of RO_EVENT
+RO_AIR_STOPS_MOVING includes INPUT3
 INPUT3 is a type of Placeholder
 The INPUT3 includes air. 
-AIR_STOPS_MOVING includes OUTPUT3
+RO_AIR_STOPS_MOVING includes OUTPUT3
 OUTPUT3 is a type of Placeholder //no output
 
 ENDOBJECT air_motion_damps_out
@@ -178,17 +192,21 @@ ENDOBJECT RO_air
 pl2 is a type of Placeholder
 pl2 includes stone_falling_in_water
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The stone_falling_in_water is a type of RO_timeline.
+The stone_falling_in_water is a type of SO_timeline.
 The stone_falling_in_water includes stone_water.
 //20260316
 pl2 include_right STONE_STOPS_FALLING
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-STONE_STOPS_FALLING is a type of RO_EVENT
-STONE_STOPS_FALLING includes INPUT4
+STONE_STOPS_FALLING includes RO_STONE_STOPS_FALLING
+STONE_STOPS_FALLING is a type of SO_EVENT
+STONE_STOPS_FALLING  has property time =  2026-01-01 12:32:10.000.
+RO_STONE_STOPS_FALLING is a type of RO_EVENT
+RO_STONE_STOPS_FALLING includes INPUT4
 INPUT4 is a type of Placeholder
 The INPUT4 includes stone_water. 
-STONE_STOPS_FALLING includes OUTPUT4
+
+RO_STONE_STOPS_FALLING includes OUTPUT4
 OUTPUT4 is a type of Placeholder
 The OUTPUT4 includes water.
 The OUTPUT4 includes stone.
@@ -207,32 +225,34 @@ pl5 is a type of Placeholder
 
 pl4 includes water_motion_damps_out
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The water_motion_damps_out is a type of RO_timeline.
+The water_motion_damps_out is a type of SO_timeline.
 water_motion_damps_out Includes water.
 pl4 include_right WATER_STOPS_MOVING
 
 pl5 includes stone_at_rest
+stone_at_rest is a type of SO_timeline
 stone_at_rest includes stone
 ENDOBJECT STONE_STOPS_FALLING
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-WATER_STOPS_MOVING is a type of RO_EVENT
-WATER_STOPS_MOVING includes INPUT5
+WATER_STOPS_MOVING includes RO_WATER_STOPS_MOVING
+WATER_STOPS_MOVING is a type of SO_EVENT
+WATER_STOPS_MOVING has property time =  2026-01-01 12:32:10.000.
+RO_WATER_STOPS_MOVING is a type of RO_EVENT
+RO_WATER_STOPS_MOVING includes INPUT5
 INPUT5 is a type of Placeholder
 The INPUT5 includes water. 
-WATER_STOPS_MOVING includes OUTPUT5
+RO_WATER_STOPS_MOVING includes OUTPUT5
 OUTPUT5 is a type of Placeholder //no output
 
 //the stone is still there but it is not logical to include in an event
 //which has nothing to do with it. 
 
-ENDOBJECT RO_water.
 ENDOBJECT water
 ENDOBJECT water_motion_damps_out
 
 ENDOBJECT WATER_STOPS_MOVING
-ENDOBJECT RO_EVENT
-ENDOBJECT RO_timeline
+
 
 
 

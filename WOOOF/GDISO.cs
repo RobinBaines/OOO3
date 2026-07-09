@@ -4,6 +4,7 @@
 //
 using OOOCL;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 
 namespace WOOOF
 {
@@ -334,6 +335,16 @@ namespace WOOOF
                 }
             }
             Y = y;
+        }
+
+public Point GetBottomRight()
+        {
+            
+            Point point = new Point(0, 0);
+            CalculateY();
+            point.X = (int)X + (int)Width;
+            point.Y = (int)Y + (int)Height;
+            return point; 
         }
 
 public Point DrawGDISO(Graphics _g, int AutoScrollPositionX, int AutoScrollPositionY)

@@ -16,124 +16,121 @@ QuerySOs RO_timeline, club
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //The script starts with an INIT SO derived from RO_EVENT:
-INIT is a type of RO_EVENT.
-INIT Includes RO_timeline
-INIT Includes RO_EVENT
+
+INIT Includes SO_timeline
+SO_timeline Includes RO_timeline
 INIT Includes Placeholder
 INIT Includes RO_club.
 INIT Includes RO_ball.
-RO_timeline has property RO = true.
-RO_club has property RO = true. 
-RO_ball has property RO = true.
-
+INIT Includes SO_EVENT
+INIT Includes SO
+SO Includes RO
+RO_club is a type of RO
+RO_ball is a type of RO
+SO_EVENT has property time
+SO_EVENT includes RO_EVENT
 An RO_EVENT has property place. 
 An RO_EVENT has property weather. 
-RO_EVENT has property RO = true.
-RO_EVENT has property time = 2026-01-01 12:32:00.000.
+An RO_EVENT has property instance. //implies instantaneous event.
+INIT is a type of RO_EVENT.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-the_swing is a type of RO_timeline.  
+the_swing is a type of SO_timeline.  
 The the_swing has the property place and it is Bakkeveen. 
 The the_swing has the property weather and it is wet. 
 The the_swing includes club. 
+club is a type of SO.
+club includes RO_club. 
 
-club is a type of RO_club. 
 club has the property mass and it is 600gm.
 club has property x = -100
 club has property y = 0
 club has property z = 0
 club has property v = 100
 
+
 The the_swing includes ball. 
-ball is a type of RO_ball.
+ball is a type of SO.
+ball includes RO_ball.
+ball is a type of SO.
 ball has the property mass and it is 200gm. 
 ball has property x = 0
 ball has property y = 0
 ball has property z = 0
 ball has property v = 0
 
-//Instantiate the next RO Event in SO the_swing.
-the_swing Includes RO_EVENT1.
-An RO_EVENT1 has property place. 
-An RO_EVENT1 has property weather. 
-RO_EVENT1 has property RO = true.
-RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+COLLISION includes RO_COLLISION
+COLLISION is a type of SO_EVENT
+RO_COLLISION has property place. 
+RO_COLLISION has property weather. 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-THE_COLLISION is a type of RO_EVENT1
+
 ENDOBJECT the_swing
 
-
-//the_swing includes THE_COLLISION.
-The THE_COLLISION time is 2026-01-01 12:32:10.000.
-THE_COLLISION includes INPUT1
+RO_COLLISION is type of RO_EVENT
+COLLISION  has property time =  2026-01-01 12:32:10.000.
+RO_COLLISION includes INPUT1
 INPUT1 is a type of Placeholder
-
-
 The INPUT1 includes club. 
 The INPUT1 includes ball. 
 
-THE_COLLISION includes OUTPUT1
+RO_COLLISION includes OUTPUT1
 OUTPUT1 is a type of Placeholder
-OUTPUT1 Includes RO_club_ball
-RO_club_ball has property RO = true. 
-RO_club_ball has property RO_club
-RO_club_ball has property RO_ball
+OUTPUT1 Includes club_ball
 
-The OUTPUT1 includes club_ball.
-club_ball is a type of RO_club_ball.
+club_ball is a type of SO
 club_ball has the property mass and it is 800gm. 
 club_ball has property x = 0
 club_ball has property y = 0
 club_ball has property z = 0
 club_ball has property v = 0
+//The club_ball includes club. 
+//club has property x = 0
+//The club_ball includes ball.
 
-//club and ball are a part of club_ball
-The club_ball includes club. 
-club has property x = 0
-The club_ball includes ball.
+club_ball Includes RO_club_ball
+RO_club_ball includes club
+RO_club_ball includes ball
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The club_ball_contact is a type of RO_timeline.
-ENDOBJECT RO_EVENT1
-ENDOBJECT THE_COLLISION
+club_ball_contact is a type of SO_timeline.
+ENDOBJECT COLLISION
 The club_ball_contact has the property place and it is Bakkeveen. 
 The club_ball_contact has the property weather and it is wet. 
 The club_ball_contact has the property weather and it is windy. 
 The club_ball_contact includes club_ball. 
 club_ball has property v = 100
-club_ball_contact Includes RO_EVENT2.
 
-An RO_EVENT2 has property place. 
-An RO_EVENT2 has property weather. 
-An RO_EVENT2 has property instance. //implies instantaneous event.
-RO_EVENT2 has property RO = true.
+SPLIT includes RO_SPLIT
+SPLIT is a type of SO_EVENT
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
-SPLIT is a type of RO_EVENT2
+An RO_SPLIT has property place. 
+An RO_SPLIT has property weather. 
+An RO_SPLIT has property instance. //implies instantaneous event.
+
+RO_SPLIT is a type of RO_EVENT
 The SPLIT time is 2026-01-01_13:00:00.000.
-SPLIT includes INPUT2
+RO_SPLIT includes INPUT2
 INPUT2 is a type of Placeholder
 The INPUT2 includes club_ball. 
-The INPUT2 includes RO_club_ball. 
 
 ENDOBJECT club_ball_contact
 ENDOBJECT club_ball
-ENDOBJECT RO_club_ball
 
-SPLIT includes OUTPUT2
+RO_SPLIT includes OUTPUT2
 OUTPUT2 is a type of Placeholder
 The OUTPUT2 includes club. 
 The OUTPUT2 includes ball. 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The the_result is a type of RO_timeline.
+the_result is a type of SO_timeline.
  
 the_result includes club
 the_result includes ball
 
 ENDOBJECT SPLIT
-ENDOBJECT RO_EVENT2 
+
 ball has property v = 140
 
 

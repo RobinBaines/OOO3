@@ -27,8 +27,14 @@ namespace WOOOF
             BackColor = Color.White;
             timer1.Interval = 100;
             timer1.Enabled = true;
-            timer1.Start();
-            ScriptName.Text = Properties.Settings.Default.ScriptFolder + Properties.Settings.Default.DefaultScript; 
+            
+            ScriptName.Text = Properties.Settings.Default.ScriptFolder + Properties.Settings.Default.DefaultScript;
+            panel1.AutoScroll = false;
+            //panel1.VerticalScroll.Enabled = false;
+            //panel1.VerticalScroll.Visible = false;
+            //panel1.HorizontalScroll.Enabled = true;
+            //panel1.HorizontalScroll.Visible = true;
+            //panel1.VerticalScroll.Maximum = 0;
             panel1.AutoScroll = true;
             BindingList<SensualObject> TheSOs = BuildSOs.TheSOs;
             TheSOs.ListChanged += HandleSOChanged;
@@ -45,106 +51,117 @@ namespace WOOOF
         /// <param name="e"></param>
         void HandleSOChanged(object? sender, ListChangedEventArgs? e)
         {
-            HandleSOChanged(e.ListChangedType);
+           //20260702 Do not handle every change but animate with a timer between each object draw action. 
+           // HandleSOChanged(e.ListChangedType, false);
         }
-        void HandleSOChanged(ListChangedType ListChangedType)
+        void HandleSOChanged(ListChangedType ListChangedType, bool blnForceUpdate)
         {
             if (blnPaintActive == false)
             {
                 blnPaintActive = true;
-                
-                if (ListChangedType == ListChangedType.Reset || ListChangedType == ListChangedType.ItemAdded)
+                if (blnForceUpdate)
                 {
-                    GDISOs.Clear();
-                    foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
+                    if (ListChangedType == ListChangedType.Reset || ListChangedType == ListChangedType.ItemAdded)
                     {
-                        if (GDISOs.TryGetValue(_SO.Name, out gDISO) == false)
+                        GDISOs.Clear();
+                        foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
                         {
-                            //create new GDISO.
-                            gDISO = new GDISO(null, _SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value, cbHideConnections.Checked);
-                            GDISOs.Add(_SO.Name, gDISO);
+                            if (GDISOs.TryGetValue(_SO.Name, out gDISO) == false)
+                            {
+                                //create new GDISO.
+                                gDISO = new GDISO(null, _SO, (int)numObjectFontsize.Value, (int)numQualityFontsize.Value, cbHideConnections.Checked);
+                                GDISOs.Add(_SO.Name, gDISO);
+                            }
+
+                            if (_SO.ptrDerivedFrom != null)
+                                GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
+
+                            if (_SO.EndedBySO != null)
+                                GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
+
+                            GDISOs[_SO.Name].Ended = _SO.Ended;
+
+                            GDISOs[_SO.Name].IncludeRight = _SO.IncludeRight;
                         }
 
-                        if (_SO.ptrDerivedFrom != null)
-                            GDISOs[_SO.Name].AddInherits(_SO.ptrDerivedFrom);
-
-                        if (_SO.EndedBySO != null)
-                            GDISOs[_SO.Name].AddEndedBySO(_SO.EndedBySO);
-
-                        GDISOs[_SO.Name].Ended = _SO.Ended;
-
-                        GDISOs[_SO.Name].IncludeRight = _SO.IncludeRight;
-                    }
-
-                    foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
-                    {
-                        if (_SO.SOParent != null)
+                        foreach (SensualObject _SO in BuildSOs.TheSOs.ToList())
                         {
-                            if (GDISOs.ContainsKey(_SO.SOParent.Name) == true)
+                            if (_SO.SOParent != null)
                             {
-                                GDISOs[_SO.Name].Parent = GDISOs[_SO.SOParent.Name];
-                                GDISOs[_SO.SOParent.Name].ChildGDISOs.Add(GDISOs[_SO.Name]);
-                                string test;
-                                if (_SO.SOParent.Name == "club_ball")
+                                if (GDISOs.ContainsKey(_SO.SOParent.Name) == true)
                                 {
-                                    test = _SO.SOParent.Name;
+                                    GDISOs[_SO.Name].Parent = GDISOs[_SO.SOParent.Name];
+                                    GDISOs[_SO.SOParent.Name].ChildGDISOs.Add(GDISOs[_SO.Name]);
+                                    string test;
+                                    if (_SO.SOParent.Name == "club_ball")
+                                    {
+                                        test = _SO.SOParent.Name;
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    GDISO GDISONeighbour = null;
-                    foreach (GDISO GDISO in GDISOs.Values.ToList())
-                    {
-                        string test;
-                        if (GDISO.Name == "dog(pl0)") // && Parent.Name == "I_SEE_NIDA_BARKING")
-                            test = GDISO.Name;
+                        GDISO GDISONeighbour = null;
+                        foreach (GDISO GDISO in GDISOs.Values.ToList())
+                        {
+                            string test;
+                            if (GDISO.Name == "dog(pl0)") // && Parent.Name == "I_SEE_NIDA_BARKING")
+                                test = GDISO.Name;
 
-                        if (GDISO.Parent == null)
-                        {
-                            GDISO.Neighbour = GDISONeighbour;
-                            GDISONeighbour = GDISO;
-                        }
-                        GDISO.IncludesRef.Clear();
+                            if (GDISO.Parent == null)
+                            {
+                                GDISO.Neighbour = GDISONeighbour;
+                                GDISONeighbour = GDISO;
+                            }
+                            GDISO.IncludesRef.Clear();
+                            GDISO.IsPartOfRef.Clear();
+                            GDISO.IsReferencedBy.Clear();
+                            GDISO.IsPreviousSOParents.Clear();
+                            GDISO.qualities.Clear();
 
-                        
-                        GDISO.IsPartOfRef.Clear();
-                        GDISO.IsReferencedBy.Clear();
-                        GDISO.IsPreviousSOParents.Clear();
-                        GDISO.qualities.Clear();
+                            //add the SO.qualities to this GDISO.qualities
+                            foreach (OOOCL.SensualQuality SQ in GDISO.SO.qualities.ToList())
+                            {
+                                GDISO.AddSQ(SQ);
+                            }
+                            foreach (OOOCL.SensualObject SO in GDISO.SO.IncludesReference.ToList())
+                            {
+                                GDIIncludesRef SORef = new GDIIncludesRef(GDISO, SO, GDISO.QualityFontsize);
+                                GDISO.IncludesRef.Add(SORef);
 
-                        //add the SO.qualities to this GDISO.qualities
-                        foreach (OOOCL.SensualQuality SQ in GDISO.SO.qualities.ToList())
-                        {
-                            GDISO.AddSQ(SQ);
-                        }
-                        foreach (OOOCL.SensualObject SO in GDISO.SO.IncludesReference.ToList())
-                        {
-                            GDIIncludesRef SORef = new GDIIncludesRef(GDISO, SO, GDISO.QualityFontsize);
-                            GDISO.IncludesRef.Add(SORef);
-
-                        }
-                        foreach (OOOCL.SensualObject SO in GDISO.SO.IsPartOfReference.ToList())
-                        {
-                            GDIPartOfRef SORef = new GDIPartOfRef(GDISO, SO, GDISO.QualityFontsize);
-                            GDISO.IsPartOfRef.Add(SORef);
-                        }
-                        foreach (OOOCL.SensualObject SO in GDISO.SO.ReferencedBy.ToList())
-                        {
-                            GDIReferencedBy SORef = new GDIReferencedBy(GDISO, SO, GDISO.QualityFontsize);
-                            GDISO.IsReferencedBy.Add(SORef);
-                        }
-                        foreach (OOOCL.SensualObject SO in GDISO.SO.PreviousSOParents.ToList())
-                        {
-                            GDIPreviousSOParents SORef = new GDIPreviousSOParents(GDISO, SO, GDISO.QualityFontsize);
-                            GDISO.IsPreviousSOParents.Add(SORef);
+                            }
+                            foreach (OOOCL.SensualObject SO in GDISO.SO.IsPartOfReference.ToList())
+                            {
+                                GDIPartOfRef SORef = new GDIPartOfRef(GDISO, SO, GDISO.QualityFontsize);
+                                GDISO.IsPartOfRef.Add(SORef);
+                            }
+                            foreach (OOOCL.SensualObject SO in GDISO.SO.ReferencedBy.ToList())
+                            {
+                                GDIReferencedBy SORef = new GDIReferencedBy(GDISO, SO, GDISO.QualityFontsize);
+                                GDISO.IsReferencedBy.Add(SORef);
+                            }
+                            foreach (OOOCL.SensualObject SO in GDISO.SO.PreviousSOParents.ToList())
+                            {
+                                GDIPreviousSOParents SORef = new GDIPreviousSOParents(GDISO, SO, GDISO.QualityFontsize);
+                                GDISO.IsPreviousSOParents.Add(SORef);
+                            }
                         }
 
-
+                        //calculate bottom right point and set location of button1.
+                        foreach (GDISO GDISO in GDISOs.Values.ToList())
+                        {
+                            if (GDISO.Parent == null)
+                            {
+                                GDISO_GetBottomRight(GDISO);
+                            }
+                        }
+                        bottom_right_point.X = bottom_right_point.X + panel1.AutoScrollOffset.X;
+                        bottom_right_point.Y = bottom_right_point.Y + panel1.AutoScrollOffset.Y;
+                        //if called if the TheSOs List Changes then SO list and button1 are in different threads and that causes problems..
+                        button1.Location = bottom_right_point;
+                        panel1.Invalidate();
                     }
                 }
-            
-                panel1.Invalidate();
             }
         }
 
@@ -164,12 +181,14 @@ namespace WOOOF
                 {
                     if (newThread.IsAlive == false)
                     {
+                        timer1.Stop();
                         gDISO = null;
                         button1.Location = bottom_right_point;
                         blnScriptBeingProcessed = false;
                         blnPaintActive = false;
-                        HandleSOChanged(ListChangedType.Reset);
-                        panel1.Invalidate();
+                        HandleSOChanged(ListChangedType.Reset, true);
+                        //panel1.Invalidate();
+                        
                         btnRunScript.Enabled = true;
                     }
                 }
@@ -187,13 +206,14 @@ namespace WOOOF
             {
                 if (File.Exists(ScriptName.Text))
                 {
+                    timer1.Start();
                     BuildSOs.TheSOs.Clear();
                     GDISOs.Clear();
                     bottom_right_point.X = 0;
                     bottom_right_point.Y = 0;
                     button1.Location = new Point(panel1.Height - button1.Height, panel1.Width - button1.Width);
 
-                    BuildSOs.SleepTime = (int)SleepTimer.Value;
+                    BuildSOs.SleepTime = 0; // (int)SleepTimer.Value;
                     btnRunScript.Enabled = false;
                     blnScriptBeingProcessed = true;
                     newThread = new Thread(DoWork);
@@ -260,15 +280,21 @@ namespace WOOOF
         /// <param name="e"></param>
         private void Form1_Layout(object sender, LayoutEventArgs e)
         {
-            if (blnScriptBeingProcessed)
+            if ((e.AffectedControl != null) && (e.AffectedProperty != null))
             {
-                if (blnPaintActive == false)
+                if (e.AffectedProperty.ToString() == "Bounds")
                 {
-                    gDISO = null;
-                    blnPaintActive = true;
-                    panel1.Invalidate();
-                }
+                    if (blnScriptBeingProcessed)
+                    {
+                        if (blnPaintActive == false)
+                        {
+                            gDISO = null;
+                            blnPaintActive = true;
+                            panel1.Invalidate();
+                        }
 
+                    }
+                }
             }
         }
 
@@ -281,16 +307,23 @@ namespace WOOOF
         {
                 //bottom_right_point is used to position a control on the form which
                 //turns on the scroll bars if they are necessary.
-                Point point = GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
-                if (point.X > bottom_right_point.X)
-                {
-                    bottom_right_point.X = point.X;
-                }
-                   
-                if (point.Y > bottom_right_point.Y )
-                {
-                    bottom_right_point.Y = point.Y;
-                }
+                GDISO.DrawGDISO(g, panel1.AutoScrollPosition.X, panel1.AutoScrollPosition.Y);
+        }
+
+        private void GDISO_GetBottomRight(GDISO GDISO)
+        {
+            //bottom_right_point is used to position a control on the form which
+            //turns on the scroll bars if they are necessary.
+            Point point = GDISO.GetBottomRight();
+            if (point.X > bottom_right_point.X)
+            {
+                bottom_right_point.X = point.X;
+            }
+
+            if (point.Y > bottom_right_point.Y)
+            {
+                bottom_right_point.Y = point.Y;
+            }
         }
 
         /// <summary>
@@ -301,33 +334,37 @@ namespace WOOOF
         /// <param name="e"></param>
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            bottom_right_point.Y = bottom_right_point.X = 0;
-            Graphics g = e.Graphics;
+            base.OnPaint(e);
+                Graphics g = e.Graphics;
 
-            //Paint the objects which have no parent first.
-            foreach (GDISO GDISO in GDISOs.Values.ToList())
-            {
-                if (GDISO.Parent == null)
+                //Paint the objects which have no parent first.
+                foreach (GDISO GDISO in GDISOs.Values.ToList())
                 {
-                    GDISO_Paint(GDISO, g);
+                    if (GDISO.Parent == null)
+                    {
+                        GDISO_Paint(GDISO, g);
+                        if (SleepTimer.Value > 0)
+                            Thread.Sleep((int)SleepTimer.Value);
+                    }
                 }
-            }
-            //then paint the rest of the objects.
-            foreach (GDISO GDISO in GDISOs.Values.ToList())
-            {
-                if (GDISO.Parent != null)
+                //then paint the rest of the objects.
+                foreach (GDISO GDISO in GDISOs.Values.ToList())
                 {
-                    GDISO_Paint(GDISO, g);
+                    if (GDISO.Parent != null)
+                    {
+                        GDISO_Paint(GDISO, g);
+                        if (SleepTimer.Value > 0)
+                            Thread.Sleep((int)SleepTimer.Value);
+                    }
                 }
+                g.Dispose();
+
+                //Setting the button1.Location outside the panel does switch on the scroll bars but also calls OnPaint again!
+                //button1.Location = bottom_right_point;
+
+                    blnPaintActive = false;
             }
-            g.Dispose();
-            
-
-            //position this control on the bottom right to switch on the scroll bars.
-            button1.Location = bottom_right_point;
-
-            blnPaintActive = false;
-        }
+  
 
         /// <summary>
         /// Repaint when the HideEvents checkbox changes state.
@@ -336,8 +373,7 @@ namespace WOOOF
         /// <param name="e"></param>
         private void cbHideEvents_CheckedChanged(object sender, EventArgs e)
         {
-            HandleSOChanged(ListChangedType.Reset);
-            panel1.Invalidate();
+            HandleSOChanged(ListChangedType.Reset, true);
         }
     }
 }

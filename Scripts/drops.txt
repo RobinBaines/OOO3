@@ -36,7 +36,6 @@
 //v = 0.1 m/s and l = 1mm => We = 0.14
 //We ignore gravity => m * v * v /m * g * d = 0.01
 //While these questions apply to scripting they do not influence the real collision and coalescence.
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Several commands:
 DisplaySOs *	//display all the objects.
@@ -44,72 +43,74 @@ DisplaySOs *	//display all the objects.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //The script starts with an INIT SO derived from RO_EVENT:
-INIT is a type of RO_EVENT.
-INIT Includes RO_timeline
-INIT Includes RO_EVENT
+INIT Includes SO_timeline
+SO_timeline Includes RO_timeline
+INIT Includes SO_EVENT
+INIT Includes SO
+SO Includes RO
 INIT Includes RO_drop1.
 INIT Includes RO_drop2.
-RO_timeline has property RO = true.
-RO_drop1 has property RO = true. 
-RO_drop2 has property RO = true.
-
+SO_EVENT has property time
+SO_EVENT includes RO_EVENT
 An RO_EVENT has property place. 
 An RO_EVENT has property weather. 
 An RO_EVENT has property instance. //implies instantaneous event.
-RO_EVENT has property RO = true.
-RO_EVENT has property time = 2026-01-01 12:32:00.000.
+INIT is a type of RO_EVENT.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-collision is a type of RO_timeline.  
+collision is a type of SO_timeline.  
 The collision has the property place and it is Bakkeveen. 
 The collision has the property weather and it is wet. 
 The collision includes drop1. 
 
 //properties of the SO drop1 and not of RO_drop1 because they are relative to the SO collision and not to the RO_timeline.
-drop1 is a type of RO_drop1. 
+drop1 is a type of SO. 
+
 //property mass is an SO property and not an RO property because it may change.
 drop1 has the property mass and it is 1gm.
 drop1 has property x = 0
 drop1 has property y = 0
 drop1 has property z = 0
 drop1 has property v = 0
+drop1 is a includes RO_drop1.
+RO_drop1 is a type of RO
 
 The collision includes drop2. 
-drop2 is a type of RO_drop2.
+drop2 is a type of SO.
 drop2 has the property mass and it is 1gm. 
 drop2 has property x = 1
 drop2 has property y = 0
 drop2 has property z = 0
 drop2 has property v = -0.1
+drop2 is a includes RO_drop2.
+RO_drop2 is a type of RO
 
-//Instantiate the next RO Event in SO collision.
-collision Includes RO_EVENT1.
-An RO_EVENT1 has property place. 
-An RO_EVENT1 has property weather. 
-An RO_EVENT1 has property instance. //implies instantaneous event.
-RO_EVENT1 has property RO = true.
-RO_EVENT1 has property time is 2026-01-01 12:32:10.000.
+COLLISION includes RO_COLLISION
+COLLISION is a type of SO_EVENT
+
+RO_COLLISION has property place. 
+RO_COLLISION has property weather. 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-THE_COLLISION is a type of RO_EVENT1
-The THE_COLLISION  has property time =  2026-01-01 12:32:10.000.
+
 ENDOBJECT drop1
-THE_COLLISION includes INPUT1
+RO_COLLISION is type of RO_EVENT
+COLLISION  has property time =  2026-01-01 12:32:00.000.
+RO_COLLISION includes INPUT1
 INPUT1 is a type of Placeholder
 The INPUT1 includes drop1. 
 The INPUT1 includes drop2.
 
-
-
-
-THE_COLLISION includes OUTPUT1
+RO_COLLISION includes OUTPUT1
 OUTPUT1 is a type of Placeholder
-OUTPUT1 Includes RO_bigdrop.
-RO_bigdrop has property RO = true. 
+
 OUTPUT1 Includes bigdrop.
 
+
 drop2 has property x = 0
-bigdrop is a type of RO_bigdrop.
+bigdrop Includes RO_bigdrop
+bigdrop is a type of SO.
+RO_bigdrop is a type of RO
 
 ENDOBJECT drop1
 ENDOBJECT RO_drop1
@@ -119,53 +120,52 @@ ENDOBJECT RO_drop2
 
 bigdrop has the property mass and it is 2gm. 
 ENDOBJECT collision
-ENDOBJECT THE_COLLISION
-ENDOBJECT RO_EVENT1
+ENDOBJECT RO_COLLISION
+ENDOBJECT COLLISION
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The gust_of_wind is a type of RO_timeline.
+The gust_of_wind is a type of SO_timeline.
 
 The gust_of_wind has the property place and it is Bakkeveen. 
 The gust_of_wind has the property weather and it is wet. 
 The gust_of_wind has the property weather and it is windy. 
 The gust_of_wind includes bigdrop. 
-gust_of_wind Includes RO_EVENT2.
 
-An RO_EVENT2 has property place. 
-An RO_EVENT2 has property weather. 
-An RO_EVENT2 has property instance. //implies instantaneous event.
-RO_EVENT2 has property RO = true.
+SPLIT includes RO_SPLIT
+SPLIT is a type of SO_EVENT
+
+An RO_SPLIT has property place. 
+An RO_SPLIT has property weather. 
+An RO_SPLIT has property instance. //implies instantaneous event.
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-SPLIT is a type of RO_EVENT2
+RO_SPLIT is a type of RO_EVENT
+SPLIT  has property time =  2026-01-01 12:33:00.000.
 
-The SPLIT  has property time =  2026-01-01_13:00:00.000.
-SPLIT includes INPUT2
+RO_SPLIT includes INPUT2
 INPUT2 is a type of Placeholder
 The INPUT2 includes bigdrop. 
 
-SPLIT includes OUTPUT2
+RO_SPLIT includes OUTPUT2
 OUTPUT2 is a type of Placeholder
-OUTPUT2 Includes RO_drop3.
-OUTPUT2 Includes RO_drop4.
-RO_drop3 has property RO = true. 
-RO_drop4 has property RO = true. 
-
 The OUTPUT2 includes drop3. 
-drop3 is a type of RO_drop3.
-drop3 has the property mass and it is 1gm. 
+drop3 is a type of SO.
 The OUTPUT2 includes drop4.
-drop4 is a type of RO_drop4. 
+drop4 is a type of SO.
+drop3 has the property mass and it is 1gm. 
 drop4 has the property mass and it is 1gm. 
-
+drop3 Includes RO_drop3.
+drop4 Includes RO_drop4.
+RO_drop3 is a type of RO
+RO_drop4 is a type of RO
 ENDOBJECT gust_of_wind
 ENDOBJECT RO_bigdrop
 ENDOBJECT bigdrop
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-The the_result is a type of RO_timeline.
+The the_result is a type of SO_timeline.
 ENDOBJECT SPLIT
-ENDOBJECT RO_EVENT2
+
 The the_result includes drop3.
 The the_result includes drop4.
 

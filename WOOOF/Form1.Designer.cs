@@ -86,7 +86,6 @@
             SleepTimer.Name = "SleepTimer";
             SleepTimer.Size = new Size(67, 23);
             SleepTimer.TabIndex = 3;
-            SleepTimer.Value = new decimal(new int[] { 5, 0, 0, 0 });
             // 
             // label1
             // 
@@ -138,11 +137,10 @@
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.AutoScroll = true;
             panel1.Controls.Add(button1);
             panel1.Location = new Point(9, 38);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1182, 409);
+            panel1.Size = new Size(1417, 409);
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
             // 
@@ -170,7 +168,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1192, 450);
+            ClientSize = new Size(1430, 450);
             Controls.Add(cbHideConnections);
             Controls.Add(panel1);
             Controls.Add(label3);
