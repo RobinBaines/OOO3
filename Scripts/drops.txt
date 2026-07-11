@@ -63,7 +63,6 @@ The collision has the property place and it is Bakkeveen.
 The collision has the property weather and it is wet. 
 The collision includes drop1. 
 
-//properties of the SO drop1 and not of RO_drop1 because they are relative to the SO collision and not to the RO_timeline.
 drop1 is a type of SO. 
 
 //property mass is an SO property and not an RO property because it may change.

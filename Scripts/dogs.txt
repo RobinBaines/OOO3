@@ -20,9 +20,7 @@ DisplaySOs *	//display all the SOs with SQs.
 //GenerateScript *
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-//initialise the real objects.
-
-INIT Includes RO_timeline
+//initialise the objects.
 INIT Includes SO_EVENT
 INIT Includes SO
 SO Includes RO
@@ -36,6 +34,8 @@ INIT is a type of RO_EVENT.
 INIT Includes Placeholder
 INIT Includes Nida.
 INIT Includes Me.
+INIT Includes SO_timeline
+SO_timeline Includes RO_timeline
 Me Includes RO_Me
 
 Nida is a type of SO
@@ -68,7 +68,7 @@ MeetNida includes Nida
 MeetNida includes Me
 
 //Set up the initial steady state with Nida Sitting.
-MeetNida is a type of RO_timeline. 
+MeetNida is a type of SO_timeline. 
 The MeetNida has the property place and it is Bakkeveen. 
 The MeetNida has the property weather and it is wet.
 Nida include_right NidaInBakkeveen
@@ -96,7 +96,7 @@ NidaInBakkeveen has property  Running = true
 
 NidaInBakkeveen include_right Nida_running
 //We enter a steady state in which Nida is running but the observer has not realised that yet.
-Nida_running is a type of RO_timeline. 
+Nida_running is a type of SO_timeline. 
 //Nida_running includes Nida
 ENDOBJECT NIDA_RUNS
 
@@ -105,7 +105,7 @@ MeInBakkeveen is a type of Placeholder
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Set up the initial steady state with Nida Sitting.
-//ObserverMeetNida is a type of RO_timeline. 
+//ObserverMeetNida is a type of SO_timeline. 
 The MeInBakkeveen has the property place and it is Bakkeveen. 
 The MeInBakkeveen has the property weather and it is wet.
 
@@ -125,7 +125,7 @@ something has property moving = true
 something is a type of SO
 
 MeInBakkeveen include_right something_running
-something_running is a type of RO_timeline. 
+something_running is a type of SO_timeline. 
 something_running includes something
 ENDOBJECT SEE_SOMETHING
 
@@ -145,7 +145,7 @@ something is type of dog
 ENDOBJECT something_running
 
 MeInBakkeveen include_right dog_running
-dog_running is a type of RO_timeline. 
+dog_running is a type of SO_timeline. 
 dog_running includes something
 ENDOBJECT SEE_RUNNING_DOG
 
@@ -174,7 +174,7 @@ ENDOBJECT dog_running
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 MeInBakkeveen include_right See_Nida_running
 //A steady state is reached with Nida running and the observer is also aware of that.
-See_Nida_running is a type of RO_timeline.
+See_Nida_running is a type of SO_timeline.
 See_Nida_running includes My_Nida
 ENDOBJECT SEE_NIDA_RUN
 
@@ -197,7 +197,7 @@ ENDOBJECT Nida_running
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //We enter a steady state in which Nida is running and barking but the observer has not realised that she is barking.
 NidaInBakkeveen include_right Nida_barking
-Nida_barking is a type of RO_timeline. 
+Nida_barking is a type of SO_timeline. 
 ENDOBJECT NIDA_BARKS
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -220,7 +220,7 @@ ENDOBJECT See_Nida_running
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //A steady state is reached with Nida running and barking and the observer is also aware of that.
 MeInBakkeveen include_right See_Nida_barking
-See_Nida_barking is a type of RO_timeline.
+See_Nida_barking is a type of SO_timeline.
 See_Nida_barking includes My_Nida
 ENDOBJECT SEE_NIDA_BARK
 
@@ -253,7 +253,7 @@ OUTPUTd1 includes somesound
 somesound has property command = true
 
 NidaInBakkeveen include_right something_commanding
-something_commanding is a type of RO_timeline. 
+something_commanding is a type of SO_timeline. 
 something_commanding includes somesound
 ENDOBJECT HEAR_SOMETHING
 
@@ -274,7 +274,7 @@ _MeInBakkeveen has property command = Sit!
 ENDOBJECT something_commanding
 
 NidaInBakkeveen include_right hear_sit
-hear_sit is a type of RO_timeline. 
+hear_sit is a type of SO_timeline. 
 hear_sit includes somesound
 ENDOBJECT HEAR_SIT_COMMAND
 
@@ -291,7 +291,7 @@ NidaInBakkeveen has property barking = false
 ENDOBJECT hear_sit
 
 NidaInBakkeveen include_right running
-running is a type of RO_timeline. 
+running is a type of SO_timeline. 
 ENDOBJECT STOPS_BARKING
 
 NidaInBakkeveen include_right STOPS_RUNNING
@@ -306,7 +306,7 @@ NidaInBakkeveen has property running = false
 ENDOBJECT running
 
 NidaInBakkeveen include_right standing
-standing is a type of RO_timeline. 
+standing is a type of SO_timeline. 
 ENDOBJECT STOPS_RUNNING
 
 NidaInBakkeveen include_right SITS
@@ -321,6 +321,6 @@ NidaInBakkeveen has property sitting = true
 ENDOBJECT standing
 
 NidaInBakkeveen include_right sitting
-sitting is a type of RO_timeline. 
+sitting is a type of SO_timeline. 
 ENDOBJECT SITS
 
