@@ -3,7 +3,6 @@
 //Initially the dog called Nida is sitting.
 //Nida starts running.
 //Sometime later Nida starts barking.
-
 //While this is happening an observer called Me sees something black running.
 //The observer realises that it is a running dog.
 //The observer realises that the running dog is Nida.
