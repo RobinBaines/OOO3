@@ -12,6 +12,8 @@
 //The child objects human and dog both have the parent animal.
 //My_Nida is the memory Me has of Nida. My_Nida has parent object dog.
 
+//20260825 NidaInBakkeveen and MeInBakkeveen are RO and are derived from RO_Nida and RO_Me respectively. 
+//Me and Nida are SO representing the presentation to the outside world.
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Several commands:
 DisplaySOs *	//display all the SOs with SQs.
@@ -46,11 +48,11 @@ RO_Nida is a type of RO
 
 //And use inheritance to indicate that My_Nida is derived from the dog.
 //Define my idea of a generic dog.
-Me includes animal
-Me includes human
+RO_Me includes animal
+RO_Me includes human
 human is a type of animal
 Me is a type of human
-Me includes dog
+RO_Me includes dog
 dog has the property FrontLeftLeg 
 //etc
 //dog has the property 	BackLeftLeg
@@ -58,7 +60,7 @@ dog has the property FrontLeftLeg
 //dog has the property 	BackRightLeg
 //Add my SO of Nida within My generic dog.
 dog is type of animal
-Me includes My_Nida
+RO_Me includes My_Nida
 My_Nida is type of dog
 My_Nida has property Can Sit = true
 
@@ -70,9 +72,9 @@ MeetNida includes Me
 MeetNida is a type of SO_timeline. 
 The MeetNida has the property place and it is Bakkeveen. 
 The MeetNida has the property weather and it is wet.
-Nida include_right NidaInBakkeveen
-NidaInBakkeveen is a type of Placeholder
-NidaInBakkeveen includes _MeInBakkeveen
+RO_Nida include_right NidaInBakkeveen
+NidaInBakkeveen is a type of RO_Nida
+NidaInBakkeveen includes  _MeInBakkeveen
 NidaInBakkeveen include_right NIDA_RUNS
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Nida starts running.
@@ -99,8 +101,8 @@ Nida_running is a type of SO_timeline.
 //Nida_running includes Nida
 ENDOBJECT NIDA_RUNS
 
-Me include_right MeInBakkeveen
-MeInBakkeveen is a type of Placeholder
+RO_Me include_right MeInBakkeveen
+MeInBakkeveen is a type of RO_Me
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //Set up the initial steady state with Nida Sitting.
