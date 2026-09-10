@@ -6,8 +6,8 @@
 //Event: Objects are initialised in the Event INIT.
 //Timeline 'collision' SO lasts 10 seconds and contains 2 drops one of which is moving towards the other.
 //The 2 drops are represented by SOs drop1 and drop2 and positions and velocity have been chosen so they will collide.
-//The dimensions and velocities of a drop are relative to the time line SO and are therefore properties of the drop SOs 
-//and not of the drop ROs.
+//Some of these properties like the mass and diameter of a water drop apply to the drop while others, for example,
+//the relative velocity combine the properties of both drops and only exist because of the combination.
 //The space coordinates are chosen so that drop1 has 0 velocity and is at the origin (x=y=z=0).
 //The coordinates are also rotated so that drop2 has 0 velocity on the y and z axes and a minus velocity (v) along the x axis.
 //The initial coordinates of drop2 are y = z = 0 and +ve x so that the collision occurs at time x/v.
